@@ -6,7 +6,7 @@ import BackBtn from '../../components/buttons/backBtn/BackBtn';
 import star from '../../assets/streamline_interface-favorite-star-reward-rating-rate-social-star-media-favorite-like-stars.svg';
 
 import { levels } from '../../stores/levelsData';
-import { useUser } from "../../services/UserContext";
+import { useUser } from '../../hooks/useUser';
 
 function Levels() {
 
@@ -16,8 +16,8 @@ function Levels() {
         levels ? setLevelsData(levels) : setLevelsData([]);
     },[]);
 
-    const { userData } = useUser();
-    const { spending } = userData;
+    const { currentUser } = useUser();
+    const { spending } = currentUser;
 
     return (
         <Page>

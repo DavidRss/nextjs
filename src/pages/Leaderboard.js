@@ -3,19 +3,19 @@ import Page from '../layouts/Page/Page';
 import Container from '../layouts/Container/Container';
 import Aside from '../components/aside/Aside';
 import { boardData } from '../stores/boardData';
-import { useUser } from "../services/UserContext";
+import { useUser } from '../hooks/useUser';
 
 function Leaderboard() {   
 
     const [tableData, setTableData] = useState([]);
 
-    const { userData } = useUser()
+    const { currentUser } = useUser()
 
     useEffect(()=>{
         boardData ? setTableData(boardData) : setTableData([]);
 
-        if (boardData && userData) {
-            const updatedTableData = [...boardData, userData];
+        if (boardData && currentUser) {
+            const updatedTableData = [...boardData, currentUser];
 
             updatedTableData.sort((a, b) => {
                 const pointsA = a.ballance ? a.ballance.points : 0;
@@ -29,7 +29,7 @@ function Leaderboard() {
           } else {
             setTableData([]);
           }
-    },[userData]);
+    },[currentUser]);
     
     const pageSize = 10;
     const totalPages = Math.ceil(tableData.length / pageSize);

@@ -7,13 +7,13 @@ import copy from '../../assets/Copy.svg';
 import copyWhite from '../../assets/Copy-white.svg';
 import ticket from '../../assets/Ticket Sale.svg';
 import refGift from '../../assets/Gift-points.svg';
+import { useUser } from '../../hooks/useUser';
 
-import { useUser } from "../../services/UserContext";
 
 function Referals() {
 
-    const { userData } = useUser();
-    const { name } = userData;
+    const { currentUser } = useUser();
+    const { name } = currentUser;
 
     const inputRef = useRef(null);
     const [copied, setCopied] = useState(false);
