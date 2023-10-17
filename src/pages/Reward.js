@@ -15,11 +15,11 @@ import { Link } from 'react-router-dom';
 import Aside from '../components/aside/Aside';
 
 import { levels } from "../stores/levelsData"
-import { useUser } from '../hooks/useUser';
+import { useApp } from '../services/AppContext';
 
 function Reward() {
 
-    const { currentUser } = useUser();
+    const { currentUser } = useApp();
     const { ballance, spending } = currentUser;
 
     const calculateProgress = () => {

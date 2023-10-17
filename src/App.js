@@ -12,22 +12,80 @@ import Referals from "./pages/RewardsPages/Referals";
 import Earn from "./pages/RewardsPages/Earn";
 import Lottery from "./pages/RewardsPages/Lottery";
 import { AppProvider } from "./services/AppContext";
+import AuthRoute from "./route/AuthRoute";
 
 function App() {
   return (
     <AppProvider>
       <Router>
         <Routes>
-          <Route index element={<Login />} />
+          <Route
+            index
+            element={
+              <AuthRoute>
+                <Presentation />
+              </AuthRoute>
+            }
+          />
+          <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/presentation" element={<Presentation />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/reward" element={<Reward />} />
-          <Route path="/reward/levels" element={<Levels />} />
-          <Route path="/reward/referals" element={<Referals />} />
-          <Route path="/reward/earn" element={<Earn />} />
-          <Route path="/reward/lottery" element={<Lottery />} />
+          {/* <Route path="/presentation" element={<Presentation />} /> */}
+          <Route
+            path="/leaderboard"
+            element={
+              <AuthRoute>
+                <Leaderboard />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/chat"
+            element={
+              <AuthRoute>
+                <Chat />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/reward"
+            element={
+              <AuthRoute>
+                <Reward />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/reward/levels"
+            element={
+              <AuthRoute>
+                <Levels />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/reward/referals"
+            element={
+              <AuthRoute>
+                <Referals />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/reward/earn"
+            element={
+              <AuthRoute>
+                <Earn />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/reward/lottery"
+            element={
+              <AuthRoute>
+                <Lottery />
+              </AuthRoute>
+            }
+          />
         </Routes>
       </Router>
     </AppProvider>

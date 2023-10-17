@@ -1,14 +1,29 @@
 import React, { useState } from "react";
-import googleIcon from "../assets/google.png";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner";
+import { ToastContainer, toast } from "react-toastify";
+
 import Terms from "../components/term&policy/Terms";
 import Policy from "../components/term&policy/Policy";
+
 import { useAuth } from "../hooks/useAuth";
-import { authService } from "../services/FirebaseService";
+import { authService, userService } from "../services/FirebaseService";
 import { isEmailValid, isPasswordValid } from "../utils/FormValidation";
 
+import { Errors } from "../constants/FirebaseErrorMessages";
+
+import googleIcon from "../assets/google.png";
+
+import "react-toastify/dist/ReactToastify.css";
+
 function SignUp() {
+  const navigate = useNavigate();
+
   const { login } = useAuth();
+
+  const [loading, setLoading] = useState(false);
+
   const [username, changeUsername] = useState("");
   const [email, changeEmail] = useState("");
   const [password, changePassword] = useState("");
@@ -62,7 +77,17 @@ function SignUp() {
             avatar: photoUrl,
           };
 
-          login(user);
+          // login(user);
+
+          userService
+            .saveUser(uid, user)
+            .then((result) => {
+              console.log("===== saveUser: ", result);
+              navigate("/");
+            })
+            .catch((err) => {
+              console.log("===== saveuser error: ", err);
+            });
         }
         console.log("===== loginWithGoogle result: ", result);
       })
@@ -72,17 +97,13 @@ function SignUp() {
   };
 
   const handleSignupEmailAndPassword = () => {
-    console.log("===== handleSignupEmailAndPassword =====");
-    console.log("===== email: ", email);
-    console.log("===== password: ", password);
-
     let error = false;
     if (username === "") {
       setErrorUsername(true);
       error = true;
     }
 
-    if (email === "" || !isEmailValid(email)) {
+    if (!isEmailValid(email)) {
       setErrorEmail(true);
       error = true;
     }
@@ -103,13 +124,42 @@ function SignUp() {
     setErrorPassword(false);
 
     console.log(`${username}, ${email}, ${password}`);
+    setLoading(true);
     authService
       .register(email, password)
       .then((result) => {
         console.log("===== register result: ", result);
+        if (result.user) {
+          const { uid, email } = result.user;
+
+          const user = {
+            uid,
+            email,
+            username,
+          };
+
+          login(user);
+
+          userService
+            .saveUser(uid, user)
+            .then((result) => {
+              console.log("===== saveUser: ", result);
+              navigate("/");
+            })
+            .catch((err) => {
+              console.log("===== saveuser error: ", err);
+            });
+        }
+        setLoading(false);
       })
       .catch((err) => {
-        console.log("===== register error: ", err);
+        console.log("===== register error code: ", err.code);
+        console.log("===== register error message: ", err.message);
+        toast.error(Errors[err.code], {
+          position: toast.POSITION.TOP_RIGHT,
+          hideProgressBar: true,
+        });
+        setLoading(false);
       });
   };
 
@@ -216,7 +266,7 @@ function SignUp() {
               </span>
             </h3>
           </div>
-          {/* <Link to="/presentation" className="w-full"> */}
+          {/* <Link to="/" className="w-full"> */}
           <button
             className="btn btn-primary text-white mt-6 lg:mt-8 mb-5 w-full hover:text-white hover:bg-primary hover:-translate-y-1 transition-all"
             onClick={handleSignupEmailAndPassword}
@@ -232,8 +282,22 @@ function SignUp() {
           </span>
         </div>
       </section>
+
       <Terms />
       <Policy />
+
+      {loading && (
+        <div className="fixed top-2/4 left-2/4">
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+        </div>
+      )}
+      <ToastContainer />
     </div>
   );
 }

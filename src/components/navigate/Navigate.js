@@ -44,8 +44,8 @@ const Navigate = () => {
                             
                             <nav className='h-full'>
                                 <ul className='flex items-center w-full justify-center gap-5 xl:gap-10 h-full'>
-                                    <Link to="/presentation" className='h-full'>
-                                        <li className={`text-gray-900 hover:text-primary font-semibold transition-all cursor-pointer hover:border-b-2 hover:border-primary ${isActive('/presentation')} h-full pt-2 xl:pt-9 sm:w-28 sm:text-center`}>Présentation</li>
+                                    <Link to="/" className='h-full'>
+                                        <li className={`text-gray-900 hover:text-primary font-semibold transition-all cursor-pointer hover:border-b-2 hover:border-primary ${isActive('/')} h-full pt-2 xl:pt-9 sm:w-28 sm:text-center`}>Présentation</li>
                                     </Link>
                                     <Link to="/leaderboard" className='h-full'>
                                         <li className={`text-gray-900 hover:text-primary font-semibold transition-all cursor-pointer hover:border-b-2 hover:border-primary ${isActive('/leaderboard')} h-full pt-2 xl:pt-9 sm:w-28 sm:text-center`}>Leaderboard</li>

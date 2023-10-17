@@ -2,19 +2,29 @@ import React from "react";
 import Circles from "../../assets/Group.svg";
 import avatarMain from "../../assets/avatarMain.png";
 
-import { Link } from "react-router-dom";
-import { useUser } from "../../hooks/useUser";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import { useApp } from "../../services/AppContext";
 
 export default function Header() {
-  const { currentUser } = useUser();
-  const { name, img } = currentUser;
+  const { logout } = useAuth();
+  const { currentUser } = useApp();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    console.log("===== handleLogout =====");
+    logout();
+
+    navigate("/signin");
+  };
 
   return (
     <>
       <section className="h-471  bg-no-repeat bg-[center_left_-18.75rem] bg-cover xl:bg-center relative bg-img-header flex flex-col w-full gap-14 items-center px-5 xl:px-0">
         <div className="navbar bg-white my-7 max-w-7xl rounded-xl p-6">
           <div className="navbar-start">
-            <Link to="/presentation">
+            <Link to="/">
               <span className="normal-case text-xl text-main font-semibold text-gray-900">
                 Coflow
               </span>
@@ -23,19 +33,18 @@ export default function Header() {
             <div className="hidden xl:flex gap-2 items-center">
               <div className="avatar">
                 <div className="w-12 rounded-full ring-2 ring-gray-200">
-                  <img src={img} alt="avatar" />
+                  <img src={currentUser?.avatar} alt="avatar" />
                 </div>
               </div>
               <div className="flex flex-col">
-                <select className="select select-bordered custom-select select-xs w-full max-w-xs text-lg font-medium text-gray-900 bg-white pr-4">
+                <select className="select select-bordered custom-select select-xs w-full max-w-xs text-lg font-medium text-gray-900 bg-white pr-4" onChange={handleLogout}>
                   <option disabled selected>
-                    {name}
+                    {currentUser?.username}
                   </option>
-                  <option>{name}</option>
-                  <option>{name}</option>
+                  <option>Logout</option>
                 </select>
                 <span className="text-gray-500 font-medium text-xs">
-                  @{name}prod
+                  @{currentUser?.username}prod
                 </span>
               </div>
             </div>

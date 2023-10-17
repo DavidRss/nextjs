@@ -1,22 +1,46 @@
 import React, { useState } from "react";
-import googleIcon from "../assets/google.png";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner";
+import { ToastContainer, toast } from "react-toastify";
+
 import Terms from "../components/term&policy/Terms";
 import Policy from "../components/term&policy/Policy";
+
 import { useAuth } from "../hooks/useAuth";
-import { authService } from "../services/FirebaseService";
+import { authService, userService } from "../services/FirebaseService";
+import { isEmailValid, isPasswordValid } from "../utils/FormValidation";
+
+import googleIcon from "../assets/google.png";
+
+import "react-toastify/dist/ReactToastify.css";
+import { Errors } from "../constants/FirebaseErrorMessages";
 
 function Login() {
+  const navigate = useNavigate();
+
   const { login } = useAuth();
+
+  const [loading, setLoading] = useState(false);
+
   const [email, changeEmail] = useState("");
   const [password, changePassword] = useState("");
 
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
+
   const handleChangeEmail = (e) => {
     changeEmail(e.target.value);
+    if (e.target.value !== "") {
+      setErrorEmail(false);
+    }
   };
 
   const handleChangePassword = (e) => {
     changePassword(e.target.value);
+    if (e.target.value !== "") {
+      setErrorPassword(false);
+    }
   };
 
   const handleSignInGoogle = () => {
@@ -44,6 +68,8 @@ function Login() {
           };
 
           login(user);
+
+          navigate("/");
         }
         console.log("===== loginWithGoogle result: ", result);
       })
@@ -56,6 +82,56 @@ function Login() {
     console.log("===== handleSignInEmailAndPassword =====");
     console.log("===== email: ", email);
     console.log("===== password: ", password);
+
+    let error = false;
+    if (!isEmailValid(email)) {
+      setErrorEmail(true);
+      error = true;
+    }
+
+    if (!isPasswordValid(password)) {
+      setErrorPassword(true);
+      error = true;
+    }
+
+    if (error) {
+      return;
+    }
+
+    setErrorEmail(false);
+    setErrorPassword(false);
+
+    setLoading(true);
+
+    authService
+      .login(email, password)
+      .then((result) => {
+        console.log("===== login result: ", result);
+        if (result.user) {
+          const { uid, email } = result.user;
+
+          userService
+            .getUser(uid)
+            .then((user) => {
+              login(user);
+
+              navigate("/");
+            })
+            .catch((err) => {
+              console.log("===== getUser error: ", err);
+            });
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("===== register error code: ", err.code);
+        console.log("===== register error message: ", err.message);
+        toast.error(Errors[err.code], {
+          position: toast.POSITION.TOP_RIGHT,
+          hideProgressBar: true,
+        });
+        setLoading(false);
+      });
   };
 
   return (
@@ -93,7 +169,9 @@ function Login() {
                   value={email}
                   onChange={handleChangeEmail}
                   autoComplete="email"
-                  className="bg-gray-200 block w-full rounded-md border border-gray-200 py-4 pl-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  className={`bg-gray-200 block w-full rounded-md border py-4 pl-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6 ${
+                    errorEmail ? "border-red-800" : "border-gray-200"
+                  }`}
                 />
               </div>
             </div>
@@ -112,7 +190,9 @@ function Login() {
                   value={password}
                   onChange={handleChangePassword}
                   autoComplete="password"
-                  className="bg-gray-200 block w-full rounded-md border border-gray-200 py-4 pl-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  className={`bg-gray-200 block w-full rounded-md border py-4 pl-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6 ${
+                    errorPassword ? "border-red-800" : "border-gray-200"
+                  }`}
                 />
               </div>
             </div>
@@ -135,7 +215,7 @@ function Login() {
               </span>
             </h3>
           </div>
-          {/* <Link to="/presentation" className="w-full"> */}
+          {/* <Link to="/" className="w-full"> */}
           <button
             className="btn btn-primary text-white mt-6 lg:mt-8 mb-5 w-full hover:text-white hover:bg-primary hover:-translate-y-1 transition-all"
             onClick={handleSignInEmailAndPassword}
@@ -159,6 +239,19 @@ function Login() {
 
       <Terms />
       <Policy />
+
+      {loading && (
+        <div className="fixed top-2/4 left-2/4">
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+        </div>
+      )}
+      <ToastContainer />
     </div>
   );
 }

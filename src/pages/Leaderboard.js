@@ -3,13 +3,13 @@ import Page from '../layouts/Page/Page';
 import Container from '../layouts/Container/Container';
 import Aside from '../components/aside/Aside';
 import { boardData } from '../stores/boardData';
-import { useUser } from '../hooks/useUser';
+import { useApp } from '../services/AppContext';
 
 function Leaderboard() {   
 
     const [tableData, setTableData] = useState([]);
 
-    const { currentUser } = useUser()
+    const { currentUser } = useApp()
 
     useEffect(()=>{
         boardData ? setTableData(boardData) : setTableData([]);
