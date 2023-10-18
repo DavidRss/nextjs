@@ -11,11 +11,14 @@ import CardsSlider from "../components/cardsSlider/CardsSlider";
 import { cardsData } from "../stores/cardsData";
 import { useApp } from "../services/AppContext";
 import { getFormatTimeRemaining, nFormatter } from "../utils/utils";
+import { projectService } from "../services/FirebaseService";
+import { DEFAULT_DONATION, PROJECT_ID } from "../constants/constants";
 
 const Presentation = () => {
   const [data, setData] = useState();
 
-  const { loadedProject, project } = useApp();
+  const { currentUser, setLoading, loadedProject, project, showNotifyMessage } =
+    useApp();
 
   const [counter, setCounter] = React.useState(0);
 
@@ -37,6 +40,27 @@ const Presentation = () => {
   useEffect(() => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
+
+  const handleParticipate = () => {
+    console.log("===== Presentation handleParticipate =====");
+    setLoading(true);
+
+    projectService
+      .participateUser(PROJECT_ID, currentUser, DEFAULT_DONATION)
+      .then((res) => {
+        setLoading(false);
+        console.log("===== handleParticipate: ", res);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log("===== handleParticipate err: ", err.code);
+        console.log("===== handleParticipate err: ", err.message);
+        showNotifyMessage({
+          type: "error",
+          message: err.message,
+        });
+      });
+  };
 
   return (
     <Page>
@@ -135,7 +159,12 @@ const Presentation = () => {
                   Niveau 0
                 </span>
               </div>
-              <button className="btn btn-primary text-white">Participer</button>
+              <button
+                className="btn btn-primary text-white"
+                onClick={handleParticipate}
+              >
+                Participer
+              </button>
             </div>
           </div>
         </Container>
@@ -269,7 +298,10 @@ const Presentation = () => {
                               {item.contributions} contributions
                             </span>
                           </div>
-                          <button className="btn btn-primary text-white">
+                          <button
+                            className="btn btn-primary text-white"
+                            onClick={handleParticipate}
+                          >
                             Participer
                           </button>
                         </div>
@@ -288,7 +320,10 @@ const Presentation = () => {
                   className="block w-full rounded-md bg-inputBg border-0 py-4 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 mb-3"
                   placeholder="Ex : 30"
                 />
-                <button className="btn btn-primary text-white">
+                <button
+                  className="btn btn-primary text-white"
+                  onClick={handleParticipate}
+                >
                   Participer
                 </button>
               </div>

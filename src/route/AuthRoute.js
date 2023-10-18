@@ -1,15 +1,14 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useApp } from "../services/AppContext";
+import Spinner from "../components/spinner/Spinner";
 
 const AuthRoute = ({ children }) => {
-  const { currentUser, isLoading } = useApp();
+  const { currentUser, pageLoading } = useApp();
   const location = useLocation();
 
-  if (isLoading) {
-    return <></>;
+  if (pageLoading) {
+    return <Spinner />;
   }
-
-  console.log("===== AuthRoute: ", currentUser);
 
   if (!currentUser) {
     return <Navigate to="/signin" replace state={{ from: location }} />;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
-import { RotatingLines } from "react-loader-spinner";
+
 import { ToastContainer, toast } from "react-toastify";
 
 import Terms from "../components/term&policy/Terms";
@@ -15,6 +15,8 @@ import googleIcon from "../assets/google.png";
 
 import "react-toastify/dist/ReactToastify.css";
 import { Errors } from "../constants/FirebaseErrorMessages";
+import Spinner from "../components/spinner/Spinner";
+import { NOTIFY_OPTION } from "../constants/constants";
 
 function Login() {
   const navigate = useNavigate();
@@ -47,31 +49,50 @@ function Login() {
     console.log("===== handleSignInGoogle =====");
     authService
       .loginWithGoogle()
-      .then((result) => {
+      .then(async (result) => {
+        console.log("===== loginWithGoogle result: ", result);
+
         if (result.user) {
           const { uid } = result.user;
-          const { email } = result.user;
-          const { displayName } = result.user;
-          const profile = result._tokenResponse;
-          const firstName = profile.firstName || profile.givenName;
-          const lastName = profile.lastName || profile.familyName;
-          const fullName = displayName || `${firstName} ${lastName}`;
-          const photoUrl = profile.photoUrl;
 
-          const user = {
-            uid,
-            email,
-            username: fullName,
-            firstName,
-            lastName,
-            avatar: photoUrl,
-          };
+          const docSnap = await userService.getUser(uid);
+          if (docSnap.exists()) {
+            console.log("===== user: ", docSnap.data());
+            const user = docSnap.data();
+            login(user);
+            navigate("/");
+          } else {
+            const { email } = result.user;
+            const { displayName } = result.user;
+            const profile = result._tokenResponse;
+            const firstName = profile.firstName || profile.givenName;
+            const lastName = profile.lastName || profile.familyName;
+            const fullName = displayName || `${firstName} ${lastName}`;
+            const photoUrl = profile.photoUrl;
 
-          login(user);
+            const user = {
+              id: uid,
+              email,
+              username: fullName,
+              firstName,
+              lastName,
+              avatar: photoUrl,
+              points: 0,
+              donations: 0,
+            };
 
-          navigate("/");
+            userService
+              .saveUser(uid, user)
+              .then((result) => {
+                console.log("===== saveUser: ", result);
+                login(user);
+                navigate("/");
+              })
+              .catch((err) => {
+                console.log("===== saveuser error: ", err);
+              });
+          }
         }
-        console.log("===== loginWithGoogle result: ", result);
       })
       .catch((err) => {
         console.log("===== loginWithGoogle error: ", err);
@@ -105,31 +126,30 @@ function Login() {
 
     authService
       .login(email, password)
-      .then((result) => {
+      .then(async (result) => {
         console.log("===== login result: ", result);
         if (result.user) {
-          const { uid, email } = result.user;
+          const { uid } = result.user;
 
-          userService
-            .getUser(uid)
-            .then((user) => {
-              login(user);
-
-              navigate("/");
-            })
-            .catch((err) => {
-              console.log("===== getUser error: ", err);
+          const docSnap = await userService.getUser(uid);
+          if (docSnap.exists()) {
+            console.log("===== user: ", docSnap.data());
+            const user = docSnap.data();
+            login(user);
+            navigate("/");
+          } else {
+            toast.error("The user doesn't exist.", {
+              position: toast.POSITION.TOP_RIGHT,
+              hideProgressBar: true,
             });
+          }
         }
         setLoading(false);
       })
       .catch((err) => {
         console.log("===== register error code: ", err.code);
         console.log("===== register error message: ", err.message);
-        toast.error(Errors[err.code], {
-          position: toast.POSITION.TOP_RIGHT,
-          hideProgressBar: true,
-        });
+        toast.error(Errors[err.code], NOTIFY_OPTION);
         setLoading(false);
       });
   };
@@ -240,17 +260,7 @@ function Login() {
       <Terms />
       <Policy />
 
-      {loading && (
-        <div className="fixed top-2/4 left-2/4">
-          <RotatingLines
-            strokeColor="grey"
-            strokeWidth="5"
-            animationDuration="0.75"
-            width="96"
-            visible={true}
-          />
-        </div>
-      )}
+      {loading && <Spinner />}
       <ToastContainer />
     </div>
   );

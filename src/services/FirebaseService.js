@@ -10,6 +10,7 @@ import ProjectService from "./firebase/ProjectService";
 export const FBCollections = {
   USERS: "users",
   PROJECTS: "projects",
+  PARTICIPANTS: "participants"
 };
 
 const firebaseApp = initializeApp(firebaseConfig);

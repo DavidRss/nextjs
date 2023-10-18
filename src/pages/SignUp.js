@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
-import { RotatingLines } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
 
 import Terms from "../components/term&policy/Terms";
@@ -16,6 +15,8 @@ import { Errors } from "../constants/FirebaseErrorMessages";
 import googleIcon from "../assets/google.png";
 
 import "react-toastify/dist/ReactToastify.css";
+import Spinner from "../components/spinner/Spinner";
+import { NOTIFY_OPTION } from "../constants/constants";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -69,20 +70,21 @@ function SignUp() {
           const photoUrl = profile.photoUrl;
 
           const user = {
-            uid,
+            id: uid,
             email,
             username: fullName,
             firstName,
             lastName,
             avatar: photoUrl,
+            points: 0,
+            donations: 0,
           };
-
-          // login(user);
 
           userService
             .saveUser(uid, user)
             .then((result) => {
               console.log("===== saveUser: ", result);
+              login(user);
               navigate("/");
             })
             .catch((err) => {
@@ -133,17 +135,21 @@ function SignUp() {
           const { uid, email } = result.user;
 
           const user = {
-            uid,
+            id: uid,
             email,
             username,
+            firstName: "",
+            lastName: "",
+            avatar: "",
+            points: 0,
+            donations: 0,
           };
-
-          login(user);
 
           userService
             .saveUser(uid, user)
             .then((result) => {
               console.log("===== saveUser: ", result);
+              login(user);
               navigate("/");
             })
             .catch((err) => {
@@ -155,10 +161,7 @@ function SignUp() {
       .catch((err) => {
         console.log("===== register error code: ", err.code);
         console.log("===== register error message: ", err.message);
-        toast.error(Errors[err.code], {
-          position: toast.POSITION.TOP_RIGHT,
-          hideProgressBar: true,
-        });
+        toast.error(Errors[err.code], NOTIFY_OPTION);
         setLoading(false);
       });
   };
@@ -286,17 +289,7 @@ function SignUp() {
       <Terms />
       <Policy />
 
-      {loading && (
-        <div className="fixed top-2/4 left-2/4">
-          <RotatingLines
-            strokeColor="grey"
-            strokeWidth="5"
-            animationDuration="0.75"
-            width="96"
-            visible={true}
-          />
-        </div>
-      )}
+      {loading && <Spinner />}
       <ToastContainer />
     </div>
   );

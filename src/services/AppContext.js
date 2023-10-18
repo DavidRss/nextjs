@@ -1,15 +1,19 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { projectService } from "./FirebaseService";
+import { PROJECT_ID } from "../constants/constants";
 
 export const AppContext = createContext();
 
 export function AppProvider({ children }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [pageLoading, setPageLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
   const [loadedProject, setLoadedProject] = useState(false);
   const [project, setProject] = useState(null);
+
+  const [notifyMessage, showNotifyMessage] = useState(null);
 
   const { getItem, setItem, removeItem } = useLocalStorage();
 
@@ -25,7 +29,7 @@ export function AppProvider({ children }) {
 
   const loadProject = () => {
     projectService
-      .getProject("wGJO9iMDd6cQdtjw2D8s")
+      .getProject(PROJECT_ID)
       .then((docSnap) => {
         if (docSnap.exists()) {
           console.log("===== getProject data: ", docSnap.data());
@@ -46,7 +50,7 @@ export function AppProvider({ children }) {
     if (user) {
       saveUser(JSON.parse(user));
     }
-    setIsLoading(false);
+    setPageLoading(false);
 
     loadProject();
   }, []);
@@ -54,12 +58,16 @@ export function AppProvider({ children }) {
   return (
     <AppContext.Provider
       value={{
-        isLoading,
+        pageLoading,
+        loading,
+        setLoading,
         currentUser,
         saveUser,
         removeUser,
         loadedProject,
         project,
+        notifyMessage,
+        showNotifyMessage
       }}
     >
       {children}

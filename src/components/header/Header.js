@@ -1,5 +1,6 @@
 import React from "react";
 import Circles from "../../assets/Group.svg";
+import avatarHeader from "../../assets/avatarHeader.png";
 import avatarMain from "../../assets/avatarMain.png";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -33,7 +34,7 @@ export default function Header() {
             <div className="hidden xl:flex gap-2 items-center">
               <div className="avatar">
                 <div className="w-12 rounded-full ring-2 ring-gray-200">
-                  <img src={currentUser?.avatar} alt="avatar" />
+                  <img src={currentUser?.avatar ? currentUser.avatar : avatarHeader} alt="avatar" />
                 </div>
               </div>
               <div className="flex flex-col">

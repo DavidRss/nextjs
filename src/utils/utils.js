@@ -9,7 +9,7 @@ export const getFormatTimeRemaining = (seconds) => {
   const s_hh = hh < 10 ? `0${hh}` : hh;
 
   if (dd > 0) {
-    return `${dd}days ${s_hh}:${s_mm}:${s_ss}`;
+    return `${dd} days`;
   } else if (s_hh > 0) {
     return `${s_hh}:${s_mm}:${s_ss}`;
   } else if (s_mm > 0) {
