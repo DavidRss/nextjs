@@ -13,9 +13,11 @@ import {
 } from "firebase/firestore";
 import { FBCollections } from "../FirebaseService";
 import { DEFAULT_USER_COUNTRY } from "../../constants/constants";
+import { ref, set } from "firebase/database";
 
 export default class ProjectService {
-  constructor(firestore) {
+  constructor(database, firestore) {
+    this.database = database;
     this.firestore = firestore;
   }
 
@@ -107,5 +109,15 @@ export default class ProjectService {
       });
     }
     return { resultArray, lastVisibleItem };
+  };
+
+  addComments = (projectId, comments) => {
+    return set(
+      ref(
+        this.database,
+        `${FBCollections.PROJECTS}/${projectId}/${FBCollections.COMMENTS}`
+      ),
+      comments
+    );
   };
 }

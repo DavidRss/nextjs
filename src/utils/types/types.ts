@@ -21,10 +21,27 @@ export interface Project {
 }
 
 export interface Participant {
-  id: string;
+  id: string; // userId
   username: string;
   country: string;
   donations: number;
   points: number;
   date: string;
+}
+
+export interface Comment {
+  userId: string;
+  username: string;
+  content: string;
+  avatar: string;
+  photo: string;
+  status: string;
+  createdAt: string;
+}
+
+export interface Donations {
+  id: string;
+  userId: string;
+  amount: number;
+  createdAt: string;
 }

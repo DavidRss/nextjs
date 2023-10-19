@@ -2,16 +2,13 @@ import React, { useEffect, useState } from "react";
 import Page from "../layouts/Page/Page";
 import Container from "../layouts/Container/Container";
 import Aside from "../components/aside/Aside";
-import { useApp } from "../services/AppContext";
 import { projectService } from "../services/FirebaseService";
 import { PROJECT_ID } from "../constants/constants";
+import Spinner from "../components/spinner/Spinner";
 
 function Leaderboard() {
-  const { currentUser, project } = useApp();
-
-  console.log("===== project: ", project);
-
   const pageSize = 10;
+  const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -20,6 +17,8 @@ function Leaderboard() {
   const [top3Participants, setTop3Participants] = useState([]);
 
   const loadParticipants = async () => {
+    setIsLoading(true);
+
     const totalCnt = await projectService.getParticipantTotalCount(PROJECT_ID);
     setTotalCount(totalCnt);
     setTotalPages(Math.ceil(totalCnt / pageSize));
@@ -27,6 +26,8 @@ function Leaderboard() {
 
     const { resultArray, lastVisibleItem } =
       await projectService.getParticipants(PROJECT_ID, pageSize, lastVisible);
+    
+    setIsLoading(false);
 
     console.log("===== resultArray: ", resultArray);
     console.log("===== lastVisibleItem: ", lastVisible);
@@ -39,26 +40,8 @@ function Leaderboard() {
   };
 
   useEffect(() => {
-    // boardData ? setTableData(boardData) : setTableData([]);
-
-    // if (boardData && currentUser) {
-    //   const updatedTableData = [...boardData, currentUser];
-
-    //   updatedTableData.sort((a, b) => {
-    //     const pointsA = a.ballance ? a.ballance.points : 0;
-    //     const pointsB = b.ballance ? b.ballance.points : 0;
-    //     return pointsB - pointsA;
-    //   });
-
-    //   setTableData(updatedTableData);
-    // } else if (boardData) {
-    //   setTableData(boardData);
-    // } else {
-    //   setTableData([]);
-    // }
-
     loadParticipants();
-  }, [currentUser]);
+  }, []);
 
   const handleChangePage = (page) => {
     setCurrentPage(page);
@@ -69,7 +52,7 @@ function Leaderboard() {
       <section className="bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
         <Container>
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start">
-            <div className="flex flex-col w-full">
+            <div className="relative flex flex-col w-full">
               <h1 className="text-gray-900 font-bold text-3xl mb-8 text-left">
                 Leaderboard
               </h1>
@@ -108,7 +91,7 @@ function Leaderboard() {
                 </div>
               </div>
               <div className="mt-4">
-                <div className="overflow-x-auto border border-neutral rounded-lg scroll">
+                <div className="overflow-x-auto border border-neutral rounded-lg scroll min-h-[500px]">
                   <table className="table table-zebra">
                     <thead className="bg-pagBg">
                       <tr className="border-pagBg text-gray-900 opacity-30 text-base font-semibold">
@@ -189,6 +172,7 @@ function Leaderboard() {
                   </div>
                 </div>
               </div>
+              {isLoading && <Spinner position="absolute" />}
             </div>
             <Aside />
           </div>

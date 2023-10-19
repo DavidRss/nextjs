@@ -6,6 +6,10 @@ import { PROJECT_ID } from "../constants/constants";
 export const AppContext = createContext();
 
 export function AppProvider({ children }) {
+  const [notifyMessage, showNotifyMessage] = useState(null);
+
+  const { getItem, setItem, removeItem } = useLocalStorage();
+
   const [pageLoading, setPageLoading] = useState(true);
   const [loading, setLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -13,9 +17,7 @@ export function AppProvider({ children }) {
   const [loadedProject, setLoadedProject] = useState(false);
   const [project, setProject] = useState(null);
 
-  const [notifyMessage, showNotifyMessage] = useState(null);
-
-  const { getItem, setItem, removeItem } = useLocalStorage();
+  const [isParticipated, setIsParticipated] = useState(false);
 
   const saveUser = (user) => {
     setCurrentUser(user);
@@ -44,15 +46,22 @@ export function AppProvider({ children }) {
       });
   };
 
+  const checkParticipated = () => {
+    
+  }
+
   useEffect(() => {
     const user = getItem("user");
-    console.log("===== AppProvider: ", user);
     if (user) {
       saveUser(JSON.parse(user));
     }
     setPageLoading(false);
 
     loadProject();
+
+    return () => {
+
+    }
   }, []);
 
   return (
@@ -67,7 +76,8 @@ export function AppProvider({ children }) {
         loadedProject,
         project,
         notifyMessage,
-        showNotifyMessage
+        showNotifyMessage,
+        isParticipated
       }}
     >
       {children}
