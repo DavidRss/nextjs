@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Page from "../layouts/Page/Page";
 import Container from "../layouts/Container/Container";
 import Aside from "../components/aside/Aside";
@@ -7,6 +7,8 @@ import { PROJECT_ID } from "../constants/constants";
 import Spinner from "../components/spinner/Spinner";
 
 function Leaderboard() {
+  const donationForm = useRef(null);
+
   const pageSize = 10;
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,7 +28,7 @@ function Leaderboard() {
 
     const { resultArray, lastVisibleItem } =
       await projectService.getParticipants(PROJECT_ID, pageSize, lastVisible);
-    
+
     setIsLoading(false);
 
     console.log("===== resultArray: ", resultArray);
@@ -47,8 +49,18 @@ function Leaderboard() {
     setCurrentPage(page);
   };
 
+  const handleOnParticipate = () => {
+    console.log("===== handleOnParticipate =====");
+    if (donationForm.current) {
+      donationForm.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
-    <Page>
+    <Page handleOnParticipate={handleOnParticipate}>
       <section className="bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
         <Container>
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start">
@@ -174,7 +186,7 @@ function Leaderboard() {
               </div>
               {isLoading && <Spinner position="absolute" />}
             </div>
-            <Aside />
+            <Aside ref={donationForm} />
           </div>
         </Container>
       </section>

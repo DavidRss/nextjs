@@ -15,8 +15,9 @@ import { onValue, ref } from "firebase/database";
 import Spinner from "../components/spinner/Spinner";
 
 function Chat() {
-  const { currentUser } = useApp();
+  const { currentUser, showLoginDialog } = useApp();
 
+  const donationForm = useRef(null);
   const chatView = useRef(null);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -34,6 +35,11 @@ function Chat() {
   };
 
   const handleAttachFileClick = () => {
+    if (!currentUser) {
+      showLoginDialog(true);
+      return;
+    }
+
     const fileInput = document.getElementById("fileInput");
     if (fileInput) {
       fileInput.click();
@@ -47,6 +53,12 @@ function Chat() {
   const handleComplitedMessage = async (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
+
+      if (!currentUser) {
+        showLoginDialog(true);
+        return;
+      }
+
       const currentTime = new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -112,11 +124,20 @@ function Chat() {
   }, []);
 
   const isOwner = (comment) => {
-    return comment.userId === currentUser.id;
+    return comment.userId === currentUser?.id;
+  };
+
+  const handleOnParticipate = () => {
+    if (donationForm.current) {
+      donationForm.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   };
 
   return (
-    <Page>
+    <Page handleOnParticipate={handleOnParticipate}>
       <section className="bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
         <Container>
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start">
@@ -225,7 +246,7 @@ function Chat() {
                 </div>
               </div>
             </div>
-            <Aside />
+            <Aside ref={donationForm} />
           </div>
         </Container>
       </section>

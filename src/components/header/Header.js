@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useApp } from "../../services/AppContext";
 
-export default function Header() {
+export default function Header({ handleOnParticipate }) {
   const { logout } = useAuth();
   const { currentUser } = useApp();
 
@@ -17,6 +17,10 @@ export default function Header() {
     console.log("===== handleLogout =====");
     logout();
 
+    navigate("/signin");
+  };
+
+  const onClickSignin = () => {
     navigate("/signin");
   };
 
@@ -34,33 +38,50 @@ export default function Header() {
             <div className="hidden xl:flex gap-2 items-center">
               <div className="avatar">
                 <div className="w-12 rounded-full ring-2 ring-gray-200">
-                  <img src={currentUser?.avatar ? currentUser.avatar : avatarHeader} alt="avatar" />
+                  <img
+                    src={
+                      currentUser?.avatar ? currentUser.avatar : avatarHeader
+                    }
+                    alt="avatar"
+                  />
                 </div>
               </div>
-              <div className="flex flex-col">
-                <select className="select select-bordered custom-select select-xs w-full max-w-xs text-lg font-medium text-gray-900 bg-white pr-4" onChange={handleLogout}>
-                  <option disabled selected>
-                    {currentUser?.username}
-                  </option>
-                  <option>Logout</option>
-                </select>
-                <span className="text-gray-500 font-medium text-xs">
-                  @{currentUser?.username}prod
-                </span>
-              </div>
+              {currentUser && (
+                <div className="flex flex-col">
+                  <select
+                    className="select select-bordered custom-select select-xs w-full max-w-xs text-lg font-medium text-gray-900 bg-white pr-4"
+                    onChange={handleLogout}
+                  >
+                    <option disabled selected>
+                      {currentUser?.username}
+                    </option>
+                    <option>Logout</option>
+                  </select>
+                  <span className="text-gray-500 font-medium text-xs">
+                    @{currentUser?.username}prod
+                  </span>
+                </div>
+              )}
             </div>
           </div>
           <div className="navbar-end">
             <div className="hidden xl:flex gap-10 items-center">
-              <div className="flex justify-center items-center">
-                <span className="badge bg-white border-neutral text-gray-900 relative -top-3 left-12">
-                  8
-                </span>
-                <img src={Circles} alt="Circles" />
-              </div>
-              <button className="btn btn-primary px-8 py-4 text-white">
-                Se connecter
-              </button>
+              {currentUser && (
+                <div className="flex justify-center items-center">
+                  <span className="badge bg-white border-neutral text-gray-900 relative -top-3 left-12">
+                    {currentUser?.points}
+                  </span>
+                  <img src={Circles} alt="Circles" />
+                </div>
+              )}
+              {!currentUser && (
+                <button
+                  className="btn btn-primary px-8 py-4 text-white"
+                  onClick={onClickSignin}
+                >
+                  Se connecter
+                </button>
+              )}
             </div>
             <div className="flex xl:hidden gap-4">
               <div className="w-12 rounded-full ring-2 ring-gray-200">
@@ -91,7 +112,10 @@ export default function Header() {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </h2>
-          <button className="btn btn-primary text-white block xl:hidden w-36 mt-6">
+          <button
+            className="btn btn-primary text-white block xl:hidden w-36 mt-6"
+            onClick={handleOnParticipate}
+          >
             Participer
           </button>
         </div>

@@ -7,6 +7,8 @@ export interface User {
   avatar: string;
   points: string;
   donations: string;
+  referralCode: string;
+  referrals: []
 }
 
 export interface Project {

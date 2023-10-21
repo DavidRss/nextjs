@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Page from "../layouts/Page/Page";
 import Container from "../layouts/Container/Container";
 import YouTubeVideo from "../components/youtube/Youtube";
@@ -12,15 +12,24 @@ import { cardsData } from "../stores/cardsData";
 import { useApp } from "../services/AppContext";
 import { getFormatTimeRemaining, nFormatter } from "../utils/utils";
 import { projectService } from "../services/FirebaseService";
-import { DEFAULT_DONATION, PROJECT_ID } from "../constants/constants";
 
 const Presentation = () => {
   const [data, setData] = useState();
 
-  const { currentUser, setLoading, loadedProject, project, showNotifyMessage } =
-    useApp();
+  const {
+    currentUser,
+    setLoading,
+    loadedProject,
+    project,
+    showNotifyMessage,
+    showLoginDialog,
+  } = useApp();
+
+  const donationForm = useRef(null);
 
   const [counter, setCounter] = React.useState(0);
+  const [price, changePrice] = useState(0);
+  const [errorPrice, setErrorPrice] = useState(false);
 
   useEffect(() => {
     cardsData ? setData(cardsData) : setData([]);
@@ -41,12 +50,29 @@ const Presentation = () => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
 
+  const handleChangePrice = (e) => {
+    changePrice(e.target.value);
+    if (e.target.value !== "") {
+      setErrorPrice(false);
+    }
+  };
+
   const handleParticipate = () => {
     console.log("===== Presentation handleParticipate =====");
+    if (!currentUser) {
+      showLoginDialog(true);
+      return;
+    }
+
+    if (!price) {
+      setErrorPrice(true);
+      return;
+    }
+
     setLoading(true);
 
     projectService
-      .participateUser(PROJECT_ID, currentUser, DEFAULT_DONATION)
+      .participateUser(project.id, currentUser, price)
       .then((res) => {
         setLoading(false);
         console.log("===== handleParticipate: ", res);
@@ -62,8 +88,17 @@ const Presentation = () => {
       });
   };
 
+  const handleOnParticipate = () => {
+    if (donationForm.current) {
+      donationForm.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
-    <Page>
+    <Page handleOnParticipate={handleOnParticipate}>
       <section className="bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
         <Container>
           <div className="w-full flex flex-col xl:flex-row px-5 gap-5 xl:gap-0 lg:px-0 justify-between items-center xl:items-start">
@@ -161,7 +196,7 @@ const Presentation = () => {
               </div>
               <button
                 className="btn btn-primary text-white"
-                onClick={handleParticipate}
+                onClick={handleOnParticipate}
               >
                 Participer
               </button>
@@ -309,16 +344,23 @@ const Presentation = () => {
                     </CardM>
                   ))}
               </div>
-              <div className="flex flex-col p-6 font-semibold shadow-lg rounded-lg">
+              <div
+                ref={donationForm}
+                className="flex flex-col p-6 font-semibold shadow-lg rounded-lg"
+              >
                 <h1 className="text-xl text-gray-900 mb-5">
                   Donne le montant que tu veux Montant à donner
                 </h1>
                 <input
-                  type="text"
+                  type="number"
                   name="price"
                   id="price"
-                  className="block w-full rounded-md bg-inputBg border-0 py-4 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 mb-3"
+                  className={`block w-full rounded-md bg-inputBg py-4 pl-7 pr-7 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 mb-3 ${
+                    errorPrice ? "border border-red-800" : "border-0"
+                  }`}
                   placeholder="Ex : 30"
+                  value={price}
+                  onChange={handleChangePrice}
                 />
                 <button
                   className="btn btn-primary text-white"

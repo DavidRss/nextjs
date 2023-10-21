@@ -8,8 +8,9 @@ import Spinner from "../../components/spinner/Spinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { NOTIFY_OPTION } from "../../constants/constants";
+import LoginDialog from "../../components/dialog/LoginDialog";
 
-export default function Page({ children }) {
+export default function Page({ children, handleOnParticipate }) {
   const { loading, notifyMessage, showNotifyMessage } = useApp();
 
   useEffect(() => {
@@ -24,10 +25,11 @@ export default function Page({ children }) {
 
   return (
     <Main>
-      <Header />
-      <Navigate />
+      <Header handleOnParticipate={handleOnParticipate} />
+      <Navigate handleOnParticipate={handleOnParticipate} />
       {children}
       <Footer />
+      <LoginDialog />
       {loading && <Spinner />}
       <ToastContainer />
     </Main>

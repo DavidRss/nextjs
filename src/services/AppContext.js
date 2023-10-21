@@ -10,12 +10,14 @@ export function AppProvider({ children }) {
 
   const { getItem, setItem, removeItem } = useLocalStorage();
 
-  const [pageLoading, setPageLoading] = useState(true);
+  const [loadingUser, setLoadingUser] = useState(true);
   const [loading, setLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
   const [loadedProject, setLoadedProject] = useState(false);
   const [project, setProject] = useState(null);
+
+  const [isShowLoginDialog, showLoginDialog] = useState(false);
 
   const [isParticipated, setIsParticipated] = useState(false);
 
@@ -46,28 +48,24 @@ export function AppProvider({ children }) {
       });
   };
 
-  const checkParticipated = () => {
-    
-  }
+  const checkParticipated = () => {};
 
   useEffect(() => {
     const user = getItem("user");
     if (user) {
       saveUser(JSON.parse(user));
     }
-    setPageLoading(false);
+    setLoadingUser(false);
 
     loadProject();
 
-    return () => {
-
-    }
+    return () => {};
   }, []);
 
   return (
     <AppContext.Provider
       value={{
-        pageLoading,
+        loadingUser,
         loading,
         setLoading,
         currentUser,
@@ -77,7 +75,9 @@ export function AppProvider({ children }) {
         project,
         notifyMessage,
         showNotifyMessage,
-        isParticipated
+        isParticipated,
+        isShowLoginDialog,
+        showLoginDialog,
       }}
     >
       {children}

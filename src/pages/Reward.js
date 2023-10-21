@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Page from "../layouts/Page/Page";
 import Container from "../layouts/Container/Container";
 
@@ -18,7 +18,7 @@ import { levels } from "../stores/levelsData";
 import { useApp } from "../services/AppContext";
 
 function Reward() {
-  const { currentUser } = useApp();
+  const { loadingUser, currentUser, showLoginDialog } = useApp();
 
   const calculateProgress = () => {
     let currentLevel = null;
@@ -26,10 +26,10 @@ function Reward() {
     let nextLevel = null;
 
     for (let i = 0; i < levels.length; i++) {
-      if (currentUser.donations < levels[i].spend) {
+      if (currentUser?.donations < levels[i].spend) {
         currentLevel = levels[i - 1] || levels[0];
         nextLevel = levels[i];
-        remainingToNextLevel = levels[i].spend - currentUser.donations;
+        remainingToNextLevel = levels[i].spend - currentUser?.donations;
         break;
       }
     }
@@ -46,7 +46,16 @@ function Reward() {
     };
   };
 
-  const progress = calculateProgress(currentUser.donations);
+  const progress = calculateProgress(currentUser?.donations);
+
+  useEffect(() => {
+    if (!loadingUser) {
+      console.log("===== currentUser: ", currentUser);
+      if (!currentUser) {
+        showLoginDialog(true);
+      }
+    }
+  }, [loadingUser]);
 
   return (
     <Page>
@@ -71,18 +80,18 @@ function Reward() {
                           </h1>
                         </div>
                         <span className="mt-3 text-2xl font-extrabold text-primary hidden sm:block">
-                          {currentUser.points}
+                          {currentUser?.points}
                         </span>
                         <span className="text-gray-900 opacity-50 text-sm font-normal hidden sm:block">
-                          Equals {currentUser.donations} USD
+                          Equals {currentUser?.donations} USD
                         </span>
                       </div>
                       <div className="flex flex-col">
                         <span className="mt-3 text-2xl font-extrabold text-primary block sm:hidden text-right">
-                          {currentUser.points}
+                          {currentUser?.points}
                         </span>
                         <span className="text-gray-900 opacity-50 text-sm font-normal block sm:hidden">
-                          Equals {currentUser.donations} USD
+                          Equals {currentUser?.donations} USD
                         </span>
                       </div>
                       <button className="hidden sm:block">
@@ -168,20 +177,26 @@ function Reward() {
                             <img src={cup} alt="coins" />
                           </div>
                           <h1 className="text-gray-900 font-semibold text-xl">
-                            {progress.currentLevel.title}
+                            {progress && progress.currentLevel.title}
                           </h1>
                           <span className="text-gray-900 text-opacity-50 font-medium text-xl">
-                            (level {progress.currentLevel.level})
+                            (level {progress && progress.currentLevel.level})
                           </span>
                         </div>
                         <span className="mt-3 text-gray-900 text-base font-semibold">
-                          {progress.remainingToNextLevel} USD to{" "}
-                          {progress.nextLevel.title}
+                          {progress && progress.remainingToNextLevel} USD to{" "}
+                          {progress.nextLevel
+                            ? progress.nextLevel.title
+                            : "---"}
                         </span>
                         <progress
                           className="progress progress-accent md:w-680 mt-3"
-                          value={currentUser.donations}
-                          max={progress.nextLevel.spend}
+                          value={currentUser?.donations}
+                          max={
+                            progress.nextLevel
+                              ? progress.nextLevel.spend
+                              : "---"
+                          }
                         ></progress>
                       </div>
                       <button>

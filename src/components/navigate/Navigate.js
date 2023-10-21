@@ -3,7 +3,7 @@ import Container from "../../layouts/Container/Container";
 import { Link, useLocation } from "react-router-dom";
 import avatarMain from "../../assets/avatarMain.png";
 
-const Navigate = () => {
+const Navigate = ({ handleOnParticipate }) => {
   const location = useLocation();
 
   const isActive = (path) => {
@@ -29,10 +29,6 @@ const Navigate = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const handleParticipate = () => {
-    console.log("===== handleParticipate =====");
-  };
 
   return (
     <section
@@ -98,7 +94,7 @@ const Navigate = () => {
             </div>
             <button
               className="btn btn-primary px-8 py-4 text-white hidden xl:block"
-              onClick={handleParticipate}
+              onClick={handleOnParticipate}
             >
               Participer
             </button>
