@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { projectService } from "./FirebaseService";
+import { projectService, userService } from "./FirebaseService";
 import { PROJECT_ID } from "../constants/constants";
 
 export const AppContext = createContext();
@@ -36,7 +36,6 @@ export function AppProvider({ children }) {
       .getProject(PROJECT_ID)
       .then((docSnap) => {
         if (docSnap.exists()) {
-          console.log("===== getProject data: ", docSnap.data());
           setProject(docSnap.data());
           setLoadedProject(true);
         } else {
@@ -48,14 +47,29 @@ export function AppProvider({ children }) {
       });
   };
 
-  const checkParticipated = () => {};
+  const loadUser = async (userId) => {
+    try {
+      const docSnap = await userService.getUser(userId);
+      if (docSnap.exists()) {
+        const user = docSnap.data();
+        saveUser(user);
+      }
+    } catch (err) {
+      console.log("===== loadUser error: ", err);
+    }
+
+    setLoadingUser(false);
+  };
 
   useEffect(() => {
-    const user = getItem("user");
-    if (user) {
-      saveUser(JSON.parse(user));
+    const userString = getItem("user");
+    if (userString) {
+      const user = JSON.parse(userString);
+
+      loadUser(user.id);
+    } else {
+      setLoadingUser(false);
     }
-    setLoadingUser(false);
 
     loadProject();
 

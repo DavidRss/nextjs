@@ -17,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Errors } from "../constants/FirebaseErrorMessages";
 import Spinner from "../components/spinner/Spinner";
 import { NOTIFY_OPTION } from "../constants/constants";
+import { generateReferralCode } from "../utils/utils";
 
 function Login() {
   const navigate = useNavigate();
@@ -78,7 +79,9 @@ function Login() {
               lastName,
               avatar: photoUrl,
               points: 0,
-              donations: 0,
+              donations: [],
+              referralCode: generateReferralCode(),
+              referrals: [],
             };
 
             userService

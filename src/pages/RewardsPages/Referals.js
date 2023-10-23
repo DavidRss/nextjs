@@ -10,17 +10,36 @@ import refGift from "../../assets/Gift-points.svg";
 import { useApp } from "../../services/AppContext";
 
 function Referals() {
-  const { currentUser } = useApp();
-  const { name } = currentUser;
+  const { currentUser, showNotifyMessage } = useApp();
+  const { referralCode } = currentUser;
+  const origin = window.location.origin;
 
   const inputRef = useRef(null);
   const [copied, setCopied] = useState(false);
 
+  async function copyTextToClipboard(text) {
+    if ("clipboard" in navigator) {
+      return await navigator.clipboard.writeText(text);
+    } else {
+      return document.execCommand("copy", true, text);
+    }
+  }
+
   const copyToClipboard = () => {
     const inputValue = inputRef.current.value;
-    navigator.clipboard.writeText(inputValue).then(() => {
-      setCopied(true);
-    });
+    if (inputValue) {
+      copyTextToClipboard(inputValue)
+        .then(() => {
+          showNotifyMessage({
+            type: "success",
+            message: "Copied",
+          });
+          setCopied(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
@@ -118,13 +137,13 @@ function Referals() {
                           <input
                             type="text"
                             readOnly
-                            placeholder={`https://www.lipsum.com/@` + name}
+                            placeholder={`${origin}/signup?referralCode=${referralCode}`}
                             className={`input input-bordered border-pagBg w-full cursor-pointer ${
                               copied
                                 ? "bg-success bg-opacity-20 text-gray-900 font-semibold"
                                 : "bg-white"
                             }`}
-                            value={`https://www.lipsum.com/@` + name}
+                            value={`${origin}/signup?referralCode=${referralCode}`}
                             ref={inputRef}
                           />
                           <button
@@ -172,7 +191,11 @@ function Referals() {
                             </span>
                           </div>
                           <span className="text-gray-900 font-semibold text-xl">
-                            You have referred 0 friends
+                            You have referred{" "}
+                            {currentUser?.referrals
+                              ? currentUser.referrals.length
+                              : 0}{" "}
+                            friends
                           </span>
                         </div>
                       </div>

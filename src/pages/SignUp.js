@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 import Terms from "../components/term&policy/Terms";
@@ -17,9 +17,12 @@ import googleIcon from "../assets/google.png";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../components/spinner/Spinner";
 import { NOTIFY_OPTION } from "../constants/constants";
+import { generateReferralCode } from "../utils/utils";
 
 function SignUp() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const referralCode = searchParams.get("referralCode");
 
   const { login } = useAuth();
 
@@ -54,51 +57,52 @@ function SignUp() {
     }
   };
 
-  const handleSignupGoogle = () => {
+  const handleSignupGoogle = async () => {
     console.log("===== handleSignupGoogle =====");
-    authService
-      .loginWithGoogle()
-      .then((result) => {
-        if (result.user) {
-          const { uid } = result.user;
-          const { email } = result.user;
-          const { displayName } = result.user;
-          const profile = result._tokenResponse;
-          const firstName = profile.firstName || profile.givenName;
-          const lastName = profile.lastName || profile.familyName;
-          const fullName = displayName || `${firstName} ${lastName}`;
-          const photoUrl = profile.photoUrl;
 
-          const user = {
-            id: uid,
-            email,
-            username: fullName,
-            firstName,
-            lastName,
-            avatar: photoUrl,
-            points: 0,
-            donations: 0,
-          };
+    try {
+      const userCredential = await authService.loginWithGoogle();
 
-          userService
-            .saveUser(uid, user)
-            .then((result) => {
-              console.log("===== saveUser: ", result);
-              login(user);
-              navigate("/");
-            })
-            .catch((err) => {
-              console.log("===== saveuser error: ", err);
-            });
-        }
-        console.log("===== loginWithGoogle result: ", result);
-      })
-      .catch((err) => {
-        console.log("===== loginWithGoogle error: ", err);
-      });
+      const { uid, email, displayName } = userCredential.user;
+      const profile = userCredential._tokenResponse;
+      const firstName = profile.firstName || profile.givenName;
+      const lastName = profile.lastName || profile.familyName;
+      const fullName = displayName || `${firstName} ${lastName}`;
+      const photoUrl = profile.photoUrl;
+
+      const userInfo = {
+        id: uid,
+        email,
+        username: fullName,
+        firstName,
+        lastName,
+        avatar: photoUrl,
+        points: 0,
+        donations: [],
+        referralCode: generateReferralCode(),
+        referrer: referralCode || "",
+        referrals: [],
+      };
+
+      await userService.saveUser(uid, userInfo);
+
+      if (referralCode) {
+        await userService.updateReferrals(referralCode, uid);
+      }
+
+      setLoading(false);
+
+      login(userInfo);
+      navigate("/");
+    } catch (err) {
+      console.log("===== authService.register error: ", err);
+      console.log("===== authService.register error: ", err.code);
+      console.log("===== authService.register error: ", err.message);
+      toast.error(Errors[err.code], NOTIFY_OPTION);
+    }
   };
 
-  const handleSignupEmailAndPassword = () => {
+  const handleSignupEmailAndPassword = async () => {
     let error = false;
     if (username === "") {
       setErrorUsername(true);
@@ -115,8 +119,6 @@ function SignUp() {
       error = true;
     }
 
-    console.log("===== error: ", error);
-
     if (error) {
       return;
     }
@@ -127,43 +129,42 @@ function SignUp() {
 
     console.log(`${username}, ${email}, ${password}`);
     setLoading(true);
-    authService
-      .register(email, password)
-      .then((result) => {
-        console.log("===== register result: ", result);
-        if (result.user) {
-          const { uid, email } = result.user;
+    try {
+      const user = await authService.register(email, password);
+      console.log("===== user: ", user);
+      const { uid } = user;
 
-          const user = {
-            id: uid,
-            email,
-            username,
-            firstName: "",
-            lastName: "",
-            avatar: "",
-            points: 0,
-            donations: 0,
-          };
+      const userInfo = {
+        id: uid,
+        email,
+        username,
+        firstName: "",
+        lastName: "",
+        avatar: "",
+        points: 0,
+        donations: [],
+        referralCode: generateReferralCode(),
+        referrer: referralCode || "",
+        referrals: [],
+      };
 
-          userService
-            .saveUser(uid, user)
-            .then((result) => {
-              console.log("===== saveUser: ", result);
-              login(user);
-              navigate("/");
-            })
-            .catch((err) => {
-              console.log("===== saveuser error: ", err);
-            });
-        }
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log("===== register error code: ", err.code);
-        console.log("===== register error message: ", err.message);
-        toast.error(Errors[err.code], NOTIFY_OPTION);
-        setLoading(false);
-      });
+      await userService.saveUser(uid, userInfo);
+
+      if (referralCode) {
+        await userService.updateReferrals(referralCode, uid);
+      }
+
+      setLoading(false);
+
+      login(userInfo);
+      navigate("/");
+    } catch (err) {
+      setLoading(false);
+      console.log("===== authService.register error: ", err);
+      console.log("===== authService.register error: ", err.code);
+      console.log("===== authService.register error: ", err.message);
+      toast.error(Errors[err.code], NOTIFY_OPTION);
+    }
   };
 
   return (
@@ -279,7 +280,7 @@ function SignUp() {
           {/* </Link> */}
           <span className="text-base text-gray-900 font-bold">
             Deja inscrit?{" "}
-            <Link to="/">
+            <Link to="/signin">
               <span className="text-primary">Connecte toi</span>
             </Link>
           </span>

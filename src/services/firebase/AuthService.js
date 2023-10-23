@@ -15,10 +15,30 @@ export default class AuthService {
   }
 
   register(email, password) {
-    return createUserWithEmailAndPassword(this.auth, email, password);
+    const $this = this;
+    return new Promise((resolve, reject) => {
+      createUserWithEmailAndPassword($this.auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          resolve(user);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
   }
 
   loginWithGoogle() {
-    return signInWithPopup(this.auth, this.googleProvider);
+    const $this = this;
+
+    return new Promise((resolve, reject) => {
+      signInWithPopup($this.auth, this.googleProvider)
+        .then((userCredential) => {
+          resolve(userCredential);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
   }
 }

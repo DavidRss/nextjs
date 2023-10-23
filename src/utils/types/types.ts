@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface User {
   id: string;
   email: string;
@@ -6,7 +8,10 @@ export interface User {
   lastName: string;
   avatar: string;
   points: string;
-  donations: string;
+  donations: [{
+    amount: number;
+    date: Timestamp
+  }];
   referralCode: string;
   referrals: []
 }

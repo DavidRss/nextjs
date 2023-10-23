@@ -51,11 +51,12 @@ export default function Header({ handleOnParticipate }) {
                   <select
                     className="select select-bordered custom-select select-xs w-full max-w-xs text-lg font-medium text-gray-900 bg-white pr-4"
                     onChange={handleLogout}
+                    defaultValue="username"
                   >
-                    <option disabled selected>
+                    <option value="username">
                       {currentUser?.username}
                     </option>
-                    <option>Logout</option>
+                    <option value="logout">Logout</option>
                   </select>
                   <span className="text-gray-500 font-medium text-xs">
                     @{currentUser?.username}prod

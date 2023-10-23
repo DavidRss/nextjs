@@ -39,7 +39,6 @@ const Presentation = () => {
     if (loadedProject && project) {
       const endSeconds = project.endOfDate.seconds;
       const curSeconds = parseInt(new Date().getTime() / 1000);
-      console.log(`endSeconds: ${endSeconds}, curSeconds: ${curSeconds}`);
       if (endSeconds && endSeconds - curSeconds > 0) {
         setCounter(endSeconds - curSeconds);
       }
