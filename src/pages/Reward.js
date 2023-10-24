@@ -50,7 +50,6 @@ function Reward() {
 
   useEffect(() => {
     if (!loadingUser) {
-      console.log("===== currentUser: ", currentUser);
       if (!currentUser) {
         showLoginDialog(true);
       }

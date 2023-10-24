@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { projectService, userService } from "./FirebaseService";
 import { PROJECT_ID } from "../constants/constants";
+import { shopifyService } from "./ShopifyService";
 
 export const AppContext = createContext();
 
@@ -21,6 +22,9 @@ export function AppProvider({ children }) {
 
   const [isParticipated, setIsParticipated] = useState(false);
 
+  const [loadingProducts, setLoadingProducts] = useState(false);
+  const [products, setProducts] = useState([]);
+
   const saveUser = (user) => {
     setCurrentUser(user);
     setItem("user", JSON.stringify(user));
@@ -29,6 +33,20 @@ export function AppProvider({ children }) {
   const removeUser = () => {
     setCurrentUser(null);
     removeItem("user");
+  };
+
+  const loadUser = async (userId) => {
+    try {
+      const docSnap = await userService.getUser(userId);
+      if (docSnap.exists()) {
+        const user = docSnap.data();
+        saveUser(user);
+      }
+    } catch (err) {
+      console.log("===== loadUser error: ", err);
+    }
+
+    setLoadingUser(false);
   };
 
   const loadProject = () => {
@@ -47,21 +65,21 @@ export function AppProvider({ children }) {
       });
   };
 
-  const loadUser = async (userId) => {
+  const loadProducts = async () => {
     try {
-      const docSnap = await userService.getUser(userId);
-      if (docSnap.exists()) {
-        const user = docSnap.data();
-        saveUser(user);
-      }
+      setLoadingProducts(true);
+      const productList = await shopifyService.getProductList();
+      setProducts(productList);
+      setLoadingProducts(false);
     } catch (err) {
-      console.log("===== loadUser error: ", err);
+      setLoadingProducts(false);
+      console.log("===== fetch products all error: ", err);
     }
-
-    setLoadingUser(false);
   };
 
   useEffect(() => {
+    console.log(new Date().getTime());
+
     const userString = getItem("user");
     if (userString) {
       const user = JSON.parse(userString);
@@ -72,6 +90,8 @@ export function AppProvider({ children }) {
     }
 
     loadProject();
+
+    loadProducts();
 
     return () => {};
   }, []);
@@ -92,6 +112,8 @@ export function AppProvider({ children }) {
         isParticipated,
         isShowLoginDialog,
         showLoginDialog,
+        loadingProducts,
+        products,
       }}
     >
       {children}

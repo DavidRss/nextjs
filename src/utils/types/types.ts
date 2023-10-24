@@ -7,13 +7,26 @@ export interface User {
   firstName: string;
   lastName: string;
   avatar: string;
-  points: string;
-  donations: [{
-    amount: number;
-    date: Timestamp
-  }];
+  points: number;
+  donations: [
+    {
+      amount: number;
+      date: Timestamp;
+    }
+  ];
   referralCode: string;
-  referrals: []
+  referrals: Array<string>;
+  earned: {
+    family: boolean;
+    donation1: boolean;
+    donation2: boolean;
+    tiktok: boolean;
+    youtube: boolean;
+    instagram: boolean;
+    comment: boolean;
+    friend: boolean;
+  };
+  visited: Timestamp;
 }
 
 export interface Project {

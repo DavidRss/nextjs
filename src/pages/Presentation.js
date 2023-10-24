@@ -8,14 +8,11 @@ import img1 from "../assets/image1.png";
 import tree from "../assets/tree.png";
 
 import CardsSlider from "../components/cardsSlider/CardsSlider";
-import { cardsData } from "../stores/cardsData";
 import { useApp } from "../services/AppContext";
 import { getFormatTimeRemaining, nFormatter } from "../utils/utils";
 import { projectService } from "../services/FirebaseService";
 
 const Presentation = () => {
-  const [data, setData] = useState();
-
   const {
     currentUser,
     setLoading,
@@ -23,17 +20,21 @@ const Presentation = () => {
     project,
     showNotifyMessage,
     showLoginDialog,
+    products,
   } = useApp();
 
   const donationForm = useRef(null);
 
+  const [productList, setProductList] = useState([]);
   const [counter, setCounter] = React.useState(0);
   const [price, changePrice] = useState(0);
   const [errorPrice, setErrorPrice] = useState(false);
 
   useEffect(() => {
-    cardsData ? setData(cardsData) : setData([]);
-  }, []);
+    if (products.length > 0) {
+      setProductList(products.slice(0, 3));
+    }
+  }, [products]);
 
   useEffect(() => {
     if (loadedProject && project) {
@@ -48,6 +49,10 @@ const Presentation = () => {
   useEffect(() => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
+
+  const handleClickProduct = (productId) => {
+    console.log("===== handleClickProduct: ", productId);
+  };
 
   const handleChangePrice = (e) => {
     changePrice(e.target.value);
@@ -303,18 +308,20 @@ const Presentation = () => {
                 <CardsSlider />
               </div>
               <div className="hidden xl:flex flex-col gap-9 w-full">
-                {data &&
-                  data.slice(0, 3).map((item, index) => (
+                {productList &&
+                  productList.map((item, index) => (
                     <CardM key={index}>
                       <figure>
-                        <img src={item.img} alt="Shoes" />
+                        {item.images.length > 0 && (
+                          <img src={item.images[0].src} alt="Shoes" />
+                        )}
                       </figure>
                       <div className="py-4 px-5 xl:card-body">
                         <h2 className="card-title font-semibold text-xl text-gray-900">
                           {item.title}
                         </h2>
-                        <ul className="text-left mb-8 text-sm xl:text-base text-slate-800 font-normal">
-                          {item.desc.map((descItem, descIndex) => (
+                        {/* <ul className="text-left mb-8 text-sm xl:text-base text-slate-800 font-normal">
+                          {item.description.map((descItem, descIndex) => (
                             <li
                               className="desc-item opacity-50 text-gray-900"
                               key={descIndex}
@@ -322,11 +329,12 @@ const Presentation = () => {
                               {descItem}
                             </li>
                           ))}
-                        </ul>
+                        </ul> */}
+                        <div>{item.description}</div>
                         <div className="flex w-full justify-between items-center">
                           <div className="flex flex-col items-start">
                             <span className="text-primary text-3xl font-extrabold">
-                              {item.price} €
+                              {item?.variants[0].price.amount} €
                             </span>
                             <span className="text-gray-400 text-sm font-normal">
                               {item.contributions} contributions
@@ -334,7 +342,9 @@ const Presentation = () => {
                           </div>
                           <button
                             className="btn btn-primary text-white"
-                            onClick={handleParticipate}
+                            onClick={() => {
+                              handleClickProduct(item.id);
+                            }}
                           >
                             Participer
                           </button>
