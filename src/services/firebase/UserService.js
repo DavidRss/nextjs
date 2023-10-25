@@ -9,6 +9,7 @@ import {
   where,
 } from "firebase/firestore";
 import { FBCollections } from "../FirebaseService";
+import { EARN } from "../../constants/constants";
 
 export default class UserService {
   constructor(firestore) {
@@ -49,15 +50,15 @@ export default class UserService {
         if (!res.empty) {
           const user = res.docs[0].data();
           console.log("===== user: ", user);
-          const referrals = user.referrals;
-          if (!referrals.includes(userId)) {
-            referrals.push(userId);
-            console.log("===== referrals", referrals);
+          if (!user.referrals.includes(userId)) {
+            user.referrals.push(userId);
+            if (user.referrals.length === 1) {
+              user.points = user.points + EARN.REFER;
+              user.earned.referral = true;
+            }
             await updateDoc(
               doc($this.firestore, FBCollections.USERS, user.id),
-              {
-                referrals,
-              }
+              user
             );
           }
 

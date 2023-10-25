@@ -7,3 +7,45 @@ export const NOTIFY_OPTION = {
   position: toast.POSITION.TOP_RIGHT,
   hideProgressBar: true,
 };
+
+export const EARN = {
+  FAMILY: 50,
+  DONATION1: 50,
+  DONATION2: 150,
+  TIKTOK: 300,
+  YOUTUBE: 300,
+  INSTAGRAM: 300,
+  DAILY: 10,
+  COMMENT: 100,
+  REFER: 400,
+};
+
+export const INIT_USER = {
+  id: "",
+  email: "",
+  username: "",
+  firstName: "",
+  lastName: "",
+  avatar: "",
+  points: 0,
+  donations: [],
+  referralCode: "",
+  referrer: "",
+  referrals: [],
+  earned: {
+    family: false,
+    donation1: false,
+    donation2: false,
+    tiktok: false,
+    youtube: false,
+    instagram: false,
+    comment: false,
+    referral: false,
+  },
+  visited: 0
+};
+
+export const STORAE_KEY = {
+  USER: "user",
+  CHECKOUT: "checkout"
+}

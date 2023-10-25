@@ -11,6 +11,8 @@ import CardsSlider from "../components/cardsSlider/CardsSlider";
 import { useApp } from "../services/AppContext";
 import { getFormatTimeRemaining, nFormatter } from "../utils/utils";
 import { projectService } from "../services/FirebaseService";
+import { scrollToElement } from "../utils/ActionUtils";
+import { shopifyService } from "../services/ShopifyService";
 
 const Presentation = () => {
   const {
@@ -21,6 +23,8 @@ const Presentation = () => {
     showNotifyMessage,
     showLoginDialog,
     products,
+    checkout,
+    saveCheckout,
   } = useApp();
 
   const donationForm = useRef(null);
@@ -50,8 +54,21 @@ const Presentation = () => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
 
-  const handleClickProduct = (productId) => {
-    console.log("===== handleClickProduct: ", productId);
+  const handleClickProduct = async (productId) => {
+    const product = productList.find((item) => item.id === productId);
+    console.log("===== handleClickProduct: ", product);
+    try {
+      setLoading(true);
+
+      const res = await shopifyService.createCheckout();
+      saveCheckout(res);
+
+      console.log("===== handleClickProduct: ", res);
+    } catch (err) {
+      console.log("===== handleClickProduct error: ", err);
+    }
+
+    setLoading(false);
   };
 
   const handleChangePrice = (e) => {
@@ -93,12 +110,7 @@ const Presentation = () => {
   };
 
   const handleOnParticipate = () => {
-    if (donationForm.current) {
-      donationForm.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+    scrollToElement(donationForm.current);
   };
 
   return (

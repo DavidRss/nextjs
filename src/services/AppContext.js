@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { projectService, userService } from "./FirebaseService";
-import { PROJECT_ID } from "../constants/constants";
+import { PROJECT_ID, STORAE_KEY } from "../constants/constants";
 import { shopifyService } from "./ShopifyService";
+import { getCurrentTimestamp, getDailyPoints } from "../utils/utils";
 
 export const AppContext = createContext();
 
@@ -25,14 +26,21 @@ export function AppProvider({ children }) {
   const [loadingProducts, setLoadingProducts] = useState(false);
   const [products, setProducts] = useState([]);
 
+  const [checkout, setCheckout] = useState(null);
+
   const saveUser = (user) => {
     setCurrentUser(user);
-    setItem("user", JSON.stringify(user));
+    setItem(STORAE_KEY.USER, JSON.stringify(user));
   };
 
   const removeUser = () => {
     setCurrentUser(null);
-    removeItem("user");
+    removeItem(STORAE_KEY.USER);
+  };
+
+  const saveCheckout = (value) => {
+    setCheckout(value);
+    setItem(STORAE_KEY.CHECKOUT, JSON.stringify(value));
   };
 
   const loadUser = async (userId) => {
@@ -40,6 +48,11 @@ export function AppProvider({ children }) {
       const docSnap = await userService.getUser(userId);
       if (docSnap.exists()) {
         const user = docSnap.data();
+
+        user.points = user.points + getDailyPoints(user.visited);
+        user.visited = getCurrentTimestamp();
+        userService.updateUser(userId, user);
+
         saveUser(user);
       }
     } catch (err) {
@@ -77,10 +90,15 @@ export function AppProvider({ children }) {
     }
   };
 
-  useEffect(() => {
-    console.log(new Date().getTime());
+  const loadCheckout = () => {
+    const checkoutString = getItem(STORAE_KEY.CHECKOUT);
+    if (checkoutString) {
+      setCheckout(JSON.parse(checkoutString));
+    }
+  };
 
-    const userString = getItem("user");
+  useEffect(() => {
+    const userString = getItem(STORAE_KEY.USER);
     if (userString) {
       const user = JSON.parse(userString);
 
@@ -92,6 +110,8 @@ export function AppProvider({ children }) {
     loadProject();
 
     loadProducts();
+
+    loadCheckout();
 
     return () => {};
   }, []);
@@ -114,6 +134,8 @@ export function AppProvider({ children }) {
         showLoginDialog,
         loadingProducts,
         products,
+        checkout,
+        saveCheckout,
       }}
     >
       {children}

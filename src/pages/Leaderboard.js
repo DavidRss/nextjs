@@ -5,6 +5,7 @@ import Aside from "../components/aside/Aside";
 import { projectService } from "../services/FirebaseService";
 import { PROJECT_ID } from "../constants/constants";
 import Spinner from "../components/spinner/Spinner";
+import { scrollToElement } from "../utils/ActionUtils";
 
 function Leaderboard() {
   const donationForm = useRef(null);
@@ -50,13 +51,7 @@ function Leaderboard() {
   };
 
   const handleOnParticipate = () => {
-    console.log("===== handleOnParticipate =====");
-    if (donationForm.current) {
-      donationForm.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+    scrollToElement(donationForm.current);
   };
 
   return (

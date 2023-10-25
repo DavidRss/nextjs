@@ -8,11 +8,14 @@ import copyWhite from "../../assets/Copy-white.svg";
 import ticket from "../../assets/Ticket Sale.svg";
 import refGift from "../../assets/Gift-points.svg";
 import { useApp } from "../../services/AppContext";
+import { scrollToElement } from "../../utils/ActionUtils";
 
 function Referals() {
   const { currentUser, showNotifyMessage } = useApp();
   const { referralCode } = currentUser;
   const origin = window.location.origin;
+
+  const donationForm = useRef(null);
 
   const inputRef = useRef(null);
   const [copied, setCopied] = useState(false);
@@ -42,8 +45,12 @@ function Referals() {
     }
   };
 
+  const handleOnParticipate = () => {
+    scrollToElement(donationForm.current);
+  };
+
   return (
-    <Page>
+    <Page handleOnParticipate={handleOnParticipate}>
       <section className="bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
         <Container>
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start">
@@ -124,7 +131,7 @@ function Referals() {
                             </div>
                             <div className="flex flex-col items-start gap-0.5 text-gray-900">
                               <span className="font-semibold text-xl">
-                                500 Points (5 USD)
+                                500 Points (5 EUR)
                               </span>
                               <span className="text-left font-normal text-sm opacity-50">
                                 For every 3 friend you refer, you’ll get this
@@ -204,7 +211,7 @@ function Referals() {
                 </div>
               </div>
             </div>
-            <Aside />
+            <Aside ref={donationForm} />
           </div>
         </Container>
       </section>

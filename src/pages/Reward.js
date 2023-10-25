@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Page from "../layouts/Page/Page";
 import Container from "../layouts/Container/Container";
 
@@ -16,9 +16,12 @@ import Aside from "../components/aside/Aside";
 
 import { levels } from "../stores/levelsData";
 import { useApp } from "../services/AppContext";
+import { scrollToElement } from "../utils/ActionUtils";
 
 function Reward() {
   const { loadingUser, currentUser, showLoginDialog } = useApp();
+
+  const donationForm = useRef(null);
 
   const calculateProgress = () => {
     let currentLevel = null;
@@ -56,8 +59,12 @@ function Reward() {
     }
   }, [loadingUser]);
 
+  const handleOnParticipate = () => {
+    scrollToElement(donationForm.current);
+  };
+
   return (
-    <Page>
+    <Page handleOnParticipate={handleOnParticipate}>
       <section className="bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
         <Container>
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start">
@@ -82,7 +89,7 @@ function Reward() {
                           {currentUser?.points}
                         </span>
                         <span className="text-gray-900 opacity-50 text-sm font-normal hidden sm:block">
-                          Equals {currentUser?.donations} USD
+                          Equals {currentUser?.donations} EUR
                         </span>
                       </div>
                       <div className="flex flex-col">
@@ -250,7 +257,7 @@ function Reward() {
                 </Link>
               </div>
             </div>
-            <Aside />
+            <Aside ref={donationForm} />
           </div>
         </Container>
       </section>

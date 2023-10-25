@@ -1,3 +1,5 @@
+import { EARN } from "../constants/constants";
+
 export const getFormatTimeRemaining = (seconds) => {
   const ss = Math.floor(seconds % 60);
   const mm = Math.floor((seconds / 60) % 60);
@@ -60,4 +62,49 @@ export function nFormatter(num, digits) {
 export const generateReferralCode = () => {
   // return new Date().getUTCMilliseconds();
   return `${new Date().valueOf()}`;
-}
+};
+
+export const getCurrentTimestamp = () => {
+  return Date.now();
+};
+
+export const getCurrentDate = () => {
+  const date = new Date();
+  const year = date.getUTCFullYear();
+  const month = date.getUTCMonth();
+  const day = date.getUTCDate();
+  const hh = date.getUTCHours();
+  const mm = date.getUTCMinutes();
+  const ss = date.getUTCSeconds();
+
+  return { year, month, day, hh, mm, ss };
+};
+
+export const getDateFromTimestamp = (timestamp) => {
+  const vDate = new Date(timestamp);
+  const year = vDate.getUTCFullYear();
+  const month = vDate.getUTCMonth();
+  const day = vDate.getUTCDate();
+  const hh = vDate.getUTCHours();
+  const mm = vDate.getUTCMinutes();
+  const ss = vDate.getUTCSeconds();
+
+  return { year, month, day, hh, mm, ss };
+};
+
+export const getDailyPoints = (visited) => {
+  if (visited) {
+    const vDate = getDateFromTimestamp(visited);
+    const curDate = getCurrentDate();
+    if (
+      curDate.year != vDate.year ||
+      curDate.month != vDate.month ||
+      curDate.day != vDate.day
+    ) {
+      return EARN.DAILY;
+    }
+  } else {
+    return EARN.DAILY;
+  }
+  return 0;
+};

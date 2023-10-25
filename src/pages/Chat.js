@@ -9,13 +9,16 @@ import {
   FBCollections,
   database,
   projectService,
+  userService,
 } from "../services/FirebaseService";
-import { PROJECT_ID } from "../constants/constants";
+import { EARN, PROJECT_ID } from "../constants/constants";
 import { onValue, ref } from "firebase/database";
 import Spinner from "../components/spinner/Spinner";
+import { scrollToElement } from "../utils/ActionUtils";
+import { getCurrentTimestamp } from "../utils/utils";
 
 function Chat() {
-  const { currentUser, showLoginDialog } = useApp();
+  const { currentUser, saveUser, showLoginDialog } = useApp();
 
   const donationForm = useRef(null);
   const chatView = useRef(null);
@@ -59,11 +62,6 @@ function Chat() {
         return;
       }
 
-      const currentTime = new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-
       if (currentUser) {
         const comment = {
           userId: currentUser.id,
@@ -72,8 +70,22 @@ function Chat() {
           avatar: currentUser.avatar,
           photo: "",
           status: "",
-          createAt: currentTime,
+          createAt: getCurrentTimestamp(),
         };
+
+        if (currentUser.earned.comment === false) {
+          const idx = comments.findIndex(
+            (item) => item.userId === currentUser.id
+          );
+          if (idx === -1) {
+            currentUser.points = currentUser.points + EARN.COMMENT;
+            currentUser.earned.comment = true;
+
+            await userService.updateUser(currentUser.id, currentUser);
+
+            saveUser(currentUser);
+          }
+        }
 
         setComments((prevComments) => [...prevComments, comment]);
 
@@ -86,7 +98,6 @@ function Chat() {
   };
 
   const scrollToBottom = () => {
-    // chatView.current.scrollIntoView({ behavior: "smooth", block: "end" });
     if (chatView.current) {
       const scrollTop =
         chatView.current.scrollHeight - chatView.current.clientHeight;
@@ -128,12 +139,7 @@ function Chat() {
   };
 
   const handleOnParticipate = () => {
-    if (donationForm.current) {
-      donationForm.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+    scrollToElement(donationForm.current);
   };
 
   return (

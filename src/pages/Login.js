@@ -16,8 +16,12 @@ import googleIcon from "../assets/google.png";
 import "react-toastify/dist/ReactToastify.css";
 import { Errors } from "../constants/FirebaseErrorMessages";
 import Spinner from "../components/spinner/Spinner";
-import { NOTIFY_OPTION } from "../constants/constants";
-import { generateReferralCode } from "../utils/utils";
+import { INIT_USER, NOTIFY_OPTION } from "../constants/constants";
+import {
+  generateReferralCode,
+  getCurrentTimestamp,
+  getDailyPoints,
+} from "../utils/utils";
 
 function Login() {
   const navigate = useNavigate();
@@ -46,60 +50,55 @@ function Login() {
     }
   };
 
-  const handleSignInGoogle = () => {
+  const handleSignInGoogle = async () => {
     console.log("===== handleSignInGoogle =====");
-    authService
-      .loginWithGoogle()
-      .then(async (result) => {
-        console.log("===== loginWithGoogle result: ", result);
+    setLoading(true);
+    try {
+      const userCredential = await authService.loginWithGoogle();
 
-        if (result.user) {
-          const { uid } = result.user;
+      const { uid, email, displayName } = userCredential.user;
 
-          const docSnap = await userService.getUser(uid);
-          if (docSnap.exists()) {
-            console.log("===== user: ", docSnap.data());
-            const user = docSnap.data();
-            login(user);
-            navigate("/");
-          } else {
-            const { email } = result.user;
-            const { displayName } = result.user;
-            const profile = result._tokenResponse;
-            const firstName = profile.firstName || profile.givenName;
-            const lastName = profile.lastName || profile.familyName;
-            const fullName = displayName || `${firstName} ${lastName}`;
-            const photoUrl = profile.photoUrl;
+      const docSnap = await userService.getUser(uid);
+      if (docSnap.exists()) {
+        const userInfo = docSnap.data();
+        userInfo.points = userInfo.points + getDailyPoints(userInfo.visited);
+        userInfo.visited = getCurrentTimestamp();
 
-            const user = {
-              id: uid,
-              email,
-              username: fullName,
-              firstName,
-              lastName,
-              avatar: photoUrl,
-              points: 0,
-              donations: [],
-              referralCode: generateReferralCode(),
-              referrals: [],
-            };
+        await userService.updateUser(uid, userInfo);
 
-            userService
-              .saveUser(uid, user)
-              .then((result) => {
-                console.log("===== saveUser: ", result);
-                login(user);
-                navigate("/");
-              })
-              .catch((err) => {
-                console.log("===== saveuser error: ", err);
-              });
-          }
-        }
-      })
-      .catch((err) => {
-        console.log("===== loginWithGoogle error: ", err);
-      });
+        login(userInfo);
+      } else {
+        const profile = userCredential._tokenResponse;
+        const firstName = profile.firstName || profile.givenName;
+        const lastName = profile.lastName || profile.familyName;
+        const fullName = displayName || `${firstName} ${lastName}`;
+        const photoUrl = profile.photoUrl;
+
+        const userInfo = INIT_USER;
+        userInfo.id = uid;
+        userInfo.email = email;
+        userInfo.username = fullName;
+        userInfo.firstName = firstName;
+        userInfo.lastName = lastName;
+        userInfo.avatar = photoUrl;
+        userInfo.referralCode = generateReferralCode();
+        userInfo.points = userInfo.points + getDailyPoints(userInfo.visited);
+        userInfo.visited = getCurrentTimestamp();
+
+        await userService.saveUser(uid, userInfo);
+
+        login(userInfo);
+      }
+
+      setLoading(false);
+
+      navigate("/");
+    } catch (err) {
+      console.log("===== authService.register error: ", err);
+      console.log("===== authService.register error: ", err.code);
+      console.log("===== authService.register error: ", err.message);
+      toast.error(Errors[err.code], NOTIFY_OPTION);
+    }
   };
 
   const handleSignInEmailAndPassword = () => {
@@ -137,7 +136,13 @@ function Login() {
           const docSnap = await userService.getUser(uid);
           if (docSnap.exists()) {
             console.log("===== user: ", docSnap.data());
+
             const user = docSnap.data();
+            user.points = user.points + getDailyPoints(user.visited);
+            user.visited = getCurrentTimestamp();
+
+            await userService.updateUser(user.id, user);
+
             login(user);
             navigate("/");
           } else {

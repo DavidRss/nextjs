@@ -13,11 +13,23 @@ class ShopifyService {
       client.product
         .fetchAll()
         .then((products) => {
-          console.log("===== products: ", products);
           resolve(products);
         })
         .catch((err) => {
           console.log("===== error: ", err);
+          reject(err);
+        });
+    });
+  }
+
+  createCheckout() {
+    return new Promise((resolve, reject) => {
+      client.checkout
+        .create()
+        .then((checkout) => {
+          resolve(checkout);
+        })
+        .catch((err) => {
           reject(err);
         });
     });

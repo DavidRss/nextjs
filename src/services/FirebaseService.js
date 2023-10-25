@@ -24,9 +24,7 @@ const firestore = getFirestore(firebaseApp);
 const functions = getFunctions(firebaseApp);
 const googleProvider = new GoogleAuthProvider();
 
-console.log("===== REACT_APP_IS_LOCAL_MODE:", process.env.REACT_APP_IS_LOCAL_MODE)
 if (process.env.REACT_APP_IS_LOCAL_MODE == "true") {
-  console.log("===== connectFunctionsEmulator =====");
   connectFunctionsEmulator(functions, "localhost", 5001);
 }
 

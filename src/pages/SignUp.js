@@ -16,8 +16,12 @@ import googleIcon from "../assets/google.png";
 
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../components/spinner/Spinner";
-import { NOTIFY_OPTION } from "../constants/constants";
-import { generateReferralCode } from "../utils/utils";
+import { INIT_USER, NOTIFY_OPTION } from "../constants/constants";
+import {
+  generateReferralCode,
+  getCurrentTimestamp,
+  getDailyPoints,
+} from "../utils/utils";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -64,35 +68,47 @@ function SignUp() {
       const userCredential = await authService.loginWithGoogle();
 
       const { uid, email, displayName } = userCredential.user;
-      const profile = userCredential._tokenResponse;
-      const firstName = profile.firstName || profile.givenName;
-      const lastName = profile.lastName || profile.familyName;
-      const fullName = displayName || `${firstName} ${lastName}`;
-      const photoUrl = profile.photoUrl;
 
-      const userInfo = {
-        id: uid,
-        email,
-        username: fullName,
-        firstName,
-        lastName,
-        avatar: photoUrl,
-        points: 0,
-        donations: [],
-        referralCode: generateReferralCode(),
-        referrer: referralCode || "",
-        referrals: [],
-      };
+      const docSnap = await userService.getUser(uid);
+      if (docSnap.exists()) {
+        const userInfo = docSnap.data();
+        userInfo.points = userInfo.points + getDailyPoints(userInfo.visited);
+        userInfo.visited = getCurrentTimestamp();
 
-      await userService.saveUser(uid, userInfo);
+        await userService.saveUser(uid, userInfo);
 
-      if (referralCode) {
-        await userService.updateReferrals(referralCode, uid);
+        login(userInfo);
+      } else {
+        const profile = userCredential._tokenResponse;
+        const firstName = profile.firstName || profile.givenName;
+        const lastName = profile.lastName || profile.familyName;
+        const fullName = displayName || `${firstName} ${lastName}`;
+        const photoUrl = profile.photoUrl;
+
+        const userInfo = INIT_USER;
+        userInfo.id = uid;
+        userInfo.email = email;
+        userInfo.username = fullName;
+        userInfo.firstName = firstName;
+        userInfo.lastName = lastName;
+        userInfo.avatar = photoUrl;
+        userInfo.referralCode = generateReferralCode();
+        userInfo.points = userInfo.points + getDailyPoints(userInfo.visited);
+        userInfo.visited = getCurrentTimestamp();
+
+        if (referralCode) {
+          await userService.updateReferrals(referralCode, uid);
+
+          userInfo.referrer = referralCode;
+        }
+
+        await userService.saveUser(uid, userInfo);
+
+        login(userInfo);
       }
 
       setLoading(false);
 
-      login(userInfo);
       navigate("/");
     } catch (err) {
       console.log("===== authService.register error: ", err);
@@ -131,28 +147,23 @@ function SignUp() {
     setLoading(true);
     try {
       const user = await authService.register(email, password);
-      console.log("===== user: ", user);
+
       const { uid } = user;
 
-      const userInfo = {
-        id: uid,
-        email,
-        username,
-        firstName: "",
-        lastName: "",
-        avatar: "",
-        points: 0,
-        donations: [],
-        referralCode: generateReferralCode(),
-        referrer: referralCode || "",
-        referrals: [],
-      };
-
-      await userService.saveUser(uid, userInfo);
+      const userInfo = INIT_USER;
+      userInfo.id = uid;
+      userInfo.username = username;
+      userInfo.referralCode = generateReferralCode();
+      userInfo.points = userInfo.points + getDailyPoints(userInfo.visited);
+      userInfo.visited = getCurrentTimestamp();
 
       if (referralCode) {
         await userService.updateReferrals(referralCode, uid);
+
+        userInfo.referrer = referralCode;
       }
+
+      await userService.saveUser(uid, userInfo);
 
       setLoading(false);
 

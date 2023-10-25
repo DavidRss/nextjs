@@ -15,6 +15,7 @@ export interface User {
     }
   ];
   referralCode: string;
+  referrer: string;
   referrals: Array<string>;
   earned: {
     family: boolean;

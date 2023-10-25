@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Page from "../../layouts/Page/Page";
 import Container from "../../layouts/Container/Container";
 import Aside from "../../components/aside/Aside";
@@ -7,8 +7,11 @@ import star from "../../assets/streamline_interface-favorite-star-reward-rating-
 
 import { levels } from "../../stores/levelsData";
 import { useApp } from "../../services/AppContext";
+import { scrollToElement } from "../../utils/ActionUtils";
 
 function Levels() {
+  const donationForm = useRef(null);
+
   const [levelsData, setLevelsData] = useState([]);
 
   useEffect(() => {
@@ -18,8 +21,12 @@ function Levels() {
   const { currentUser } = useApp();
   const { spending } = currentUser;
 
+  const handleOnParticipate = () => {
+    scrollToElement(donationForm.current);
+  };
+
   return (
-    <Page>
+    <Page handleOnParticipate={handleOnParticipate}>
       <section className="bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
         <Container>
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start">
@@ -51,7 +58,7 @@ function Levels() {
 
                             {lvl.spend !== 0 && (
                               <span className="font-normal text-gray-900 text-sm opacity-50">
-                                After spending {lvl.spend.toLocaleString()} USD
+                                After spending {lvl.spend.toLocaleString()} EUR
                               </span>
                             )}
                             {lvl.spend !== 0 && (
@@ -81,7 +88,7 @@ function Levels() {
                 </div>
               </div>
             </div>
-            <Aside />
+            <Aside ref={donationForm} />
           </div>
         </Container>
       </section>
