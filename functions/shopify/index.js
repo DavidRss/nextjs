@@ -33,7 +33,7 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
       const note = params.note_attributes;
       if (note) {
         for (const item of note) {
-          if (item.name == "userId") {
+          if (item.name === "userId") {
             userId = item.value;
           }
           if (item.name === "email") {
