@@ -16,7 +16,7 @@ import googleIcon from "../assets/google.png";
 import "react-toastify/dist/ReactToastify.css";
 import { Errors } from "../constants/FirebaseErrorMessages";
 import Spinner from "../components/spinner/Spinner";
-import { INIT_USER, NOTIFY_OPTION } from "../constants/constants";
+import { INIT_USER, Notify } from "../constants/constants";
 import {
   generateReferralCode,
   getCurrentTimestamp,
@@ -97,7 +97,7 @@ function Login() {
       console.log("===== authService.register error: ", err);
       console.log("===== authService.register error: ", err.code);
       console.log("===== authService.register error: ", err.message);
-      toast.error(Errors[err.code], NOTIFY_OPTION);
+      toast.error(Errors[err.code], Notify.Option);
     }
   };
 
@@ -157,7 +157,7 @@ function Login() {
       .catch((err) => {
         console.log("===== register error code: ", err.code);
         console.log("===== register error message: ", err.message);
-        toast.error(Errors[err.code], NOTIFY_OPTION);
+        toast.error(Errors[err.code], Notify.Option);
         setLoading(false);
       });
   };

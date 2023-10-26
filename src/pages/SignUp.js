@@ -16,7 +16,7 @@ import googleIcon from "../assets/google.png";
 
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../components/spinner/Spinner";
-import { INIT_USER, NOTIFY_OPTION } from "../constants/constants";
+import { INIT_USER, Notify } from "../constants/constants";
 import {
   generateReferralCode,
   getCurrentTimestamp,
@@ -114,7 +114,7 @@ function SignUp() {
       console.log("===== authService.register error: ", err);
       console.log("===== authService.register error: ", err.code);
       console.log("===== authService.register error: ", err.message);
-      toast.error(Errors[err.code], NOTIFY_OPTION);
+      toast.error(Errors[err.code], Notify.Option);
     }
   };
 
@@ -174,7 +174,7 @@ function SignUp() {
       console.log("===== authService.register error: ", err);
       console.log("===== authService.register error: ", err.code);
       console.log("===== authService.register error: ", err.message);
-      toast.error(Errors[err.code], NOTIFY_OPTION);
+      toast.error(Errors[err.code], Notify.Option);
     }
   };
 

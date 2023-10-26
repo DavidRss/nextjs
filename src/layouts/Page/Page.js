@@ -7,7 +7,7 @@ import { useApp } from "../../services/AppContext";
 import Spinner from "../../components/spinner/Spinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { NOTIFY_OPTION } from "../../constants/constants";
+import { Notify } from "../../constants/constants";
 import LoginDialog from "../../components/dialog/LoginDialog";
 
 export default function Page({ children, handleOnParticipate }) {
@@ -15,11 +15,10 @@ export default function Page({ children, handleOnParticipate }) {
 
   useEffect(() => {
     if (notifyMessage) {
-      if (notifyMessage.type === "error") {
-        toast.error(notifyMessage.message, NOTIFY_OPTION);
-      }
-      else if(notifyMessage.type === "success") {
-        toast.success(notifyMessage.message, NOTIFY_OPTION);
+      if (notifyMessage.type === Notify.Type.SUCCESS) {
+        toast.success(notifyMessage.message, Notify.Option);
+      } else if (notifyMessage.type === Notify.Type.ERROR) {
+        toast.error(notifyMessage.message, Notify.Option);
       }
 
       showNotifyMessage(null);

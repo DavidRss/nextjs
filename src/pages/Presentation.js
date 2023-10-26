@@ -10,9 +10,9 @@ import tree from "../assets/tree.png";
 import CardsSlider from "../components/cardsSlider/CardsSlider";
 import { useApp } from "../services/AppContext";
 import { getFormatTimeRemaining, nFormatter } from "../utils/utils";
-import { projectService } from "../services/FirebaseService";
 import { scrollToElement } from "../utils/ActionUtils";
 import { shopifyService } from "../services/ShopifyService";
+import { Notify } from "../constants/constants";
 
 const Presentation = () => {
   const {
@@ -60,10 +60,48 @@ const Presentation = () => {
     try {
       setLoading(true);
 
-      const res = await shopifyService.createCheckout();
-      saveCheckout(res);
+      let checkoutInfo = await shopifyService.createCheckout();
 
-      console.log("===== handleClickProduct: ", res);
+      const inputValue = {
+        customAttributes: [
+          {
+            key: "email",
+            value: currentUser.email,
+          },
+          {
+            key: "userId",
+            value: currentUser.id,
+          },
+        ],
+      };
+
+      checkoutInfo = await shopifyService.updateCheckoutAttributes(
+        checkoutInfo.id,
+        inputValue
+      );
+
+      const variants = product.variants;
+      if (variants.length > 0) {
+        const variant = variants[0];
+        const lineItems = {
+          variantId: variant.id,
+          quantity: 1,
+        };
+        checkoutInfo = await shopifyService.addLineItems(
+          checkoutInfo.id,
+          lineItems
+        );
+
+        saveCheckout(checkoutInfo);
+        console.log("===== checkoutInfo: ", checkoutInfo);
+
+        window.open(checkoutInfo.webUrl);
+      } else {
+        showNotifyMessage({
+          type: Notify.Type.ERROR,
+          message: "This product is not available in a store.",
+        });
+      }
     } catch (err) {
       console.log("===== handleClickProduct error: ", err);
     }
@@ -92,21 +130,25 @@ const Presentation = () => {
 
     setLoading(true);
 
-    projectService
-      .participateUser(project.id, currentUser, price)
-      .then((res) => {
-        setLoading(false);
-        console.log("===== handleParticipate: ", res);
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log("===== handleParticipate err: ", err.code);
-        console.log("===== handleParticipate err: ", err.message);
-        showNotifyMessage({
-          type: "error",
-          message: err.message,
-        });
-      });
+    console.log("===== checkout: ", checkout);
+
+    setLoading(false);
+
+    // projectService
+    //   .participateUser(project.id, currentUser, price)
+    //   .then((res) => {
+    //     setLoading(false);
+    //     console.log("===== handleParticipate: ", res);
+    //   })
+    //   .catch((err) => {
+    //     setLoading(false);
+    //     console.log("===== handleParticipate err: ", err.code);
+    //     console.log("===== handleParticipate err: ", err.message);
+    //     showNotifyMessage({
+    //       type: "error",
+    //       message: err.message,
+    //     });
+    //   });
   };
 
   const handleOnParticipate = () => {

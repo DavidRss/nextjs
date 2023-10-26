@@ -1,8 +1,9 @@
 import Client from "shopify-buy";
+import { shopifyConfig } from "../constants/config";
 
 const client = Client.buildClient({
-  storefrontAccessToken: "e9ee26a940e3a2e1ac8ace39ad77222e",
-  domain: "d4b6bc-2.myshopify.com",
+  storefrontAccessToken: shopifyConfig.publicToken,
+  domain: shopifyConfig.domain,
 });
 
 class ShopifyService {
@@ -30,6 +31,35 @@ class ShopifyService {
           resolve(checkout);
         })
         .catch((err) => {
+          console.log("===== createCheckout error: ", err);
+          reject(err);
+        });
+    });
+  }
+
+  updateCheckoutAttributes(checkoutId, params) {
+    return new Promise((resolve, reject) => {
+      client.checkout
+        .updateAttributes(checkoutId, params)
+        .then((checkout) => {
+          resolve(checkout);
+        })
+        .catch((err) => {
+          console.log("===== updateCheckoutAttributes error: ", err);
+          reject(err);
+        });
+    });
+  }
+
+  addLineItems(checkoutId, lineItems) {
+    return new Promise((resolve, reject) => {
+      client.checkout
+        .addLineItems(checkoutId, lineItems)
+        .then((checkout) => {
+          resolve(checkout);
+        })
+        .catch((err) => {
+          console.log("===== addLineItems error: ", err);
           reject(err);
         });
     });

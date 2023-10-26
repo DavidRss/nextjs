@@ -10,7 +10,7 @@ import CardM from "../cardsMedium/cardsM";
 import { useApp } from "../../services/AppContext";
 
 function CardsSlider() {
-  const { products } = useApp();
+  const { products, showNotifyMessage } = useApp();
 
   const [productList, setProductList] = useState([]);
 
@@ -21,7 +21,17 @@ function CardsSlider() {
   }, [products]);
 
   const handleClickProduct = (productId) => {
-    console.log("===== handleClickProduct: ", productId);
+    const product = productList.find((item) => item.id === productId);
+    const availableForSale = product.availableForSale;
+    const onlineStoreUrl = product.onlineStoreUrl;
+    if (availableForSale && onlineStoreUrl) {
+      window.open(onlineStoreUrl, "_blank", "noopener,noreferrer");
+    } else {
+      showNotifyMessage({
+        type: "error",
+        message: "This product is not available in store.",
+      });
+    }
   };
 
   return (

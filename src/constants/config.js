@@ -8,3 +8,11 @@ export const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
+
+export const shopifyConfig = {
+  domain: process.env.REACT_APP_SHOPIFY_DOMAIN,
+  clientId: process.env.REACT_APP_SHOPIFY_CLIENT_ID,
+  secretKey: process.env.REACT_APP_SHOPIFY_CLIENT_SECRET_KEY,
+  publicToken: process.env.REACT_APP_SHOPIFY_PUBLIC_ACCESS_TOKEN,
+  privateToken: process.env.REACT_APP_SHOPIFY_PRIVATE_ACCESS_TOKEN,
+}

@@ -3,10 +3,6 @@ import { toast } from "react-toastify";
 export const PROJECT_ID = "wGJO9iMDd6cQdtjw2D8s";
 export const DEFAULT_USER_COUNTRY = "French";
 export const DEFAULT_DONATION = 100;
-export const NOTIFY_OPTION = {
-  position: toast.POSITION.TOP_RIGHT,
-  hideProgressBar: true,
-};
 
 export const EARN = {
   FAMILY: 50,
@@ -42,10 +38,21 @@ export const INIT_USER = {
     comment: false,
     referral: false,
   },
-  visited: 0
+  visited: 0,
 };
 
 export const STORAE_KEY = {
   USER: "user",
-  CHECKOUT: "checkout"
-}
+  CHECKOUT: "checkout",
+};
+
+export const Notify = {
+  Type: {
+    SUCCESS: "success",
+    ERROR: "error",
+  },
+  Option: {
+    position: toast.POSITION.TOP_RIGHT,
+    hideProgressBar: true,
+  },
+};

@@ -97,9 +97,9 @@ export const getDailyPoints = (visited) => {
     const vDate = getDateFromTimestamp(visited);
     const curDate = getCurrentDate();
     if (
-      curDate.year != vDate.year ||
-      curDate.month != vDate.month ||
-      curDate.day != vDate.day
+      curDate.year !== vDate.year ||
+      curDate.month !== vDate.month ||
+      curDate.day !== vDate.day
     ) {
       return EARN.DAILY;
     }
