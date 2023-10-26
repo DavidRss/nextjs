@@ -6,7 +6,7 @@ export const user = {
   email: "vodk@gmail.com",
   ballance: {
     points: 250,
-    USD: 250,
+    EUR: 250,
   },
   spending: 1200,
   country: "United States",

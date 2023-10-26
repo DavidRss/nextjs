@@ -32,4 +32,4 @@ const authService = new AuthService(auth, googleProvider);
 const userService = new UserService(firestore);
 const projectService = new ProjectService(database, firestore);
 
-export { database, authService, userService, projectService };
+export { database, firestore, authService, userService, projectService };

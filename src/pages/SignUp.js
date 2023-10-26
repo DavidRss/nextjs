@@ -22,12 +22,14 @@ import {
   getCurrentTimestamp,
   getDailyPoints,
 } from "../utils/utils";
+import { useApp } from "../services/AppContext";
 
 function SignUp() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const referralCode = searchParams.get("referralCode");
 
+  const { subscribeUser } = useApp();
   const { login } = useAuth();
 
   const [loading, setLoading] = useState(false);
@@ -78,6 +80,8 @@ function SignUp() {
         await userService.saveUser(uid, userInfo);
 
         login(userInfo);
+
+        subscribeUser(uid);
       } else {
         const profile = userCredential._tokenResponse;
         const firstName = profile.firstName || profile.givenName;
@@ -103,6 +107,8 @@ function SignUp() {
         }
 
         await userService.saveUser(uid, userInfo);
+
+        subscribeUser(uid);
 
         login(userInfo);
       }
@@ -168,6 +174,9 @@ function SignUp() {
       setLoading(false);
 
       login(userInfo);
+
+      subscribeUser(uid);
+
       navigate("/");
     } catch (err) {
       setLoading(false);

@@ -28,6 +28,14 @@ export interface User {
     friend: boolean;
   };
   visited: Timestamp;
+  orders: [
+    {
+      orderId: string;
+      orderNumber: string;
+      totalPrice: number;
+    }
+  ],
+  spending: number;
 }
 
 export interface Project {

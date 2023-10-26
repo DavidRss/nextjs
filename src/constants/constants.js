@@ -39,6 +39,8 @@ export const INIT_USER = {
     referral: false,
   },
   visited: 0,
+  orders: [],
+  spending: 0,
 };
 
 export const STORAE_KEY = {

@@ -10,7 +10,7 @@ export const levels = [
         spend: 1500, 
         benefits: {
             points: 400,
-            desc: 'Earn 2 Points for every 1 USD spent.',
+            desc: 'Earn 2 Points for every 1 EUR spent.',
         },
     },
     {
@@ -19,7 +19,7 @@ export const levels = [
         spend: 3500, 
         benefits: {
             points: 700,
-            desc: 'Earn 2 Points for every 1 USD spent.',
+            desc: 'Earn 2 Points for every 1 EUR spent.',
         },
     },
     {
@@ -28,7 +28,7 @@ export const levels = [
         spend: 7500, 
         benefits: {
             points: 400,
-            desc: 'Earn 2 Points for every 1 USD spent.',
+            desc: 'Earn 2 Points for every 1 EUR spent.',
         },
     },
     {
@@ -37,7 +37,7 @@ export const levels = [
         spend: 10000, 
         benefits: {
             points: 1000,
-            desc: 'Earn 2 Points for every 1 USD spent.',
+            desc: 'Earn 2 Points for every 1 EUR spent.',
         },
     },
 ]

@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 const axios = require("axios");
 const admin = require("firebase-admin");
+const { FBCollections } = require("../constants");
 
 const PATH = {
   PRODUCTS: "products",
@@ -41,7 +42,7 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
         }
       }
 
-      if (userId) {
+      if (userId && financialStatus === "paid") {
         const params = {
           userId: userId,
           userEmail: userEmail,
@@ -52,6 +53,35 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
           totalPrice,
         };
         console.log("===== orderInfo: ", params);
+
+        try {
+          const user = await firestore
+            .collection(FBCollections.USERS)
+            .doc(userId)
+            .get();
+          const donations = user.donations || [];
+          const orders = user.orders || [];
+          let spending = user.spending || 0;
+          for (const item of donations) {
+            spending = spending + item.amount;
+          }
+
+          orders.push({
+            orderId,
+            orderNumber,
+            totalPrice,
+          });
+          for (const item of orders) {
+            spending = spending + item.totalPrice;
+          }
+
+          await firestore
+            .collection(FBCollections.USERS)
+            .doc(userId)
+            .update({ orders, spending });
+        } catch (err) {
+          console.log("===== get user error: ", err);
+        }
       }
     }
 

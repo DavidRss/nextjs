@@ -22,10 +22,12 @@ import {
   getCurrentTimestamp,
   getDailyPoints,
 } from "../utils/utils";
+import { useApp } from "../services/AppContext";
 
 function Login() {
   const navigate = useNavigate();
 
+  const { subscribeUser } = useApp();
   const { login } = useAuth();
 
   const [loading, setLoading] = useState(false);
@@ -67,6 +69,8 @@ function Login() {
         await userService.updateUser(uid, userInfo);
 
         login(userInfo);
+
+        subscribeUser(uid);
       } else {
         const profile = userCredential._tokenResponse;
         const firstName = profile.firstName || profile.givenName;
@@ -88,6 +92,8 @@ function Login() {
         await userService.saveUser(uid, userInfo);
 
         login(userInfo);
+
+        subscribeUser(uid);
       }
 
       setLoading(false);
@@ -144,6 +150,7 @@ function Login() {
             await userService.updateUser(user.id, user);
 
             login(user);
+            subscribeUser(uid);
             navigate("/");
           } else {
             toast.error("The user doesn't exist.", {

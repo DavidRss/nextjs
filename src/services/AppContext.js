@@ -1,9 +1,15 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { projectService, userService } from "./FirebaseService";
+import {
+  FBCollections,
+  firestore,
+  projectService,
+  userService,
+} from "./FirebaseService";
 import { PROJECT_ID, STORAE_KEY } from "../constants/constants";
 import { shopifyService } from "./ShopifyService";
 import { getCurrentTimestamp, getDailyPoints } from "../utils/utils";
+import { doc, onSnapshot } from "firebase/firestore";
 
 export const AppContext = createContext();
 
@@ -27,6 +33,8 @@ export function AppProvider({ children }) {
   const [products, setProducts] = useState([]);
 
   const [checkout, setCheckout] = useState(null);
+
+  const [unsubscribeUsser, setUnsubscribeUser] = useState(null);
 
   const saveUser = (user) => {
     setCurrentUser(user);
@@ -97,12 +105,30 @@ export function AppProvider({ children }) {
     }
   };
 
+  const subscribeUser = (userId) => {
+    console.log("===== subscribeUser: ", userId);
+    const unsubscribe = onSnapshot(
+      doc(firestore, FBCollections.USERS, userId),
+      (snapshot) => {
+        console.log("===== updated user =====");
+        const source = snapshot.metadata.hasPendingWrites
+          ? "Local"
+          : "Server";
+        console.log(source, " data: ", snapshot.data());
+      }
+    );
+    console.log("===== unsubscribe: ", unsubscribe);
+    setUnsubscribeUser(unsubscribe);
+  };
+
   useEffect(() => {
     const userString = getItem(STORAE_KEY.USER);
     if (userString) {
       const user = JSON.parse(userString);
 
       loadUser(user.id);
+
+      subscribeUser(user.id);
     } else {
       setLoadingUser(false);
     }
@@ -113,7 +139,12 @@ export function AppProvider({ children }) {
 
     loadCheckout();
 
-    return () => {};
+    return () => {
+      if (unsubscribeUsser) {
+        console.log("===== unsubscribeUser =====");
+        unsubscribeUsser();
+      }
+    };
   }, []);
 
   return (
@@ -136,6 +167,7 @@ export function AppProvider({ children }) {
         products,
         checkout,
         saveCheckout,
+        subscribeUser,
       }}
     >
       {children}

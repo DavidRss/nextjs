@@ -114,7 +114,7 @@ function Lottery() {
                         </div>
                         <div className="flex flex-col items-start gap-0.5 text-gray-900">
                           <span className="font-semibold text-xl">
-                            500 Points (5 USD)
+                            500 Points (5 EUR)
                           </span>
                           <span className="text-left font-normal text-sm opacity-50">
                             For every 3 friend you refer, you’ll get this extra
