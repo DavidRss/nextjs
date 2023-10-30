@@ -8,12 +8,6 @@ export interface User {
   lastName: string;
   avatar: string;
   points: number;
-  donations: [
-    {
-      amount: number;
-      date: Timestamp;
-    }
-  ];
   referralCode: string;
   referrer: string;
   referrals: Array<string>;
@@ -33,6 +27,7 @@ export interface User {
       orderId: string;
       orderNumber: string;
       totalPrice: number;
+      type: "product" | "donation"
     }
   ],
   spending: number;

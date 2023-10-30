@@ -1,4 +1,5 @@
-import { EARN } from "../constants/constants";
+import { EARN, Order } from "../constants/constants";
+import { shopifyService } from "../services/ShopifyService";
 
 export const getFormatTimeRemaining = (seconds) => {
   const ss = Math.floor(seconds % 60);
@@ -107,4 +108,44 @@ export const getDailyPoints = (visited) => {
     return EARN.DAILY;
   }
   return 0;
+};
+
+export const getCheckoutCustomAttributes = (user, checkoutType) => {
+  return {
+    customAttributes: [
+      {
+        key: Order.Keys.USER_ID,
+        value: user.id,
+      },
+      {
+        key: Order.Keys.EMAIL,
+        value: user.email,
+      },
+      {
+        key: Order.Keys.TYPE,
+        value: checkoutType,
+      },
+    ],
+  };
+};
+
+export const removeLineItemsFromCheckout = async (checkout) => {
+  try {
+    if (checkout.lineItems.length > 0) {
+      let lineItemIds = [];
+      for (const item of checkout.lineItems) {
+        lineItemIds.push(item.id);
+      }
+      const checkoutInfo = await shopifyService.removeLineItems(
+        checkout.id,
+        lineItemIds
+      );
+
+      return checkoutInfo;
+    } else {
+      return checkout;
+    }
+  } catch (err) {
+    console.log("==== removeLineItemsFromCheckout error: ", err);
+  }
 };

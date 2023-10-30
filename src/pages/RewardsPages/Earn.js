@@ -15,9 +15,12 @@ import comments from "../../assets/comments-icon.png";
 import refIcon from "../../assets/ref-icon.png";
 import { EARN } from "../../constants/constants";
 import { scrollToElement } from "../../utils/ActionUtils";
+import { useApp } from "../../services/AppContext";
 
 function Earn() {
   const donationForm = useRef(null);
+
+  const { currentUser } = useApp();
 
   const handleOnParticipage = () => {
     scrollToElement(donationForm.current);
@@ -57,7 +60,13 @@ function Earn() {
 
                   <div className="grid grid-cols-2 sm:grid-cols-3 justify-items-center xl:justify-items-start gap-6 mt-8">
                     <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
-                      <div className="bg-white rounded-full border-pagBg p-2">
+                      <div
+                        className={`${
+                          currentUser.earned.family
+                            ? "bg-emerald-500"
+                            : "bg-white"
+                        } rounded-full border-pagBg p-2`}
+                      >
                         <img src={welcome} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
@@ -69,7 +78,13 @@ function Earn() {
                     </div>
 
                     <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
-                      <div className="bg-white rounded-full border-pagBg p-2">
+                      <div
+                        className={`${
+                          currentUser.earned.donation1
+                            ? "bg-emerald-500"
+                            : "bg-white"
+                        } rounded-full border-pagBg p-2`}
+                      >
                         <img src={dons} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
@@ -81,7 +96,13 @@ function Earn() {
                     </div>
 
                     <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
-                      <div className="bg-white rounded-full border-pagBg p-2">
+                      <div
+                        className={`${
+                          currentUser.earned.donation2
+                            ? "bg-emerald-500"
+                            : "bg-white"
+                        } rounded-full border-pagBg p-2`}
+                      >
                         <img src={secDons} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
@@ -93,7 +114,13 @@ function Earn() {
                     </div>
 
                     <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
-                      <div className="bg-white rounded-full border-pagBg p-2">
+                      <div
+                        className={`${
+                          currentUser.earned.tiktok
+                            ? "bg-emerald-500"
+                            : "bg-white"
+                        } rounded-full border-pagBg p-2`}
+                      >
                         <img src={tiktok} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
@@ -106,7 +133,13 @@ function Earn() {
                     </div>
 
                     <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
-                      <div className="bg-white rounded-full border-pagBg p-2">
+                      <div
+                        className={`${
+                          currentUser.earned.youtube
+                            ? "bg-emerald-500"
+                            : "bg-white"
+                        } rounded-full border-pagBg p-2`}
+                      >
                         <img src={youtube} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
@@ -119,7 +152,13 @@ function Earn() {
                     </div>
 
                     <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
-                      <div className="bg-white rounded-full border-pagBg p-2">
+                      <div
+                        className={`${
+                          currentUser.earned.instagram
+                            ? "bg-emerald-500"
+                            : "bg-white"
+                        } rounded-full border-pagBg p-2`}
+                      >
                         <img src={instagram} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
@@ -144,7 +183,13 @@ function Earn() {
                     </div>
 
                     <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
-                      <div className="bg-white rounded-full border-pagBg p-2">
+                      <div
+                        className={`${
+                          currentUser.earned.comment
+                            ? "bg-emerald-500"
+                            : "bg-white"
+                        } rounded-full border-pagBg p-2`}
+                      >
                         <img src={comments} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
@@ -156,7 +201,13 @@ function Earn() {
                     </div>
 
                     <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
-                      <div className="bg-white rounded-full border-pagBg p-2">
+                      <div
+                        className={`${
+                          currentUser.earned.referral
+                            ? "bg-emerald-500"
+                            : "bg-white"
+                        } rounded-full border-pagBg p-2`}
+                      >
                         <img src={refIcon} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">

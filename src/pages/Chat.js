@@ -11,14 +11,17 @@ import {
   projectService,
   userService,
 } from "../services/FirebaseService";
-import { EARN, PROJECT_ID } from "../constants/constants";
+import { EARN, PROJECT_ID, Path } from "../constants/constants";
 import { onValue, ref } from "firebase/database";
 import Spinner from "../components/spinner/Spinner";
 import { scrollToElement } from "../utils/ActionUtils";
 import { getCurrentTimestamp } from "../utils/utils";
+import { useNavigate } from "react-router-dom";
 
 function Chat() {
-  const { currentUser, saveUser, showLoginDialog } = useApp();
+  const navigate = useNavigate();
+
+  const { currentUser, saveUser } = useApp();
 
   const donationForm = useRef(null);
   const chatView = useRef(null);
@@ -39,7 +42,7 @@ function Chat() {
 
   const handleAttachFileClick = () => {
     if (!currentUser) {
-      showLoginDialog(true);
+      navigate(Path.SIGNIN);
       return;
     }
 
@@ -58,7 +61,7 @@ function Chat() {
       e.preventDefault();
 
       if (!currentUser) {
-        showLoginDialog(true);
+        navigate(Path.SIGNIN);
         return;
       }
 

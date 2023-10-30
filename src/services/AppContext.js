@@ -31,6 +31,7 @@ export function AppProvider({ children }) {
 
   const [loadingProducts, setLoadingProducts] = useState(false);
   const [products, setProducts] = useState([]);
+  const [donationProduct, setDonationProduct] = useState(null);
 
   const [checkout, setCheckout] = useState(null);
 
@@ -89,7 +90,15 @@ export function AppProvider({ children }) {
   const loadProducts = async () => {
     try {
       setLoadingProducts(true);
-      const productList = await shopifyService.getProductList();
+      const res = await shopifyService.getProductList();
+      let productList = [];
+      for (const item of res) {
+        if (item.productType === "") {
+          productList.push(item);
+        } else if (item.productType === "Donation") {
+          setDonationProduct(item);
+        }
+      }
       setProducts(productList);
       setLoadingProducts(false);
     } catch (err) {
@@ -111,9 +120,7 @@ export function AppProvider({ children }) {
       doc(firestore, FBCollections.USERS, userId),
       (snapshot) => {
         console.log("===== updated user =====");
-        const source = snapshot.metadata.hasPendingWrites
-          ? "Local"
-          : "Server";
+        const source = snapshot.metadata.hasPendingWrites ? "Local" : "Server";
         console.log(source, " data: ", snapshot.data());
       }
     );
@@ -165,6 +172,7 @@ export function AppProvider({ children }) {
         showLoginDialog,
         loadingProducts,
         products,
+        donationProduct,
         checkout,
         saveCheckout,
         subscribeUser,

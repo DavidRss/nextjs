@@ -1,12 +1,7 @@
 const functions = require("firebase-functions");
 const axios = require("axios");
 const admin = require("firebase-admin");
-const { FBCollections } = require("../constants");
-
-const PATH = {
-  PRODUCTS: "products",
-  WEBHOOK: "webhooks",
-};
+const { FBCollections, Order } = require("../constants");
 
 const apiBaseUrl = process.env.API_BASE_URL;
 const headers = {
@@ -23,21 +18,24 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
   async (request, response) => {
     const params = request.body;
     if (params) {
+      console.log("===== params: ", params);
       let userId = "";
       let userEmail = "";
+      let productType = "";
       const email = params.email;
       const financialStatus = params.financial_status;
       const orderId = params.source_identifier;
       const orderNumber = params.order_number;
-      const totalPrice = params.total_price;
+      const totalPrice = parseFloat(params.total_price);
       const note = params.note_attributes;
       if (note) {
         for (const item of note) {
-          if (item.name === "userId") {
+          if (item.name === Order.Keys.USER_ID) {
             userId = item.value;
-          }
-          if (item.name === "email") {
+          } else if (item.name === Order.Keys.EMAIL) {
             userEmail = item.value;
+          } else if (item.name === Order.Keys.TYPE) {
+            productType = item.value;
           }
         }
       }
@@ -61,9 +59,10 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
             .get();
           const donations = user.donations || [];
           const orders = user.orders || [];
-          let spending = user.spending || 0;
+
+          let spending = parseFloat(user.spending) || 0;
           for (const item of donations) {
-            spending = spending + item.amount;
+            spending = spending + parseFloat(item.amount);
           }
 
           orders.push({
@@ -91,19 +90,19 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
 
 exports.addWebhook = functions.https.onRequest(async (request, response) => {
   try {
-    const params = {
-      webhook: {
-        topic: "orders/create",
-        address:
-          "https://9945-70-39-103-3.ngrok-free.app/coflow-v1/us-central1/handleShopifyCheckoutSuccess",
-        format: "json",
-      },
-    };
-    const res = await axios.post(apiUrl(PATH.WEBHOOK), params, { headers });
+    // const params = {
+    //   webhook: {
+    //     topic: "orders/create",
+    //     address:
+    //       "https://9945-70-39-103-3.ngrok-free.app/coflow-v1/us-central1/handleShopifyCheckoutSuccess",
+    //     format: "json",
+    //   },
+    // };
+    // const res = await axios.post(apiUrl(PATH.WEBHOOK), params, { headers });
     // const res = await axios.get(apiUrl(PATH.PRODUCTS), { headers });
     // const products = await res.data;
-    console.log("===== res: ", res.data);
-    return response.send({ res: res.data });
+    // console.log("===== res: ", res.data);
+    return response.send({ res: "ok" });
   } catch (err) {
     console.log("===== err: ", err);
   }

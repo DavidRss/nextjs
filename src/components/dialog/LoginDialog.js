@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useApp } from "../../services/AppContext";
+import { Path } from "../../constants/constants";
 
 const LoginDialog = () => {
   const navigate = useNavigate();
@@ -7,16 +8,16 @@ const LoginDialog = () => {
 
   const onClickLogin = () => {
     showLoginDialog(false);
-    navigate("/signin");
+    navigate(Path.SIGNIN);
   };
 
   const onClickCancel = () => {
     showLoginDialog(false);
 
-    if(window.location.pathname === "/reward") {
-      navigate("/");
+    if (window.location.pathname === "/reward") {
+      navigate(Path.HOME);
     }
-  }
+  };
 
   return (
     <div

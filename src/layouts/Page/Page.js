@@ -17,6 +17,8 @@ export default function Page({ children, handleOnParticipate }) {
     if (notifyMessage) {
       if (notifyMessage.type === Notify.Type.SUCCESS) {
         toast.success(notifyMessage.message, Notify.Option);
+      } else if (notifyMessage.type === Notify.Type.INFO) {
+        toast.info(notifyMessage.message, Notify.Option);
       } else if (notifyMessage.type === Notify.Type.ERROR) {
         toast.error(notifyMessage.message, Notify.Option);
       }

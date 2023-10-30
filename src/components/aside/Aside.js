@@ -2,15 +2,12 @@ import React, { forwardRef, useState } from "react";
 import CardsSlider from "../cardsSlider/CardsSlider";
 import { useApp } from "../../services/AppContext";
 import { projectService } from "../../services/FirebaseService";
+import { useNavigate } from "react-router-dom";
+import { Path } from "../../constants/constants";
 
 const Aside = forwardRef((props, ref) => {
-  const {
-    currentUser,
-    setLoading,
-    project,
-    showNotifyMessage,
-    showLoginDialog,
-  } = useApp();
+  const navigate = useNavigate();
+  const { currentUser, setLoading, project, showNotifyMessage } = useApp();
 
   const [price, changePrice] = useState(0);
   const [errorPrice, setErrorPrice] = useState(false);
@@ -25,7 +22,7 @@ const Aside = forwardRef((props, ref) => {
   const handleParticipate = () => {
     console.log("===== Presentation handleParticipate =====");
     if (!currentUser) {
-      showLoginDialog(true);
+      navigate(Path.SIGNIN);
       return;
     }
 

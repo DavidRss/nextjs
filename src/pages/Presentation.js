@@ -9,20 +9,28 @@ import tree from "../assets/tree.png";
 
 import CardsSlider from "../components/cardsSlider/CardsSlider";
 import { useApp } from "../services/AppContext";
-import { getFormatTimeRemaining, nFormatter } from "../utils/utils";
+import {
+  getCheckoutCustomAttributes,
+  getFormatTimeRemaining,
+  nFormatter,
+  removeLineItemsFromCheckout,
+} from "../utils/utils";
 import { scrollToElement } from "../utils/ActionUtils";
 import { shopifyService } from "../services/ShopifyService";
-import { Notify } from "../constants/constants";
+import { Notify, Order, Path, Route } from "../constants/constants";
+import { useNavigate } from "react-router-dom";
 
 const Presentation = () => {
+  const navigate = useNavigate();
+
   const {
     currentUser,
     setLoading,
     loadedProject,
     project,
     showNotifyMessage,
-    showLoginDialog,
     products,
+    donationProduct,
     checkout,
     saveCheckout,
   } = useApp();
@@ -55,25 +63,27 @@ const Presentation = () => {
   }, [counter]);
 
   const handleClickProduct = async (productId) => {
+    if (!currentUser) {
+      navigate(Path.SIGNIN);
+      return;
+    }
+
     const product = productList.find((item) => item.id === productId);
     console.log("===== handleClickProduct: ", product);
     try {
       setLoading(true);
 
-      let checkoutInfo = await shopifyService.createCheckout();
+      let checkoutInfo = null;
+      if (checkout) {
+        checkoutInfo = await removeLineItemsFromCheckout(checkout);
+      } else {
+        checkoutInfo = await shopifyService.createCheckout();
+      }
 
-      const inputValue = {
-        customAttributes: [
-          {
-            key: "email",
-            value: currentUser.email,
-          },
-          {
-            key: "userId",
-            value: currentUser.id,
-          },
-        ],
-      };
+      const inputValue = getCheckoutCustomAttributes(
+        currentUser,
+        Order.Types.PRODUCT
+      );
 
       checkoutInfo = await shopifyService.updateCheckoutAttributes(
         checkoutInfo.id,
@@ -116,10 +126,10 @@ const Presentation = () => {
     }
   };
 
-  const handleParticipate = () => {
-    console.log("===== Presentation handleParticipate =====");
+  const handleParticipate = async () => {
+    console.log("===== donationProduct: ", donationProduct);
     if (!currentUser) {
-      showLoginDialog(true);
+      navigate(Path.SIGNIN);
       return;
     }
 
@@ -128,27 +138,75 @@ const Presentation = () => {
       return;
     }
 
+    if (!donationProduct) {
+      showNotifyMessage({
+        type: Notify.Type.INFO,
+        message: "You can't donate at this time. Please try later.",
+      });
+      return;
+    }
+
+    const variants = donationProduct.variants;
+    const minPrice = parseFloat(variants[0].price.amount);
+    const maxPrice = parseFloat(variants[variants.length - 1].price.amount);
+
+    if (price < minPrice || price > maxPrice) {
+      showNotifyMessage({
+        type: Notify.Type.INFO,
+        message: `You can donate the price between ${minPrice} and ${maxPrice} EUR`,
+      });
+      return;
+    }
+
+    const cPrice = Math.ceil(price);
+    console.log("===== cPrice: ", cPrice);
+    let selVariant = null;
+    for (const item of variants) {
+      if (item.price.amount == cPrice) {
+        selVariant = item;
+        break;
+      }
+    }
+    console.log("===== selVariant: ", selVariant);
+
     setLoading(true);
 
-    console.log("===== checkout: ", checkout);
+    try {
+      let checkoutInfo = null;
+      if (checkout) {
+        checkoutInfo = await removeLineItemsFromCheckout(checkout);
+      } else {
+        checkoutInfo = await shopifyService.createCheckout();
+      }
+
+      const inputValue = getCheckoutCustomAttributes(
+        currentUser,
+        Order.Types.DONATION
+      );
+
+      checkoutInfo = await shopifyService.updateCheckoutAttributes(
+        checkoutInfo.id,
+        inputValue
+      );
+
+      const lineItems = {
+        variantId: selVariant.id,
+        quantity: 1,
+      };
+      checkoutInfo = await shopifyService.addLineItems(
+        checkoutInfo.id,
+        lineItems
+      );
+
+      saveCheckout(checkoutInfo);
+      console.log("===== checkoutInfo: ", checkoutInfo);
+
+      window.open(checkoutInfo.webUrl);
+    } catch (err) {
+      console.log("===== donation processs error: ", err);
+    }
 
     setLoading(false);
-
-    // projectService
-    //   .participateUser(project.id, currentUser, price)
-    //   .then((res) => {
-    //     setLoading(false);
-    //     console.log("===== handleParticipate: ", res);
-    //   })
-    //   .catch((err) => {
-    //     setLoading(false);
-    //     console.log("===== handleParticipate err: ", err.code);
-    //     console.log("===== handleParticipate err: ", err.message);
-    //     showNotifyMessage({
-    //       type: "error",
-    //       message: err.message,
-    //     });
-    //   });
   };
 
   const handleOnParticipate = () => {

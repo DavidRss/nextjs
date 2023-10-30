@@ -23,13 +23,13 @@ export const INIT_USER = {
   firstName: "",
   lastName: "",
   avatar: "",
-  points: 0,
+  points: EARN.FAMILY,
   donations: [],
   referralCode: "",
   referrer: "",
   referrals: [],
   earned: {
-    family: false,
+    family: true,
     donation1: false,
     donation2: false,
     tiktok: false,
@@ -51,10 +51,28 @@ export const STORAE_KEY = {
 export const Notify = {
   Type: {
     SUCCESS: "success",
+    INFO: "info",
     ERROR: "error",
   },
   Option: {
     position: toast.POSITION.TOP_RIGHT,
     hideProgressBar: true,
+  },
+};
+
+export const Path = {
+  SIGNIN: "signin",
+  HOME: "/",
+};
+
+export const Order = {
+  Keys: {
+    USER_ID: "userId",
+    EMAIL: "email",
+    TYPE: "type",
+  },
+  Types: {
+    PRODUCT: "product",
+    DONATION: "donation",
   },
 };

@@ -11,28 +11,31 @@ import bar from "../assets/bars-level 1.svg";
 import calendar from "../assets/Calendar.png";
 import arrow from "../assets/iconamoon_arrow-left-2.svg";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Aside from "../components/aside/Aside";
 
 import { levels } from "../stores/levelsData";
 import { useApp } from "../services/AppContext";
 import { scrollToElement } from "../utils/ActionUtils";
+import { Path } from "../constants/constants";
 
 function Reward() {
-  const { loadingUser, currentUser, showLoginDialog } = useApp();
+  const navigate = useNavigate();
+
+  const { loadingUser, currentUser } = useApp();
 
   const donationForm = useRef(null);
 
-  const calculateProgress = () => {
+  const calculateProgress = (spending) => {
     let currentLevel = null;
     let remainingToNextLevel = null;
     let nextLevel = null;
 
     for (let i = 0; i < levels.length; i++) {
-      if (currentUser?.donations < levels[i].spend) {
+      if (spending < levels[i].spend) {
         currentLevel = levels[i - 1] || levels[0];
         nextLevel = levels[i];
-        remainingToNextLevel = levels[i].spend - currentUser?.donations;
+        remainingToNextLevel = levels[i].spend - spending;
         break;
       }
     }
@@ -49,12 +52,12 @@ function Reward() {
     };
   };
 
-  const progress = calculateProgress(currentUser?.donations);
+  const progress = calculateProgress(currentUser?.spending);
 
   useEffect(() => {
     if (!loadingUser) {
       if (!currentUser) {
-        showLoginDialog(true);
+        navigate(Path.SIGNIN);
       }
     }
   }, [loadingUser]);
@@ -197,7 +200,7 @@ function Reward() {
                         </span>
                         <progress
                           className="progress progress-accent md:w-680 mt-3"
-                          value={currentUser?.donations}
+                          value={currentUser?.spending}
                           max={
                             progress.nextLevel
                               ? progress.nextLevel.spend

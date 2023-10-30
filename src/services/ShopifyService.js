@@ -37,6 +37,20 @@ class ShopifyService {
     });
   }
 
+  updateEmail(checkoutId, email) {
+    return new Promise((resolve, reject) => {
+      client.checkout
+        .updateEmail(checkoutId, email)
+        .then((checkout) => {
+          resolve(checkout);
+        })
+        .catch((err) => {
+          console.log("===== updateEmail error: ", err);
+          reject(err);
+        });
+    });
+  }
+
   updateCheckoutAttributes(checkoutId, params) {
     return new Promise((resolve, reject) => {
       client.checkout
@@ -60,6 +74,20 @@ class ShopifyService {
         })
         .catch((err) => {
           console.log("===== addLineItems error: ", err);
+          reject(err);
+        });
+    });
+  }
+
+  removeLineItems(checkoutId, lineItemIds) {
+    return new Promise((resolve, reject) => {
+      client.checkout
+        .removeLineItems(checkoutId, lineItemIds)
+        .then((checkout) => {
+          resolve(checkout);
+        })
+        .catch((err) => {
+          console.log("===== removeLineItems error: ", err);
           reject(err);
         });
     });

@@ -8,9 +8,25 @@ import { Pagination } from "swiper/modules";
 import CardM from "../cardsMedium/cardsM";
 
 import { useApp } from "../../services/AppContext";
+import { shopifyService } from "../../services/ShopifyService";
+import { Notify, Order, Path } from "../../constants/constants";
+import { useNavigate } from "react-router-dom";
+import {
+  getCheckoutCustomAttributes,
+  removeLineItemsFromCheckout,
+} from "../../utils/utils";
 
 function CardsSlider() {
-  const { products, showNotifyMessage } = useApp();
+  const navigate = useNavigate();
+
+  const {
+    currentUser,
+    setLoading,
+    products,
+    showNotifyMessage,
+    checkout,
+    saveCheckout,
+  } = useApp();
 
   const [productList, setProductList] = useState([]);
 
@@ -20,18 +36,60 @@ function CardsSlider() {
     }
   }, [products]);
 
-  const handleClickProduct = (productId) => {
-    const product = productList.find((item) => item.id === productId);
-    const availableForSale = product.availableForSale;
-    const onlineStoreUrl = product.onlineStoreUrl;
-    if (availableForSale && onlineStoreUrl) {
-      window.open(onlineStoreUrl, "_blank", "noopener,noreferrer");
-    } else {
-      showNotifyMessage({
-        type: "error",
-        message: "This product is not available in store.",
-      });
+  const handleClickProduct = async (productId) => {
+    if (!currentUser) {
+      navigate(Path.SIGNIN);
     }
+
+    const product = productList.find((item) => item.id === productId);
+    console.log("===== handleClickProduct: ", product);
+    try {
+      setLoading(true);
+
+      let checkoutInfo = null;
+      if (checkout) {
+        checkoutInfo = await removeLineItemsFromCheckout(checkout);
+      } else {
+        checkoutInfo = await shopifyService.createCheckout();
+      }
+
+      const inputValue = getCheckoutCustomAttributes(
+        currentUser,
+        Order.Types.PRODUCT
+      );
+
+      checkoutInfo = await shopifyService.updateCheckoutAttributes(
+        checkoutInfo.id,
+        inputValue
+      );
+
+      const variants = product.variants;
+      if (variants.length > 0) {
+        const variant = variants[0];
+        const lineItems = {
+          variantId: variant.id,
+          quantity: 1,
+        };
+        checkoutInfo = await shopifyService.addLineItems(
+          checkoutInfo.id,
+          lineItems
+        );
+
+        saveCheckout(checkoutInfo);
+        console.log("===== checkoutInfo: ", checkoutInfo);
+
+        window.open(checkoutInfo.webUrl);
+      } else {
+        showNotifyMessage({
+          type: Notify.Type.ERROR,
+          message: "This product is not available in a store.",
+        });
+      }
+    } catch (err) {
+      console.log("===== handleClickProduct error: ", err);
+    }
+
+    setLoading(false);
   };
 
   return (
