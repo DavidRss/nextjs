@@ -31,6 +31,11 @@ export interface User {
     }
   ],
   spending: number;
+  notifications: [
+    {
+      
+    }
+  ]
 }
 
 export interface Project {
@@ -41,7 +46,8 @@ export interface Project {
   reward: string;
   amount: number;
   numberOfParticipant: number;
-  endOfDate: string; // timestamp string
+  endOfDate: Timestamp; // timestamp string
+  lotteryDate: Timestamp; // 
 }
 
 export interface Participant {
@@ -63,9 +69,9 @@ export interface Comment {
   createdAt: string;
 }
 
-export interface Donations {
+export interface Rewards {
   id: string;
   userId: string;
-  amount: number;
+  discount: string;
   createdAt: string;
 }

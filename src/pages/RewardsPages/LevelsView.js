@@ -5,17 +5,23 @@ import Aside from "../../components/aside/Aside";
 import BackBtn from "../../components/buttons/backBtn/BackBtn";
 import star from "../../assets/streamline_interface-favorite-star-reward-rating-rate-social-star-media-favorite-like-stars.svg";
 
-import { levels } from "../../stores/levelsData";
 import { useApp } from "../../services/AppContext";
 import { scrollToElement } from "../../utils/ActionUtils";
+import { Levels } from "../../constants/constants";
 
-function Levels() {
+function LevelsView() {
   const donationForm = useRef(null);
 
-  const [levelsData, setLevelsData] = useState([]);
+  const [levels, setLevels] = useState([]);
 
   useEffect(() => {
-    levels ? setLevelsData(levels) : setLevelsData([]);
+    const levelArray = [];
+    if(Levels) {
+      for(const item of Object.values(Levels)) {
+        levelArray.push(item);
+      }
+      setLevels(levelArray);
+    }
   }, []);
 
   const { currentUser } = useApp();
@@ -41,7 +47,7 @@ function Levels() {
                   </div>
                   <div className="flex flex-col items-start justify-start w-full mt-11 gap-2">
                     <ul className="cup steps steps-vertical w-full overflow-hidden">
-                      {levelsData.map((lvl, index) => (
+                      {levels.map((lvl, index) => (
                         <li
                           key={index}
                           className={`cup step step-neutral w-full ml-5 sm:ml-10 ${
@@ -71,11 +77,11 @@ function Levels() {
                                 </div>
                                 <div className="collapse-content text-left px-4">
                                   <span className="font-normal text-gray-900 text-xs sm:text-sm opacity-50">
-                                    {lvl.benefits.desc}
+                                    Earn 2 points for every 1 EUR spent.
                                   </span>
                                   <span className="flex items-center gap-1.5 mt-3 sm:mt-6 text-yellow-300 font-medium text-sm">
                                     <img src={star} alt="star" />
-                                    {lvl.benefits.points} Points
+                                    {lvl.points} Points
                                   </span>
                                 </div>
                               </div>
@@ -96,4 +102,4 @@ function Levels() {
   );
 }
 
-export default Levels;
+export default LevelsView;

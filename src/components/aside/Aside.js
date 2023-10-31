@@ -1,13 +1,24 @@
 import React, { forwardRef, useState } from "react";
 import CardsSlider from "../cardsSlider/CardsSlider";
 import { useApp } from "../../services/AppContext";
-import { projectService } from "../../services/FirebaseService";
 import { useNavigate } from "react-router-dom";
-import { Path } from "../../constants/constants";
+import { Notify, Order, Path } from "../../constants/constants";
+import {
+  getCheckoutCustomAttributes,
+  removeLineItemsFromCheckout,
+} from "../../utils/utils";
+import { shopifyService } from "../../services/ShopifyService";
 
 const Aside = forwardRef((props, ref) => {
   const navigate = useNavigate();
-  const { currentUser, setLoading, project, showNotifyMessage } = useApp();
+  const {
+    currentUser,
+    setLoading,
+    showNotifyMessage,
+    donationProduct,
+    checkout,
+    saveCheckout,
+  } = useApp();
 
   const [price, changePrice] = useState(0);
   const [errorPrice, setErrorPrice] = useState(false);
@@ -19,7 +30,7 @@ const Aside = forwardRef((props, ref) => {
     }
   };
 
-  const handleParticipate = () => {
+  const handleParticipate = async () => {
     console.log("===== Presentation handleParticipate =====");
     if (!currentUser) {
       navigate(Path.SIGNIN);
@@ -31,23 +42,75 @@ const Aside = forwardRef((props, ref) => {
       return;
     }
 
+    if (!donationProduct) {
+      showNotifyMessage({
+        type: Notify.Type.INFO,
+        message: "You can't donate at this time. Please try later.",
+      });
+      return;
+    }
+
+    const variants = donationProduct.variants;
+    const minPrice = parseFloat(variants[0].price.amount);
+    const maxPrice = parseFloat(variants[variants.length - 1].price.amount);
+
+    if (price < minPrice || price > maxPrice) {
+      showNotifyMessage({
+        type: Notify.Type.INFO,
+        message: `You can donate the price between ${minPrice} and ${maxPrice} EUR`,
+      });
+      return;
+    }
+
+    const cPrice = Math.ceil(price);
+    console.log("===== cPrice: ", cPrice);
+    let selVariant = null;
+    for (const item of variants) {
+      if (item.price.amount == cPrice) {
+        selVariant = item;
+        break;
+      }
+    }
+    console.log("===== selVariant: ", selVariant);
+
     setLoading(true);
 
-    projectService
-      .participateUser(project.id, currentUser, price)
-      .then((res) => {
-        setLoading(false);
-        console.log("===== handleParticipate: ", res);
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log("===== handleParticipate err: ", err.code);
-        console.log("===== handleParticipate err: ", err.message);
-        showNotifyMessage({
-          type: "error",
-          message: err.message,
-        });
-      });
+    try {
+      let checkoutInfo = null;
+      if (checkout) {
+        checkoutInfo = await removeLineItemsFromCheckout(checkout);
+      } else {
+        checkoutInfo = await shopifyService.createCheckout();
+      }
+
+      const inputValue = getCheckoutCustomAttributes(
+        currentUser,
+        Order.Types.DONATION
+      );
+
+      checkoutInfo = await shopifyService.updateCheckoutAttributes(
+        checkoutInfo.id,
+        inputValue
+      );
+
+      const lineItems = {
+        variantId: selVariant.id,
+        quantity: 1,
+      };
+      checkoutInfo = await shopifyService.addLineItems(
+        checkoutInfo.id,
+        lineItems
+      );
+
+      saveCheckout(checkoutInfo);
+      console.log("===== checkoutInfo: ", checkoutInfo);
+
+      window.open(checkoutInfo.webUrl);
+    } catch (err) {
+      console.log("===== donation processs error: ", err);
+    }
+
+    setLoading(false);
   };
 
   return (

@@ -1,18 +1,19 @@
 const functions = require("firebase-functions");
-const axios = require("axios");
-const admin = require("firebase-admin");
-const { FBCollections, Order } = require("../constants");
+const { onSchedule } = require("firebase-functions/v2/scheduler");
+const { logger } = require("firebase-functions");
 
-const apiBaseUrl = process.env.API_BASE_URL;
-const headers = {
-  "X-Shopify-Access-Token": process.env.API_ACCESS_TOKEN,
-};
+const admin = require("firebase-admin");
+const { FBCollections, Order, EARN } = require("../constants");
+const { checkLevelUpPoints } = require("../utils");
+const {
+  createPriceRule,
+  getPriceRules,
+  createDiscountCode,
+  getProducts,
+  getProduct,
+} = require("../service/shopifyService");
 
 const firestore = admin.firestore();
-
-const apiUrl = (path) => {
-  return `${apiBaseUrl}/${path}.json`;
-};
 
 exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
   async (request, response) => {
@@ -21,7 +22,7 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
       console.log("===== params: ", params);
       let userId = "";
       let userEmail = "";
-      let productType = "";
+      let orderType = "";
       const email = params.email;
       const financialStatus = params.financial_status;
       const orderId = params.source_identifier;
@@ -35,7 +36,7 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
           } else if (item.name === Order.Keys.EMAIL) {
             userEmail = item.value;
           } else if (item.name === Order.Keys.TYPE) {
-            productType = item.value;
+            orderType = item.value;
           }
         }
       }
@@ -57,27 +58,61 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
             .collection(FBCollections.USERS)
             .doc(userId)
             .get();
-          const donations = user.donations || [];
+
           const orders = user.orders || [];
 
-          let spending = parseFloat(user.spending) || 0;
-          for (const item of donations) {
-            spending = spending + parseFloat(item.amount);
+          let prevSpending = parseFloat(user.spending) || 0;
+          let donationCount = 0;
+          for (const item of orders) {
+            prevSpending = prevSpending + item.totalPrice;
+            if (item.type === Order.Types.DONATION) {
+              donationCount++;
+            }
           }
 
           orders.push({
             orderId,
             orderNumber,
             totalPrice,
+            type: orderType,
           });
-          for (const item of orders) {
-            spending = spending + item.totalPrice;
+          const spending = prevSpending + totalPrice;
+
+          let bonusPoints = 0;
+          const spendingBonusPoints = checkLevelUpPoints(
+            prevSpending,
+            spending
+          );
+          if (spendingBonusPoints > 0) {
+            bonusPoints = bonusPoints + spendingBonusPoints;
+          }
+
+          let updateParams = {
+            orders,
+            spending,
+          };
+
+          if (orderType === Order.Types.DONATION) {
+            const earned = user.earned;
+            if (donationCount === 0) {
+              bonusPoints = bonusPoints + EARN.DONATION1;
+              earned.donation1 = true;
+              updateParams["earned"] = earned;
+            } else if (donationCount === 1) {
+              bonusPoints = bonusPoints + EARN.DONATION2;
+              earned.donation2 = true;
+              updateParams["earned"] = earned;
+            }
+          }
+
+          if (bonusPoints > 0) {
+            updateParams["points"] = user.points + bonusPoints;
           }
 
           await firestore
             .collection(FBCollections.USERS)
             .doc(userId)
-            .update({ orders, spending });
+            .update(updateParams);
         } catch (err) {
           console.log("===== get user error: ", err);
         }
@@ -88,33 +123,41 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
   }
 );
 
-exports.addWebhook = functions.https.onRequest(async (request, response) => {
-  try {
-    // const params = {
-    //   webhook: {
-    //     topic: "orders/create",
-    //     address:
-    //       "https://9945-70-39-103-3.ngrok-free.app/coflow-v1/us-central1/handleShopifyCheckoutSuccess",
-    //     format: "json",
-    //   },
-    // };
-    // const res = await axios.post(apiUrl(PATH.WEBHOOK), params, { headers });
-    // const res = await axios.get(apiUrl(PATH.PRODUCTS), { headers });
-    // const products = await res.data;
-    // console.log("===== res: ", res.data);
-    return response.send({ res: "ok" });
-  } catch (err) {
-    console.log("===== err: ", err);
+exports.checkRewards = onSchedule("every day 00:00", async (event) => {});
+
+exports.getProducts = functions.https.onRequest(async (request, response) => {
+  const products = await getProducts();
+  return response.send({ products });
+});
+
+exports.getProduct = functions.https.onRequest(async (request, response) => {
+  console.log(request.params);
+  // const product = await getProduct()
+  return response.send({ res: "ok" });
+});
+
+exports.testShopifyAdminApi = functions.https.onRequest(
+  async (request, response) => {
+    try {
+      // Discount100P-{productId}
+      // Discount10P-{productId}
+      // const priceRule = await createPriceRule(
+      //   `Discount8224569655529`,
+      //   "-100.0",
+      //   8224569655529
+      // );
+      // console.log("===== priceRule: ", priceRule);
+      // return response.send({ priceRule });
+
+      // const priceRules = await getPriceRules();
+      // console.log("===== priceRules: ", priceRules);
+      // return response.send({ priceRules });
+
+      const discountCode = await createDiscountCode(1298838520041);
+      return response.send({ discountCode });
+    } catch (err) {
+      console.log("===== err: ", err);
+    }
+    return response.send({ success: false });
   }
-  return response.send({ success: false });
-});
-
-exports.getProducts = functions.https.onCall(async (data, context) => {
-  if (!context.auth)
-    return { status: "error", code: 401, message: "Not signed in" };
-
-  return {
-    success: true,
-    products: [],
-  };
-});
+);

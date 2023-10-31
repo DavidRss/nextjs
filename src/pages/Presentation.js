@@ -36,9 +36,10 @@ const Presentation = () => {
   } = useApp();
 
   const donationForm = useRef(null);
+  const timer = useRef(null);
 
   const [productList, setProductList] = useState([]);
-  const [counter, setCounter] = React.useState(0);
+  const [counter, setCounter] = useState(0);
   const [price, changePrice] = useState(0);
   const [errorPrice, setErrorPrice] = useState(false);
 
@@ -59,7 +60,18 @@ const Presentation = () => {
   }, [loadedProject, project]);
 
   useEffect(() => {
-    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+    if (counter > 0) {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+      timer.current = setTimeout(() => setCounter(counter - 1), 1000);
+    }
+
+    return () => {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+    };
   }, [counter]);
 
   const handleClickProduct = async (productId) => {

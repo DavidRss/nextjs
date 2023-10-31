@@ -16,6 +16,39 @@ export const EARN = {
   REFER: 400,
 };
 
+export const Levels = {
+  L1: {
+    level: 1,
+    title: "Basic",
+    spend: 0,
+    points: 0,
+  },
+  L2: {
+    level: 2,
+    title: "Bronze",
+    spend: 1500,
+    points: 400,
+  },
+  L3: {
+    level: 3,
+    title: "Silver",
+    spend: 3500,
+    points: 700,
+  },
+  L4: {
+    level: 4,
+    title: "Gold",
+    spend: 7500,
+    points: 400,
+  },
+  L5: {
+    level: 5,
+    title: "Platinum",
+    spend: 10000,
+    points: 1000,
+  },
+};
+
 export const INIT_USER = {
   id: "",
   email: "",
@@ -24,7 +57,6 @@ export const INIT_USER = {
   lastName: "",
   avatar: "",
   points: EARN.FAMILY,
-  donations: [],
   referralCode: "",
   referrer: "",
   referrals: [],

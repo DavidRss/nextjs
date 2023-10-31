@@ -6,5 +6,7 @@ admin.initializeApp();
 const shopify = require("./shopify");
 
 exports.handleShopifyCheckoutSuccess = shopify.handleShopifyCheckoutSuccess;
-exports.addWebhook = shopify.addWebhook;
+exports.checkRewards = shopify.checkRewards;
 exports.getProducts = shopify.getProducts;
+exports.getProduct = shopify.getProduct;
+exports.testShopifyAdminApi = shopify.testShopifyAdminApi;

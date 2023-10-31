@@ -3,55 +3,49 @@ import Page from "../../layouts/Page/Page";
 import Container from "../../layouts/Container/Container";
 import Aside from "../../components/aside/Aside";
 import BackBtn from "../../components/buttons/backBtn/BackBtn";
-import { lotteryData } from "../../stores/lotteryData";
 import refGift from "../../assets/Gift-points.svg";
 import { scrollToElement } from "../../utils/ActionUtils";
+import { useApp } from "../../services/AppContext";
+import { getFormatedDateFromSeconds } from "../../utils/utils";
 
 function Lottery() {
+  const { loadedProject, project } = useApp();
+
   const donationForm = useRef(null);
+  const timer = useRef(null);
 
-  const [lotteryCard, setLotteryCards] = useState([]);
+  const [counter, setCounter] = useState(0);
+  const [endDate, setEndDate] = useState(null);
 
-  useEffect(() => {
-    lotteryData ? setLotteryCards(lotteryData) : setLotteryCards([]);
-  }, []);
-
-  const [days, setDays] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
-
-  const targetDate = useMemo(() => new Date("2023-09-30"), []);
+  const [rewards, setRewards] = useState([]);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      const currentDate = new Date();
-      const timeDifference = targetDate - currentDate;
+    if (loadedProject && project) {
+      const endSeconds = project.lotteryDate.seconds;
+      const curSeconds = parseInt(new Date().getTime() / 1000);
+      if (endSeconds && endSeconds - curSeconds > 0) {
+        setCounter(endSeconds - curSeconds);
+      }
+    }
+  }, [loadedProject, project]);
 
-      if (timeDifference <= 0) {
-        clearInterval(intervalId);
-        return;
+  useEffect(() => {
+    if (counter > 0) {
+      if (timer.current) {
+        clearTimeout(timer.current);
       }
 
-      const dayCount = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-      const hourCount = Math.floor(
-        (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minuteCount = Math.floor(
-        (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
-      );
-      const secondCount = Math.floor((timeDifference % (1000 * 60)) / 1000);
+      timer.current = setTimeout(() => setCounter(counter - 1), 1000);
 
-      setDays(dayCount);
-      setHours(hourCount);
-      setMinutes(minuteCount);
-      setSeconds(secondCount);
-    }, 1000);
+      setEndDate(getFormatedDateFromSeconds(counter));
+    }
 
     return () => {
-      clearInterval(intervalId);
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
     };
-  }, [targetDate]);
+  }, [counter]);
 
   const handleOnParticipate = () => {
     scrollToElement(donationForm.current);
@@ -84,25 +78,25 @@ function Lottery() {
                         <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
                           <div className="flex flex-col text-gray-900">
                             <span className="countdown font-mono text-5xl">
-                              {days}
+                              {endDate ? endDate.days : "---"}
                             </span>
                             days
                           </div>
                           <div className="flex flex-col text-gray-900">
                             <span className="countdown font-mono text-5xl">
-                              {hours}
+                              {endDate ? endDate.hours : "---"}
                             </span>
                             hours
                           </div>
                           <div className="flex flex-col text-gray-900">
                             <span className="countdown font-mono text-5xl">
-                              {minutes}
+                              {endDate ? endDate.minutes : "---"}
                             </span>
                             min
                           </div>
                           <div className="flex flex-col text-gray-900">
                             <span className="countdown font-mono text-5xl">
-                              {seconds}
+                              {endDate ? endDate.seconds : "---"}
                             </span>
                             sec
                           </div>
@@ -124,7 +118,7 @@ function Lottery() {
                       </div>
                     </div>
                     <div className="grid px-5 sm:px-0 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 justify-items-start sm:justify-items-center xl:justify-items-start gap-6 w-full">
-                      {lotteryCard.map((card, index) => (
+                      {rewards.map((card, index) => (
                         <div
                           key={index}
                           className={`flex flex-col items-start w-full gap-2 ${

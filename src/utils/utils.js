@@ -22,6 +22,24 @@ export const getFormatTimeRemaining = (seconds) => {
   return `${ss} seconds`;
 };
 
+export const getFormatedDateFromSeconds = (seconds) => {
+  const ss = Math.floor(seconds % 60);
+  const mm = Math.floor((seconds / 60) % 60);
+  const hh = Math.floor((seconds / (60 * 60)) % 24);
+  const dd = Math.floor(seconds / (60 * 60 * 24));
+
+  const s_ss = ss < 10 ? `0${ss}` : ss;
+  const s_mm = mm < 10 ? `0${mm}` : mm;
+  const s_hh = hh < 10 ? `0${hh}` : hh;
+
+  return {
+    days: dd,
+    hours: s_hh,
+    minutes: s_mm,
+    seconds: s_ss,
+  };
+};
+
 export const getTimeRemaining = (endtime) => {
   const total = Date.parse(endtime) - Date.parse(new Date());
   const seconds = Math.floor((total / 1000) % 60);

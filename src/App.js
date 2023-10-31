@@ -7,7 +7,7 @@ import SignUp from "./pages/SignUp";
 import Leaderboard from "./pages/Leaderboard";
 import Chat from "./pages/Chat";
 import Reward from "./pages/Reward";
-import Levels from "./pages/RewardsPages/Levels";
+import LevelsView from "./pages/RewardsPages/LevelsView";
 import Referals from "./pages/RewardsPages/Referals";
 import Earn from "./pages/RewardsPages/Earn";
 import Lottery from "./pages/RewardsPages/Lottery";
@@ -58,7 +58,7 @@ function App() {
             path="/reward/levels"
             element={
               <AuthRoute>
-                <Levels />
+                <LevelsView />
               </AuthRoute>
             }
           />

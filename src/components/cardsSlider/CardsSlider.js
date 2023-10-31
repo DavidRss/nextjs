@@ -43,6 +43,8 @@ function CardsSlider() {
 
     const product = productList.find((item) => item.id === productId);
     console.log("===== handleClickProduct: ", product);
+
+    return;
     try {
       setLoading(true);
 
