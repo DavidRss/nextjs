@@ -1,6 +1,6 @@
 const functions = require("firebase-functions");
 const { onSchedule } = require("firebase-functions/v2/scheduler");
-const { logger } = require("firebase-functions");
+// const { logger } = require("firebase-functions");
 
 const { Order, EARN, PROJECT_ID } = require("../constants");
 const {
@@ -96,7 +96,7 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
           bonusPoints = bonusPoints + spendingBonusPoints;
         }
 
-        let updateParams = {
+        const updateParams = {
           orders,
           spending,
         };
@@ -221,10 +221,12 @@ exports.checkRewards = onSchedule("every day 00:00", async (event) => {
   return response.send({ success: false });
 });
 
-exports.getProducts = functions.https.onRequest(async (request, response) => {
-  const products = await getProducts();
-  return response.send({ products });
-});
+exports.getProductList = functions.https.onRequest(
+  async (request, response) => {
+    const products = await getProducts();
+    return response.send({ products });
+  }
+);
 
 exports.getProduct = functions.https.onRequest(async (request, response) => {
   console.log(request.query);

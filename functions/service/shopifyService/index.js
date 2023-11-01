@@ -3,6 +3,7 @@ const voucher_codes = require("voucher-code-generator");
 const { API } = require("../../constants");
 
 const API_ACCESS_TOKEN = process.env.API_ACCESS_TOKEN;
+console.log("===== API_ACCESS_TOKEN: ", API_ACCESS_TOKEN);
 
 const headers = {
   "X-Shopify-Access-Token": API_ACCESS_TOKEN,
@@ -50,6 +51,7 @@ exports.getProducts = async function () {
   try {
     const url = apiUrl(API.path.product);
     const options = getOptions("GET");
+    console.log("===== options: ", options);
     const res = await got(url, options);
     if (res.body) {
       return res.body.products;

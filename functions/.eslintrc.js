@@ -17,7 +17,10 @@ module.exports = {
     "indent": "off",
     "object-curly-spacing": ["error", "always"],
     "curly": "off",
-    "comma-dangle": "off"
+    "comma-dangle": "off",
+    "space-before-function-paren": "off",
+    "camelcase": "off",
+    "no-undef": "off"
   },
   overrides: [
     {

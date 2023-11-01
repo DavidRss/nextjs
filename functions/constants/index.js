@@ -1,6 +1,6 @@
 const API = {
-  // baseUrl: "https://d4b6bc-2.myshopify.com/admin/api",
-  baseUrl: "https://coflow-test.myshopify.com/admin/api",
+  baseUrl: "https://d4b6bc-2.myshopify.com/admin/api",
+  // baseUrl: "https://coflow-test.myshopify.com/admin/api",
   version: "2023-10",
   path: {
     product: "products",

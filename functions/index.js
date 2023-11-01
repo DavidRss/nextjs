@@ -7,7 +7,7 @@ const shopify = require("./shopify");
 
 exports.handleShopifyCheckoutSuccess = shopify.handleShopifyCheckoutSuccess;
 exports.checkRewards = shopify.checkRewards;
-exports.getProducts = shopify.getProducts;
+exports.getProductList = shopify.getProductList;
 exports.getProduct = shopify.getProduct;
 exports.createCheckout = shopify.createCheckout;
 exports.getCheckout = shopify.getCheckout;
