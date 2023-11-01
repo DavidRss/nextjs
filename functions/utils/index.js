@@ -19,11 +19,28 @@ exports.checkLevelUpPoints = function (prevSpending, spending) {
   const nextLevel = getLevelFromSpending(spending);
 
   let points = 0;
-  if(currentLevel < nextLevel) {
-    for(let level = currentLevel + 1; level <= nextLevel; level++) {
+  if (currentLevel < nextLevel) {
+    for (let level = currentLevel + 1; level <= nextLevel; level++) {
       points = points + Levels[`L${level}`].points;
     }
   }
 
   return points;
+};
+
+exports.getPriceRuleTitle = function (value, productId) {
+  value = -parseInt(value);
+  return `Discount_${value}P_${productId}`;
+};
+
+exports.isAvailableProduct = function (product) {
+  if (product.product_type === "Donation") return false;
+
+  const variants = product.variants;
+  let quantity = 0;
+  for (const item of variants) {
+    quantity = quantity + item.inventory_quantity + item.old_inventory_quantity;
+  }
+
+  return quantity !== 0;
 };

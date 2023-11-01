@@ -93,10 +93,11 @@ export function AppProvider({ children }) {
       const res = await shopifyService.getProductList();
       let productList = [];
       for (const item of res) {
-        if (item.productType === "") {
-          productList.push(item);
-        } else if (item.productType === "Donation") {
+        if (item.productType === "Donation") {
           setDonationProduct(item);
+        }
+        else {
+          productList.push(item);
         }
       }
       setProducts(productList);

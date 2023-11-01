@@ -37,6 +37,19 @@ class ShopifyService {
     });
   }
 
+  getCheckout(checkoutId) {
+    return new Promise((resolve, reject) => {
+      client.checkout
+        .get(checkoutId)
+        .then((checkout) => {
+          resolve(checkout);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
   updateEmail(checkoutId, email) {
     return new Promise((resolve, reject) => {
       client.checkout

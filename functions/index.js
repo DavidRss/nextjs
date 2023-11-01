@@ -9,4 +9,6 @@ exports.handleShopifyCheckoutSuccess = shopify.handleShopifyCheckoutSuccess;
 exports.checkRewards = shopify.checkRewards;
 exports.getProducts = shopify.getProducts;
 exports.getProduct = shopify.getProduct;
-exports.testShopifyAdminApi = shopify.testShopifyAdminApi;
+exports.createCheckout = shopify.createCheckout;
+exports.getCheckout = shopify.getCheckout;
+exports.testRewards = shopify.testRewards;

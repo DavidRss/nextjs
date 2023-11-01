@@ -8,6 +8,7 @@ import { firebaseConfig } from "../constants/config";
 import AuthService from "./firebase/AuthService";
 import UserService from "./firebase/UserService";
 import ProjectService from "./firebase/ProjectService";
+import CheckoutService from "./firebase/CheckoutService";
 
 export const FBCollections = {
   USERS: "users",
@@ -31,5 +32,13 @@ if (process.env.REACT_APP_IS_LOCAL_MODE === "true") {
 const authService = new AuthService(auth, googleProvider);
 const userService = new UserService(firestore);
 const projectService = new ProjectService(database, firestore);
+const checkoutService = new CheckoutService(functions);
 
-export { database, firestore, authService, userService, projectService };
+export {
+  database,
+  firestore,
+  authService,
+  userService,
+  projectService,
+  checkoutService,
+};

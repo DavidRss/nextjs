@@ -164,6 +164,10 @@ export const removeLineItemsFromCheckout = async (checkout) => {
       return checkout;
     }
   } catch (err) {
-    console.log("==== removeLineItemsFromCheckout error: ", err);
+    console.log("===== removeLineItemsFromCheckout error: ", err);
+    if (err.message.includes("Checkout is already completed")) {
+      const checkoutInfo = await shopifyService.createCheckout();
+      return checkoutInfo;
+    }
   }
 };

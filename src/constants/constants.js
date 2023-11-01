@@ -73,6 +73,7 @@ export const INIT_USER = {
   visited: 0,
   orders: [],
   spending: 0,
+  rewards: []
 };
 
 export const STORAE_KEY = {

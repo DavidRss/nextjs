@@ -92,6 +92,11 @@ const Presentation = () => {
         checkoutInfo = await shopifyService.createCheckout();
       }
 
+      checkoutInfo = await shopifyService.updateEmail(
+        checkoutInfo.id,
+        currentUser.email
+      );
+
       const inputValue = getCheckoutCustomAttributes(
         currentUser,
         Order.Types.PRODUCT

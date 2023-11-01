@@ -31,11 +31,13 @@ export interface User {
     }
   ],
   spending: number;
-  notifications: [
-    {
-      
-    }
-  ]
+  rewards: [{
+    productId: string;
+    discountCode: string;
+    used: boolean;
+    viewed: boolean;
+    createdAt: string; // timestamp string
+  }]
 }
 
 export interface Project {
@@ -72,6 +74,7 @@ export interface Comment {
 export interface Rewards {
   id: string;
   userId: string;
-  discount: string;
+  productId: string;
+  discountCode: string;
   createdAt: string;
 }

@@ -158,6 +158,7 @@ function SignUp() {
 
       const userInfo = INIT_USER;
       userInfo.id = uid;
+      userInfo.email = email;
       userInfo.username = username;
       userInfo.referralCode = generateReferralCode();
       userInfo.points = userInfo.points + getDailyPoints(userInfo.visited);

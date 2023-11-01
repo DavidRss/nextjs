@@ -48,12 +48,10 @@ const generateCouponCode = () => {
 
 exports.getProducts = async function () {
   try {
-    const url = apiUrl(API.path.products);
+    const url = apiUrl(API.path.product);
     const options = getOptions("GET");
-    console.log("===== options: ", options);
     const res = await got(url, options);
     if (res.body) {
-      console.log("===== res.body: ", res.body.products);
       return res.body.products;
     }
   } catch (err) {
@@ -65,7 +63,7 @@ exports.getProducts = async function () {
 
 exports.getProduct = async function (productId) {
   try {
-    const url = apiUrlWithId(API.path.products, productId);
+    const url = apiUrlWithId(API.path.product, productId);
     const options = getOptions("GET");
     const res = await got(url, options);
     if (res.body) {
@@ -74,6 +72,39 @@ exports.getProduct = async function (productId) {
   } catch (err) {
     console.log("===== getProduct error: ", err);
   }
+  return null;
+};
+
+exports.createCheckout = async function (params) {
+  try {
+    const url = apiUrl(API.path.checkout);
+    const options = getOptions("POST", params);
+    const res = await got(url, options);
+    if (res.body) {
+      return res.body.checkout;
+    }
+  } catch (err) {
+    console.log("===== createCheckout: ", err);
+  }
+
+  return null;
+};
+
+exports.getCheckout = async function (token) {
+  try {
+    console.log("===== token: ", token);
+    const url = apiUrlWithId(API.path.checkout, token);
+    const options = getOptions("GET");
+    console.log("===== url: ", url);
+    console.log("===== options: ", options);
+    const res = await got(url, options);
+    if (res.body) {
+      return res.body.checkout;
+    }
+  } catch (err) {
+    console.log("===== getCheckout error: ", err);
+  }
+
   return null;
 };
 
@@ -130,6 +161,9 @@ exports.getPriceRule = async function (priceRuleId) {
     const options = getOptions("GET");
 
     const res = await got(url, options);
+    if (res.body) {
+      return res.body.price_rule;
+    }
   } catch (err) {
     console.log("===== getPriceRule error: ", err);
   }
@@ -155,12 +189,10 @@ exports.createDiscountCode = async function (priceRuleId) {
     };
 
     const options = getOptions("POST", params);
-    console.log("===== options: ", options);
 
     const res = await got(url, options);
 
     if (res.body) {
-      console.log("===== res.body: ", res.body);
       return res.body.discount_code;
     }
   } catch (err) {

@@ -3,17 +3,21 @@ const API = {
   baseUrl: "https://coflow-test.myshopify.com/admin/api",
   version: "2023-10",
   path: {
-    products: "products",
+    product: "products",
+    checkout: "checkouts",
     priceRule: "price_rules",
-    discountCode: "discount_codes"
+    discountCode: "discount_codes",
   },
 };
+
+const PROJECT_ID = "wGJO9iMDd6cQdtjw2D8s";
 
 const FBCollections = {
   USERS: "users",
   PROJECTS: "projects",
   PARTICIPANTS: "participants",
   COMMENTS: "comments",
+  REWARDS: "rewards",
 };
 
 const EARN = {
@@ -71,10 +75,15 @@ const Order = {
     PRODUCT: "product",
     DONATION: "donation",
   },
+  Discount: {
+    P10: "-10.0",
+    P100: "-100.0",
+  },
 };
 
 module.exports = {
   API,
+  PROJECT_ID,
   FBCollections,
   EARN,
   Levels,
