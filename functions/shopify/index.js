@@ -2,7 +2,7 @@ const functions = require("firebase-functions");
 const { onSchedule } = require("firebase-functions/v2/scheduler");
 // const { logger } = require("firebase-functions");
 
-const { Order, EARN, PROJECT_ID } = require("../constants");
+const { Order, EARN, PROJECT_ID, Notification } = require("../constants");
 const {
   checkLevelUpPoints,
   isAvailableProduct,
@@ -24,13 +24,15 @@ const {
   getProject,
   getUsers,
   addRewardsIntoProject,
+  participateUser,
+  updateProject,
 } = require("../service/firebaseService");
 
 exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
   async (request, response) => {
     const params = request.body;
     if (params) {
-      console.log("===== params: ", params);
+      // console.log("===== params: ", params);
       let userId = "";
       let userEmail = "";
       let orderType = "";
@@ -41,6 +43,7 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
       const orderNumber = params.order_number;
       const totalPrice = parseFloat(params.total_price);
       const note = params.note_attributes;
+      const orderCreatedAt = params.created_at;
       if (note) {
         for (const item of note) {
           if (item.name === Order.Keys.USER_ID) {
@@ -58,7 +61,7 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
       }
 
       if (userId && financialStatus === "paid") {
-        const params = {
+        const orderInfo = {
           userId: userId,
           userEmail: userEmail,
           email,
@@ -67,26 +70,30 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
           orderNumber,
           totalPrice,
         };
-        console.log("===== orderInfo: ", params);
+        console.log("===== orderInfo: ", orderInfo);
 
-        const user = getUserById(userId);
+        const user = await getUserById(userId);
 
         const orders = user.orders || [];
 
         let prevSpending = parseFloat(user.spending) || 0;
         let donationCount = 0;
+        let donations = 0;
         for (const item of orders) {
           prevSpending = prevSpending + item.totalPrice;
           if (item.type === Order.Types.DONATION) {
+            donations = donations + item.totalPrice;
             donationCount++;
           }
         }
 
+        console.log("===== orders: ", orders);
         orders.push({
           orderId,
           orderNumber,
           totalPrice,
           type: orderType,
+          createdAt: orderCreatedAt,
         });
         const spending = prevSpending + totalPrice;
 
@@ -101,8 +108,13 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
           spending,
         };
 
+        const createdAt = Date.now();
+        let notifications = user.notifications || [];
+        console.log("===== orderType: ", orderType);
+        console.log("===== user: ", user);
         if (orderType === Order.Types.DONATION) {
           const earned = user.earned;
+          donations = donations + totalPrice;
           if (donationCount === 0) {
             bonusPoints = bonusPoints + EARN.DONATION1;
             earned.donation1 = true;
@@ -112,36 +124,82 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
             earned.donation2 = true;
             updateParams["earned"] = earned;
           }
-        } else if (orderType === Order.Types.PRODUCT && user.referrer) {
-          const referUser = await getUserByReferralCode(user.referrer);
+          await participateUser(
+            PROJECT_ID,
+            user,
+            donations,
+            user.points + bonusPoints
+          );
 
-          const priceRuleTitle = getPriceRuleTitle(
-            Order.Discount.P10,
-            productId
-          );
-          const priceRule = await createPriceRule(
-            priceRuleTitle,
-            Order.Discount.P10,
-            productId
-          );
-          const discount = await createDiscountCode(priceRule.id);
-          const reward = {
+          const project = await getProject(PROJECT_ID);
+          projectAmount = project.amount + totalPrice;
+          await updateProject(PROJECT_ID, { amount: projectAmount });
+
+          notifications.unshift({
             productId,
-            discountCode: discount.code,
-            used: false,
             viewed: false,
-            craetedAt: new Date(),
-          };
-          const rewards = referUser.rewards || [];
-          rewards.push(reward);
-          updateUser(referUser.id, { rewards });
+            message: `Your donation was succeed.`,
+            type: Notification.Type.ORDER,
+            createdAt,
+          });
+        } else if (orderType === Order.Types.PRODUCT) {
+          notifications.unshift({
+            productId,
+            viewed: false,
+            message: `Your purchase was succeed.`,
+            type: Notification.Type.ORDER,
+            createdAt,
+          });
+
+          if (user.referrer) {
+            const referUser = await getUserByReferralCode(user.referrer);
+
+            const priceRuleTitle = getPriceRuleTitle(
+              Order.Discount.P10,
+              productId
+            );
+            const priceRule = await createPriceRule(
+              priceRuleTitle,
+              Order.Discount.P10,
+              productId
+            );
+            const discount = await createDiscountCode(priceRule.id);
+            const reward = {
+              productId,
+              discountCode: discount.code,
+              used: false,
+              viewed: false,
+              createdAt,
+            };
+            const rewards = referUser.rewards || [];
+            rewards.push(reward);
+
+            const referUserNotifications = referUser.notifications || [];
+            referUserNotifications.unshift({
+              productId,
+              discountCode: discount.code,
+              viewed: false,
+              message: `You got 10% coupon from ${user.username}.`,
+              type: Notification.Type.REWARD,
+              createdAt,
+            });
+
+            const resUpdateReferUser = await updateUser(referUser.id, {
+              rewards,
+              notifications: referUserNotifications,
+            });
+            console.log("===== resUpdateReferUser: ", resUpdateReferUser);
+          }
         }
 
         if (bonusPoints > 0) {
           updateParams["points"] = user.points + bonusPoints;
         }
 
-        await updateUser(userId, updateParams);
+        updateParams["notifications"] = notifications;
+
+        const resUpdateUse = await updateUser(userId, updateParams);
+        console.log("===== resUpdateUser: ", resUpdateUse);
       }
     }
 
@@ -184,6 +242,7 @@ exports.checkRewards = onSchedule("every day 00:00", async (event) => {
         );
 
         if (typeof selPriceRule === "undefined") {
+          console.log("===== create price rule =====");
           selPriceRule = await createPriceRule(
             priceRuleTitle,
             Order.Discount.P100,
@@ -191,28 +250,40 @@ exports.checkRewards = onSchedule("every day 00:00", async (event) => {
           );
         }
 
+        console.log("===== selPriceRule: ", selPriceRule);
         if (selPriceRule) {
           const discount = await createDiscountCode(selPriceRule.id);
           const userRewards = selUser.rewards || [];
+          const createdAt = Date.now();
           userRewards.push({
             productId: selProduct.id,
             discountCode: discount.code,
             used: false,
             viewed: false,
-            craetedAt: new Date(),
+            createdAt,
           });
-          await updateUser(selUser.id, { rewards: userRewards });
+
+          const notifications = selUser.notifications || [];
+          notifications.unshift({
+            productId: selProduct.id,
+            discountCode: discount.code,
+            viewed: false,
+            message: `Congratulations!\nYou recieved the product: ${selProduct.title}`,
+            type: Notification.Type.REWARD,
+            createdAt,
+          });
+
+          await updateUser(selUser.id, { rewards: userRewards, notifications });
 
           const projectReward = {
             userId: selUser.id,
             productId: selProduct.id,
             discountCode: discount.code,
-            craetedAt: new Date(),
+            createdAt,
           };
           await addRewardsIntoProject(project.id, projectReward);
         }
       }
-
       return response.send({ success: true });
     }
   } catch (err) {
@@ -322,20 +393,32 @@ exports.testRewards = functions.https.onRequest(async (request, response) => {
       if (selPriceRule) {
         const discount = await createDiscountCode(selPriceRule.id);
         const userRewards = selUser.rewards || [];
+        const createdAt = Date.now();
         userRewards.push({
           productId: selProduct.id,
           discountCode: discount.code,
           used: false,
           viewed: false,
-          craetedAt: new Date(),
+          createdAt,
         });
-        await updateUser(selUser.id, { rewards: userRewards });
+
+        const notifications = selUser.notifications || [];
+        notifications.unshift({
+          productId: selProduct.id,
+          discountCode: discount.code,
+          viewed: false,
+          message: `Congratulations!\nYou recieved the product: ${selProduct.title}`,
+          type: Notification.Type.REWARD,
+          createdAt,
+        });
+
+        await updateUser(selUser.id, { rewards: userRewards, notifications });
 
         const projectReward = {
           userId: selUser.id,
           productId: selProduct.id,
           discountCode: discount.code,
-          craetedAt: new Date(),
+          createdAt,
         };
         await addRewardsIntoProject(project.id, projectReward);
       }

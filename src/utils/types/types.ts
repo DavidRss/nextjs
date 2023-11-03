@@ -27,7 +27,8 @@ export interface User {
       orderId: string;
       orderNumber: string;
       totalPrice: number;
-      type: "product" | "donation"
+      type: "product" | "donation",
+      createdAt: string;
     }
   ],
   spending: number;
@@ -36,6 +37,14 @@ export interface User {
     discountCode: string;
     used: boolean;
     viewed: boolean;
+    createdAt: string; // timestamp string
+  }]
+  notifications: [{
+    productId: string;
+    discountCode: string;
+    viewed: boolean;
+    message: string;
+    type: string; // reward, order
     createdAt: string; // timestamp string
   }]
 }

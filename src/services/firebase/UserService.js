@@ -21,6 +21,7 @@ export default class UserService {
   };
 
   saveUser = (userId, params) => {
+    console.log("===== saveUser =====");
     const $this = this;
     return new Promise((resolve, reject) => {
       setDoc(doc($this.firestore, FBCollections.USERS, userId), params)
@@ -35,10 +36,12 @@ export default class UserService {
   };
 
   updateUser = (userId, params) => {
+    console.log("===== updateUser =====");
     return updateDoc(doc(this.firestore, FBCollections.USERS, userId), params);
   };
 
   updateReferrals = (referralCode, userId) => {
+    console.log("===== updateReferrals =====");
     const $this = this;
     return new Promise(async (resolve, reject) => {
       try {

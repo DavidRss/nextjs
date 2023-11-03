@@ -20,8 +20,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "dev": "env-cmd -f .env.dev react-scripts start",
+    "start": "env-cmd -f .env.prod react-scripts start",
+    "build": "env-cmd -f .env.prod react-scripts build",
     "deploy:hosting": "npm run build && firebase deploy --only hosting",
     "deploy:functions": "firebase deploy --only functions",
     "test": "react-scripts test",

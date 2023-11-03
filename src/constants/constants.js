@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
 export const PROJECT_ID = "wGJO9iMDd6cQdtjw2D8s";
-export const DEFAULT_USER_COUNTRY = "French";
+export const DEFAULT_USER_COUNTRY = "Frence";
 export const DEFAULT_DONATION = 100;
 
 export const EARN = {
@@ -73,7 +73,8 @@ export const INIT_USER = {
   visited: 0,
   orders: [],
   spending: 0,
-  rewards: []
+  rewards: [],
+  notifications: []
 };
 
 export const STORAE_KEY = {
@@ -107,5 +108,12 @@ export const Order = {
   Types: {
     PRODUCT: "product",
     DONATION: "donation",
+  },
+};
+
+export const Notification = {
+  Type: {
+    ORDER: "order",
+    REWARD: "reward",
   },
 };

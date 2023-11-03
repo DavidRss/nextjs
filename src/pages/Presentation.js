@@ -17,7 +17,7 @@ import {
 } from "../utils/utils";
 import { scrollToElement } from "../utils/ActionUtils";
 import { shopifyService } from "../services/ShopifyService";
-import { Notify, Order, Path, Route } from "../constants/constants";
+import { Notify, Order, Path } from "../constants/constants";
 import { useNavigate } from "react-router-dom";
 
 const Presentation = () => {
@@ -28,6 +28,7 @@ const Presentation = () => {
     setLoading,
     loadedProject,
     project,
+    numberOfParticipant,
     showNotifyMessage,
     products,
     donationProduct,
@@ -45,6 +46,7 @@ const Presentation = () => {
 
   useEffect(() => {
     if (products.length > 0) {
+      console.log("===== products: ", products);
       setProductList(products.slice(0, 3));
     }
   }, [products]);
@@ -176,15 +178,23 @@ const Presentation = () => {
     }
 
     const cPrice = Math.ceil(price);
+    console.log("===== variants: ", variants);
     console.log("===== cPrice: ", cPrice);
     let selVariant = null;
     for (const item of variants) {
-      if (item.price.amount == cPrice) {
+      if (parseInt(item.price.amount) === cPrice) {
         selVariant = item;
         break;
       }
     }
     console.log("===== selVariant: ", selVariant);
+    if(!selVariant) {
+      showNotifyMessage({
+        type: Notify.Type.INFO,
+        message: "You can't donate at this time. Please try later.",
+      });
+      return
+    }
 
     setLoading(true);
 
@@ -195,6 +205,11 @@ const Presentation = () => {
       } else {
         checkoutInfo = await shopifyService.createCheckout();
       }
+
+      checkoutInfo = await shopifyService.updateEmail(
+        checkoutInfo.id,
+        currentUser.email
+      );
 
       const inputValue = getCheckoutCustomAttributes(
         currentUser,
@@ -257,7 +272,7 @@ const Presentation = () => {
                     Number of participant{" "}
                   </h3>
                   <span className="text-3xl font-extrabold text-gray-900">
-                    {nFormatter(project?.numberOfParticipant, 2)}{" "}
+                    {nFormatter(numberOfParticipant, 2)}{" "}
                   </span>
                   <span className="text-xs font-normal text-gray-400">
                     36% more than last month

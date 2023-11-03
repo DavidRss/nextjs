@@ -1,7 +1,6 @@
 const API = {
-  baseUrl: "https://d4b6bc-2.myshopify.com/admin/api",
-  // baseUrl: "https://coflow-test.myshopify.com/admin/api",
-  version: "2023-10",
+  baseUrl: process.env.API_URL,
+  version: process.env.API_VERSION,
   path: {
     product: "products",
     checkout: "checkouts",
@@ -81,6 +80,13 @@ const Order = {
   },
 };
 
+const Notification = {
+  Type: {
+    ORDER: "order",
+    REWARD: "reward",
+  },
+};
+
 module.exports = {
   API,
   PROJECT_ID,
@@ -88,4 +94,5 @@ module.exports = {
   EARN,
   Levels,
   Order,
+  Notification
 };

@@ -6,6 +6,7 @@ import avatarMain from "../../assets/avatarMain.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useApp } from "../../services/AppContext";
+import Notifications from "../Notifications/Notifications";
 
 export default function Header({ handleOnParticipate }) {
   const { logout } = useAuth();
@@ -53,9 +54,7 @@ export default function Header({ handleOnParticipate }) {
                     onChange={handleLogout}
                     defaultValue="username"
                   >
-                    <option value="username">
-                      {currentUser?.username}
-                    </option>
+                    <option value="username">{currentUser?.username}</option>
                     <option value="logout">Logout</option>
                   </select>
                   <span className="text-gray-500 font-medium text-xs">
@@ -66,6 +65,7 @@ export default function Header({ handleOnParticipate }) {
             </div>
           </div>
           <div className="navbar-end">
+            {currentUser && <Notifications />}
             <div className="hidden xl:flex gap-10 items-center">
               {currentUser && (
                 <div className="flex justify-center items-center">

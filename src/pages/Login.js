@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -27,7 +27,8 @@ import { useApp } from "../services/AppContext";
 function Login() {
   const navigate = useNavigate();
 
-  const { subscribeUser } = useApp();
+  const { currentUser } = useApp();
+
   const { login } = useAuth();
 
   const [loading, setLoading] = useState(false);
@@ -69,8 +70,6 @@ function Login() {
         await userService.updateUser(uid, userInfo);
 
         login(userInfo);
-
-        subscribeUser(uid);
       } else {
         const profile = userCredential._tokenResponse;
         const firstName = profile.firstName || profile.givenName;
@@ -92,8 +91,6 @@ function Login() {
         await userService.saveUser(uid, userInfo);
 
         login(userInfo);
-
-        subscribeUser(uid);
       }
 
       setLoading(false);
@@ -150,7 +147,7 @@ function Login() {
             await userService.updateUser(user.id, user);
 
             login(user);
-            subscribeUser(uid);
+
             navigate("/");
           } else {
             toast.error("The user doesn't exist.", {
@@ -162,12 +159,16 @@ function Login() {
         setLoading(false);
       })
       .catch((err) => {
-        console.log("===== register error code: ", err.code);
-        console.log("===== register error message: ", err.message);
+        console.log("===== login error code: ", err.code);
+        console.log("===== login error message: ", err.message);
         toast.error(Errors[err.code], Notify.Option);
         setLoading(false);
       });
   };
+
+  useEffect(() => {
+    console.log("===== loaded signin page: ", currentUser);
+  }, [currentUser]);
 
   return (
     <div className="bg-white w-full flex flex-col pb-32">

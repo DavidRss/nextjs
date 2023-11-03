@@ -51,6 +51,7 @@ exports.getUserByReferralCode = async function (referralCode) {
 };
 
 exports.updateUser = async function (userId, params) {
+  console.log("===== udpateUser: ", params);
   try {
     await firestore.collection(FBCollections.USERS).doc(userId).update(params);
     return true;
@@ -75,6 +76,16 @@ exports.getProject = async function (projectId) {
   }
 };
 
+exports.updateProject = async function(projectId, params) {
+  try {
+    await firestore.collection(FBCollections.PROJECTS).doc(projectId).update(params);
+    return true;
+  } catch(err) {
+    console.log("===== updateProject error: ", err);
+  }
+  return false;
+}
+
 exports.addRewardsIntoProject = async function (projectId, rewards) {
   try {
     await firestore
@@ -86,6 +97,30 @@ exports.addRewardsIntoProject = async function (projectId, rewards) {
     return true;
   } catch (err) {
     console.log("===== updateProject error: ", err);
+  }
+
+  return false;
+};
+
+exports.participateUser = async function (projectId, user, donations, points) {
+  try {
+    const params = {
+      id: user.id,
+      username: user.username,
+      country: "Frence",
+      donations,
+      points,
+    };
+    await firestore
+      .collection(FBCollections.PROJECTS)
+      .doc(projectId)
+      .collection(FBCollections.PARTICIPANTS)
+      .doc(user.id)
+      .set(params);
+
+    return true;
+  } catch (err) {
+    console.log("===== participateUser error: ", err);
   }
 
   return false;

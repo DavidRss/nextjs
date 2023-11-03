@@ -105,6 +105,20 @@ class ShopifyService {
         });
     });
   }
+
+  addDiscount(checkoutId, discountCode) {
+    return new Promise((resolve, reject) => {
+      client.checkout
+        .addDiscount(checkoutId, discountCode)
+        .then((checkout) => {
+          resolve(checkout);
+        })
+        .catch((err) => {
+          console.log("===== addDiscount error: ", err);
+          reject(err);
+        });
+    });
+  }
 }
 
 export const shopifyService = new ShopifyService();

@@ -44,7 +44,6 @@ function CardsSlider() {
     const product = productList.find((item) => item.id === productId);
     console.log("===== handleClickProduct: ", product);
 
-    return;
     try {
       setLoading(true);
 
@@ -54,6 +53,11 @@ function CardsSlider() {
       } else {
         checkoutInfo = await shopifyService.createCheckout();
       }
+
+      checkoutInfo = await shopifyService.updateEmail(
+        checkoutInfo.id,
+        currentUser.email
+      );
 
       const inputValue = getCheckoutCustomAttributes(
         currentUser,

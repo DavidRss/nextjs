@@ -1,15 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import {
-  FBCollections,
-  firestore,
-  projectService,
-  userService,
-} from "./FirebaseService";
+import { projectService, userService } from "./FirebaseService";
 import { PROJECT_ID, STORAE_KEY } from "../constants/constants";
 import { shopifyService } from "./ShopifyService";
 import { getCurrentTimestamp, getDailyPoints } from "../utils/utils";
-import { doc, onSnapshot } from "firebase/firestore";
 
 export const AppContext = createContext();
 
@@ -28,14 +22,13 @@ export function AppProvider({ children }) {
   const [isShowLoginDialog, showLoginDialog] = useState(false);
 
   const [isParticipated, setIsParticipated] = useState(false);
+  const [numberOfParticipant, setNumberOfParticipant] = useState(0);
 
   const [loadingProducts, setLoadingProducts] = useState(false);
   const [products, setProducts] = useState([]);
   const [donationProduct, setDonationProduct] = useState(null);
 
   const [checkout, setCheckout] = useState(null);
-
-  const [unsubscribeUsser, setUnsubscribeUser] = useState(null);
 
   const saveUser = (user) => {
     setCurrentUser(user);
@@ -68,7 +61,9 @@ export function AppProvider({ children }) {
       console.log("===== loadUser error: ", err);
     }
 
-    setLoadingUser(false);
+    setTimeout(() => {
+      setLoadingUser(false);
+    }, 500);
   };
 
   const loadProject = () => {
@@ -77,6 +72,7 @@ export function AppProvider({ children }) {
       .then((docSnap) => {
         if (docSnap.exists()) {
           setProject(docSnap.data());
+          console.log("===== project: ", docSnap.data());
           setLoadedProject(true);
         } else {
           console.log("===== No such document =====");
@@ -87,6 +83,11 @@ export function AppProvider({ children }) {
       });
   };
 
+  const loadNumberOfParticipant = async () => {
+    const totalCnt = await projectService.getParticipantTotalCount(PROJECT_ID);
+    setNumberOfParticipant(totalCnt);
+  };
+
   const loadProducts = async () => {
     try {
       setLoadingProducts(true);
@@ -95,8 +96,7 @@ export function AppProvider({ children }) {
       for (const item of res) {
         if (item.productType === "Donation") {
           setDonationProduct(item);
-        }
-        else {
+        } else {
           productList.push(item);
         }
       }
@@ -108,51 +108,21 @@ export function AppProvider({ children }) {
     }
   };
 
-  const loadCheckout = () => {
-    const checkoutString = getItem(STORAE_KEY.CHECKOUT);
-    if (checkoutString) {
-      setCheckout(JSON.parse(checkoutString));
-    }
-  };
-
-  const subscribeUser = (userId) => {
-    console.log("===== subscribeUser: ", userId);
-    const unsubscribe = onSnapshot(
-      doc(firestore, FBCollections.USERS, userId),
-      (snapshot) => {
-        console.log("===== updated user =====");
-        const source = snapshot.metadata.hasPendingWrites ? "Local" : "Server";
-        console.log(source, " data: ", snapshot.data());
-      }
-    );
-    console.log("===== unsubscribe: ", unsubscribe);
-    setUnsubscribeUser(unsubscribe);
-  };
-
   useEffect(() => {
     const userString = getItem(STORAE_KEY.USER);
     if (userString) {
       const user = JSON.parse(userString);
 
       loadUser(user.id);
-
-      subscribeUser(user.id);
     } else {
       setLoadingUser(false);
     }
 
     loadProject();
 
+    loadNumberOfParticipant();
+
     loadProducts();
-
-    loadCheckout();
-
-    return () => {
-      if (unsubscribeUsser) {
-        console.log("===== unsubscribeUser =====");
-        unsubscribeUsser();
-      }
-    };
   }, []);
 
   return (
@@ -168,6 +138,7 @@ export function AppProvider({ children }) {
         project,
         notifyMessage,
         showNotifyMessage,
+        numberOfParticipant,
         isParticipated,
         isShowLoginDialog,
         showLoginDialog,
@@ -176,7 +147,6 @@ export function AppProvider({ children }) {
         donationProduct,
         checkout,
         saveCheckout,
-        subscribeUser,
       }}
     >
       {children}

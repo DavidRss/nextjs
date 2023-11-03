@@ -1,8 +1,7 @@
-import React from 'react';
+import React from "react";
 
 function Terms() {
-
-    const scrollbarStyles = `
+  const scrollbarStyles = `
     ::-webkit-scrollbar {
       width: 92px;
       height: 11px;
@@ -21,620 +20,245 @@ function Terms() {
     }
   `;
 
+  return (
+    <>
+      <style>{scrollbarStyles}</style>
+      <dialog id="termes" className="modal">
+        <div className="modal-box bg-white text-gray-900 w-full max-w-5xl">
+          <h3 className="font-bold text-lg">TIPEEE'S TERMS & CONDITIONS</h3>
+          <div>
+            <p>PRÉAMBULE</p>
+            <p>
+            La solution COFLOW consiste en une prestation technique de fourniture d’un hébergement et en la mise à disposition des fonctionnalités nécessaires à la mise en œuvre d’opérations de financement participatif. Elle s’adresse à ceux qui veulent créer « en deux clics » leur propre page de finance participative de dons et/ou de préachat, 
+La solution COFLOW a été développée nativement en marque blanche. La solution COFLOW s’adapte naturellement aux besoins et aux contraintes des clients : elle ne clone pas une solution existante.
+            </p>
+            <p>La solution COFLOW intègre une solution de paiement via un partenaire établissement de paiement/ ou via un établissement de monnaie électronique, dûment contrôlé par les autorités de surveillance bancaires.</p>
+            <p>La solution COFLOW est multidevises.</p>
+            <p>La solution COFLOW s’intègre facilement dans des sites existants.</p>
+            <p>La solution COFLOW met à disposition : des tableaux de bord de pilotage (suivis projets par projet, des suivis consolidés, des indicateurs de performance, Google Analytics), des envoi de mails automatisés, une aide en ligne + FAQ, la possibilité de gérer une lotterie à destination des participants.</p>
+            <p>La solution COFLOW est une solution facilement paramétrable.</p>
+            <p>La solution COFLOW permet de gérer plusieurs modèles économiques : campagnes « tout ou rien », campagnes « sans condition », campagnes avec ou sans contreparties, campagnes avec effets de seuils, typologies de commission multiples (commissions prélevées au lancement de projet, à chaque transaction, en cas de succès et suivant le niveau d’accompagnement des projets).</p>
+            <p>LES PRESENTES CONDITIONS GENERALES D’UTILISATION ONT POUR OBJET DE DEFINIR LES TERMES ET LES CONDITIONS D’ACCES ET D’UTILISATION DE LA PLATE FORME COFLOW ET DANS CE CADRE, DE DÉFINIR LE RÔLE ET LES OBLIGATIONS DE CHACUN.</p>
+            <p>EN LES ACCEPTANT l’UTILISATEUR DU SERVICE DE LA PLATE FORME COFLOW RECONNAIT EXPRESSEMENT AVOIR PRIS CONNAISSANCE ET ACCEPTÉES CELLES CI</p>
+            <br/>
 
-    return (
-        <>
-        <style>{scrollbarStyles}</style>
-        <dialog id="termes" className="modal">
-                <div className="modal-box bg-white text-gray-900 w-full max-w-5xl">
-                    <h3 className="font-bold text-lg">TIPEEE'S TERMS & CONDITIONS</h3>
-                        <div>
-                        <p>Last update: 04/01/2022</p>
-<h2 className="my-2 text-xl font-semibold">PREAMBLE</h2>
-<p>All terms and expressions beginning with a capital letter appearing below are defined in Article 1 of the
-Terms of Use (TOU).</p>
-<p>
-    The purpose of the Site is to provide a Service enabling Creators to benefit from financial support from their
-    community in the context of their creative activity.
-</p>
-<p>
-    The TOU govern all relations between Members and TIPEEE, a simplified joint-stock company (SAS)
-    registered with the Paris Trade and Companies Register under number 529 108 334, whose registered office
-    is located at 37 Bis Rue Général Leclerc – 92130 ISSY LES MOULINEAUX – France.
-</p>
-<p>
-    TIPEEE is registered as a crowdfunding intermediary with ORIAS under number 15000822. This information
-    can be verified with ORIAS, <a href="https://www.orias.fr/welcome">https://www.orias.fr/welcome</a> or 1, rue Jules Lefebvre 75311 PARIS Cedex 9.
-</p>
-<p>
-    TIPEEE can be contacted as follows:
-    </p><ul>
-        <li>
-            email address: <a href="mailto:support@tipeee.com">support@tipeee.com</a>,
-        </li>
-        <li>
-            telephone number: 01 40 13 16 15.
-        </li>
-    </ul>
-<p></p>
-<p>
-    All Tips made through the Site are handled by the Payment Service Providers indicated on the Site. The
-    Creators contract directly with the latter regarding the receipt of Tips, by accepting their general conditions,
-    through a checkbox on the Site.
-    <br />The Member expressly mandates TIPEEE to transmit to the Payment Service Provider(s) all their instructions
-    relating to Tips.
-    <br />If the Payment Service Providers refuse or terminate the Creator's subscription to their services, the Creator
-    may not use the Services as a Creator, but only as a Tipper. Conversely, the termination of the contractual
-    relationship between the Creator and TIPEEE leads to the termination of the contract between the Creator
-    and the Payment Service Provider(s).
-</p>
-<p>
-    The Member is also informed that TIPEEE may modify the TOU at any time. In this case, the Member will
-    be notified at least 1 week before the modified TOU come into force. If the Member uses the Services after
-    the entry into force of the modified TOU, the Member is considered to have accepted them.
-</p>
-<p>
-    Creators may only request the financing of Content on the Site if they have full legal capacity or, failing this,
-    if they are at least 16 years old and have obtained the agreement of their legal representative. Creators not
-    acting for professional purposes shall have the status of consumer, understood as any natural person who
-    acts for purposes that are not part of their professional activity.
-</p>
-<p>
-    Tippers can only make Tips if they have full legal capacity or, failing this, if they are at least 13 years old and
-    have obtained the agreement of their legal representative. Tippers are consumers, understood as any
-    natural person who acts for purposes that are not part of their professional activity. As an exception to the
-    foregoing, some Tippers may have the status of professional as defined above. Where applicable, the
-    provisions relating to consumers do not apply to them.
-</p>
-<p>
-    These TOU and the Privacy Policy constitute the entirety of the contractual documents enforceable
-    between TIPEEE and the Members.
-</p>
-<p>
-    They may be supplemented by special conditions which, in the event of contradiction, shall prevail over the
-    TOU.
-</p>
-<h2 className="my-2 text-xl font-semibold">1. DEFINITIONS</h2>
-<ul>
-    <li>
-        "<b>TOU</b>" means the General Terms of Use of the Service.
-    </li>
-    <li>
-        "<b>Commission</b>" means the standard commission of 8% including VAT, i.e. 6.66% excluding VAT, charged to
-        the Creator by TIPEEE in return for the Service provided. It is understood that TIPEEE is free to propose
-        promotional offers or reductions in its commission.
-    </li>
-    <li>
-        "<b>Account</b>" means the account opened by a Member on the Site.
-    </li>
-    <li>
-        "<b>Content</b>" means any creation (video, blog post, comic strip, photo, etc.) for which a Creator requests
-        financial support on their Tipeee Page.
-    </li>
-    <li>
-        "<b>Reward</b>" means the reward(s) that may be offered by the Creator to Tippers in exchange for their Tips.
-    </li>
-    <li>
-        "<b>Creator</b>" means a Member who creates at least one Tipeee Page.
-    </li>
-    <li>
-        "<b>Transaction Fee</b>" means the fee, including VAT, paid by the Tipper and added to the amount of their Tip
-        when it is deducted. The details and process for calculating Transaction Fees are available <a href="/about/fees"><i>here</i></a>.
-    </li>
-    <li>
-        "<b>Member</b>" means a natural or legal person registered on the Site and having an Account. The Member
-        can become a Tipper and/or a Creator.
-    </li>
-    <li>
-        "<b>Tipeee Page</b>" means the page(s) of the Site created by the Creator and enabling a Member to support
-        the Creator.
-    </li>
-    <li>
-        "<b>Payment Service Provider</b>" means the payment service providers indicated on the Site that enable the
-        implementation of Tips.
-    </li>
-    <li>
-        "<b>Project</b>" means a specific project presented by the Creator on their Tipeee Page and for which the Creator
-        needs financial support from the Tippers to be able to carry it out.
-    </li>
-    <li>
-        "<b>Publication</b>" means the activation by the Creator of the function integrated on their Tipeee Page allowing
-        them to initiate the process of collecting Tips relating to this Content.
-    </li>
-    <li>
-        "<b>Service</b>" means the service offered by TIPEEE whose purpose is to allow: intermediation between
-        Creators and Tippers via the Site, the collection of Tips through the Site in order to allow Creators to obtain
-        financial support, any additional service in connection with the services described above.
-    </li>
-    <li>
-        "<b>Site</b>" means the website <a href="http://www.tipeee.com">http://www.tipeee.com</a> or any URL that TIPEEE may replace it with, as well as
-        all the tools made available by TIPEEE (widgets, API, etc.).
-    </li>
-    <li>
-        "<b>Tip</b>" means an One-off Tip and/or a Regular Tip.
-    </li>
-    <li>
-        "<b>Tipper</b>" means a Member who has given a Tip to at least one Creator.
-    </li>
-    <li>
-        "<b>TIPEEE</b>" means the company TIPEEE.
-    </li>
-    <li>
-        "<b>One-off Tip</b>" means the monetary value excluding Transaction Fees that the Tipper undertakes to give to
-        the Creator on a one-off basis (only once), unless the said Creator has expressly activated on the Site the
-        option allowing them not to receive any.
-    </li>
-    <li>
-        "<b>Regular Tip</b>" means the monetary value excluding Transaction Fees that the Tipper undertakes to give
-        the Creator on a regular basis, if the Creator has opted for this form of support.
-    </li>
-</ul>
-<h2 className="my-2 text-xl font-semibold">2. ACCESSING THE SERVICE AND OPENING AN ACCOUNT</h2>
-<p>
-    The Member accesses the Service directly on the Site or through any third party site on which the Service
-    is integrated.
-</p>
-<p>
-    Registration gives access to an Account which is unique and exclusively accessible by using the Member's
-    identifiers. The Member is solely responsible for the use made of their identifiers, without being able to
-    invoke against TIPEEE any loss, misappropriation or fraudulent use by a third party. Any access and/or use
-    of the Site and transmission of data made from an Account shall be deemed to have been made by the
-    Member of the Account concerned.
-</p>
-<p>
-    However, the Member is required to inform TIPEEE without delay of any loss, misappropriation or
-    fraudulent use of their identifiers by a third party having allowed access to their Account, indicating their
-    surname, first name and user name by email to <a href="mailto:support@tipeee.com">support@tipeee.com</a> or by post to the address of the
-    registered office indicated above.
-    <br />If the Member wishes to close their Account, they must comply with the procedure provided for this
-    purpose on the Site.
-</p>
-<p>
-    When using the authentication of a third-party service, the Member acknowledges having read the terms
-    of use and/or service of the third party service.
-</p>
-<h2 className="my-2 text-xl font-semibold">3. TERMS OF USE OF THE SITE AS A MEMBER</h2>
-<p>
-    The Member undertakes not to create or use a false identity of such a nature as to mislead TIPEEE or any
-    third party and not to usurp the identity of another legal or physical person.
-</p>
-<p>
-    In order to ensure compliance with the provisions of the TOU, TIPEEE reserves the right to ask the Member
-    to prove their identity by any means. In the absence of proof within 7 (seven) days of TIPEEE's request,
-    TIPEEE reserves the right to suspend or delete the Account and/or the Tipeee Page(s) of said Member
-    without notice.
-</p>
-<p>
-    The Member:
-    </p><ul>
-        <li>
-            is solely responsible for any formalities that may be required in connection with a money transfer,
-        </li>
-        <li>
-            undertakes to cooperate with TIPEEE and, where appropriate, with the Payment Service Providers,
-            so that TIPEEE:
-            <ul>
-                <li>
-                    implements systems for identifying and assessing money laundering and terrorist financing
-                    risks and a policy adapted to these risks,
-                </li>
-                <li>
-                    is able to identify all its Members and scrutinise their transactions,
-                </li>
-                <li>
-                    reports suspicious transactions to the national financial intelligence unit (TRACFIN) if TIPEEE
-                    has reason to believe that the money is derived from a crime,
-                </li>
-                <li>
-                    communicates all the necessary documents and information to the legal authorities, and
-                    therefore keeps part of the documents and information provided by the Member, even after
-                    the latter has unsubscribed from the Site.
-                </li>
-            </ul>
-        </li>
-    </ul>
-<p></p>
-<p>
-    Furthermore, TIPEEE reserves the right to transmit such information without notifying the Member. Funds
-    for which there is a legitimate suspicion that they are linked to an illegal or fraudulent activity shall not be
-    immediately paid to the Member concerned and may be passed on to the competent authority if necessary.
-    The Member waives any right or recourse following the communication by TIPEEE of this information to the
-    competent authorities.
-</p>
-<p>
-    The Member is responsible for the payment of any applicable fee or associated taxes, both on the amounts
-    received as a Creator and on the Tips given as a Tipper. TIPEEE shall in no way substitute itself for the
-    Member in this respect, nor shall it advise the Member on the nature and details of its obligations.
-</p>
-<h2 className="my-2 text-xl font-semibold">4. TERMS OF USE AS A TIPPER</h2>
-<h3>4.1. How Tips are paid</h3>
-<p>
-    The Site allows the Tipper to support the Creator(s) of their choice by paying Tips to them. The Tipper may
-    opt for a One-off Tip or a Regular Tip under the conditions defined below:
-</p>
-<h4>4.1.1. One-off Tips</h4>
-<p>
-    One-off Tips may be sent to any Creator, regardless of the method of collection chosen by the latter, unless
-    the Creator has expressly activated the option on the Site not to receive them.
-</p>
-<p>
-    One-off Tips are debited immediately and do not commit the Tipper in the long term.
-</p>
-<p>
-    In the event of payment of a One-off Tip to a Creator who has chosen the "per Project" collection method,
-    the Tipper shall be reimbursed for said Tip if the objective defined by the Creator, i.e. the amount that the
-    latter wishes to collect in the context of a Project, has not been reached within the time limit set.
-</p>
-<h4>4.1.2. Regular Tips</h4>
-<p>
-    Regular Tips can be made in two ways:
-</p>
-<ul>
-    <li>
-        if the collection method chosen by the Creator is "per month", the Regular Tip will be debited around
-        the 6th of the month following the month in which it was first made, and then each subsequent month
-        at the same time,
-    </li>
-    <li>
-        If the collection method chosen by the Creator is "per Content", the Regular Tip will be debited around
-        the 6th of the month following the month in which a Publication was initiated by the Creator. The
-        amount charged to the Tipper then depends on the number of Publications made by the Creator. If
-        the Creator has not made any Publication during the month, the amount debited will be €0. If the
-        Creator has made one or more Publications during the month, the amount debited will be equal to the
-        amount of the Regular Tip multiplied by the number of Publications. In any event, the amount debited
-        may not exceed the Tip limit defined by the Tipper.
-    </li>
-</ul>
-<h3>4.2. Common provisions for Tips</h3>
-<p>
-    The minimum Tip amount is 1 Euro.
-</p>
-<p>
-    At any time, the Tipper may (i) cancel or modify the amount of their Tip for Regular Tips and (ii) cancel or
-    set or modify their Tip limit.
-</p>
-<p>
-    However:
-    </p><ul>
-        <li>
-            a One-off Tip cannot be cancelled,
-        </li>
-        <li>
-            a Regular Tip made in the context of a "per month" collection is due if the cancellation has not been
-            made before the end of the collection month. For example, for a Regular Tip made on 10 April and
-            cancelled on 2 May, the Tipper will be debited for the month of April,
-        </li>
-        <li>
-            a Regular Tip made in the context of a "per Content" collection is due if the cancellation has not been
-            made before the Content is published. For example, for a Regular Tip made on 10 April and cancelled
-            on 2 May, the Tipper will be debited (within the limit they have defined) for the Publication(s) made
-            between these two dates.
-        </li>
-    </ul>
-<p></p>
-<h3>4.3. Transaction Fee</h3>
-<p>
-    When the Tip is debited, TIPEEE charges a Transaction Fee, the details of which are available to the Tipper
-    before the Tip is actually debited. The Tipper is hereby informed and accepts without reservation that under
-    no circumstances may these fees be reimbursed.
-</p>
-<h3>4.4. Transmission of the Tipper's identification data to the Content Creator(s)</h3>
-<p>
-    The Tipper acknowledges and expressly accepts that the Creator they support will be provided by TIPEEE
-    with information on their identity as well as their email and postal addresses, in order to allow the Creator
-    to communicate with them by email and to send them the promised Rewards, if applicable.
-</p>
-<h2 className="my-2 text-xl font-semibold">5. TERMS OF USE AS A CREATOR</h2>
-<h3>5.1. Selection, collection and receipt of Tips</h3>
-<p>
-    When a Creator creates a Tipeee Page, they must necessarily opt for a collection method:
-</p>
-<ul>
-    <li>
-        "<b>per month</b>" collection method: the Tips are paid to the Creator at the end of the month following the
-        collection month for which they were debited to the Tippers,
-    </li>
-    <li>
-        "<b>per Content</b>" collection method: the Tips are paid to the Creator at the end of the month following 
-        the month during which the Creator has made at least one Publication,
-    </li>
-    <li>
-        "<b>per Project</b>" collection method: the Tips are paid to the Creator 14 days after the collection end date,
-        if and only if the Creator has reached the collection target before the deadline. If the target is not
-        reached, the Tips are returned in full to the Tippers concerned.
-    </li>
-</ul>
-<h3>5.2. Payment of Tips and deduction of the Commission by TIPEEE</h3>
-<p>
-    For each Tip received, TIPEEE charges its commission.
-</p>
-<p>
-    Thus, the Creator receives the sums corresponding to the total amount of Tips due, minus the Commission
-    due to TIPEEE. These sums are transferred to the Creator's bank account and/or PayPal account. No advance
-    on Tips can be paid to the Creator.
-</p>
-<h3>5.3. Transmission of the Creator's identification data to a Tipper</h3>
-<p>
-    The Creator expressly acknowledges and accepts that TIPEEE may communicate a means of contact to a
-    Tipper in the event of a dispute with the latter.
-</p>
-<h3>5.4. Creator's commitments</h3>
-<p>
-    The Creator undertakes on their Tipeee Page(s) not to create any ambiguity as to the purpose of the funding
-    they seek and not to misuse it.
-</p>
-<p>
-    Regardless of the number of people involved in the creation of Content, there can only be one Creator per
-    Tipeee Page. They must therefore be individually and clearly identified; they will be the sole beneficiary of
-    the rights and responsible for the obligations attached to the Account and the Tipeee Page as Creator.
-</p>
-<p>
-    In order to receive the Tips to which they are entitled, the Creator must, before receiving their first Tip,
-    submit their Account to the KYC procedure described in the Payment Service Providers' general terms and
-    conditions. Thus, upon request from the Payment Service Providers, the Creator must provide TIPEEE with
-    information to prove their identity and banking information.
-</p>
-<p>
-    The Creator may terminate their Tipeee Page(s) at any time. If a Tipeee Page is closed, no more Tips may
-    be made through this Page from the first day of its closure.
-</p>
-<p>
-    If applicable, the Creator declares that they have a status allowing them to collect Tips, and that they are
-    responsible for all formalities and payments incumbent on them in the context of the use of the Service.
-</p>
-<p>
-    <u>On the Site</u>, the Creator undertakes not to publish any material contrary to the purpose of the Site and/or
-    the provisions of these TOU and/or of an illicit nature, in particular malicious, inappropriate, disrespectful,
-    defamatory, injurious, infringing, secret or confidential, misleading or erroneous (including personal
-    information), xenophobic, racist, hateful, inciting violence, xenophobia, racism or hatred, illegal or contrary
-    to public order or morality, indecent, obscene, pornographic, threatening or violent.
-    <br />Failing this, TIPEEE reserves the right (a) to suspend or close immediately and without notice the Creator's
-    Tipeee Page(s) and/or Account, any content and/or element published on the Site, which violates the terms
-    hereof, as soon as TIPEEE has become aware of it and/or (b) to return to the Tipper(s) concerned the Tip(s)
-    that they have made but that have not yet been paid to the Creator concerned,
-</p>
-<p>
-    <u>On third-party sites and platforms</u>, the Creator undertakes not to publish Content or elements of an illicit
-    nature for which they request support through TIPEEE. Failing that, TIPEEE reserves the right:
-    </p><ul>
-        <li>
-            (a) to close or suspend the Creator's Account and/or the Tipeee Page(s) of said Creator and/or (b)
-            to return to the Tipper(s) concerned the Tip(s) which they have made but which have not yet been
-            paid to the Creator concerned,
-        </li>
-        <li>
-            if necessary, to order the Creator to remove any reference to TIPEEE on the third-party site on
-            which said Creator has published any illicit Content or element.
-        </li>
-    </ul>
-<p></p>
-<h3>5.5. Grant of rights</h3>
-<p>
-    TIPEEE does not hold any ownership or other rights on the content published on the Site and more generally
-    on all other elements that the Creator may post, share or disseminate on their Tipeee Page(s), which remain
-    the exclusive property of the Creator.
-</p>
-<p>
-    The Creator grants to TIPEEE, as well as to TIPEEE's partners who may support the Creator, on a non-
-    exclusive basis and free of charge, for the entire world and for the entire duration hereof, the rights below,
-    in order to allow TIPEEE to provide the Service in the form of broadcasting on the Internet, on mobile
-    telephone networks and/or any other current or future communication network open to the public:
-    </p><ul>
-        <li>
-            to disseminate all or part of the Creator's TIPEEE page and their profile image, known as an "avatar",
-            on the Site and/or on the site of TIPEEE's partners supporting the Creator, by any means and on any
-            medium,
-        </li>
-        <li>
-            to translate all or part of the Creator's TIPEEE page, in any language,
-        </li>
-        <li>
-            to modify (in particular the framing, format and colours) and/or adapt all or part of the Creator's TIPEEE
-            page and their profile image known as an "avatar" (in particular to take account of the technical
-            constraints of the Site and/or the site of TIPEEE's partners supporting the Creator).
-        </li>
-    </ul>
-<p></p>
-<p>
-    The Creator also expressly authorises TIPEEE, as well as TIPEEE's partners supporting the Creator, to
-    promote and/or advertise the Creator's Tipeee Page.
-</p>
-<p>
-    The Creator remains free to offer their Content on any crowdfunding platform other than TIPEEE.
-</p>
-<h2 className="my-2 text-xl font-semibold">6. PROCESSING OF PERSONAL DATA</h2>
-<h3>6.1. Personal data processed by TIPEEE</h3>
-<p>
-    TIPEEE processes the personal data of Members in the context of the Service and as such, practices a policy
-    of personal data protection, the characteristics of which are explained in the document entitled "<a href="/privacy">Privacy
-    Policy</a>". Members are expressly invited to read it.
-</p>
-<h3>6.2. Personal data processed by Creators</h3>
-<p>
-    The Creators undertake to comply, as far as they are concerned, with all legal and regulatory obligations
-    incumbent on them in terms of personal data protection, in particular Law 78-17 of 6 January 1978 in its
-    latest amended version, known as the <i>Loi Informatique et Libertés</i> (Data Protection Act), and EU Regulation
-    2016/679 of the European Parliament and of the Council of 27 April 2016 (together referred to as the
-    "<b>Applicable Regulations</b>"). In this respect, Creators acknowledge that the processing of personal data
-    carried out on the personal data of Tippers, in particular for the purposes of delivering Rewards, is done
-    under their sole responsibility, in their capacity as autonomous data controller. Creators thus undertake to
-    process under their responsibility, in a lawful, fair and transparent manner, the personal data of Tippers,
-    and in particular, to ensure the legal basis of this processing and the information due to Tippers. TIPEEE
-    may not be held liable in the event of Creators' failure to comply with the Regulations applicable to the
-    processing of Tippers' personal data.
-</p>
-<h2 className="my-2 text-xl font-semibold">7. LIABILITY OF TIPEEE</h2>
-<h3>7.1. TIPEEE acts as an intermediary between Creators and Tippers</h3>
-<p>
-    TIPEEE shall not under any circumstances:
-    </p><ul>
-        <li>
-            be responsible for the actions of the Members, the Content and other elements presented on the Site
-            by the Creators (and in particular, without limitation, the presentation of the Creator's activity, the
-            time taken to create the Content (including delays and cancellations), the quality of the Content, and
-            any problem related to the delivery of the possible Rewards offered),
-        </li>
-        <li>
-            be responsible for the relations between the Members, nor be a party to any possible dispute.
-        </li>
-    </ul>
-<p></p>
-<p>
-    In accordance with its capacity as host, and upon receipt of a notification in accordance with the terms of
-    Article 6 I 5 of Law No. 2004-575 of 21 June 2004 on confidence in the digital economy concerning Content
-    or any element of the Site that is clearly illegal, TIPEEE will act promptly to remove it or make it impossible
-    to access, and reserves the right to take the measures described in the article "<i>Sanctions in case of breach</i>".
-</p>
-<p>
-    TIPEEE cannot be held liable for the content stored if it was not aware of its illegal nature or if, as soon as it
-    became aware of it, it acted promptly to remove this content or to make it impossible to access.
-</p>
-<p>
-    The Creator guarantees and undertakes to hold TIPEEE harmless against any damage suffered by the latter
-    or any fact attributed to it in relation to the Creator's actions, and guarantees TIPEEE without limit against
-    any liability action of any kind that may be brought against TIPEEE by a Member or by any third party due
-    to the Creator's actions.
-</p>
-<h3>7.2. TIPEEE is expressly subject to a best-efforts obligation in providing the Service</h3>
-<p>
-    TIPEEE also reserves the right to temporarily suspend access to the Site or part of it, in particular for
-    corrective or evolutionary maintenance reasons.
-</p>
-<h3>7.3. The Service offered by TIPEEE cannot be considered as an advisory mission.</h3>
-<p>
-    In this respect, TIPEEE cannot in any way be held responsible for the consequences of the choices made by
-    Tippers, particularly with regard to the Tips paid to Creators. In particular, TIPEEE does not provide any
-    recommendation or advice on the Creators to be supported, intervening only in a limited way with the
-    latter in order to assist them in the presentation of their activity on the Site.
-</p>
-<h3>7.4. Limitation of liability</h3>
-<p>
-    Whatever the nature, basis and terms of any action brought by the Member against TIPEEE, except in the
-    case of personal injury or fraud attributable to TIPEEE, the latter's liability is limited to direct damage.
-</p>
-<h2 className="my-2 text-xl font-semibold">8. DURATION OF THE RELATIONSHIP WITH TIPEEE</h2>
-<p>
-    The TOU apply for an indefinite period from the creation of the Member's Account until its closure, for
-    whatever reason.
-</p>
-<p>
-    The Member may unsubscribe from the Services at any time through their Account.
-</p>
-<h2 className="my-2 text-xl font-semibold">9. SANCTIONS IN CASE OF BREACH</h2>
-<p>
-    In the event of a breach of the Member's obligations as defined in Articles 2 to 7 above, TIPEEE reserves the
-    right to:
-</p>
-<ul>
-    <li>
-        suspend or close immediately and without notice, temporarily or permanently, any Account and/or
-        Tipeee Page(s) of the Member concerned,
-    </li>
-    <li>
-        in case of suspicion of breach by the Member on the part of TIPEEE, suspend the Account and/or
-        Tipeee Page(s) of the Member concerned pending clarification or provision of additional elements,
-    </li>
-    <li>
-        not to pay all Tips to the Member concerned until they have sent all the information required by
-        TIPEEE,
-    </li>
-    <li>
-        take all appropriate measures and to initiate and pursue any legal proceedings, to inform, where
-        appropriate, the competent authorities, to cooperate with them and to provide them with any
-        information that may be necessary for the investigation and prosecution of illegal or illicit activities,
-    </li>
-    <li>
-        suspend or close the Account and/or Tipeee Page(s) in the event of an injunction from an
-        administrative or judicial authority.
-    </li>
-</ul>
-<p>
-    In the event of suspension or deletion of a Member's Account and/or Tipeee Page(s) by TIPEEE, TIPEEE shall
-    use its best endeavours to inform the Member, unless such information compromises legitimate security
-    measures or is illegal. TIPEEE will terminate the suspension or deletion of the Account and/or Tipeee Page(s)
-    as soon as possible once the reasons that led to the termination of its use have disappeared and TIPEEE has
-    been informed of this.
-</p>
-<p>
-    In the event that TIPEEE closes a Creator's Account for breach, the Creator will receive the current Tips
-    under the following conditions:
-</p>
-<ul>
-    <li>
-        In the case of the "<b>per month</b>" collection method: the Creator will receive the Tips collected in the
-        month preceding the month in which the Account is closed. However, Tips collected during the month
-        in which the Account is closed will be returned to the Tippers. For example: if an Account is closed on
-        16 March, the Creator will receive the Tips collected in February, but Tips collected up to 16 March will
-        be returned to the Tippers.
-    </li>
-    <li>
-        In the case of the "<b>per Content</b>" collection method: the Creator will receive the Tips collected relating
-        to the Publications made before the month in which their Account is closed. However, Tips made since
-        the last Publication or Tips relating to a Publication made during the month of closure will be returned
-        to the Tippers. For example: the Creator made a Publication on 15 February and 10 March. In the case
-        of an Account closed on 16 March, the Creator will receive the Tips collected before the Publication of
-        15 February. However, Tips made later will be returned to the Tippers.
-    </li>
-    <li>
-        In the case of the "<b>per Project</b>" collection mode: the Creator will not receive any of the Tips collected,
-        regardless of whether they have reached their target. All Tips will be returned to the Tippers.
-    </li>
-</ul>
-<h2 className="my-2 text-xl font-semibold">10. INTELLECTUAL PROPERTY</h2>
-<p>
-    The Site and its content (in particular texts, software, scripts, graphics, photos, sounds, music, images,
-    drawings, videos, etc.) are the exclusive property of TIPEEE, with the exception of the content and any
-    element published and/or shared by the Creator on their Tipeee Page, which remain the exclusive property
-    of the Creators concerned. In general, TIPEEE grants a free, personal, non-exclusive and non-transferable
-    right to access and use the Site, any other right, in particular of reproduction or representation, being
-    expressly forbidden and liable to civil and criminal penalties for infringement.
-</p>
-<h2 className="my-2 text-xl font-semibold">11. RIGHT OF WITHDRAWAL</h2>
-<p>
-    <b>
-        The Member declares that they are informed and expressly accept that Tips do not fall within the scope
-        of Articles L. 221-18 et seq. of the Consumer Code. Consequently, Tips are not subject to any right of
-        withdrawal.
-    </b>
-</p>
-<h2 className="my-2 text-xl font-semibold">12. MEDIATION</h2>
-<p>
-    In the event of a dispute with TIPEEE, the Member who is a consumer may have recourse free of charge to
-    the following consumer mediator with a view to an amicable resolution:
-    <br />Centre de médiation de la consommation de conciliateurs de justice (CM2C)
-    <br />Postal address: <a href="https://www.cm2c.net/contact.php">14 rue Saint Jean 75017 Paris</a>
-    <br />Telephone: 06 09 20 48 86
-    <br /><a href="https://www.cm2c.net">https://www.cm2c.net</a>
-</p>
-<p>
-    If the Member is a foreign consumer but located in the European Union, they can go to the European
-    consumer law dispute resolution platform accessible <a href="https://ec.europa.eu/consumers/odr/main/index.cfm">here</a>.
-</p>
-<h2 className="my-2 text-xl font-semibold">13. LANGUAGE</h2>
-<p>
-    The French language shall prevail in case of contradiction or dispute as to the meaning of a term or
-    provision.
-</p>
-<h2 className="my-2 text-xl font-semibold">14. JURISDICTION AND APPLICABLE LAW</h2>
-<p>
-    These TOU are governed by French law.
-</p>
-<p>
-    In the event of a dispute with a Creator acting for professional purposes, the Paris courts shall have
-    jurisdiction to hear any dispute relating to the application, interpretation or termination of these TOU,
-    unless otherwise provided by mandatory provisions.
-</p>
-                        </div>
-                    <div className="modal-action">
-                    <form method="dialog">
-                        <button className="btn bg-primary text-white border-none hover:bg-primary">Close</button>
-                    </form>
-                    </div>
-                </div>
-            </dialog>
-        </>
-        
-    );
+            <p>LES PRESENTES CONDITIONS GENERALES D’UTILISATION ONT POUR OBJET DE DEFINIR LES TERMES ET LES CONDITIONS D’ACCES ET D’UTILISATION DU SERVICE COFLOW ET DE DÉFINIR LE RÔLE ET LES OBLIGATIONS DE CHACUN.</p>
+            <p>EN LES ACCEPTANT L’UTILISATEUR DU SERVICE COFLOW RECONNAIT EN AVOIR PRIS CONNAISSANCE.</p>
+            <p>POUR TOUTE OUVERTURE D’UN COMPTE, L’UTILISATEUR RECONNAIT EGALEMENT AVOIR PRIS CONNAISSANCE ET ACCEPTÉ LES CONDITIONS GENERALES D’UTILISATION DE L’ETABLISSEMENT DE PAIEMENT/ou de MONNAIE ELECTRONIQUE avec lequel travaille COFLOW, lesquelles sont disponibles à partir des CGU des plateformes, clients de COFLOW.</p>
+            <p>L’UTILISATEUR DOIT LIRE ATTENTIVEMENT LES PRESENTES CONDITIONS GENERALES D'UTILISATION ET LES COMPRENDRE. EN LES ACCEPTANT IL S’ENGAGE À EN RESPECTER LES TERMES ET LES CONDITIONS.</p>
+            <p>L’ACCEPTATION DES CONDITIONS GENERALES D’UTILISATION DU SERVICE COFLOW EST CONSERVÉE ET ARCHIVÉE PAR COFLOW DANS SES SYSTÈMES INFORMATIQUES DE FAÇON INALTÉRABLE, SÛRE ET FIABLE. L’UTILISATEUR PEUT À TOUT MOMENT LES CONSULTER, LES REPRODUIRE, LES STOCKER SUR SON ORDINATEUR, SUR UN AUTRE SUPPORT, SE LES ENVOYER PAR COURRIER ÉLECTRONIQUE OU LES IMPRIMER SUR PAPIER DE MANIÈRE À LES CONSERVER. </p>
+            <p>UTILISATEURS, SI VOUS N'ETES PAS D'ACCORD AVEC LES TERMES ET LES CONDITIONS PRESENTEES OU QUE VOUS NE SOUHAITEZ PAS LES RESPECTER, NE LES ACCEPTEZ PAS MAIS VOUS NE POURREZ ALORS PAS BENEFICIER DES SERVICES PROPOSES !</p>
+            <div className="w-1/4 border-b border-black mt-4"></div>
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">
+            1. DÉFINITIONS
+            </h2>
+            <p>Aux fins des présentes conditions générales d’utilisation du service COFLOW, les mots suivants ont, lorsqu’ils sont utilisés en majuscules, et sauf si le contexte en commande une interprétation différente, la signification suivante :</p>
+            <p>* BENEFICIAIRE EFFECTIF : Celui qui bénéficie directement des fonds ; il peut donc être distinct du PORTEUR DE PROJET</p>
+            <p>* CLIENT COFLOW : Le CLIENT COFLOW est une PORTEUR DE PROJET qui décide d’utiliser la solution technique COFLOW, le temps d’une campagne unique de FINANCE PARTICIPATIVE ; </p>
+            <p>* COLLECTE : Montant des fonds recherchés par l’opération de FINANCE PARTICIPATIVE. Les attributs de la COLLECTE sont sa durée et son montant. Ils sont librement fixés par le PORTEUR DE PROJET.</p>
+            <p>* COMPTE DE PAIEMENT DU CONTRIBUTEUR : compte du CONTRIBUTEUR géré par l’ETABLISSEMENT DE PAIEMENT ou de MONNAIE ELECTRONIQUE rattaché potentiellement à un IBAN ou à un numéro de carte bancaire.</p>
+            <p>* COMPTE DE PAIEMENT DU PORTEUR DE PROJET : compte DU PORTEUR DE PROJET géré par l’ETABLISSEMENT DE PAIEMENT ou de MONNAIE ELECTRONIQUE, rattaché potentiellement à un IBAN ou à un numéro de carte bancaire. Il permet de percevoir les sommes des CONTRIBUTEURS.</p>
+            <p>* CONTREPARTIES (voir RECOMPENSES). LES CONTREPARTIES peuvent être matérielles ou immatérielles.</p>
+            <p>* CONTRIBUTEUR (ou DONATEUR) : toute personne physique ou morale qui participe au financement d’un PROJET en versant une CONTRIBUTION CONTRIBUTION (ou DON ou PRÉ-ACHAT ou INVESTISSEMENT ou apport de compétence) : la CONTRIBUTION est la somme d’argent versée par le CONTRIBUTEUR pour aider un PROJET.</p>
+            <p>* DONATEUR (cf. CONTRIBUTEUR)</p>
+            <p>* DONS (cf. CONTRIBUTION)</p>
+            <p>* ESPACE CONTRIBUTEUR : interface permettant au CONTRIBUTEUR de consulter et de gérer son profil.</p>
+            <p>* ESPACE MANAGER : interface permettant au CLIENT COFLOW de consulter le PORTAIL.</p>
+            <p>* ESPACE PORTEUR DE PROJET : interface permettant au PORTEUR DE PROJET de consulter et de gérer le PROJET.</p>
+            <p>* ÉTABLISSEMENT DE PAIEMENT : Établissement de paiement agrée et contrôlé par l’ACPR. Les établissements de paiement sont des personnes morales, autres que les établissements de crédit, qui fournissent à titre de profession habituelle des services de paiement mentionné à l'article L.314-1 du code monétaire et financier (art. L.522-1) du code monétaire et financier.</p>
+            <p>* ÉTABLISSEMENT DE MONNAIE ELECTRONIQUE- Établissement également agréé par les autorités de Contrôle bancaires.</p>
+            <p>* FINANCE PARTICIPATIVE (ou CROWDFUNDING) : La FINANCE PARTICIPATIVE permet de financer un projet, un produit, un évènement, une activité ou une cause, là où désormais les circuits financiers traditionnels ne répondent plus entièrement. Pour le PORTEUR DE PROJET, la FINANCE PARTICIPATIVE peut-être également l’occasion de tester et de jauger le degré d’appétence pour un projet, un produit, un événement, une activité ou une cause auprès d’une communauté, d’un public ou d’acheteurs potentiels. La FINANCE PARTICIPATIVE satisfait à des tendances sociétales fortes qui combinent l’utilisation d’internet et des réseaux sociaux, l’aspiration à des sentiments d’appartenance, de proximité, de confiance voire de passion. L’opération de FINANCE PARTICIPATIVE peut revêtir la forme d’une opération de DON, de PRET, de PREACHAT, d’INVESTISSEMENT, de MECENAT DE COMPETENCE ou d’une combinaison de ces formes.</p>
+            <p>* MANAGER DU PORTAIL:</p>
+            <p>* COFLOW dans le cas d’un PORTEUR DE PROJET qui a recours à la solution technique COFLOW le temps d’une campagne unique de FINANCE PARTICIPATIVE.</p>
+            <p>* MECENAT DE COMPETENCE (ou crowdsourcing) : consiste à mettre à disposition du temps, des services et/ou des ressources, services et/ou compétences pour réaliser des actions le plus souvent d’intérêt général. Le MECENAT DE COMPETENCE ne se traduit pas par des contributions financières.</p>
+            <p>* OBJECTIF FINANCIER : montant à réunir pour la réalisation du PROJET.</p>
+            <p>* PORTAIL DE FINANCE PARTICIPATIVE : portail qui présente un projet de FINANCE PARTICIPATIVE. </p>
+            <p>* PREACHAT : Opération de FINANCE PARTICIPATIVE permettant de réserver un produit avant sa commercialisation.</p>
+            <p>* PORTEUR DE PROJET : celui qui initie et porte le PROJET.</p>
+            <p>* PROJET : Le PROJET est tout évènement, activité, produit, service et/ou cause qu’un PORTEUR DE PROJET souhaite financer Les éléments caractéristiques d’un PROJET sont :</p>
+            <p>* Son objet</p>
+            <p>* Le montant de l’OBJECTIF FINANCIER</p>
+            <p>* La durée de la COLLECTE</p>
+            <p>* Les différentes modes de CONTRIBUTIONS possibles (DON, PRÉ-ACHAT, MECENAT DE COMPETENCE)</p>
+            <p>* Les RÉCOMPENSES (ou CONTREPARTIES) affectées aux CONTRIBUTIONS</p>
+            <p>* PROJET avec MISE À DISPOSITION CONDITIONNEE DES FONDS COLLECTES : PROJET pour lequel la mise à disposition des fonds collectés au PORTEUR DE PROJET dépend des conditions de succès de la campagne de FINANCE PARTICIPATIVE.  Si l’OBJECTIF de la campagne n’est pas atteint, le PORTEUR DE PROJET ou le BENEFICIAIRE EFFECTIF a la faculté dans des conditions prévues ab initio de reporter la contribution sur des projets équivalents.</p>
+            <p>* PROJET SANS MISE À DISPOSITION CONDITIONNEE DES FONDS COLLECTES : PROJET pour lequel les fonds collectés sont collecté directement part un PORTEUR DE PROJET ou à UN BENEFICIAIRE EFFECTIF et ceci indépendamment de l’atteinte des objectifs de la campagne de FINANCE PARTICIPATIVE.</p>
+            <p>* RGPD : Règlement Européen pour la protection des données personnelles</p>
+            <p>* RÉCOMPENSES (ou CONTREPARTIES) : les RÉCOMPENSES sont les CONTREPARTIES reçues par les CONTRIBUTEURS en échange de leurs CONTRIBUTIONS. Elles sont fixées par le PORTEUR DE PROJET. Elles concernent également l’achat de produits à des conditions préférentielles dans le cadre d’opérations de PREACHAT lesquelles participent à la catégorie des dons avec contreparties.</p>
+            <p>* SERVICE COFLOW : mise à disposition de la solution technique développée par Mehdi Aknoun.</p>
+            <p>* UTILISATEUR DU COMPTE DE PAIEMENT : Le PORTEUR DE PROJET, le MANAGER DE PROJET(S) ou le CONTRIBUTEUR.</p>
+            <p>* UTILISATEUR DU SERVICE COFLOW : Le PORTEUR DE PROJET.</p>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">2. INSCRIPTION AU SERVICE COFLOW</h2>
+            <p>L’UTILISATEUR DU SERVICE COFLOW doit fournir a minima :</p>
+            <p>* Un pseudo</p>
+            <p>* Une adresse e-mail</p>
+            <p>Dès lors que l’UTILISATEUR DU SERVICE COFLOW souhaite ouvrir un compte de paiement les informations complémentaires peuvent lui être demandées.</p>
+            <p>Lors de l’inscription, un ESPACE UTILISATEUR (MANAGER, PORTEUR DE PROJET, CONTRIBUTEUR, PARTICIPANT) est mis à disposition de L’UTILISATEUR DU SERVICE COFLOW dans lequel celui-ci pourra le cas échéant charger ses pièces justificatives.</p>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">3. OUVERTURE D’UN COMPTE</h2>
+            <h3>3.1. Toute personne physique souhaitant ouvrir un compte doit fournir :</h3>
+            <p>* Son nom et son prénom</p>
+            <p>* Une adresse e-mail valide</p>
+            <p>* Sa date de naissance</p>
+            <p>* Son adresse postale</p>
+            <p>* Sa nationalité</p>
+            <p>* Son pays de résidence</p>
+            <h3>3.2. Toute personne morale souhaitant ouvrir un compte de paiement doit fournir :</h3>
+            <p>* La raison sociale de la personne morale</p>
+            <p>* Une adresse e-mail valide de la personne morale</p>
+            <p>* Un justificatif d’identité du dirigeant ou de la personne ayant pouvoir pour engager la personne morale dans le cadre des opérations réalisées.</p>
+            <h3>3.3. Tout UTILISATEUR du SERVICE COFLOW déclare que toutes les informations fournies sont sincères et exactes à ce jour.</h3>
+            <p>Il doit répondre impérativement à toute demande d'information complémentaire éventuellement formulée par COFLOW ou l’ETABLISSEMENT DE PAIEMENT.</p>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+            
+            <h2 className="my-2 text-xl font-semibold">4. ACCESSIBILITÉ DU SERVICE COFLOW</h2>
+            <h3>4.1. Lors de l’inscription, l’UTILISATEUR- MANAGER de PORTAIL s’engage à fournir des données exactes et est tenu de remplir l’ensemble des champs obligatoires figurant dans le formulaire d’inscription. Une fois le formulaire rempli et validé, COFLOW adresse un email de confirmation de la demande.</h3>
+            <h3>4.2. La mise à disposition du SERVICE COFLOW (ouverture et lancement de la page) est soumise à la conclusion d’un contrat entre COFLOW et le PORTEUR DE PROJETS précisant notamment les conditions de rémunération de COFLOW.</h3>
+            <h3>4.3. COFLOW se réserve le droit de suspendre temporairement l’accès aux services de du portail pour des raisons techniques ou de maintenance sans que cela ouvre droit à une quelconque indemnité compensatrice en cas de préjudice. Ses clients en sont préalablement avisés. COFLOW s’engage à limiter le plus possible les interruptions de service pour des raisons techniques ou de maintenance.</h3>
+            <h3>4.4. COFLOW se réserve le droit de suspendre l’accès aux services du portail dans le cas d’un manquement d’un UTILISATEUR DU SERVICE COFLOW aux obligations visées à l’article 9 ci-après, sans que cela ouvre droit à une quelconque indemnité compensatrice en cas de préjudice.</h3>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">5. CAMPAGNE DE FINANCE PARTICIPATIVE</h2>
+            <h3>5.1. Le CONTRIBUTEUR choisit le montant de sa CONTRIBUTION et le cas échéant de la CONTREPARTIE (ou RECOMPENSE) associée. Le paiement sécurisé par carte bancaire est effectué par l’intermédiaire de L’ETABLISSEMENT DE PAIEMENT</h3>
+            <h3>5.2. Le montant de la CONTRIBUTION est directement versé sur le compte bénéficiaire</h3>
+            <h3>5.3. Les frais afférents au Service COFLOW sont à la charge du CLIENT COFLOW, à savoir le PORTEUR DE PROJET lorsque celui-ci agit directement avec COFLOW.  </h3>
+            <h3>5.4. COFLOW intervient uniquement pour la mise en œuvre technique de la solution de FINANCE PARTICIPATIVE. La gestion des comptes de paiement ainsi que la sécurisation des opérations de paiement, est assurée par L’ETABLISSEMENT DE PAIEMENT dont COFLOW est le partenaire.</h3>
+            <h3>5.5. La définition du PROJET, sa mise en œuvre, sa réussite ou son échec, la délivrance éventuelle de CONTREPARTIES, tout comme la gestion juridique et financière du PROJET sont de la responsabilité du PORTEUR DE PROJET.</h3>
+            <h3>5.6. La réussite du PROJET est réputée acquise lorsque l’OBJECTIF FINANCIER de la COLLECTE est atteint en montant et dans les délais impartis.</h3>
+            <h3>5.7. En cas de réussite du PROJET :</h3>
+            <p>* Lorsque l’OBJECTIF FINANCIER est atteint, la CONTRIBUTION est définitivement acquise au PORTEUR DE PROJET.</p>
+            <p>* La CONTRIBUTION est versée au COMPTE DE PAIEMENT DU PORTEUR DE PROJET.</p>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">6. LES OBLIGATIONS DE L’UTILISATEUR DU SERVICE COFLOW</h2>
+            <h3>6.1. Tout UTILISATEUR du SERVICE COFLOW s’engage expressément</h3>
+            <p>* À ne pas enregistrer de lien, message, image, texte, vidéo, sons d’animation ou programme non conformes à la législation française,</p>
+            <p>* À ne pas enregistrer ou promouvoir des thèmes, contenus, liens expressément prohibés pouvant porter atteinte aux droits d’auteur ou aux droits à l’image ou à la vie privée d’autrui,</p>
+            <p>* À ne pas faire du prosélytisme religieux</p>
+            <p>* À ne pas enregistrer ou promouvoir des thèmes qui pourraient avoir trait à l’exploitation de mineurs ou qui consternaient à utiliser des images pornographiques de mineurs, des images dégradantes du corps de l’homme ou de la femme, à lancer des injures, diffamer, proférer des propos homophobes, négationnistes ou antisémites, provoquer ou inciter à la haine, à la violence, au racisme, au suicide ou plus généralement à inciter à tout crime ou délit,</p>
+            <p>* À obtenir les autorisations préalables concernant des données protégées par le droit de propriété,</p>
+            <p>* À obtenir les autorisations préalables auprès des titulaires de droits dans les conditions légales avant toute reproduction, représentation et communication au public,</p>
+            <p>* À prendre garde au fait que les adresses URL doivent respecter le droit des marques et les droits de la personnalité,</p>
+            <p>* À assumer la responsabilité des textes, images, programmes ou sons diffusés,</p>
+            <p>* À assumer seul tout préjudice direct ou indirect matériel ou corporel causé et faire sien tout litige pouvant survenir,</p>
+            <p>* À décharger COFLOW de toute responsabilité en cas de préjudice causé par un manquement à l’un des engagements qui précèdent.</p>
+            <h3>6.2. Tout UTILISATEUR DU SERVICE COFLOW s’engage expressément</h3>
+            <p>* À ne pas utiliser le service COFLOW pour diffuser et promouvoir des virus informatiques, chevaux de Troie ou tout autre programme de même nature, pour violer des systèmes informatiques ou pour perturber le bon fonctionnement général du service.</p>
+            <p>* À assumer seul tout préjudice direct ou indirect matériel ou corporel causé et à faire sien de tout litige pouvant survenir,</p>
+            <p>* À décharger COFLOW de toute responsabilité dans ce sens.</p>
+            <h3>6.3. Toute contravention à l’un des engagements ci-dessus entraîne une fois connu la suppression immédiate et sans préavis de l’élément litigieux.</h3>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">7. RESPONSABILITÉS</h2>
+            <h3>7.1. Pour l’ensemble de ses prestations, COFLOW est soumise à une obligation de moyen et non à une obligation de résultat. Le service COFLOW est une prestation technique. En aucun cas, COFLOW ne peut être tenu pour responsable pour ce qui s’apparenterait de près ou de loin au manquement d’une obligation de conseil.</h3>
+            <h3>7.2. COFLOW ne pourra en aucun cas être tenu responsable de tout dommage qui résulterait partiellement ou totalement du non-respect des présentes CGU.</h3>
+            <h3>7.3. COFLOW n’est pas responsable des activités et informations stockées par les CLIENTS COFLOW ou tout UTILISATEUR du service COFLOW.</h3>
+            <h3>7.4. COFLOW ne saurait voir sa responsabilité engagée du fait des activités ou des informations stockées par les CLIENTS COFLOW, si elle n’avait pas connaissance effective de leur caractère illicite ou si dès le moment où elle en a eu connaissance, elle a agi avec diligence pour retirer ces données et/ou en rendre l’accès impossible.</h3>
+            <h3>7.5. En aucun cas, COFLOW ne peut être tenu responsable des dommages directs et/ou indirects, tels que le préjudice commercial, perte de clientèle, trouble commercial quelconque, perte de bénéfice, perte d’image de marque subis par un UTILISATEUR, ou par un tiers, et qui pourraient résulter des prestations de COFLOW ou de la mise en œuvre ou de l’indisponibilité involontaire de son service. Toute action dirigée contre un UTILISATEUR par un tiers est assimilée à un préjudice indirect, et en conséquence n’ouvre pas droit à réparation.</h3>
+            <h3>7.6. L’UTILISATEUR DU SERVICE COFLOW reconnaît que les garanties et limitations de responsabilité stipulées ci-dessus opèrent entre les parties une répartition raisonnable des risques et des responsabilités eu égard au contexte et aux conditions financières encadrant la fourniture du SERVICE COFLOW.</h3>
+            <h3>7.7. Il est précisé que le contenu du PROJET, sa présentation et les éléments de son suivi (actualités etc.) sont élaborés par le PORTEUR DE PROJET sous sa seule responsabilité. COFLOW n’est responsable ni de la délivrance des CONTREPARTIES ni de la livraison des PRODUITS ou des BONUS achetés à l’occasion d’une opération de PRÉACHAT OU DE PARTICIPATION PRODUCTIVE.</h3>
+            <h3>7.8. Il est précisé que les conséquences fiscales du non-respect des règlementations en vigueur, et notamment de la réglementation fiscale par exemple par les UTILISATEURS du SERVICE COFLOW (PORTEURS DE PROJET) sont de la seule responsabilité des UTILISATEURS</h3>
+            <h3>7.9. Un CONTRIBUTEUR ne pourra rechercher la responsabilité de COFLOW en cas de défaillance d’un PORTEUR DE PROJETS à ses obligations.</h3>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">8. RÉMUNÉRATION DE COFLOW</h2>
+            <h3>8.1. COFLOW perçoit une commission auprès du PORTEUR DE PROJET correspondant à la mise à disposition de sa solution, associée à une solution de paiement ainsi qu’à la maintenance en continu de celle-là. Les conditions de rémunération sont actées dans un contrat spécifique lors de la mise en place du portail.</h3>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">9. OPPOSITION OU CONTESTATION</h2>
+            <h3>9.1. En cas de perte ou du vol de son identifiant, du détournement ou de toute utilisation non autorisée de celui-ci ou de ses données, l’UTILISATEUR DU COMPTE DE PAIEMENT doit en informer COFLOW afin de demander le blocage de son identifiant.</h3>
+            <p>L’émetteur exécutera immédiatement par l’intermédiaire de COFLOW la demande de mise en opposition de l’Identifiant concerné. L’événement sera enregistré et horodaté.</p>
+            <p>Toute demande d’opposition doit être confirmée sans délai par l’UTILISATEUR DU COMPTE concerné par lettre signée remise ou expédiée sous pli recommandé, ou par email à L’ETABLISSEMENT DE PAIEMENT ou de MONNAIE ELECTRONIQUE ou à l’adresse de COFLOW.</p>
+            <p>L’émetteur et le Distributeur ne sauraient être tenus pour responsables des conséquences d’une opposition par télécopie ou courriel, qui n’émanerait pas de L’UTILISATEUR DU COMPTE.</p>
+            <p>Une demande d’opposition est réputée faite à la date et à l’heure de réception effective de la demande par le Distributeur. En cas de vol ou d’utilisation frauduleuse de l’Identifiant, l’émetteur est habilité à demander par l’intermédiaire du Distributeur, un récépissé ou une copie du dépôt de plainte à l’UTILISATEUR DU COMPTE DE PAIEMENT qui s’engage à y répondre dans les plus brefs délais.</p>
+            <h3>9.2. En cas de contestation d’une opération de débit ou de crédit sur le COMPTE (Contribution, Annulation, Remboursement), l’UTILISATEUR DU COMPTE DE PAIEMENT s’adresse à COFLOW ou à L’ETABLISSEMENT DE PAIEMENT ou de MONNAIE ELECTRONIQUE. Toute contestation d’une opération doit être adressée dans un délai de 13 mois à compter de la date de l’opération contestée. La responsabilité de l’émetteur et du Distributeur ne saurait en aucun cas être engagée en cas de faute de l'UTILISATEUR DU COMPTE DE PAIEMENT de manquement intentionnel ou constitutif d’une négligence grave à ses obligations, de transmission tardive d’une opposition ou d’une contestation ou de mauvaise foi.</h3>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">10. DONNÉES PERSONNELLES ET RÈGLEMENT EUROPÉEN POUR LA PROTECTION DES DONNÉES PERSONNELLES (RGPD)</h2>
+            <p>La solution COFLOW est conçue de telle sorte qu'elle évite la possibilité de fuites de données personnelles. COFLOW met en œuvre les mesures physiques, organisationnelles, matérielles et logistiques nécessaires en l'état des règles de l'art en vigueur pour assurer la sécurité, l'intégrité, la sauvegarde, la confidentialité des données et empêcher que les données soient déformées, traitées de manière non conforme aux finalités du PORTAIL, endommagées ou que des tiers non autorisés y aient accès.</p>
+            <h3>10.1. COFLOW s'engage en tant que solution logicielle à développer les fonctionnalités nécessaires de façon que les portails puissent être en mesure de respecter le RGPD. C'est ainsi que COFLOW :</h3>
+            <p>* Donne la faculté à ses clients de récolter un consentement écrit, clair et explicite auprès des usagers avant la collecte et le traitement de leurs données personelles, acte nécessairement, libre, éclairé.</p>
+            <p>* Est en mesure de permettre aux usagers de revenir sur leur consentement, d'accéder à leurs données personnelles, de les modifier, de les supprimer sous réserve des délais de conservation légaux ou règlementaires</p>
+            <h3>10.2. Les données nominatives collectées et traitées par COFLOW sont celles que L’UTILISATEUR DU SERVICE COFLOW transmet volontairement notamment via les formulaires d'inscription.</h3>
+            <h3>10.3. L’UTILISATEUR DU SERVICE COFLOW s'engage à fournir des informations exactes à jour et à informer sans délai COFLOW de toute modification de ces informations par l’envoi d’un e-mail à contact@coflow.fr, à effectuer sans délai toutes les modifications correspondantes sur son Espace PERSONNEL</h3>
+            <h3>10.4. COFLOW est amené à collecter et à traiter :</h3>
+            <p>* Des données pour son propre compte : Email, nom, prénom, date de naissance, adresse, nationalité, téléphone, pièce d'identité, justificatif de domicile, RIB. COFLOW collecte tout ou partie de ces données exclusivement auprès de personnes qui cherchent à prendre contact, ou auprès de ses clients gestionnaire de portail dans son obligation de connaissance client.</p>
+            <p>* Des données alors en tant que sous-traitant pour le compte de ses clients plateformes et alors sous leur entière responsabilité de traitement et de durée de conservation.</p>
+            <h3>10.5. COFLOW s'engage à ne jamais vendre des données personnelles collectées d'aucune sorte.</h3>
+            <h3>10.6. COFLOW s'engage à ne jamais traiter des données personnelles pour son propre compte autrement que pour satisfaire à une mission légale ou à une règlementation ou bien encore pour les besoins strictement utiles à la bonne marche de son activité (envoi de newsletters, prospection commerciale, proposition de nouveaux services, présentation de nouveaux projets, invitations, contacts). Dans tous les cas, COFLOW collecte ces données après en avoir demandé explicitement l'autorisation à ses propriétaires.</h3>
+            <h3>10.7. COFLOW s'engage à effacer les données collectées pour son propre compte, au bout de trois ans si leur conservation n'est pas justifiée par l'activité en cours, par la loi ou par la règlementation.</h3>
+            <h3>10.8. COFLOW s'engage à effectuer une revue de de ses bases de données une fois par an.</h3>
+            <h3>10.9. COFLOW s'engage à ne jamais conserver les données personnelles et les pièces justificatives collectées momentanément (au demeurant après en avoir sollicité l'autorisation) pour l'exercice de son rôle d'intermédiaire-agent de paiement de STRIPE ou pour son rôle de sous- traitant de ses clients - s'agissant du traitement des KYC par STRIPE.</h3>
+            <h3>10.10. COFLOW s'engage à attirer l'attention de ses clients en cas de non-respect manifeste de leur part du règlement RGPD.</h3>
+            <h3>10.11. COFLOW s'engage à notifier le cas échéant à la CNIL ainsi qu'à toutes les personnes qui pourraient être impactées, sous 72 heures des fuites de données intempestives ou frauduleuses.</h3>
+            <h3>10.12. Les portails/clients COFLOW doivent se conformer à la règlementation RGPD.</h3>
+            <h3>10.13. Aucune des informations transmises par UN UTILISATEUR DU SERVICE COFLOW lors de la création de son Espace Individualisé n'est visible par d'autres UTILISATEURS. Ces informations sont protégées par un nom d'UTILISATEUR et un mot de passe de façon que seul L’UTILISATEUR DU SERVICE COFLO ait accès à ses informations personnelles.</h3>
+            <h3>10.14. Aucune des informations transmises par UN UTILISATEUR DU SERVICE COFLOW lors de la création de son Espace Individualisé n'est visible par les autres UTILISATEURS. Ces informations sont protégées par un nom d'UTILISATEUR et un mot de passe de que seul L’UTILISATEUR DU SERVICE COFLOW ait accès à ses informations personnelles.</h3>
+            <h3>10.15. Le mot de passe d’un UTILISATEUR est personnel et confidentiel. L’UTILISATEUR DU SERVICE COFLOW est seul responsable de l'utilisation de son mot de passe. L’UTILISATEUR DU SERVICE COFLOW s'engage à conserver secret son mot de passe et à ne pas le divulguer sous quelque forme que ce soit. Il assume notamment la responsabilité de l’utilisation de son mot de passe par une tierce personne pour la réalisation de transactions. Plus généralement il est seul responsable de l’utilisation et de la conservation des identifiants qu’il a créés.</h3>
+            <h3>10.16. NI UN PORTEUR DE PROJET ni COFLOW ne demanderont jamais à un CONTRIBUTEUR son mot de passe via un appel téléphonique ou un e-mail non sollicité. Le CONTRIBUTEUR ne devra en outre pas oublier de se déconnecter de son Espace CONTRIBUTEUR ni de fermer la fenêtre de son navigateur à l'issue de sa session de travail. Il évitera ainsi que des personnes accèdent à ses informations personnelles en cas de partage d'ordinateur, ou de travail dans un espace personnel, professionnel ou dans un lieu public.</h3>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">11. MODIFICATION DES CONDITIONS GÉNÉRALES D’UTILISATION DU SERVICE COFLOW</h2>
+            <p>COFLOW se réserve le droit de modifier unilatéralement les présentes Conditions générales d’Utilisation du service COFLOW et sans préavis.</p>
+            <p>Il appartient en particulier aux UTILISATEURS de consulter et d’accepter les Conditions Générales d’Utilisation du service COFLOW au moment où il utilise les services d'un PORTAIL ou le service COFLOW. Chaque utilisation du SERVICE COFLOW constitue l'acceptation de la dernière version des présentes Conditions Générales d’Utilisation du service COFLOW.</p>
+            <p>En cas de modifications substantielles des présentes conditions générales d’utilisation, les nouvelles conditions générales entreront en vigueur un mois après leur publication sur le site internet de COFLOW. Une notification concomitante sera adressée par e-mail au client direct de COFLOW à l’adresse e-mail que le client aura indiqué à COFLOW lors de son inscription. Le client direct de COFLOW disposera d'un délai d'un mois à compter de la notification pour mettre fin au contrat. En l’absence de dénonciation par le client dans ce délai, ce dernier sera réputé avoir accepté les conditions générales modifiées.</p>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">12. PROPRIÉTÉ INTELLECTUELLE</h2>
+            <h3>12.1. Le contenu du SERVICE COFLOW ne peut être ni modifié, copié, distribué, encadré ou reproduit sans l’accord de COFLOW.</h3>
+            <h3>12.2. Tous les droits de propriété portant sur les programmes informatiques ainsi que toutes les mises à jour, nouvelles versions et copies des programmes mis à disposition de l’UTILISATEUR DU SERVICE COFLOW lors de l’utilisation sont de la propriété de COFLOW.</h3>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">13. DURÉE – SUSPENSION - RÉSILIATION</h2>
+            <p>Les présentes Conditions générales sont applicables pour une durée indéterminée.</p>
+            <p>COFLOW se réserve le droit de résilier immédiatement et sans préavis le Service COFLOW, et de mettre un terme aux collectes en cours en cas de violation par le PORTEUR de PROJET des obligations mises à leur charge aux termes des présentes conditions générales.</p>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">14. COMPTES INACTIFS</h2>
+            <h3>14.1. COFLOW se réserve le droit de clôturer des comptes inactifs ; en ce sens : Toute ouverture du PORTAIL, non suivie de la prise d’un abonnement dans un délai de 6 mois, pourra faire l’objet d’une notification de clôture avec un préavis d’un mois adressé par e-mail. En l’absence de réponse, le PORTAIL sera clôturée.</h3>
+            <h3>14.2. Tout COMPTE non utilisé dans un délai de 24 mois pourra faire l’objet d’une notification de clôture avec un préavis d’un mois adressé par e-mail. Sa clôture ne pourra plus donner lieu à l’utilisation ultérieure du compte de paiement. Il sera procédé au remboursement de la créance diminué des éventuels frais de gestion de comptes inactifs, c’est à dire n’ayant pas mouvementés depuis plus de douze mois (15 €/an). Les comptes non utilisés depuis plus de douze mois à solde zéro seront clôturés d’office. En cas d’impossibilité de remboursement, il appartiendra à l’UTILISATEUR de transmettre ses coordonnées bancaires à jour permettant de réaliser un virement.</h3>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">15. DROIT APPLICABLE ET JURIDICTIONS COMPÉTENTES</h2>
+            <p>Il est expressément stipulé que les présentes Conditions générales sont régies par la loi française. Tout litige qui naîtrait à l’occasion de l’exécution du présent contrat seront soumis aux tribunaux compétents de Paris.</p>
+            <div className="w-1/4 border-b border-black mt-4" />
+            <br/>
+
+            <h2 className="my-2 text-xl font-semibold">16. MENTIONS LÉGALES</h2>
+            <h3>16.1 Éditeur du Site COFLOW : le Site COFLOW est édité par COFLOW, immatriculée au registre du commerce et des sociétés de Paris sous le SIREN 978863272 et dont le siège social est situé au 6 rue d’armaillé - 75017 Paris 17, France.</h3>
+            <h3>16.2. Hébergeur du Site COFLOW : FIREBASE</h3>
+            <h3>16.3. Contact pour toute réclamation contact@coflow.fr.</h3>
+          </div>
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn bg-primary text-white border-none hover:bg-primary">
+                Close
+              </button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </>
+  );
 }
 
 export default Terms;
