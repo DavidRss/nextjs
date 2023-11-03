@@ -76,15 +76,18 @@ exports.getProject = async function (projectId) {
   }
 };
 
-exports.updateProject = async function(projectId, params) {
+exports.updateProject = async function (projectId, params) {
   try {
-    await firestore.collection(FBCollections.PROJECTS).doc(projectId).update(params);
+    await firestore
+      .collection(FBCollections.PROJECTS)
+      .doc(projectId)
+      .update(params);
     return true;
-  } catch(err) {
+  } catch (err) {
     console.log("===== updateProject error: ", err);
   }
   return false;
-}
+};
 
 exports.addRewardsIntoProject = async function (projectId, rewards) {
   try {
@@ -110,13 +113,14 @@ exports.participateUser = async function (projectId, user, donations, points) {
       country: "Frence",
       donations,
       points,
+      createdAt: Date.now(),
     };
     await firestore
       .collection(FBCollections.PROJECTS)
       .doc(projectId)
       .collection(FBCollections.PARTICIPANTS)
       .doc(user.id)
-      .set(params);
+      .add(params);
 
     return true;
   } catch (err) {

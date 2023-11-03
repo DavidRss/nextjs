@@ -6,10 +6,16 @@ import BackBtn from "../../components/buttons/backBtn/BackBtn";
 import refGift from "../../assets/Gift-points.svg";
 import { scrollToElement } from "../../utils/ActionUtils";
 import { useApp } from "../../services/AppContext";
-import { getFormatedDateFromSeconds } from "../../utils/utils";
+import {
+  getDateFromTimestamp,
+  getFormatedDateFromSeconds,
+} from "../../utils/utils";
+import { projectService } from "../../services/FirebaseService";
+import { PROJECT_ID } from "../../constants/constants";
+import cardImg from "../../assets/card.png";
 
 function Lottery() {
-  const { loadedProject, project } = useApp();
+  const { loadedProject, project, products } = useApp();
 
   const donationForm = useRef(null);
   const timer = useRef(null);
@@ -18,6 +24,12 @@ function Lottery() {
   const [endDate, setEndDate] = useState(null);
 
   const [rewards, setRewards] = useState([]);
+
+  const loadRewards = async () => {
+    const rewardList = await projectService.getRewards(PROJECT_ID);
+    console.log("===== rewardList: ", rewardList);
+    setRewards(rewardList);
+  };
 
   useEffect(() => {
     if (loadedProject && project) {
@@ -47,8 +59,30 @@ function Lottery() {
     };
   }, [counter]);
 
+  useEffect(() => {
+    loadRewards();
+  }, []);
+
   const handleOnParticipate = () => {
     scrollToElement(donationForm.current);
+  };
+
+  const productImage = (productId) => {
+    console.log("===== products =====", products);
+    const searchId = `gid://shopify/Product/${productId}`;
+    console.log("===== searchId: ", searchId);
+    const product = products.find((item) => item.id === searchId);
+    console.log("===== product: ", product);
+    if (product) {
+      return product.images[0].src;
+    } else {
+      return cardImg;
+    }
+  };
+
+  const formmattedDate = (timestamp) => {
+    const fDate = getDateFromTimestamp(timestamp);
+    return `${fDate.day}/${fDate.month}/${fDate.year}`;
   };
 
   return (
@@ -118,20 +152,20 @@ function Lottery() {
                       </div>
                     </div>
                     <div className="grid px-5 sm:px-0 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 justify-items-start sm:justify-items-center xl:justify-items-start gap-6 w-full">
-                      {rewards.map((card, index) => (
+                      {rewards.map((reward, index) => (
                         <div
                           key={index}
                           className={`flex flex-col items-start w-full gap-2 ${
-                            card.disabled ? "disabled" : ""
+                            reward.disabled ? "disabled" : ""
                           }`}
                         >
                           <img
-                            src={card.img}
+                            src={productImage(reward.productId)}
                             alt="lottery img"
                             className="w-full"
                           />
                           <span className="text-gray-900 font-semibold text-base">
-                            {card.date}
+                            {formmattedDate(reward.createdAt)}
                           </span>
                         </div>
                       ))}

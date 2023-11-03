@@ -171,3 +171,15 @@ export const removeLineItemsFromCheckout = async (checkout) => {
     }
   }
 };
+
+export const isAvailableProduct = (product) => {
+  if (product.product_type === "Donation") return false;
+
+  const variants = product.variants;
+  let quantity = 0;
+  for (const item of variants) {
+    quantity = quantity + item.inventory_quantity + item.old_inventory_quantity;
+  }
+
+  return quantity !== 0;
+};

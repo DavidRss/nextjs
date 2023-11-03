@@ -109,7 +109,7 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
         };
 
         const createdAt = Date.now();
-        let notifications = user.notifications || [];
+        const notifications = user.notifications || [];
         console.log("===== orderType: ", orderType);
         console.log("===== user: ", user);
         if (orderType === Order.Types.DONATION) {

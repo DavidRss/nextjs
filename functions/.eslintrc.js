@@ -20,7 +20,8 @@ module.exports = {
     "comma-dangle": "off",
     "space-before-function-paren": "off",
     "camelcase": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "max-len": "off"
   },
   overrides: [
     {

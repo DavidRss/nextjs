@@ -15,6 +15,7 @@ export const FBCollections = {
   PROJECTS: "projects",
   PARTICIPANTS: "participants",
   COMMENTS: "comments",
+  REWARDS: "rewards",
 };
 
 const firebaseApp = initializeApp(firebaseConfig);

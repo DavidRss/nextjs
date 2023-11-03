@@ -31,7 +31,7 @@ export default function Notifications() {
 
   const onClickPurchase = async (item) => {
     const productId = `gid://shopify/Product/${item.productId}`;
-    const product = products.find((item) => item.id === productId);
+    const product = products.find((obj) => obj.id === productId);
     if (currentUser && product) {
       try {
         setLoading(true);

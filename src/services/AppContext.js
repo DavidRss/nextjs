@@ -3,7 +3,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 import { projectService, userService } from "./FirebaseService";
 import { PROJECT_ID, STORAE_KEY } from "../constants/constants";
 import { shopifyService } from "./ShopifyService";
-import { getCurrentTimestamp, getDailyPoints } from "../utils/utils";
+import { getCurrentTimestamp, getDailyPoints, isAvailableProduct } from "../utils/utils";
 
 export const AppContext = createContext();
 
@@ -97,7 +97,9 @@ export function AppProvider({ children }) {
         if (item.productType === "Donation") {
           setDonationProduct(item);
         } else {
-          productList.push(item);
+          if(isAvailableProduct(item)) {
+            productList.push(item);
+          }
         }
       }
       setProducts(productList);

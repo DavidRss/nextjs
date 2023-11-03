@@ -263,9 +263,9 @@ const Presentation = () => {
                   <span className="text-3xl font-extrabold text-gray-900">
                     {nFormatter(project?.amount, 2)}{" "}
                   </span>
-                  <span className="text-xs font-normal text-gray-400">
+                  {/* <span className="text-xs font-normal text-gray-400">
                     21% more than last month
-                  </span>
+                  </span> */}
                 </CardS>
                 <CardS>
                   <h3 className="text-base font-semibold text-gray-500">
@@ -274,9 +274,9 @@ const Presentation = () => {
                   <span className="text-3xl font-extrabold text-gray-900">
                     {nFormatter(numberOfParticipant, 2)}{" "}
                   </span>
-                  <span className="text-xs font-normal text-gray-400">
+                  {/* <span className="text-xs font-normal text-gray-400">
                     36% more than last month
-                  </span>
+                  </span> */}
                 </CardS>
                 <CardS>
                   <h3 className="text-base font-semibold text-gray-500">
@@ -285,9 +285,9 @@ const Presentation = () => {
                   <span className="text-3xl font-extrabold text-gray-900">
                     {counter > 0 ? getFormatTimeRemaining(counter) : "---"}{" "}
                   </span>
-                  <span className="text-xs font-normal text-gray-400">
+                  {/* <span className="text-xs font-normal text-gray-400">
                     opacity: 0.6;
-                  </span>
+                  </span> */}
                 </CardS>
               </div>
               <div className="flex w-full justify-center sm:hidden">

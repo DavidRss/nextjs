@@ -120,4 +120,26 @@ export default class ProjectService {
       comments
     );
   };
+
+  getRewards = async (projectId) => {
+    try {
+      const snapshot = await getDocs(
+        collection(
+          this.firestore,
+          FBCollections.PROJECTS,
+          projectId,
+          FBCollections.REWARDS
+        )
+      );
+      const rewards = [];
+      snapshot.forEach((doc) => {
+        rewards.push(doc.data());
+      });
+
+      return rewards;
+    } catch (err) {
+      console.log("===== getRewards error: ", err);
+    }
+    return null;
+  };
 }
