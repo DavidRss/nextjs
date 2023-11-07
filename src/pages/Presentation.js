@@ -165,6 +165,7 @@ const Presentation = () => {
       return;
     }
 
+    console.log("===== donationProduct: ", donationProduct);
     const variants = donationProduct.variants;
     const minPrice = parseFloat(variants[0].price.amount);
     const maxPrice = parseFloat(variants[variants.length - 1].price.amount);
@@ -188,12 +189,12 @@ const Presentation = () => {
       }
     }
     console.log("===== selVariant: ", selVariant);
-    if(!selVariant) {
+    if (!selVariant) {
       showNotifyMessage({
         type: Notify.Type.INFO,
         message: "You can't donate at this time. Please try later.",
       });
-      return
+      return;
     }
 
     setLoading(true);

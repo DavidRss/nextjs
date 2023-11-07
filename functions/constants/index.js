@@ -83,6 +83,7 @@ const Order = {
 const Notification = {
   Type: {
     ORDER: "order",
+    COUPON: "coupon",
     REWARD: "reward",
   },
 };

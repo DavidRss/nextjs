@@ -159,7 +159,7 @@ function SignUp() {
       userInfo.visited = getCurrentTimestamp();
 
       if (referralCode) {
-        await userService.updateReferrals(referralCode, uid);
+        await userService.updateReferrals(username, referralCode, uid);
 
         userInfo.referrer = referralCode;
       }

@@ -114,6 +114,8 @@ export const Order = {
 export const Notification = {
   Type: {
     ORDER: "order",
+    COUPON: "coupon",
     REWARD: "reward",
+    EARNED: "earned"
   },
 };

@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import iconBell from "../../assets/bell.svg";
 import { useApp } from "../../services/AppContext";
 import {
+  copyTextToClipboard,
   getCheckoutCustomAttributes,
   getDateFromTimestamp,
   removeLineItemsFromCheckout,
 } from "../../utils/utils";
 import { Notification, Notify, Order } from "../../constants/constants";
 import { shopifyService } from "../../services/ShopifyService";
+
+import copyWhite from "../../assets/Copy-white.svg";
 
 export default function Notifications() {
   const {
@@ -104,6 +107,19 @@ export default function Notifications() {
     }
   }, [currentUser]);
 
+  const copyToClipboard = (text) => {
+    copyTextToClipboard(text)
+      .then(() => {
+        showNotifyMessage({
+          type: "success",
+          message: "Copied",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="mr-4">
       <div
@@ -156,7 +172,19 @@ export default function Notifications() {
                       className="pt-2 pb-2 cursor-pointer hover:bg-gray-100 px-4 odd:bg-gray-50"
                     >
                       <div>{item.message}</div>
-                      <div>{item.type}</div>
+                      {/* <div>{item.type}</div> */}
+                      {item.type === Notification.Type.COUPON && <div>Coupon code: {item.discountCode}</div>}
+                      {item.type === Notification.Type.COUPON && <div className="text-right">
+                        <button
+                          className="btn btn-primary text-white px-2 py-0 min-h-0 h-8"
+                          onClick={() => {
+                            copyToClipboard(item.discountCode);
+                          }}
+                        >
+                          <img src={copyWhite} alt="copy-icon white" />
+                          copy
+                        </button>
+                      </div>}
                       {item.type === Notification.Type.REWARD && (
                         <div className="text-right">
                           <button
@@ -165,7 +193,9 @@ export default function Notifications() {
                               onClickPurchase(item);
                             }}
                           >
-                            Purchase
+                            {item.type === Notification.Type.REWARD
+                              ? "Claim prize"
+                              : "Copy"}
                           </button>
                         </div>
                       )}

@@ -9,6 +9,7 @@ import ticket from "../../assets/Ticket Sale.svg";
 import refGift from "../../assets/Gift-points.svg";
 import { useApp } from "../../services/AppContext";
 import { scrollToElement } from "../../utils/ActionUtils";
+import { copyTextToClipboard } from "../../utils/utils";
 
 function Referals() {
   const { currentUser, showNotifyMessage } = useApp();
@@ -19,14 +20,6 @@ function Referals() {
 
   const inputRef = useRef(null);
   const [copied, setCopied] = useState(false);
-
-  async function copyTextToClipboard(text) {
-    if ("clipboard" in navigator) {
-      return await navigator.clipboard.writeText(text);
-    } else {
-      return document.execCommand("copy", true, text);
-    }
-  }
 
   const copyToClipboard = () => {
     const inputValue = inputRef.current.value;

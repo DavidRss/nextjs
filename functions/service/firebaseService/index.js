@@ -40,7 +40,7 @@ exports.getUserByReferralCode = async function (referralCode) {
       .collection(FBCollections.USERS)
       .where("referralCode", "==", referralCode)
       .get();
-    console.log("===== res: ", res);
+    // console.log("===== res: ", res);
     if (!res.empty) {
       return res.docs[0].data();
     }

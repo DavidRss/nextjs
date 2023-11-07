@@ -116,16 +116,18 @@ exports.createPriceRule = async function (title, value, productId) {
       price_rule: {
         title: title,
         target_type: "line_item",
-        target_selection: "entitled",
+        target_selection: productId ? "entitled" : "all",
         allocation_method: "across",
         customer_selection: "all",
         value_type: "percentage",
         value: value,
-        entitled_product_ids: [productId],
+        entitled_product_ids: productId ? [productId] : [],
         usage_limit: 1,
         starts_at: new Date().toISOString(),
       },
     };
+
+    console.log("===== createPriceRule: ", params);
 
     const options = getOptions("POST", params);
 

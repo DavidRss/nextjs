@@ -3,7 +3,11 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 import { projectService, userService } from "./FirebaseService";
 import { PROJECT_ID, STORAE_KEY } from "../constants/constants";
 import { shopifyService } from "./ShopifyService";
-import { getCurrentTimestamp, getDailyPoints, isAvailableProduct } from "../utils/utils";
+import {
+  getCurrentTimestamp,
+  getDailyPoints,
+  isAvailableProduct,
+} from "../utils/utils";
 
 export const AppContext = createContext();
 
@@ -97,7 +101,7 @@ export function AppProvider({ children }) {
         if (item.productType === "Donation") {
           setDonationProduct(item);
         } else {
-          if(isAvailableProduct(item)) {
+          if (isAvailableProduct(item)) {
             productList.push(item);
           }
         }
@@ -112,6 +116,7 @@ export function AppProvider({ children }) {
 
   useEffect(() => {
     const userString = getItem(STORAE_KEY.USER);
+    console.log("===== userString: ", typeof userString);
     if (userString) {
       const user = JSON.parse(userString);
 

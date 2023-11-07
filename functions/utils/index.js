@@ -30,7 +30,7 @@ exports.checkLevelUpPoints = function (prevSpending, spending) {
 
 exports.getPriceRuleTitle = function (value, productId) {
   value = -parseInt(value);
-  return `Discount_${value}P_${productId}`;
+  return productId ? `Discount_${value}P_${productId}` : `Discount_${value}P`;
 };
 
 exports.isAvailableProduct = function (product) {

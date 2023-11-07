@@ -9,7 +9,7 @@ import {
   where,
 } from "firebase/firestore";
 import { FBCollections } from "../FirebaseService";
-import { EARN } from "../../constants/constants";
+import { EARN, Notification } from "../../constants/constants";
 
 export default class UserService {
   constructor(firestore) {
@@ -40,8 +40,7 @@ export default class UserService {
     return updateDoc(doc(this.firestore, FBCollections.USERS, userId), params);
   };
 
-  updateReferrals = (referralCode, userId) => {
-    console.log("===== updateReferrals =====");
+  updateReferrals = (username, referralCode, userId) => {
     const $this = this;
     return new Promise(async (resolve, reject) => {
       try {
@@ -58,7 +57,18 @@ export default class UserService {
             if (user.referrals.length === 1) {
               user.points = user.points + EARN.REFER;
               user.earned.referral = true;
+
+              const notification = {
+                productId: "",
+                discountCode: "",
+                viewed: false,
+                message: `${username} used your ref you won 400 points`,
+                type: Notification.Type.EARNED,
+                createdAt: Date.now(),
+              };
+              user.notifications.unshift(notification);
             }
+            // X used your ref you won 400 points
             await updateDoc(
               doc($this.firestore, FBCollections.USERS, user.id),
               user
