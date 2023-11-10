@@ -181,13 +181,13 @@ function SignUp() {
   };
 
   return (
-    <div className="bg-white w-full flex flex-col pb-14 lg:pb-20">
+    <div className="w-full flex flex-col pb-14 lg:pb-20">
       <section className="flex flex-col items-center lg:items-start mt-12 lg:mt-9 mb-7 lg:mb-0 lg:px-9 w-full">
-        <h1 className="text-gray-900 text-2xl font-semibold">Coflow</h1>
+        <h1 className="text-white text-2xl font-semibold">Coflow</h1>
       </section>
       <section className="w-full flex justify-center px-5 lg:px-0">
-        <div className="border border-gray-200 rounded-md shadow-md py-8 lg:py-14 px-10 w-full max-w-3xl flex flex-col items-center">
-          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 w-full max-w-md">
+        <div className="bg-mainCard rounded-md shadow-md py-8 lg:py-14 px-10 w-full max-w-3xl flex flex-col items-center">
+          <h1 className="text-2xl lg:text-3xl font-bold text-white w-full max-w-md">
             Creez votre compte pour poursuivre votre participation
           </h1>
           <button
@@ -197,14 +197,14 @@ function SignUp() {
             <img src={googleIcon} alt="signUp by google" />
             S’inscrire via google
           </button>
-          <h2 className="text-base font-semibold text-gray-900">
+          <h2 className="text-base font-semibold text-white-90">
             Ou bien inscrivez-vous avec votre adresse email
           </h2>
           <div className="w-full mt-8 flex flex-col gap-10">
             <div className="sm:col-span-4">
               <label
                 htmlFor="username"
-                className="block text-base text-left font-bold text-gray-900"
+                className="block text-base text-left font-bold text-white-90"
               >
                 Nom d’utilisateur
               </label>
@@ -216,8 +216,8 @@ function SignUp() {
                   value={username}
                   onChange={handleChangeUsername}
                   autoComplete="username"
-                  className={`bg-gray-200 block w-full rounded-md border py-4 pl-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6 ${
-                    errorUsername ? "border-red-800" : "border-gray-200"
+                  className={`bg-input block w-full rounded-md py-4 pl-2 text-white placeholder:text-placeholder sm:text-sm sm:leading-6 ${
+                    errorUsername ? "border-red-800" : ""
                   }`}
                 />
               </div>
@@ -225,7 +225,7 @@ function SignUp() {
             <div className="sm:col-span-4">
               <label
                 htmlFor="email"
-                className="block text-base text-left font-bold text-gray-900"
+                className="block text-base text-left font-bold text-white-90"
               >
                 Adresse email
               </label>
@@ -237,8 +237,8 @@ function SignUp() {
                   value={email}
                   onChange={handleChangeEmail}
                   autoComplete="email"
-                  className={`bg-gray-200 block w-full rounded-md border py-4 pl-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6 ${
-                    errorEmail ? "border-red-800" : "border-gray-200"
+                  className={`bg-input block w-full rounded-md py-4 pl-2 text-white placeholder:text-placeholder sm:text-sm sm:leading-6 ${
+                    errorEmail ? "border-red-800" : ""
                   }`}
                 />
               </div>
@@ -246,7 +246,7 @@ function SignUp() {
             <div className="sm:col-span-4">
               <label
                 htmlFor="password"
-                className="block text-base text-left font-bold text-gray-900"
+                className="block text-base text-left font-bold text-white-90"
               >
                 Mot de passe
               </label>
@@ -258,14 +258,14 @@ function SignUp() {
                   value={password}
                   onChange={handleChangePassword}
                   autoComplete="password"
-                  className={`bg-gray-200 block w-full rounded-md border py-4 pl-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6 ${
-                    errorPassword ? "border-red-800" : "border-gray-200"
+                  className={`bg-input block w-full rounded-md py-4 pl-2 text-white placeholder:text-placeholder sm:text-sm sm:leading-6 ${
+                    errorPassword ? "border-red-800" : ""
                   }`}
                 />
               </div>
             </div>
           </div>
-          <div className="text-gray-900 text-base font-semibold flex justify-center w-full mt-6 lg:mt-8">
+          <div className="text-white-90 text-base font-semibold flex justify-center w-full mt-6 lg:mt-8">
             <h3 className="px-0 lg:px-28">
               En creant votre compte vous acceptez les{" "}
               <span
@@ -291,7 +291,7 @@ function SignUp() {
             S’inscrire
           </button>
           {/* </Link> */}
-          <span className="text-base text-gray-900 font-bold">
+          <span className="text-base text-white-90 font-bold">
             Deja inscrit?{" "}
             <Link to="/signin">
               <span className="text-primary">Connecte toi</span>

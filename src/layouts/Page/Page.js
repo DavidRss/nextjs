@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Notify } from "../../constants/constants";
 import LoginDialog from "../../components/dialog/LoginDialog";
+import Topbar from "../../components/Topbar/Topbar";
 
 export default function Page({ children, handleOnParticipate }) {
   const { loading, notifyMessage, showNotifyMessage } = useApp();
@@ -30,6 +31,7 @@ export default function Page({ children, handleOnParticipate }) {
   return (
     <Main>
       <Header handleOnParticipate={handleOnParticipate} />
+      <Topbar />
       <Navigate handleOnParticipate={handleOnParticipate} />
       {children}
       <Footer />

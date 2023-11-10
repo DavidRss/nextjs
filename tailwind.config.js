@@ -5,7 +5,7 @@ module.exports = {
     themes: [
       {
         light: {    
-          "primary": "#C73E00",       
+          "primary": "#4A9F2E",       
           "secondary": "#F9FAFB",     
           "accent": "#D64758",      
           "neutral": "#E4E4E5",      
@@ -14,7 +14,8 @@ module.exports = {
           "success": "#3EA02D",      
           "warning": "#fbbd23",    
           "error": "#f87272",
-          "inputBg": "#F9FAFB",
+          "input": "#9B9B9B",
+          'divider': '#3A3A3A'
         },
       },
     ],
@@ -28,19 +29,31 @@ module.exports = {
         '489': '489px',
         '680': '680px'
       },
+      colors:{
+        "white-90": "#FFFFFFE6",
+        "white-70": "#FFFFFFB3",
+        "white-50": "#FFFFFF8A",
+        "placeholder": "#9B9B9B",
+      },
       backgroundColor: {
+        'mainCard': '#FFFFFF0A',
         'goldCard': '#FFDB65',
         'silverCard': '#EDEDED',
         'bronzeCard': '#F2C7B3',
         'disabled': '#F0F0F0',
         'pagBg': '#F2F2F2',
         'chatMsg': '#0067C7',
+        'navigate': '#FFFFFF08',
+        'input': '#404040',
+        'dialog': '#2E2E2E',
       },
       borderColor: {
+        'mainCard': '#FFFFFF05',
         'goldCard': '#FFDB65',
         'silverCard': '#EDEDED',
         'bronzeCard': '#F2C7B3',
         'pagBg': '#F2F2F2',
+        'divider': '#3A3A3A'
       }
     },
   },

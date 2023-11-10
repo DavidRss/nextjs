@@ -56,11 +56,11 @@ function Leaderboard() {
 
   return (
     <Page handleOnParticipate={handleOnParticipate}>
-      <section className="bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
+      <section className="w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
         <Container>
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start">
             <div className="relative flex flex-col w-full">
-              <h1 className="text-gray-900 font-bold text-3xl mb-8 text-left">
+              <h1 className="text-white-90 font-bold text-3xl mb-8 text-left">
                 Leaderboard
               </h1>
               <div className="flex flex-wrap xl:flex-row gap-4">
@@ -76,14 +76,14 @@ function Leaderboard() {
                           : "bg-bronzeCard"
                       } text-primary-content`}
                     >
-                      <div className="stat text-gray-900">
-                        <div className="stat-title text-gray-900 text-left font-semibold opacity-70">
+                      <div className="stat text-white-90">
+                        <div className="stat-title text-white-90 text-left font-semibold opacity-70">
                           {`${index + 1}st place`}
                         </div>
                         <div className="stat-value text-xl font-extrabold text-left">
                           {rowData.username}
                         </div>
-                        <div className="stat-desc flex gap-1.5 text-gray-900 font-normal text-sm opacity-40 mt-1">
+                        <div className="stat-desc flex gap-1.5 text-white-90 font-normal text-sm opacity-40 mt-1">
                           <span>
                             {rowData.donations || rowData?.spending} Dons
                           </span>
@@ -98,10 +98,10 @@ function Leaderboard() {
                 </div>
               </div>
               <div className="mt-4">
-                <div className="overflow-x-auto border border-neutral rounded-lg scroll min-h-[500px]">
+                <div className="overflow-x-auto bg-mainCard rounded-lg scroll min-h-[500px]">
                   <table className="table table-zebra">
-                    <thead className="bg-pagBg">
-                      <tr className="border-pagBg text-gray-900 opacity-30 text-base font-semibold">
+                    <thead className="bg-mainCard">
+                      <tr className="border-mainCard text-white-90 opacity-30 text-base font-semibold">
                         <th className="w-20 text-center">Place</th>
                         <th>Name</th>
                         <th>Dons</th>
@@ -110,7 +110,7 @@ function Leaderboard() {
                     </thead>
                     <tbody>
                       {participants.map((rowData, index) => (
-                        <tr key={index} className="border-neutra text-gray-900">
+                        <tr key={index} className="border-neutra text-white-90">
                           <th className="text-base font-semibold text-center">
                             {index + 1 + (currentPage - 1) * pageSize}
                           </th>
@@ -148,7 +148,7 @@ function Leaderboard() {
                 <div className="flex w-full flex-col sm:flex-row justify-between items-center mt-10">
                   <div className="flex sm:flex-1 sm:items-center sm:justify-between w-full mb-4 sm:mb-0">
                     <div>
-                      <p className="text-gray-900 font-semibold text-base">
+                      <p className="text-white-90 font-semibold text-base">
                         Showing
                         <span className="font-medium"> 1 </span>
                         to
@@ -168,9 +168,9 @@ function Leaderboard() {
                         key={page}
                         className={`join-item btn text-base bg-pagBg ${
                           page + 1 === currentPage
-                            ? "bg-opacity-100 text-gray-900"
-                            : "bg-opacity-50 text-gray-900 text-opacity-20"
-                        } border-none hover:bg-pagBg hover:bg-opacity-100 hover:text-gray-900 rounded-lg`}
+                            ? "bg-opacity-100 text-white-90"
+                            : "bg-opacity-50 text-white-90 text-opacity-20"
+                        } border-none hover:bg-pagBg hover:bg-opacity-100 hover:text-white-90 rounded-lg`}
                         onClick={() => handleChangePage(page + 1)}
                       >
                         {page + 1}

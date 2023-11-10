@@ -87,48 +87,48 @@ function Lottery() {
 
   return (
     <Page handleOnParticipate={handleOnParticipate}>
-      <section className="bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
+      <section className="w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
         <Container>
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start">
             <div className="flex flex-col w-full">
-              <h1 className="text-gray-900 font-bold text-3xl mb-8 text-left">
+              <h1 className="text-white-90 font-bold text-3xl mb-8 text-left">
                 Welcome to <span className="text-primary">Loyalty Program</span>
               </h1>
               <div className="flex flex-col gap-5">
-                <div className="flex flex-col bg-secondary border-pagBg rounded-xl pt-8 sm:pb-20 sm:px-6">
+                <div className="flex flex-col bg-mainCard border-pagBg rounded-xl pt-8 sm:pb-20 sm:px-6">
                   <div className="flex items-center justify-start w-full">
                     <BackBtn title="Lottery" />
                   </div>
                   <div className="flex flex-col items-start justify-start w-full mt-11 gap-2">
-                    <h1 className="text-gray-900 text-xl font-semibold mt-2">
+                    <h1 className="text-white-90 text-xl font-semibold mt-2">
                       What is Lorem Ipsum?
                     </h1>
-                    <p className="text-gray-900 opacity-50 text-base font-normal max-w-lg text-left">
+                    <p className="text-white-90 opacity-50 text-base font-normal max-w-lg text-left">
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry. Lorem Ipsum has been the industry
                     </p>
-                    <div className="w-full flex flex-col refBg gap-12 bg-white rounded-xl border border-pagBg px-5 sm:px-12 py-8 mb-6 mt-12">
+                    <div className="w-full flex flex-col refBg gap-12 bg-mainCard rounded-xl px-5 sm:px-12 py-8 mb-6 mt-12">
                       <div className="flex flex-col gap-7 items-start sm:flex-row sm:items-center justify-center sm:gap-16">
                         <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
-                          <div className="flex flex-col text-gray-900">
+                          <div className="flex flex-col text-white-90">
                             <span className="countdown font-mono text-5xl">
                               {endDate ? endDate.days : "---"}
                             </span>
                             days
                           </div>
-                          <div className="flex flex-col text-gray-900">
+                          <div className="flex flex-col text-white-90">
                             <span className="countdown font-mono text-5xl">
                               {endDate ? endDate.hours : "---"}
                             </span>
                             hours
                           </div>
-                          <div className="flex flex-col text-gray-900">
+                          <div className="flex flex-col text-white-90">
                             <span className="countdown font-mono text-5xl">
                               {endDate ? endDate.minutes : "---"}
                             </span>
                             min
                           </div>
-                          <div className="flex flex-col text-gray-900">
+                          <div className="flex flex-col text-white-90">
                             <span className="countdown font-mono text-5xl">
                               {endDate ? endDate.seconds : "---"}
                             </span>
@@ -140,7 +140,7 @@ function Lottery() {
                         <div className="rounded-full bg-primary bg-opacity-10 p-2 min-w-max">
                           <img src={refGift} alt="icon" />
                         </div>
-                        <div className="flex flex-col items-start gap-0.5 text-gray-900">
+                        <div className="flex flex-col items-start gap-0.5 text-white-90">
                           <span className="font-semibold text-xl">
                             500 Points (5 EUR)
                           </span>
@@ -164,7 +164,7 @@ function Lottery() {
                             alt="lottery img"
                             className="w-full"
                           />
-                          <span className="text-gray-900 font-semibold text-base">
+                          <span className="text-white-90 font-semibold text-base">
                             {formmattedDate(reward.createdAt)}
                           </span>
                         </div>

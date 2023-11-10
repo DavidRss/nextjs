@@ -28,32 +28,32 @@ function Earn() {
 
   return (
     <Page handleOnParticipate={handleOnParticipage}>
-      <section className="bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
+      <section className="w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
         <Container>
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start">
             <div className="flex flex-col w-full">
-              <h1 className="text-gray-900 font-bold text-3xl mb-8 text-left">
+              <h1 className="text-white-90 font-bold text-3xl mb-8 text-left">
                 Welcome to <span className="text-primary">Loyalty Program</span>
               </h1>
               <div className="flex flex-col gap-5">
-                <div className="flex flex-col bg-secondary border-pagBg rounded-xl pt-8 pb-20 px-6">
+                <div className="flex flex-col bg-mainCard border-pagBg rounded-xl pt-8 pb-20 px-6">
                   <div className="flex items-center justify-start w-full">
                     <BackBtn title="Earn" />
                   </div>
                   <div className="flex flex-col items-start justify-start w-full mt-11 gap-2">
-                    <h2 className="text-gray-900 font-semibold text-xl">
+                    <h2 className="text-white-90 font-semibold text-xl">
                       Cashback
                     </h2>
-                    <span className="text-gray-900 opacity-50 font-normal text-base">
+                    <span className="text-white-90 opacity-50 font-normal text-base">
                       Earn 10 Vibes for every 1 EUR spent.
                     </span>
                   </div>
                   <div className="divider mt-6 mb-8" />
                   <div className="flex flex-col items-start justify-start w-full mt-11 gap-2">
-                    <h2 className="text-gray-900 font-semibold text-xl">
+                    <h2 className="text-white-90 font-semibold text-xl">
                       Challenge Board
                     </h2>
-                    <span className="text-gray-900 opacity-50 font-normal text-base">
+                    <span className="text-white-90 opacity-50 font-normal text-base">
                       Collect badges and get rewarded
                     </span>
                   </div>
@@ -72,7 +72,7 @@ function Earn() {
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
                         Welcome to the family
                       </h1>
-                      <h2 className="text-base font-semibold text-gray-900">
+                      <h2 className="text-base font-semibold text-white-90">
                         {EARN.FAMILY} Vibes
                       </h2>
                     </div>
@@ -90,7 +90,7 @@ function Earn() {
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
                         First donation
                       </h1>
-                      <h2 className="text-base font-semibold text-gray-900">
+                      <h2 className="text-base font-semibold text-white-90">
                         {EARN.DONATION1} Vibes
                       </h2>
                     </div>
@@ -108,7 +108,7 @@ function Earn() {
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
                         Second donation
                       </h1>
-                      <h2 className="text-base font-semibold text-gray-900">
+                      <h2 className="text-base font-semibold text-white-90">
                         {EARN.DONATION2} Vibes
                       </h2>
                     </div>
@@ -127,7 +127,7 @@ function Earn() {
                         Post a clip on Tik Tok (Rules : Clip must promote this
                         page and you must tag @bricebbrice)
                       </h1>
-                      <h2 className="text-base font-semibold text-gray-900">
+                      <h2 className="text-base font-semibold text-white-90">
                         EARN.TIKTOK points Vibes
                       </h2>
                     </div>
@@ -146,7 +146,7 @@ function Earn() {
                         Post a clip on Youtube short (Rules : Clip must promote
                         this page and you must tag @bricebbrice)
                       </h1>
-                      <h2 className="text-base font-semibold text-gray-900">
+                      <h2 className="text-base font-semibold text-white-90">
                         {EARN.YOUTUBE} points Vibes
                       </h2>
                     </div>
@@ -165,7 +165,7 @@ function Earn() {
                         Post a clip on Instagram Reels (Rules : Clip must
                         promote this page and you must tag @bricebbrice)
                       </h1>
-                      <h2 className="text-base font-semibold text-gray-900">
+                      <h2 className="text-base font-semibold text-white-90">
                         {EARN.INSTAGRAM} points Vibes
                       </h2>
                     </div>
@@ -177,7 +177,7 @@ function Earn() {
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
                         Visit the page daily
                       </h1>
-                      <h2 className="text-base font-semibold text-gray-900">
+                      <h2 className="text-base font-semibold text-white-90">
                         {EARN.DAILY} Vibes
                       </h2>
                     </div>
@@ -195,7 +195,7 @@ function Earn() {
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
                         Leave a comment
                       </h1>
-                      <h2 className="text-base font-semibold text-gray-900">
+                      <h2 className="text-base font-semibold text-white-90">
                         {EARN.COMMENT} Vibes
                       </h2>
                     </div>
@@ -213,7 +213,7 @@ function Earn() {
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
                         Refer a friend
                       </h1>
-                      <h2 className="text-base font-semibold text-gray-900">
+                      <h2 className="text-base font-semibold text-white-90">
                         {EARN.REFER} Vibes
                       </h2>
                     </div>

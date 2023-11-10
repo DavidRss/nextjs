@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Page from "../layouts/Page/Page";
 import Container from "../layouts/Container/Container";
-import avatarNav from "../assets/avatarHeader.png";
+import avatar from "../assets/avatarHeader.png";
 
 import Aside from "../components/aside/Aside";
 import { useApp } from "../services/AppContext";
@@ -15,7 +15,7 @@ import { EARN, PROJECT_ID, Path } from "../constants/constants";
 import { onValue, ref } from "firebase/database";
 import Spinner from "../components/spinner/Spinner";
 import { scrollToElement } from "../utils/ActionUtils";
-import { getCurrentTimestamp } from "../utils/utils";
+import { getCurrentTimestamp, getDateFromTimestamp } from "../utils/utils";
 import { useNavigate } from "react-router-dom";
 
 function Chat() {
@@ -145,16 +145,21 @@ function Chat() {
     scrollToElement(donationForm.current);
   };
 
+  const formattedDateTime = (timestamp) => {
+    const fDT = getDateFromTimestamp(timestamp);
+    return `${fDT.year}-${fDT.month}-${fDT.day} ${fDT.hh}:${fDT.mm}:${fDT.ss}`;
+  }
+
   return (
     <Page handleOnParticipate={handleOnParticipate}>
-      <section className="bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
+      <section className="w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
         <Container>
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start">
             <div className="flex flex-col w-full h-fit">
-              <h1 className="text-gray-900 font-bold text-3xl mb-8 text-left">
+              <h1 className="text-white-90 font-bold text-3xl mb-8 text-left">
                 Chat
               </h1>
-              <div className="relative mt-8 flex w-full flex-col rounded-xl bg-secondary">
+              <div className="relative mt-8 flex w-full flex-col rounded-xl bg-mainCard">
                 <div
                   ref={chatView}
                   className="min-h-[300px] max-h-[860px] overflow-y-auto"
@@ -176,7 +181,7 @@ function Chat() {
                         <div className="chat-image avatar">
                           <div className="w-10 rounded-full mb-5">
                             <img
-                              src={comment.avatar ? comment.avatar : avatarNav}
+                              src={comment.avatar ? comment.avatar : avatar}
                               alt="userAvatar"
                             />
                           </div>
@@ -186,10 +191,10 @@ function Chat() {
                             isOwner(comment) ? "items-end" : "items-start"
                           } gap-4`}
                         >
-                          <div className="chat-header text-base-100 font-medium">
+                          <div className="chat-header text-white-70 font-medium">
                             {comment.username}
                             <time className="text-sm font-normal opacity-50 ml-2">
-                              {comment.createAt}
+                              {formattedDateTime(comment.createAt)}
                             </time>
                           </div>
                           <div
@@ -209,7 +214,7 @@ function Chat() {
                   {/* <div ref={chatView} /> */}
                   {isLoading && <Spinner position="absolute" />}
                 </div>
-                <div className="bg-gray-200 px-8 pb-4 pt-4 rounded-b-xl flex items-center w-full gap-6">
+                <div className="bg-mainCard px-8 pb-4 pt-4 rounded-b-xl flex items-center w-full gap-6">
                   {fileAttached && (
                     <div
                       className="tooltip tooltip-open absolute before:bg-base-100 before:text-white attach"
@@ -246,7 +251,7 @@ function Chat() {
                     <input
                       type="text"
                       placeholder="Write a message..."
-                      className="input input-bordered w-full bg-white rounded-3xl text-gray-900"
+                      className="input input-bordered w-full bg-input rounded-3xl text-white-90"
                       value={text}
                       onChange={handleTextInput}
                       onKeyPress={handleComplitedMessage}

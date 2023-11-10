@@ -44,23 +44,23 @@ function Referals() {
 
   return (
     <Page handleOnParticipate={handleOnParticipate}>
-      <section className="bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
+      <section className="w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
         <Container>
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start">
             <div className="flex flex-col w-full">
-              <h1 className="text-gray-900 font-bold text-3xl mb-8 text-left">
+              <h1 className="text-white-90 font-bold text-3xl mb-8 text-left">
                 Welcome to <span className="text-primary">Loyalty Program</span>
               </h1>
               <div className="flex flex-col gap-5">
-                <div className="flex flex-col bg-secondary border-pagBg rounded-xl pt-8 sm:px-6">
+                <div className="flex flex-col bg-mainCard border-pagBg rounded-xl pt-8 sm:px-6">
                   <div className="flex items-center justify-start w-full">
                     <BackBtn title="Referral" />
                   </div>
                   <div className="flex flex-col items-start justify-start w-full mt-11 gap-2">
-                    <h1 className="text-gray-900 font-semibold text-xl mb-2">
+                    <h1 className="text-white-90 font-semibold text-xl mb-2">
                       We value friendship
                     </h1>
-                    <p className="text-left text-base font-normal text-gray-900 opacity-60">
+                    <p className="text-left text-base font-normal text-white-90 opacity-60">
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry. Lorem Ipsum has been the industry's
                       standard dummy text ever since the 1500s
@@ -69,7 +69,7 @@ function Referals() {
                       <ul className="ref steps steps-vertical">
                         <li className="ref step step-neutral ml-5">
                           <button
-                            className="flex gap-2 items-center text-gray-900 text-xl font-semibold underline cursor-pointer"
+                            className="flex gap-2 items-center text-white-90 text-xl font-semibold underline cursor-pointer"
                             onClick={copyToClipboard}
                           >
                             Share your link
@@ -77,25 +77,25 @@ function Referals() {
                           </button>
                         </li>
                         <li className="ref step step-neutral ml-5">
-                          <span className="text-gray-900 text-xl font-semibold">
+                          <span className="text-white-90 text-xl font-semibold">
                             Your friend signup using your link
                           </span>
                         </li>
                         <li className="ref step step-neutral ml-5">
-                          <span className="text-gray-900 text-xl font-semibold">
+                          <span className="text-white-90 text-xl font-semibold">
                             Your friend places an order
                           </span>
                         </li>
                         <li className="ref step step-neutral ml-5"></li>
                       </ul>
                       <div className="relative -top-28 z-10 w-full">
-                        <div className="w-full flex flex-col refBg gap-12 bg-white rounded-xl border border-pagBg px-12 py-8">
+                        <div className="w-full flex flex-col refBg gap-12 bg-mainCard rounded-xl pl-28 py-8">
                           <div className="flex flex-col gap-7 items-start sm:flex-row sm:items-center sm:gap-16">
                             <div className="flex items-center gap-2">
                               <div className="rounded-full bg-primary bg-opacity-10 p-2">
                                 <img src={ticket} alt="icon" />
                               </div>
-                              <div className="flex flex-col items-start gap-0.5 text-gray-900">
+                              <div className="flex flex-col items-start gap-0.5 text-white-90">
                                 <span className="font-normal text-sm opacity-50">
                                   You get
                                 </span>
@@ -108,7 +108,7 @@ function Referals() {
                               <div className="rounded-full bg-primary bg-opacity-10 p-2">
                                 <img src={ticket} alt="icon" />
                               </div>
-                              <div className="flex flex-col items-start gap-0.5 text-gray-900">
+                              <div className="flex flex-col items-start gap-0.5 text-white-90">
                                 <span className="font-normal text-sm opacity-50">
                                   They get
                                 </span>
@@ -122,7 +122,7 @@ function Referals() {
                             <div className="rounded-full bg-primary bg-opacity-10 p-2 min-w-max">
                               <img src={refGift} alt="icon" />
                             </div>
-                            <div className="flex flex-col items-start gap-0.5 text-gray-900">
+                            <div className="flex flex-col items-start gap-0.5 text-white-90">
                               <span className="font-semibold text-xl">
                                 500 Points (5 EUR)
                               </span>
@@ -140,7 +140,7 @@ function Referals() {
                             placeholder={`${origin}/signup?referralCode=${referralCode}`}
                             className={`input input-bordered border-pagBg w-full cursor-pointer ${
                               copied
-                                ? "bg-success bg-opacity-20 text-gray-900 font-semibold"
+                                ? "bg-success bg-opacity-20 text-white-90 font-semibold"
                                 : "bg-white"
                             }`}
                             value={`${origin}/signup?referralCode=${referralCode}`}
@@ -190,7 +190,7 @@ function Referals() {
                               </svg>
                             </span>
                           </div>
-                          <span className="text-gray-900 font-semibold text-xl">
+                          <span className="text-white-90 font-semibold text-xl">
                             You have referred{" "}
                             {currentUser?.referrals
                               ? currentUser.referrals.length

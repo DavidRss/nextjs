@@ -146,32 +146,32 @@ export default function Notifications() {
         >
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <div
-              className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+              className="relative transform overflow-hidden rounded-lg bg-dialog text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
               onClick={(e) => {
                 e.stopPropagation();
               }}
             >
-              <div className="bg-white pb-4 pt-5 sm:pb-4">
-                <div className="sm:flex sm:items-center border-b-2 pb-4 px-6">
+              <div>
+                <div className="flex items-center sm:flex sm:items-center border-b-2 py-4 px-6 bg-dialog">
                   <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
                     <img className="w-6" src={iconBell} alt="notify" />
                   </div>
                   <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                     <h3
-                      className="text-base font-semibold leading-6 text-gray-900"
+                      className="text-base font-semibold leading-6 text-white-90"
                       id="modal-title"
                     >
                       Notifications
                     </h3>
                   </div>
                 </div>
-                <div className="divide-y text-black min-h-[240px]">
+                <div className="divide-y divide-divider text-black min-h-[240px]">
                   {notifications.map((item, index) => (
                     <div
                       key={index}
-                      className="pt-2 pb-2 cursor-pointer hover:bg-gray-100 px-4 odd:bg-gray-50"
+                      className="pt-2 pb-2 cursor-pointer px-4 odd:bg-mainCard"
                     >
-                      <div>{item.message}</div>
+                      <div className="text-white-90" >{item.message}</div>
                       {/* <div>{item.type}</div> */}
                       {item.type === Notification.Type.COUPON && <div>Coupon code: {item.discountCode}</div>}
                       {item.type === Notification.Type.COUPON && <div className="text-right">
@@ -206,10 +206,10 @@ export default function Notifications() {
                   ))}
                 </div>
               </div>
-              <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+              <div className="bg-navigate px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                 <button
                   type="button"
-                  className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                  className="mt-3 inline-flex w-full justify-center rounded-md bg-gray px-3 py-2 text-sm font-semibold text-white-90 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
                   onClick={() => {
                     setShowDialog(false);
                   }}

@@ -24,7 +24,7 @@ function Terms() {
     <>
       <style>{scrollbarStyles}</style>
       <dialog id="termes" className="modal">
-        <div className="modal-box bg-white text-gray-900 w-full max-w-5xl">
+        <div className="modal-box bg-white text-white-90 w-full max-w-5xl">
           <h3 className="font-bold text-lg">TIPEEE'S TERMS & CONDITIONS</h3>
           <div>
             <p>PRÉAMBULE</p>
