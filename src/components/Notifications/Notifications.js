@@ -10,7 +10,7 @@ import {
 import { Notification, Notify, Order } from "../../constants/constants";
 import { shopifyService } from "../../services/ShopifyService";
 
-import copyWhite from "../../assets/Copy-white.svg";
+import copyWhite from "../../assets/ic_copy-white.svg";
 
 export default function Notifications() {
   const {
@@ -165,7 +165,7 @@ export default function Notifications() {
                     </h3>
                   </div>
                 </div>
-                <div className="divide-y divide-divider text-black min-h-[240px]">
+                <div className="divide-y divide-divider text-white-90 min-h-[240px]">
                   {notifications.map((item, index) => (
                     <div
                       key={index}
@@ -209,7 +209,7 @@ export default function Notifications() {
               <div className="bg-navigate px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                 <button
                   type="button"
-                  className="mt-3 inline-flex w-full justify-center rounded-md bg-gray px-3 py-2 text-sm font-semibold text-white-90 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                  className="mt-3 inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-white-90 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-700 sm:mt-0 sm:w-auto"
                   onClick={() => {
                     setShowDialog(false);
                   }}

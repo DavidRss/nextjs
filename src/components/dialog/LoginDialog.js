@@ -8,14 +8,14 @@ const LoginDialog = () => {
 
   const onClickLogin = () => {
     showLoginDialog(false);
-    navigate(Path.SIGNIN);
+    navigate(`/${Path.SIGNIN}`);
   };
 
   const onClickCancel = () => {
     showLoginDialog(false);
 
     if (window.location.pathname === "/reward") {
-      navigate(Path.HOME);
+      navigate(`/${Path.HOME}`, { replace: true });
     }
   };
 

@@ -16,8 +16,8 @@ function LevelsView() {
 
   useEffect(() => {
     const levelArray = [];
-    if(Levels) {
-      for(const item of Object.values(Levels)) {
+    if (Levels) {
+      for (const item of Object.values(Levels)) {
         levelArray.push(item);
       }
       setLevels(levelArray);
@@ -55,7 +55,7 @@ function LevelsView() {
                           }`}
                         >
                           <div className="flex flex-col items-start  w-full max-w-xl">
-                            <span className="font-normal text-white-90 text-sm opacity-50">
+                            <span className="font-normal text-white-90 text-sm opacity-50 mt-4">
                               Level {lvl.level}
                             </span>
                             <h1 className="font-semibold text-white-90 text-xl">

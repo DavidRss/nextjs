@@ -1,12 +1,12 @@
 import React from "react";
 import icCoin from "../../assets/icCoin.svg";
 import avatar from "../../assets/avatar.png";
-import avatarMain from "../../assets/avatarMain.png";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useApp } from "../../services/AppContext";
 import Notifications from "../Notifications/Notifications";
+import { Path } from "../../constants/constants";
 
 export default function Header({ handleOnParticipate }) {
   const { logout } = useAuth();
@@ -18,11 +18,11 @@ export default function Header({ handleOnParticipate }) {
     console.log("===== handleLogout =====");
     logout();
 
-    navigate("/signin");
+    navigate(`/${Path.SIGNIN}`);
   };
 
   const onClickSignin = () => {
-    navigate("/signin");
+    navigate(`/${Path.SIGNIN}`);
   };
 
   return (
@@ -40,9 +40,7 @@ export default function Header({ handleOnParticipate }) {
               <div className="avatar">
                 <div className="w-12 rounded-full ring-2 ring-gray-200">
                   <img
-                    src={
-                      currentUser?.avatar ? currentUser.avatar : avatar
-                    }
+                    src={currentUser?.avatar ? currentUser.avatar : avatar}
                     alt="avatar"
                   />
                 </div>
@@ -54,8 +52,12 @@ export default function Header({ handleOnParticipate }) {
                     onChange={handleLogout}
                     defaultValue="username"
                   >
-                    <option value="username" className="bg-dialog">{currentUser?.username}</option>
-                    <option value="logout" className="bg-dialog">Logout</option>
+                    <option value="username" className="bg-dialog">
+                      {currentUser?.username}
+                    </option>
+                    <option value="logout" className="bg-dialog">
+                      Logout
+                    </option>
                   </select>
                   <span className="text-gray-500 font-medium text-xs">
                     @{currentUser?.username}prod
@@ -85,8 +87,13 @@ export default function Header({ handleOnParticipate }) {
               )}
             </div>
             <div className="flex xl:hidden gap-4">
-              <div className="w-12 rounded-full ring-2 ring-gray-200">
-                <img src={avatarMain} alt="avatar" />
+              <div className="avatar">
+                <div className="w-12 rounded-full ring-2 ring-gray-200">
+                  <img
+                    src={currentUser?.avatar ? currentUser.avatar : avatar}
+                    alt="avatar"
+                  />
+                </div>
               </div>
               <button className="btn btn-square btn-ghost">
                 <svg

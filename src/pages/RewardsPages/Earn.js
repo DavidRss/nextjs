@@ -45,7 +45,7 @@ function Earn() {
                       Cashback
                     </h2>
                     <span className="text-white-90 opacity-50 font-normal text-base">
-                      Earn 10 Vibes for every 1 EUR spent.
+                      Gagne 10 Points pour chaque 1 EUR dépensé.
                     </span>
                   </div>
                   <div className="divider mt-6 mb-8" />
@@ -54,7 +54,7 @@ function Earn() {
                       Challenge Board
                     </h2>
                     <span className="text-white-90 opacity-50 font-normal text-base">
-                      Collect badges and get rewarded
+                      Collecte les badges et reçois des récompenses
                     </span>
                   </div>
 
@@ -88,7 +88,7 @@ function Earn() {
                         <img src={dons} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        First donation
+                        Premier achat
                       </h1>
                       <h2 className="text-base font-semibold text-white-90">
                         {EARN.DONATION1} Vibes
@@ -106,14 +106,14 @@ function Earn() {
                         <img src={secDons} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        Second donation
+                        Deuxième achat
                       </h1>
                       <h2 className="text-base font-semibold text-white-90">
                         {EARN.DONATION2} Vibes
                       </h2>
                     </div>
 
-                    <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
+                    {/* <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
                       <div
                         className={`${
                           currentUser.earned.tiktok
@@ -168,14 +168,14 @@ function Earn() {
                       <h2 className="text-base font-semibold text-white-90">
                         {EARN.INSTAGRAM} points Vibes
                       </h2>
-                    </div>
+                    </div> */}
 
                     <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
                       <div className="bg-white rounded-full border-pagBg p-2">
                         <img src={daily} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        Visit the page daily
+                        Visite la page chaque jours
                       </h1>
                       <h2 className="text-base font-semibold text-white-90">
                         {EARN.DAILY} Vibes
@@ -193,7 +193,7 @@ function Earn() {
                         <img src={comments} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        Leave a comment
+                        Laisse un commentaire
                       </h1>
                       <h2 className="text-base font-semibold text-white-90">
                         {EARN.COMMENT} Vibes
@@ -211,7 +211,7 @@ function Earn() {
                         <img src={refIcon} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        Refer a friend
+                        Recommande un pote
                       </h1>
                       <h2 className="text-base font-semibold text-white-90">
                         {EARN.REFER} Vibes

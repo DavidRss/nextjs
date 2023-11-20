@@ -2,14 +2,14 @@ import React, { useEffect, useRef } from "react";
 import Page from "../layouts/Page/Page";
 import Container from "../layouts/Container/Container";
 
-import coins from "../assets/iconoir_coins.svg";
-import earn from "../assets/earn.svg";
-import gift from "../assets/ph_gift.svg";
-import ref from "../assets/octicon_people-16.png";
-import cup from "../assets/solar_cup-first-outline.svg";
-import bar from "../assets/bars-level 1.svg";
-import calendar from "../assets/Calendar.png";
-import arrow from "../assets/iconamoon_arrow-left-2.svg";
+import icCoins from "../assets/ic_coins.svg";
+import icEarn from "../assets/ic_earn.svg";
+import icGift from "../assets/ic_gift.svg";
+import icReferals from "../assets/ic_referals.svg";
+import icFlag from "../assets/ic_flag.svg";
+import icNote from "../assets/ic_note.svg";
+import icCalendar from "../assets/ic_calendar.svg";
+import arrow from "../assets/ic_arrow-left-2.svg";
 
 import { Link, useNavigate } from "react-router-dom";
 import Aside from "../components/aside/Aside";
@@ -44,7 +44,7 @@ function Reward() {
       currentLevel = levels[levels.length - 1];
       remainingToNextLevel = 0;
     }
-    
+
     remainingToNextLevel = remainingToNextLevel.toFixed(2);
 
     return {
@@ -57,10 +57,8 @@ function Reward() {
   const progress = calculateProgress(currentUser?.spending);
 
   useEffect(() => {
-    if (!loadingUser) {
-      if (!currentUser) {
-        navigate(Path.SIGNIN);
-      }
+    if (!loadingUser && !currentUser) {
+      navigate(`/${Path.SIGNIN}`, { replace: true });
     }
   }, [loadingUser]);
 
@@ -83,14 +81,14 @@ function Reward() {
                     <div className="card-body flex flex-row justify-between items-center px-10">
                       <div className="flex flex-col items-start">
                         <div className="flex items-center gap-4">
-                          <div className="p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center">
-                            <img src={coins} alt="coins" />
+                          <div className="p-3 flex justify-center items-center">
+                            <img src={icCoins} alt="coins" />
                           </div>
                           <h1 className="text-white-90 font-semibold text-xl">
                             Points
                           </h1>
                         </div>
-                        <span className="mt-3 text-2xl font-extrabold text-white-90 hidden sm:block">
+                        <span className="mt-3 text-2xl font-extrabold text-primary hidden sm:block">
                           {currentUser?.points}
                         </span>
                         <span className="text-white-90 opacity-50 text-sm font-normal hidden sm:block">
@@ -102,7 +100,7 @@ function Reward() {
                           {currentUser?.points}
                         </span>
                         <span className="text-white-90 opacity-50 text-sm font-normal block sm:hidden">
-                          Equals {currentUser?.donations} USD
+                          Equals {currentUser?.donations} EUR
                         </span>
                       </div>
                       <button className="hidden sm:block">
@@ -118,8 +116,8 @@ function Reward() {
                       <div className="card-body flex flex-row justify-between items-center px-10">
                         <div className="flex flex-col items-start">
                           <div className="flex items-center gap-4">
-                            <div className="p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center">
-                              <img src={earn} alt="coins" />
+                            <div className="p-3 flex justify-center items-center">
+                              <img src={icEarn} alt="coins" />
                             </div>
                             <h1 className="text-white-90 font-semibold text-xl">
                               Earn
@@ -137,8 +135,8 @@ function Reward() {
                       <div className="card-body flex flex-row justify-between items-center px-10">
                         <div className="flex flex-col items-start">
                           <div className="flex items-center gap-4">
-                            <div className="p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center">
-                              <img src={gift} alt="coins" />
+                            <div className="p-3 flex justify-center items-center">
+                              <img src={icGift} alt="coins" />
                             </div>
                             <h1 className="text-white-90 font-semibold text-xl">
                               Redeem
@@ -157,8 +155,8 @@ function Reward() {
                     <div className="card-body flex flex-row justify-between items-center px-10">
                       <div className="flex flex-col items-start">
                         <div className="flex items-center gap-4">
-                          <div className="p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center">
-                            <img src={ref} alt="coins" />
+                          <div className="p-3 flex justify-center items-center">
+                            <img src={icReferals} alt="coins" />
                           </div>
                           <h1 className="text-white-90 font-semibold text-xl">
                             Referals
@@ -184,8 +182,8 @@ function Reward() {
                     <div className="card-body flex flex-row justify-between items-center px-10">
                       <div className="flex flex-col items-start">
                         <div className="flex items-center gap-4">
-                          <div className="p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center">
-                            <img src={cup} alt="coins" />
+                          <div className="p-3 flex justify-center items-center">
+                            <img src={icFlag} alt="coins" />
                           </div>
                           <h1 className="text-white-90 font-semibold text-xl">
                             {progress && progress.currentLevel.title}
@@ -221,8 +219,8 @@ function Reward() {
                     <div className="card-body flex flex-row justify-between items-center px-10">
                       <div className="flex flex-col items-start">
                         <div className="flex items-center gap-4">
-                          <div className="p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center">
-                            <img src={bar} alt="bar" />
+                          <div className="p-3 flex justify-center items-center">
+                            <img src={icNote} alt="bar" />
                           </div>
                           <h1 className="text-white-90 font-semibold text-xl">
                             Levels
@@ -243,8 +241,8 @@ function Reward() {
                     <div className="card-body flex flex-row justify-between items-center px-10">
                       <div className="flex flex-col items-start">
                         <div className="flex items-center gap-4">
-                          <div className="p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center">
-                            <img src={calendar} alt="calendar" />
+                          <div className="p-3 flex justify-center items-center">
+                            <img src={icCalendar} alt="calendar" />
                           </div>
                           <h1 className="text-white-90 font-semibold text-xl">
                             Lottery

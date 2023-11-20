@@ -8,7 +8,7 @@ module.exports = {
           "primary": "#4A9F2E",       
           "secondary": "#F9FAFB",     
           "accent": "#D64758",      
-          "neutral": "#E4E4E5",      
+          "neutral": "#404040",      
           "base-100": "#2E2E2E",   
           "info": "#3abff8",     
           "success": "#3EA02D",      
@@ -42,7 +42,8 @@ module.exports = {
         'bronzeCard': '#F2C7B3',
         'disabled': '#F0F0F0',
         'pagBg': '#F2F2F2',
-        'chatMsg': '#0067C7',
+        'chatMsgOwner': '#0067C7',
+        'chatMsg': '#3D3D3D',
         'navigate': '#FFFFFF08',
         'input': '#404040',
         'dialog': '#2E2E2E',
@@ -53,7 +54,8 @@ module.exports = {
         'silverCard': '#EDEDED',
         'bronzeCard': '#F2C7B3',
         'pagBg': '#F2F2F2',
-        'divider': '#3A3A3A'
+        'divider': '#3A3A3A',
+        'button': '#DFDFDF'
       }
     },
   },

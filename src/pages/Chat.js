@@ -15,7 +15,7 @@ import { EARN, PROJECT_ID, Path } from "../constants/constants";
 import { onValue, ref } from "firebase/database";
 import Spinner from "../components/spinner/Spinner";
 import { scrollToElement } from "../utils/ActionUtils";
-import { getCurrentTimestamp, getDateFromTimestamp } from "../utils/utils";
+import { getCurrentDate, getCurrentTimestamp, getDateFromTimestamp } from "../utils/utils";
 import { useNavigate } from "react-router-dom";
 
 function Chat() {
@@ -42,7 +42,7 @@ function Chat() {
 
   const handleAttachFileClick = () => {
     if (!currentUser) {
-      navigate(Path.SIGNIN);
+      navigate(`/${Path.SIGNIN}`, { replace: true });
       return;
     }
 
@@ -61,7 +61,7 @@ function Chat() {
       e.preventDefault();
 
       if (!currentUser) {
-        navigate(Path.SIGNIN);
+        navigate(`/${Path.SIGNIN}`, { replace: true });
         return;
       }
 
@@ -146,9 +146,13 @@ function Chat() {
   };
 
   const formattedDateTime = (timestamp) => {
+    const fcDT = getCurrentDate();
     const fDT = getDateFromTimestamp(timestamp);
-    return `${fDT.year}-${fDT.month}-${fDT.day} ${fDT.hh}:${fDT.mm}:${fDT.ss}`;
-  }
+    if(fcDT.year === fDT.year && fcDT.month === fDT.month && fcDT.day === fDT.day) {
+      return `${fDT.hh}:${fDT.mm}`;
+    }
+    return `${fDT.year}-${fDT.month}-${fDT.day} ${fDT.hh}:${fDT.mm}`;
+  };
 
   return (
     <Page handleOnParticipate={handleOnParticipate}>
@@ -162,7 +166,7 @@ function Chat() {
               <div className="relative mt-8 flex w-full flex-col rounded-xl bg-mainCard">
                 <div
                   ref={chatView}
-                  className="min-h-[300px] max-h-[860px] overflow-y-auto"
+                  className="min-h-[300px] max-h-[860px] overflow-y-auto mx-4"
                 >
                   {comments.map((comment, index) => (
                     <div
@@ -199,7 +203,7 @@ function Chat() {
                           </div>
                           <div
                             className={`chat-bubble max-w-xs ${
-                              isOwner(comment) ? "bg-chatMsg" : "bg-base-100"
+                              isOwner(comment) ? "bg-chatMsgOwner" : "bg-chatMsg"
                             } text-white`}
                           >
                             {comment.content}

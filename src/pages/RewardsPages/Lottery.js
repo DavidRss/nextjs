@@ -3,7 +3,7 @@ import Page from "../../layouts/Page/Page";
 import Container from "../../layouts/Container/Container";
 import Aside from "../../components/aside/Aside";
 import BackBtn from "../../components/buttons/backBtn/BackBtn";
-import refGift from "../../assets/Gift-points.svg";
+import icGiftPoints from "../../assets/ic_gift-points.svg";
 import { scrollToElement } from "../../utils/ActionUtils";
 import { useApp } from "../../services/AppContext";
 import {
@@ -138,7 +138,7 @@ function Lottery() {
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="rounded-full bg-primary bg-opacity-10 p-2 min-w-max">
-                          <img src={refGift} alt="icon" />
+                          <img src={icGiftPoints} alt="icon" />
                         </div>
                         <div className="flex flex-col items-start gap-0.5 text-white-90">
                           <span className="font-semibold text-xl">

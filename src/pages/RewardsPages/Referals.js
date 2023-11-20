@@ -3,10 +3,9 @@ import Page from "../../layouts/Page/Page";
 import Container from "../../layouts/Container/Container";
 import Aside from "../../components/aside/Aside";
 import BackBtn from "../../components/buttons/backBtn/BackBtn";
-import copy from "../../assets/Copy.svg";
-import copyWhite from "../../assets/Copy-white.svg";
-import ticket from "../../assets/Ticket Sale.svg";
-import refGift from "../../assets/Gift-points.svg";
+import icCopyWhite from "../../assets/ic_copy-white.svg";
+import icTicket from "../../assets/ic_ticket.svg";
+import icGiftPoints from "../../assets/ic_gift-points.svg";
 import { useApp } from "../../services/AppContext";
 import { scrollToElement } from "../../utils/ActionUtils";
 import { copyTextToClipboard } from "../../utils/utils";
@@ -73,7 +72,7 @@ function Referals() {
                             onClick={copyToClipboard}
                           >
                             Share your link
-                            <img src={copy} alt="copy" />
+                            <img src={icCopyWhite} alt="copy" />
                           </button>
                         </li>
                         <li className="ref step step-neutral ml-5">
@@ -93,7 +92,7 @@ function Referals() {
                           <div className="flex flex-col gap-7 items-start sm:flex-row sm:items-center sm:gap-16">
                             <div className="flex items-center gap-2">
                               <div className="rounded-full bg-primary bg-opacity-10 p-2">
-                                <img src={ticket} alt="icon" />
+                                <img src={icTicket} alt="icon" />
                               </div>
                               <div className="flex flex-col items-start gap-0.5 text-white-90">
                                 <span className="font-normal text-sm opacity-50">
@@ -106,7 +105,7 @@ function Referals() {
                             </div>
                             <div className="flex items-center gap-2">
                               <div className="rounded-full bg-primary bg-opacity-10 p-2">
-                                <img src={ticket} alt="icon" />
+                                <img src={icTicket} alt="icon" />
                               </div>
                               <div className="flex flex-col items-start gap-0.5 text-white-90">
                                 <span className="font-normal text-sm opacity-50">
@@ -120,7 +119,7 @@ function Referals() {
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="rounded-full bg-primary bg-opacity-10 p-2 min-w-max">
-                              <img src={refGift} alt="icon" />
+                              <img src={icGiftPoints} alt="icon" />
                             </div>
                             <div className="flex flex-col items-start gap-0.5 text-white-90">
                               <span className="font-semibold text-xl">
@@ -150,7 +149,7 @@ function Referals() {
                             className="btn btn-primary text-white uppercase text-base font-semibold flex gap-1.5 items-center hover:scale-105 transition-all"
                             onClick={copyToClipboard}
                           >
-                            <img src={copyWhite} alt="copy-icon white" />
+                            <img src={icCopyWhite} alt="copy-icon white" />
                             copy
                           </button>
                         </div>

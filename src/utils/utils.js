@@ -79,12 +79,23 @@ export function nFormatter(num, digits) {
 }
 
 export const generateReferralCode = () => {
-  // return new Date().getUTCMilliseconds();
   return `${new Date().valueOf()}`;
 };
 
 export const getCurrentTimestamp = () => {
-  return Date.now();
+  return new Date().getTime();
+};
+
+export const getCurrentUTCDate = () => {
+  const date = new Date();
+  const year = date.getUTCFullYear();
+  const month = date.getUTCMonth();
+  const day = date.getUTCDate();
+  const hh = date.getUTCHours();
+  const mm = date.getUTCMinutes();
+  const ss = date.getUTCSeconds();
+
+  return { year, month, day, hh, mm, ss };
 };
 
 export const getCurrentDate = () => {
@@ -99,7 +110,7 @@ export const getCurrentDate = () => {
   return { year, month, day, hh, mm, ss };
 };
 
-export const getDateFromTimestamp = (timestamp) => {
+export const getUTCDateFromTimestamp = (timestamp) => {
   const vDate = new Date(timestamp);
   const year = vDate.getUTCFullYear();
   const month = vDate.getUTCMonth();
@@ -107,6 +118,18 @@ export const getDateFromTimestamp = (timestamp) => {
   const hh = vDate.getUTCHours();
   const mm = vDate.getUTCMinutes();
   const ss = vDate.getUTCSeconds();
+
+  return { year, month, day, hh, mm, ss };
+};
+
+export const getDateFromTimestamp = (timestamp) => {
+  const vDate = new Date(timestamp);
+  const year = vDate.getFullYear();
+  const month = vDate.getMonth();
+  const day = vDate.getDate();
+  const hh = vDate.getHours();
+  const mm = vDate.getMinutes();
+  const ss = vDate.getSeconds();
 
   return { year, month, day, hh, mm, ss };
 };

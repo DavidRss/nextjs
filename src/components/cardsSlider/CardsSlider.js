@@ -32,13 +32,14 @@ function CardsSlider() {
 
   useEffect(() => {
     if (products.length > 0) {
-      setProductList(products.slice(0, 3));
+      // setProductList(products.slice(0, 3));
+      setProductList(products);
     }
   }, [products]);
 
   const handleClickProduct = async (productId) => {
     if (!currentUser) {
-      navigate(Path.SIGNIN);
+      navigate(`/${Path.SIGNIN}`, { replace: true });
     }
 
     const product = productList.find((item) => item.id === productId);
@@ -119,7 +120,12 @@ function CardsSlider() {
                 <h2 className="card-title font-semibold text-xl text-white-90">
                   {item.title}
                 </h2>
-                <div>{item.description}</div>
+                <div
+                  className="mt-3"
+                  dangerouslySetInnerHTML={{
+                    __html: item.descriptionHtml,
+                  }}
+                ></div>
                 <div className="flex w-full justify-between items-center">
                   <div className="flex flex-col items-start">
                     <span className="text-white text-3xl font-extrabold">
@@ -130,7 +136,7 @@ function CardsSlider() {
                     </span> */}
                   </div>
                   <button
-                    className="btn btn-primary text-white"
+                    className="btn btn-primary text-white mt-5"
                     onClick={() => {
                       handleClickProduct(item.id);
                     }}

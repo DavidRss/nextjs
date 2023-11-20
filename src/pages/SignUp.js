@@ -181,17 +181,20 @@ function SignUp() {
   };
 
   return (
-    <div className="w-full flex flex-col pb-14 lg:pb-20">
+    <div className="relative w-full flex flex-col pb-14 lg:pb-20">
+      <div className="main-bg -z-10" />
       <section className="flex flex-col items-center lg:items-start mt-12 lg:mt-9 mb-7 lg:mb-0 lg:px-9 w-full">
-        <h1 className="text-white text-2xl font-semibold">Coflow</h1>
+        <Link to="/">
+          <h1 className="text-white text-2xl font-semibold">Coflow</h1>
+        </Link>
       </section>
       <section className="w-full flex justify-center px-5 lg:px-0">
         <div className="bg-mainCard rounded-md shadow-md py-8 lg:py-14 px-10 w-full max-w-3xl flex flex-col items-center">
-          <h1 className="text-2xl lg:text-3xl font-bold text-white w-full max-w-md">
-            Creez votre compte pour poursuivre votre participation
+          <h1 className="text-2xl lg:text-3xl font-bold text-white text-center w-full max-w-md">
+            Créez votre compte pour poursuivre votre participation
           </h1>
           <button
-            className="btn bg-white border border-gray-200 flex gap-3 mt-4 mb-5 lg:mt-6 lg:mb-7 text-gray-900 hover:bg-white hover:scale-105 transition-all hover:border-gray-300"
+            className="btn bg-dialog border border-button flex gap-3 mt-4 mb-5 lg:mt-6 lg:mb-7 text-white hover:bg-dialog hover:border-button hover:scale-105 transition-all"
             onClick={handleSignupGoogle}
           >
             <img src={googleIcon} alt="signUp by google" />
@@ -266,8 +269,8 @@ function SignUp() {
             </div>
           </div>
           <div className="text-white-90 text-base font-semibold flex justify-center w-full mt-6 lg:mt-8">
-            <h3 className="px-0 lg:px-28">
-              En creant votre compte vous acceptez les{" "}
+            <h3 className="px-0 lg:px-28 text-center">
+              En créant votre compte vous acceptez les{" "}
               <span
                 className="text-primary hover:cursor-pointer"
                 onClick={() => document.getElementById("termes").showModal()}
@@ -279,7 +282,7 @@ function SignUp() {
                 className="text-primary hover:cursor-pointer"
                 onClick={() => document.getElementById("politique").showModal()}
               >
-                politique deconfidentialite
+                politique de confidentialité
               </span>
             </h3>
           </div>

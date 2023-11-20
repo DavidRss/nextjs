@@ -33,7 +33,7 @@ const Aside = forwardRef((props, ref) => {
   const handleParticipate = async () => {
     console.log("===== Presentation handleParticipate =====");
     if (!currentUser) {
-      navigate(Path.SIGNIN);
+      navigate(`/${Path.SIGNIN}`, { replace: true });
       return;
     }
 

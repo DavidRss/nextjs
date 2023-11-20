@@ -63,7 +63,7 @@ const Presentation = () => {
   useEffect(() => {
     if (products.length > 0) {
       console.log("===== products: ", products);
-      setProductList(products.slice(0, 3));
+      setProductList(products);
     }
   }, [products]);
 
@@ -94,7 +94,7 @@ const Presentation = () => {
 
   const handleClickProduct = async (productId) => {
     if (!currentUser) {
-      navigate(Path.SIGNIN);
+      navigate(`/${Path.SIGNIN}`, { replace: true });
       return;
     }
 
@@ -164,7 +164,7 @@ const Presentation = () => {
   const handleParticipate = async () => {
     console.log("===== donationProduct: ", donationProduct);
     if (!currentUser) {
-      navigate(Path.SIGNIN);
+      navigate(`/${Path.SIGNIN}`, { replace: true });
       return;
     }
 
@@ -437,9 +437,9 @@ const Presentation = () => {
                 c'est un signe de confiance !
               </p>
               <div className="w-full my-4 relative">
-                <img src={imgDivider1} className="w-full rounded-lg" />
+                <img src={imgDivider1} className="w-full h-[96px] rounded-lg" />
                 <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                  <h1 className="text-white font-bold text-2xl">
+                  <h1 className="text-white font-bold text-lg xl:text-2xl">
                     Comment nous aider
                   </h1>
                 </div>
@@ -471,9 +471,9 @@ const Presentation = () => {
                 vous pour rendre cette vidéo épique !
               </p>
               <div className="w-full my-4 relative">
-                <img src={imgDivider2} className="w-full rounded-lg" />
+                <img src={imgDivider2} className="w-full h-[96px] rounded-lg" />
                 <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                  <h1 className="text-white font-bold text-2xl">
+                  <h1 className="text-white font-bold text-lg xl:text-2xl">
                     Pourquoi faire appel à vous  ?
                   </h1>
                 </div>
@@ -503,9 +503,9 @@ const Presentation = () => {
                 l'imagine.
               </p>
               <div className="w-full my-4 relative">
-                <img src={imgDivider3} className="w-full rounded-lg" />
+                <img src={imgDivider3} className="w-full h-[96px] rounded-lg" />
                 <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                  <h1 className="text-white font-bold text-2xl">
+                  <h1 className="text-white font-bold text-lg xl:text-2xl">
                     Comment sont répartis les fonds ?
                   </h1>
                 </div>
@@ -552,9 +552,9 @@ const Presentation = () => {
               </p>
               <img src={imgMain7} className="w-full" />
               <div className="w-full my-4 relative">
-                <img src={imgDivider4} className="w-full rounded-lg" />
+                <img src={imgDivider4} className="w-full h-[96px] rounded-lg" />
                 <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                  <h1 className="text-white font-bold text-2xl">
+                  <h1 className="text-white font-bold text-lg xl:text-2xl">
                     Et s’il reste des sous ?
                   </h1>
                 </div>
@@ -596,9 +596,9 @@ const Presentation = () => {
                 a en réserve, les amis !
               </p>
               <div className="w-full my-4 relative">
-                <img src={imgDivider5} className="w-full rounded-lg" />
+                <img src={imgDivider5} className="w-full h-[96px] rounded-lg" />
                 <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                  <h1 className="text-white font-bold text-2xl">
+                  <h1 className="text-white font-bold text-lg xl:text-2xl">
                     Toutes les manières de nous aider
                   </h1>
                 </div>
@@ -664,6 +664,9 @@ const Presentation = () => {
               </p>
             </div>
             <aside className="flex flex-col items-center gap-9 mb-5">
+              <h1 className="text-white-90 font-bold text-3xl text-left w-full">
+                Contreparties
+              </h1>
               <div className="block xl:hidden">
                 <CardsSlider />
               </div>
@@ -690,7 +693,12 @@ const Presentation = () => {
                             </li>
                           ))}
                         </ul> */}
-                        <div>{item.description}</div>
+                        <div
+                          className="mt-3"
+                          dangerouslySetInnerHTML={{
+                            __html: item.descriptionHtml,
+                          }}
+                        ></div>
                         <div className="flex w-full justify-between items-center">
                           <div className="flex flex-col items-start">
                             <span className="text-white text-3xl font-extrabold">
@@ -701,7 +709,7 @@ const Presentation = () => {
                             </span> */}
                           </div>
                           <button
-                            className="btn btn-primary text-white"
+                            className="btn btn-primary text-white mt-5"
                             onClick={() => {
                               handleClickProduct(item.id);
                             }}

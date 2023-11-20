@@ -16,7 +16,7 @@ import googleIcon from "../assets/google.png";
 import "react-toastify/dist/ReactToastify.css";
 import { Errors } from "../constants/FirebaseErrorMessages";
 import Spinner from "../components/spinner/Spinner";
-import { INIT_USER, Notify } from "../constants/constants";
+import { INIT_USER, Notify, Path } from "../constants/constants";
 import {
   generateReferralCode,
   getCurrentTimestamp,
@@ -95,7 +95,7 @@ function Login() {
 
       setLoading(false);
 
-      navigate("/");
+      navigate(`/${Path.HOME}`);
     } catch (err) {
       console.log("===== authService.register error: ", err);
       console.log("===== authService.register error: ", err.code);
@@ -148,7 +148,7 @@ function Login() {
 
             login(user);
 
-            navigate("/");
+            navigate(`/${Path.HOME}`);
           } else {
             toast.error("The user doesn't exist.", {
               position: toast.POSITION.TOP_RIGHT,
@@ -171,18 +171,21 @@ function Login() {
   }, [currentUser]);
 
   return (
-    <div className="w-full flex flex-col pb-32">
+    <div className="relative w-full flex flex-col pb-32">
+      <div className="main-bg -z-10" />
       <section className="flex flex-col items-center lg:items-start mt-12 lg:mt-9 mb-7 lg:mb-0 lg:px-9 w-full">
-        <h1 className="text-white text-2xl font-semibold">Coflow</h1>
+        <Link to="/">
+          <h1 className="text-white text-2xl font-semibold">Coflow</h1>
+        </Link>
       </section>
       <section className="w-full flex justify-center px-5 lg:px-0">
         <div className="bg-mainCard rounded-xl shadow-xl py-8 lg:py-14 px-10 w-full max-w-3xl flex flex-col items-center">
-          <h1 className="text-2xl lg:text-3xl font-bold text-white w-full md:px-20">
-            Bienvenue sur ma page de crowdfunding
+          <h1 className="text-2xl lg:text-3xl font-bold text-white w-full md:px-20 text-center">
+            Bienvenue sur mon Shop !
           </h1>
 
           <button
-            className="btn bg-white border flex gap-3 mt-4 mb-5 lg:mt-6 lg:mb-7 text-gray-900 hover:bg-white hover:scale-105 transition-all hover:border-gray-300"
+            className="btn bg-dialog border border-button flex gap-3 mt-4 mb-5 lg:mt-6 lg:mb-7 text-white hover:bg-dialog hover:border-button hover:scale-105 transition-all"
             onClick={handleSignInGoogle}
           >
             <img src={googleIcon} alt="signUp by google" />
@@ -237,7 +240,7 @@ function Login() {
           </div>
           <div className="text-white-90 text-base font-semibold flex justify-center w-full mt-6 lg:mt-8">
             <h3 className="px-0 lg:px-28 text-center">
-              En creant votre compte vous acceptez les{" "}
+            En créant votre compte vous acceptez les{" "}
               <span
                 className="text-primary hover:cursor-pointer"
                 onClick={() => document.getElementById("termes").showModal()}
@@ -249,7 +252,7 @@ function Login() {
                 className="text-primary hover:cursor-pointer"
                 onClick={() => document.getElementById("politique").showModal()}
               >
-                politique deconfidentialite
+                politique de confidentialité
               </span>
             </h3>
           </div>
