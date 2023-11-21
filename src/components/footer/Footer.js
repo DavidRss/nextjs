@@ -48,10 +48,10 @@ export default function Footer() {
           <div className="w-full justify-between flex flex-col xl:flex-row items-center px-5 xl:px-0">
             <div className="flex flex-col xl:flex-row items-center gap-5">
               <h1 className="text-white text-xl font-semibold mb-6 xl:mb-0">
-                Coflow
+              BBB Shop
               </h1>
               <span className="hidden xl:block">
-                © 2023, Coflow, Powered by Shopify
+                © 2023, Powered by Shopify
               </span>
             </div>
             <div className="grid grid-flow-col gap-4 mb-10 xl:mb-0">

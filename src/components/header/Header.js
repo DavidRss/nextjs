@@ -32,7 +32,7 @@ export default function Header({ handleOnParticipate }) {
           <div className="navbar-start">
             <Link to="/">
               <span className="normal-case text-xl text-main font-semibold text-white">
-                Coflow
+                BBB Shop
               </span>
             </Link>
             <div className="divider lg:divider-horizontal "></div>

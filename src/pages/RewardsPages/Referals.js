@@ -57,12 +57,10 @@ function Referals() {
                   </div>
                   <div className="flex flex-col items-start justify-start w-full mt-11 gap-2">
                     <h1 className="text-white-90 font-semibold text-xl mb-2">
-                      We value friendship
+                    L'amitié compte beaucoup pour nous
                     </h1>
                     <p className="text-left text-base font-normal text-white-90 opacity-60">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s
+                    Invite tes amis à nous rejoindre sur le shop et bénéficie de récompenses. Partage le lien ci-dessous pour t'inscrire maintenant !
                     </p>
                     <div className="mt-7 w-full flex flex-col items-start">
                       <ul className="ref steps steps-vertical">
@@ -77,12 +75,12 @@ function Referals() {
                         </li>
                         <li className="ref step step-neutral ml-5">
                           <span className="text-white-90 text-xl font-semibold">
-                            Your friend signup using your link
+                          Votre ami s'inscrit en utilisant votre lien
                           </span>
                         </li>
                         <li className="ref step step-neutral ml-5">
                           <span className="text-white-90 text-xl font-semibold">
-                            Your friend places an order
+                          Votre ami passe une commande
                           </span>
                         </li>
                         <li className="ref step step-neutral ml-5"></li>
@@ -96,7 +94,7 @@ function Referals() {
                               </div>
                               <div className="flex flex-col items-start gap-0.5 text-white-90">
                                 <span className="font-normal text-sm opacity-50">
-                                  You get
+                                  Tu reçois
                                 </span>
                                 <span className="font-semibold text-xl">
                                   10% coupon
@@ -109,7 +107,7 @@ function Referals() {
                               </div>
                               <div className="flex flex-col items-start gap-0.5 text-white-90">
                                 <span className="font-normal text-sm opacity-50">
-                                  They get
+                                  Il reçoit
                                 </span>
                                 <span className="font-semibold text-xl">
                                   10% coupon
@@ -126,8 +124,7 @@ function Referals() {
                                 500 Points (5 EUR)
                               </span>
                               <span className="text-left font-normal text-sm opacity-50">
-                                For every 3 friend you refer, you’ll get this
-                                extra reward
+                              Pour chaque groupe de 3 amis que tu parraines, tu recevras cette récompense supplémentaire.
                               </span>
                             </div>
                           </div>
@@ -190,11 +187,11 @@ function Referals() {
                             </span>
                           </div>
                           <span className="text-white-90 font-semibold text-xl">
-                            You have referred{" "}
+                          Tu as recommandé{" "}
                             {currentUser?.referrals
                               ? currentUser.referrals.length
                               : 0}{" "}
-                            friends
+                            ami
                           </span>
                         </div>
                       </div>

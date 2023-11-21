@@ -198,7 +198,7 @@ function SignUp() {
             onClick={handleSignupGoogle}
           >
             <img src={googleIcon} alt="signUp by google" />
-            S’inscrire via google
+            S’inscrire via Google
           </button>
           <h2 className="text-base font-semibold text-white-90">
             Ou bien inscrivez-vous avec votre adresse email
@@ -295,7 +295,7 @@ function SignUp() {
           </button>
           {/* </Link> */}
           <span className="text-base text-white-90 font-bold">
-            Deja inscrit?{" "}
+            Déjà inscrit ?{" "}
             <Link to="/signin">
               <span className="text-primary">Connecte toi</span>
             </Link>

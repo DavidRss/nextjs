@@ -275,7 +275,7 @@ const Presentation = () => {
               <div className="hidden sm:flex gap-4 flex-wrap justify-center xl:justify-between">
                 <CardS>
                   <h3 className="text-base font-semibold text-white-50">
-                    Total of amount{" "}
+                    Montant total{" "}
                   </h3>
                   <span className="text-3xl font-extrabold text-white">
                     {nFormatter(project?.amount, 2)}{" "}
@@ -323,7 +323,7 @@ const Presentation = () => {
 
                   <div className="stat place-items-start w-28 px-1.5">
                     <div className="stat-title text-center text-xs">
-                      Participants
+                      Users
                     </div>
                     <div className="flex items-end">
                       <div className="stat-value text-xl text-center">
@@ -337,7 +337,7 @@ const Presentation = () => {
 
                   <div className="stat place-items-start w-28 px-1.5">
                     <div className="stat-title text-center text-xs">
-                      End date
+                      Tasks done
                     </div>
                     <div className="flex items-end">
                       <div className="stat-value text-xl text-center">

@@ -175,7 +175,7 @@ function Login() {
       <div className="main-bg -z-10" />
       <section className="flex flex-col items-center lg:items-start mt-12 lg:mt-9 mb-7 lg:mb-0 lg:px-9 w-full">
         <Link to="/">
-          <h1 className="text-white text-2xl font-semibold">Coflow</h1>
+          <h1 className="text-white text-2xl font-semibold">BBB Shop</h1>
         </Link>
       </section>
       <section className="w-full flex justify-center px-5 lg:px-0">
@@ -266,7 +266,7 @@ function Login() {
           {/* </Link> */}
           <div className="w-full justify-between flex flex-col sm:flex-row gap-2 sm:gap-0 items-center">
             <span className="text-base text-white-90 font-bold">
-              Mot de passe oublie?
+              Mot de passe oublié ?
             </span>
             <span className="text-base text-white-90 font-bold">
               Pas encore membre?{" "}

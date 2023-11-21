@@ -15,7 +15,11 @@ import { EARN, PROJECT_ID, Path } from "../constants/constants";
 import { onValue, ref } from "firebase/database";
 import Spinner from "../components/spinner/Spinner";
 import { scrollToElement } from "../utils/ActionUtils";
-import { getCurrentDate, getCurrentTimestamp, getDateFromTimestamp } from "../utils/utils";
+import {
+  getCurrentDate,
+  getCurrentTimestamp,
+  getDateFromTimestamp,
+} from "../utils/utils";
 import { useNavigate } from "react-router-dom";
 
 function Chat() {
@@ -35,6 +39,7 @@ function Chat() {
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      console.log("===== file: ", file.name);
       setSelectedFile(file);
       setFileAttached(true);
     }
@@ -148,7 +153,11 @@ function Chat() {
   const formattedDateTime = (timestamp) => {
     const fcDT = getCurrentDate();
     const fDT = getDateFromTimestamp(timestamp);
-    if(fcDT.year === fDT.year && fcDT.month === fDT.month && fcDT.day === fDT.day) {
+    if (
+      fcDT.year === fDT.year &&
+      fcDT.month === fDT.month &&
+      fcDT.day === fDT.day
+    ) {
       return `${fDT.hh}:${fDT.mm}`;
     }
     return `${fDT.year}-${fDT.month}-${fDT.day} ${fDT.hh}:${fDT.mm}`;
@@ -203,7 +212,9 @@ function Chat() {
                           </div>
                           <div
                             className={`chat-bubble max-w-xs ${
-                              isOwner(comment) ? "bg-chatMsgOwner" : "bg-chatMsg"
+                              isOwner(comment)
+                                ? "bg-chatMsgOwner"
+                                : "bg-chatMsg"
                             } text-white`}
                           >
                             {comment.content}
