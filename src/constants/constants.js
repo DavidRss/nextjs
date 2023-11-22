@@ -74,7 +74,14 @@ export const INIT_USER = {
   orders: [],
   spending: 0,
   rewards: [],
-  notifications: []
+  notifications: [],
+};
+
+export const Comment = {
+  Type: {
+    TEXT: "text",
+    FILE: "file",
+  },
 };
 
 export const STORAE_KEY = {
@@ -116,6 +123,8 @@ export const Notification = {
     ORDER: "order",
     COUPON: "coupon",
     REWARD: "reward",
-    EARNED: "earned"
+    EARNED: "earned",
   },
 };
+
+export const IMAGE_TYPE = ["png", "jpg", "jpeg"];

@@ -115,7 +115,7 @@ const Aside = forwardRef((props, ref) => {
   return (
     <aside className="flex flex-col gap-9 w-full xl:w-fit items-center">
       <h1 className="text-white-90 font-bold text-3xl text-left w-full">
-        Contreparties
+        Produits
       </h1>
       <CardsSlider />
       <div

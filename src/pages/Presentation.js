@@ -270,7 +270,7 @@ const Presentation = () => {
             <YouTubeVideo />
             <div className="flex flex-col gap-5">
               <h1 className="text-white font-bold text-3xl text-center xl:text-left">
-                {project?.title}
+                Commandes
               </h1>
               <div className="hidden sm:flex gap-4 flex-wrap justify-center xl:justify-between">
                 <CardS>
@@ -322,9 +322,7 @@ const Presentation = () => {
                   </div>
 
                   <div className="stat place-items-start w-28 px-1.5">
-                    <div className="stat-title text-center text-xs">
-                      Users
-                    </div>
+                    <div className="stat-title text-center text-xs">Users</div>
                     <div className="flex items-end">
                       <div className="stat-value text-xl text-center">
                         {nFormatter(numberOfParticipant, 2)}
@@ -665,7 +663,7 @@ const Presentation = () => {
             </div>
             <aside className="flex flex-col items-center gap-9 mb-5">
               <h1 className="text-white-90 font-bold text-3xl text-left w-full">
-                Contreparties
+                Produits
               </h1>
               <div className="block xl:hidden">
                 <CardsSlider />

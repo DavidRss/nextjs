@@ -8,10 +8,17 @@ import { useApp } from "../services/AppContext";
 import {
   FBCollections,
   database,
+  fileService,
   projectService,
   userService,
 } from "../services/FirebaseService";
-import { EARN, PROJECT_ID, Path } from "../constants/constants";
+import {
+  Comment,
+  EARN,
+  IMAGE_TYPE,
+  PROJECT_ID,
+  Path,
+} from "../constants/constants";
 import { onValue, ref } from "firebase/database";
 import Spinner from "../components/spinner/Spinner";
 import { scrollToElement } from "../utils/ActionUtils";
@@ -36,7 +43,7 @@ function Chat() {
   const [text, setText] = useState("");
   const [fileAttached, setFileAttached] = useState(false);
 
-  const handleFileInputChange = (e) => {
+  const handleFileInputChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
       console.log("===== file: ", file.name);
@@ -70,38 +77,50 @@ function Chat() {
         return;
       }
 
-      if (currentUser) {
-        const comment = {
-          userId: currentUser.id,
-          username: currentUser.username,
-          content: text,
-          avatar: currentUser.avatar,
-          photo: "",
-          status: "",
-          createAt: getCurrentTimestamp(),
-        };
+      if (text.length > 0 || selectedFile) {
+        try {
+          const comment = {
+            userId: currentUser.id,
+            username: currentUser.username,
+            content: text,
+            avatar: currentUser.avatar,
+            status: "",
+            createAt: getCurrentTimestamp(),
+          };
 
-        if (currentUser.earned.comment === false) {
-          const idx = comments.findIndex(
-            (item) => item.userId === currentUser.id
-          );
-          if (idx === -1) {
-            currentUser.points = currentUser.points + EARN.COMMENT;
-            currentUser.earned.comment = true;
-
-            await userService.updateUser(currentUser.id, currentUser);
-
-            saveUser(currentUser);
+          if (selectedFile) {
+            setIsLoading(true);
+            const fileUrl = await fileService.uploadFile(selectedFile);
+            comment["fileName"] = selectedFile.name;
+            comment["fileUrl"] = fileUrl;
+            setIsLoading(false);
           }
+
+          if (currentUser.earned.comment === false) {
+            const idx = comments.findIndex(
+              (item) => item.userId === currentUser.id
+            );
+            if (idx === -1) {
+              currentUser.points = currentUser.points + EARN.COMMENT;
+              currentUser.earned.comment = true;
+
+              await userService.updateUser(currentUser.id, currentUser);
+
+              saveUser(currentUser);
+            }
+          }
+
+          setComments((prevComments) => [...prevComments, comment]);
+
+          await projectService.addComments(PROJECT_ID, [...comments, comment]);
+        } catch (err) {
+          console.log(err);
         }
 
-        setComments((prevComments) => [...prevComments, comment]);
-
-        await projectService.addComments(PROJECT_ID, [...comments, comment]);
+        setText("");
+        setSelectedFile(null);
+        setFileAttached(false);
       }
-
-      setText("");
-      setFileAttached(false);
     }
   };
 
@@ -163,6 +182,14 @@ function Chat() {
     return `${fDT.year}-${fDT.month}-${fDT.day} ${fDT.hh}:${fDT.mm}`;
   };
 
+  const checkImage = (fileName) => {
+    const fileExt = fileName.split(".").pop().toLowerCase();
+    if (IMAGE_TYPE.indexOf(fileExt) !== -1) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <Page handleOnParticipate={handleOnParticipate}>
       <section className="w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0">
@@ -210,15 +237,27 @@ function Chat() {
                               {formattedDateTime(comment.createAt)}
                             </time>
                           </div>
-                          <div
-                            className={`chat-bubble max-w-xs ${
-                              isOwner(comment)
-                                ? "bg-chatMsgOwner"
-                                : "bg-chatMsg"
-                            } text-white`}
-                          >
-                            {comment.content}
-                          </div>
+                          {comment.content.length > 0 && (
+                            <div
+                              className={`chat-bubble max-w-xs ${
+                                isOwner(comment)
+                                  ? "bg-chatMsgOwner"
+                                  : "bg-chatMsg"
+                              } text-white`}
+                            >
+                              {comment.content}
+                            </div>
+                          )}
+                          {comment.fileUrl && (
+                            <div>
+                              {checkImage(comment.fileName) && (
+                                <img src={comment.fileUrl} />
+                              )}
+                              <div className={`mt-4 text-blue-600 ${isOwner(comment) ? 'text-right' : 'text-left'}`}>
+                                <a href={comment.fileUrl} target="_blank">{comment.fileName}</a>
+                              </div>
+                            </div>
+                          )}
                           <div className="chat-footer text-sm font-normal">
                             {comment.status}
                           </div>

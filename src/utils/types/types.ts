@@ -77,6 +77,7 @@ export interface Comment {
   avatar: string;
   photo: string;
   status: string;
+  type: string;
   createdAt: string;
 }
 
