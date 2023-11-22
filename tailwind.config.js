@@ -34,6 +34,8 @@ module.exports = {
         "white-70": "#FFFFFFB3",
         "white-50": "#FFFFFF8A",
         "placeholder": "#9B9B9B",
+        "black-70": "#000000B3",
+        "black-50": "#0000008A"
       },
       backgroundColor: {
         'mainCard': '#FFFFFF0A',
@@ -41,12 +43,14 @@ module.exports = {
         'silverCard': '#EDEDED',
         'bronzeCard': '#F2C7B3',
         'disabled': '#F0F0F0',
-        'pagBg': '#F2F2F2',
+        'pagBg': '#2E2E2E',
         'chatMsgOwner': '#0067C7',
         'chatMsg': '#3D3D3D',
         'navigate': '#FFFFFF08',
         'input': '#404040',
         'dialog': '#2E2E2E',
+        'odd': '#292929',
+        'even': '#2E2E2E'
       },
       borderColor: {
         'mainCard': '#FFFFFF05',

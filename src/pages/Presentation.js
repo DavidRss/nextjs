@@ -183,8 +183,20 @@ const Presentation = () => {
 
     console.log("===== donationProduct: ", donationProduct);
     const variants = donationProduct.variants;
-    const minPrice = parseFloat(variants[0].price.amount);
-    const maxPrice = parseFloat(variants[variants.length - 1].price.amount);
+    let minPrice = parseFloat(variants[0].price.amount);
+    let maxPrice = parseFloat(variants[variants.length - 1].price.amount);
+    console.log(minPrice, maxPrice)
+    for(const variant of variants) {
+      const vPrice = parseFloat(variant.price.amount)
+      if(minPrice > vPrice) {
+        minPrice = vPrice;
+      }
+
+      if(maxPrice < vPrice) {
+        maxPrice = vPrice;
+      }
+    }
+    console.log(minPrice, maxPrice)
 
     if (price < minPrice || price > maxPrice) {
       showNotifyMessage({

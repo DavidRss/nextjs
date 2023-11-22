@@ -76,14 +76,14 @@ function Leaderboard() {
                           : "bg-bronzeCard"
                       } text-primary-content`}
                     >
-                      <div className="stat text-white-90">
-                        <div className="stat-title text-white-90 text-left font-semibold opacity-70">
+                      <div className="stat text-black">
+                        <div className="stat-title text-black-70 text-left font-semibold opacity-70">
                           {`${index + 1}st place`}
                         </div>
                         <div className="stat-value text-xl font-extrabold text-left">
                           {rowData.username}
                         </div>
-                        <div className="stat-desc flex gap-1.5 text-white-90 font-normal text-sm opacity-40 mt-1">
+                        <div className="stat-desc flex gap-1.5 text-black-50 font-normal text-sm opacity-40 mt-1">
                           <span>
                             {rowData.donations || rowData?.spending} Dons
                           </span>
@@ -110,7 +110,7 @@ function Leaderboard() {
                     </thead>
                     <tbody>
                       {participants.map((rowData, index) => (
-                        <tr key={index} className="border-neutra text-white-90">
+                        <tr key={index} className="border-neutra text-white-90 even:bg-even odd:bg-odd">
                           <th className="text-base font-semibold text-center">
                             {index + 1 + (currentPage - 1) * pageSize}
                           </th>
@@ -168,7 +168,7 @@ function Leaderboard() {
                         key={page}
                         className={`join-item btn text-base bg-pagBg ${
                           page + 1 === currentPage
-                            ? "bg-opacity-100 text-white-90"
+                            ? "bg-opacity-100 text-white"
                             : "bg-opacity-50 text-white-90 text-opacity-20"
                         } border-none hover:bg-pagBg hover:bg-opacity-100 hover:text-white-90 rounded-lg`}
                         onClick={() => handleChangePage(page + 1)}

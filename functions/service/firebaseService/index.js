@@ -120,7 +120,7 @@ exports.participateUser = async function (projectId, user, donations, points) {
       .doc(projectId)
       .collection(FBCollections.PARTICIPANTS)
       .doc(user.id)
-      .add(params);
+      .set(params);
 
     return true;
   } catch (err) {

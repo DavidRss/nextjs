@@ -50,9 +50,22 @@ const Aside = forwardRef((props, ref) => {
       return;
     }
 
+    console.log("===== donationProduct: ", donationProduct);
     const variants = donationProduct.variants;
-    const minPrice = parseFloat(variants[0].price.amount);
-    const maxPrice = parseFloat(variants[variants.length - 1].price.amount);
+    let minPrice = parseFloat(variants[0].price.amount);
+    let maxPrice = parseFloat(variants[variants.length - 1].price.amount);
+    console.log(minPrice, maxPrice);
+    for (const variant of variants) {
+      const vPrice = parseFloat(variant.price.amount);
+      if (minPrice > vPrice) {
+        minPrice = vPrice;
+      }
+
+      if (maxPrice < vPrice) {
+        maxPrice = vPrice;
+      }
+    }
+    console.log(minPrice, maxPrice);
 
     if (price < minPrice || price > maxPrice) {
       showNotifyMessage({
@@ -63,14 +76,23 @@ const Aside = forwardRef((props, ref) => {
     }
 
     const cPrice = Math.ceil(price);
+    console.log("===== variants: ", variants);
+    console.log("===== cPrice: ", cPrice);
     let selVariant = null;
     for (const item of variants) {
-      if (item.price.amount === cPrice) {
+      if (parseInt(item.price.amount) === cPrice) {
         selVariant = item;
         break;
       }
     }
     console.log("===== selVariant: ", selVariant);
+    if (!selVariant) {
+      showNotifyMessage({
+        type: Notify.Type.INFO,
+        message: "You can't donate at this time. Please try later.",
+      });
+      return;
+    }
 
     setLoading(true);
 
@@ -81,6 +103,11 @@ const Aside = forwardRef((props, ref) => {
       } else {
         checkoutInfo = await shopifyService.createCheckout();
       }
+
+      checkoutInfo = await shopifyService.updateEmail(
+        checkoutInfo.id,
+        currentUser.email
+      );
 
       const inputValue = getCheckoutCustomAttributes(
         currentUser,

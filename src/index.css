@@ -74,12 +74,12 @@ span.swiper-pagination-bullet.swiper-pagination-bullet{
 }
 
 .table-zebra tbody tr:nth-child(even) {
-  background-color: #F2F2F2 !important; 
-  border-color: #F2F2F2 !important;
+  background-color: #2E2E2E !important; 
+  border-color: #2E2E2E !important;
 }
 
 .table-zebra tbody tr:nth-child(odd) {
-  border-color: #F2F2F2 !important;
+  border-color: #292929 !important;
 }
 
 .swiper-slide {
