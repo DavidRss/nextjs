@@ -700,7 +700,7 @@ const Presentation = () => {
                         <div className="flex w-full justify-between items-center">
                           <div className="flex flex-col items-start">
                             <span className="text-white text-3xl font-extrabold">
-                              {item?.variants[0].price.amount} €
+                              {parseInt(item?.variants[0].price.amount)} €
                             </span>
                             {/* <span className="text-gray-400 text-sm font-normal">
                               {item.contributions} contributions
