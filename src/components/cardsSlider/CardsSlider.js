@@ -15,6 +15,7 @@ import {
   getCheckoutCustomAttributes,
   removeLineItemsFromCheckout,
 } from "../../utils/utils";
+import ProductDialog from "../productDialog/productDialog";
 
 function CardsSlider() {
   const navigate = useNavigate();
@@ -29,6 +30,9 @@ function CardsSlider() {
   } = useApp();
 
   const [productList, setProductList] = useState([]);
+  const [selProduct, setSelProduct] = useState();
+  const [selVariant, setSelVariant] = useState(null);
+  const [showDialog, setShowDialog] = useState(false);
 
   useEffect(() => {
     if (products.length > 0) {
@@ -37,14 +41,7 @@ function CardsSlider() {
     }
   }, [products]);
 
-  const handleClickProduct = async (productId) => {
-    if (!currentUser) {
-      navigate(`/${Path.SIGNIN}`, { replace: true });
-    }
-
-    const product = productList.find((item) => item.id === productId);
-    console.log("===== handleClickProduct: ", product);
-
+  const processPurchase = async () => {
     try {
       setLoading(true);
 
@@ -70,33 +67,49 @@ function CardsSlider() {
         inputValue
       );
 
-      const variants = product.variants;
-      if (variants.length > 0) {
-        const variant = variants[0];
-        const lineItems = {
-          variantId: variant.id,
-          quantity: 1,
-        };
-        checkoutInfo = await shopifyService.addLineItems(
-          checkoutInfo.id,
-          lineItems
-        );
+      const lineItems = {
+        variantId: selVariant,
+        quantity: 1,
+      };
+      checkoutInfo = await shopifyService.addLineItems(
+        checkoutInfo.id,
+        lineItems
+      );
 
-        saveCheckout(checkoutInfo);
-        console.log("===== checkoutInfo: ", checkoutInfo);
+      saveCheckout(checkoutInfo);
+      console.log("===== checkoutInfo: ", checkoutInfo);
 
-        window.open(checkoutInfo.webUrl);
-      } else {
-        showNotifyMessage({
-          type: Notify.Type.ERROR,
-          message: "This product is not available in a store.",
-        });
-      }
+      window.open(checkoutInfo.webUrl);
+
+      setShowDialog(false);
     } catch (err) {
       console.log("===== handleClickProduct error: ", err);
     }
 
     setLoading(false);
+  };
+
+  const onChangedVariant = (e) => {
+    setSelVariant(e.target.value);
+  };
+
+  const handleClickProduct = async (product) => {
+    if (!currentUser) {
+      navigate(`/${Path.SIGNIN}`, { replace: true });
+      return;
+    }
+
+    const variants = product.variants;
+    if (variants.length > 0) {
+      setSelProduct(product);
+      setSelVariant(variants[0].id);
+      setShowDialog(true);
+    } else {
+      showNotifyMessage({
+        type: Notify.Type.ERROR,
+        message: "This product is not available in a store.",
+      });
+    }
   };
 
   return (
@@ -138,7 +151,7 @@ function CardsSlider() {
                   <button
                     className="btn btn-primary text-white mt-5"
                     onClick={() => {
-                      handleClickProduct(item.id);
+                      handleClickProduct(item);
                     }}
                   >
                     Participer
@@ -149,6 +162,16 @@ function CardsSlider() {
           </SwiperSlide>
         ))}
       </Swiper>
+      <ProductDialog
+        open={showDialog}
+        product={selProduct}
+        variant={selVariant}
+        onChangedVariant={onChangedVariant}
+        processPurchase={processPurchase}
+        hideDialog={() => {
+          setShowDialog(false);
+        }}
+      />
     </>
   );
 }

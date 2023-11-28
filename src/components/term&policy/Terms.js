@@ -10,13 +10,13 @@ function Terms() {
     }
 
     ::-webkit-scrollbar-thumb:vertical {
-      background: #C73E00;
+      background: #4A9F2E;
       border-radius: 50px;
     }
 
     ::-webkit-scrollbar-track:vertical {
       margin: 10px 0;
-      background: white;
+      background: #2E2E2E;
     }
   `;
 
@@ -24,229 +24,152 @@ function Terms() {
     <>
       <style>{scrollbarStyles}</style>
       <dialog id="termes" className="modal">
-        <div className="modal-box bg-white text-white-90 w-full max-w-5xl">
-          <h3 className="font-bold text-lg">TIPEEE'S TERMS & CONDITIONS</h3>
+        <div className="modal-box bg-dialog text-white-90 w-full max-w-5xl">
+          <h1 className="font-bold text-xl">Termes et conditions</h1>
           <div>
-            <p>PRÉAMBULE</p>
-            <p>
-            La solution COFLOW consiste en une prestation technique de fourniture d’un hébergement et en la mise à disposition des fonctionnalités nécessaires à la mise en œuvre d’opérations de financement participatif. Elle s’adresse à ceux qui veulent créer « en deux clics » leur propre page de finance participative de dons et/ou de préachat, 
-La solution COFLOW a été développée nativement en marque blanche. La solution COFLOW s’adapte naturellement aux besoins et aux contraintes des clients : elle ne clone pas une solution existante.
-            </p>
-            <p>La solution COFLOW intègre une solution de paiement via un partenaire établissement de paiement/ ou via un établissement de monnaie électronique, dûment contrôlé par les autorités de surveillance bancaires.</p>
-            <p>La solution COFLOW est multidevises.</p>
-            <p>La solution COFLOW s’intègre facilement dans des sites existants.</p>
-            <p>La solution COFLOW met à disposition : des tableaux de bord de pilotage (suivis projets par projet, des suivis consolidés, des indicateurs de performance, Google Analytics), des envoi de mails automatisés, une aide en ligne + FAQ, la possibilité de gérer une lotterie à destination des participants.</p>
-            <p>La solution COFLOW est une solution facilement paramétrable.</p>
-            <p>La solution COFLOW permet de gérer plusieurs modèles économiques : campagnes « tout ou rien », campagnes « sans condition », campagnes avec ou sans contreparties, campagnes avec effets de seuils, typologies de commission multiples (commissions prélevées au lancement de projet, à chaque transaction, en cas de succès et suivant le niveau d’accompagnement des projets).</p>
-            <p>LES PRESENTES CONDITIONS GENERALES D’UTILISATION ONT POUR OBJET DE DEFINIR LES TERMES ET LES CONDITIONS D’ACCES ET D’UTILISATION DE LA PLATE FORME COFLOW ET DANS CE CADRE, DE DÉFINIR LE RÔLE ET LES OBLIGATIONS DE CHACUN.</p>
-            <p>EN LES ACCEPTANT l’UTILISATEUR DU SERVICE DE LA PLATE FORME COFLOW RECONNAIT EXPRESSEMENT AVOIR PRIS CONNAISSANCE ET ACCEPTÉES CELLES CI</p>
-            <br/>
-
-            <p>LES PRESENTES CONDITIONS GENERALES D’UTILISATION ONT POUR OBJET DE DEFINIR LES TERMES ET LES CONDITIONS D’ACCES ET D’UTILISATION DU SERVICE COFLOW ET DE DÉFINIR LE RÔLE ET LES OBLIGATIONS DE CHACUN.</p>
-            <p>EN LES ACCEPTANT L’UTILISATEUR DU SERVICE COFLOW RECONNAIT EN AVOIR PRIS CONNAISSANCE.</p>
-            <p>POUR TOUTE OUVERTURE D’UN COMPTE, L’UTILISATEUR RECONNAIT EGALEMENT AVOIR PRIS CONNAISSANCE ET ACCEPTÉ LES CONDITIONS GENERALES D’UTILISATION DE L’ETABLISSEMENT DE PAIEMENT/ou de MONNAIE ELECTRONIQUE avec lequel travaille COFLOW, lesquelles sont disponibles à partir des CGU des plateformes, clients de COFLOW.</p>
-            <p>L’UTILISATEUR DOIT LIRE ATTENTIVEMENT LES PRESENTES CONDITIONS GENERALES D'UTILISATION ET LES COMPRENDRE. EN LES ACCEPTANT IL S’ENGAGE À EN RESPECTER LES TERMES ET LES CONDITIONS.</p>
-            <p>L’ACCEPTATION DES CONDITIONS GENERALES D’UTILISATION DU SERVICE COFLOW EST CONSERVÉE ET ARCHIVÉE PAR COFLOW DANS SES SYSTÈMES INFORMATIQUES DE FAÇON INALTÉRABLE, SÛRE ET FIABLE. L’UTILISATEUR PEUT À TOUT MOMENT LES CONSULTER, LES REPRODUIRE, LES STOCKER SUR SON ORDINATEUR, SUR UN AUTRE SUPPORT, SE LES ENVOYER PAR COURRIER ÉLECTRONIQUE OU LES IMPRIMER SUR PAPIER DE MANIÈRE À LES CONSERVER. </p>
-            <p>UTILISATEURS, SI VOUS N'ETES PAS D'ACCORD AVEC LES TERMES ET LES CONDITIONS PRESENTEES OU QUE VOUS NE SOUHAITEZ PAS LES RESPECTER, NE LES ACCEPTEZ PAS MAIS VOUS NE POURREZ ALORS PAS BENEFICIER DES SERVICES PROPOSES !</p>
-            <div className="w-1/4 border-b border-black mt-4"></div>
-            <br/>
-
-            <h2 className="my-2 text-xl font-semibold">
-            1. DÉFINITIONS
+            <h2 className="my-2 text-lg font-semibold">
+            Article 1 : Introduction
             </h2>
-            <p>Aux fins des présentes conditions générales d’utilisation du service COFLOW, les mots suivants ont, lorsqu’ils sont utilisés en majuscules, et sauf si le contexte en commande une interprétation différente, la signification suivante :</p>
-            <p>* BENEFICIAIRE EFFECTIF : Celui qui bénéficie directement des fonds ; il peut donc être distinct du PORTEUR DE PROJET</p>
-            <p>* CLIENT COFLOW : Le CLIENT COFLOW est une PORTEUR DE PROJET qui décide d’utiliser la solution technique COFLOW, le temps d’une campagne unique de FINANCE PARTICIPATIVE ; </p>
-            <p>* COLLECTE : Montant des fonds recherchés par l’opération de FINANCE PARTICIPATIVE. Les attributs de la COLLECTE sont sa durée et son montant. Ils sont librement fixés par le PORTEUR DE PROJET.</p>
-            <p>* COMPTE DE PAIEMENT DU CONTRIBUTEUR : compte du CONTRIBUTEUR géré par l’ETABLISSEMENT DE PAIEMENT ou de MONNAIE ELECTRONIQUE rattaché potentiellement à un IBAN ou à un numéro de carte bancaire.</p>
-            <p>* COMPTE DE PAIEMENT DU PORTEUR DE PROJET : compte DU PORTEUR DE PROJET géré par l’ETABLISSEMENT DE PAIEMENT ou de MONNAIE ELECTRONIQUE, rattaché potentiellement à un IBAN ou à un numéro de carte bancaire. Il permet de percevoir les sommes des CONTRIBUTEURS.</p>
-            <p>* CONTREPARTIES (voir RECOMPENSES). LES CONTREPARTIES peuvent être matérielles ou immatérielles.</p>
-            <p>* CONTRIBUTEUR (ou DONATEUR) : toute personne physique ou morale qui participe au financement d’un PROJET en versant une CONTRIBUTION CONTRIBUTION (ou DON ou PRÉ-ACHAT ou INVESTISSEMENT ou apport de compétence) : la CONTRIBUTION est la somme d’argent versée par le CONTRIBUTEUR pour aider un PROJET.</p>
-            <p>* DONATEUR (cf. CONTRIBUTEUR)</p>
-            <p>* DONS (cf. CONTRIBUTION)</p>
-            <p>* ESPACE CONTRIBUTEUR : interface permettant au CONTRIBUTEUR de consulter et de gérer son profil.</p>
-            <p>* ESPACE MANAGER : interface permettant au CLIENT COFLOW de consulter le PORTAIL.</p>
-            <p>* ESPACE PORTEUR DE PROJET : interface permettant au PORTEUR DE PROJET de consulter et de gérer le PROJET.</p>
-            <p>* ÉTABLISSEMENT DE PAIEMENT : Établissement de paiement agrée et contrôlé par l’ACPR. Les établissements de paiement sont des personnes morales, autres que les établissements de crédit, qui fournissent à titre de profession habituelle des services de paiement mentionné à l'article L.314-1 du code monétaire et financier (art. L.522-1) du code monétaire et financier.</p>
-            <p>* ÉTABLISSEMENT DE MONNAIE ELECTRONIQUE- Établissement également agréé par les autorités de Contrôle bancaires.</p>
-            <p>* FINANCE PARTICIPATIVE (ou CROWDFUNDING) : La FINANCE PARTICIPATIVE permet de financer un projet, un produit, un évènement, une activité ou une cause, là où désormais les circuits financiers traditionnels ne répondent plus entièrement. Pour le PORTEUR DE PROJET, la FINANCE PARTICIPATIVE peut-être également l’occasion de tester et de jauger le degré d’appétence pour un projet, un produit, un événement, une activité ou une cause auprès d’une communauté, d’un public ou d’acheteurs potentiels. La FINANCE PARTICIPATIVE satisfait à des tendances sociétales fortes qui combinent l’utilisation d’internet et des réseaux sociaux, l’aspiration à des sentiments d’appartenance, de proximité, de confiance voire de passion. L’opération de FINANCE PARTICIPATIVE peut revêtir la forme d’une opération de DON, de PRET, de PREACHAT, d’INVESTISSEMENT, de MECENAT DE COMPETENCE ou d’une combinaison de ces formes.</p>
-            <p>* MANAGER DU PORTAIL:</p>
-            <p>* COFLOW dans le cas d’un PORTEUR DE PROJET qui a recours à la solution technique COFLOW le temps d’une campagne unique de FINANCE PARTICIPATIVE.</p>
-            <p>* MECENAT DE COMPETENCE (ou crowdsourcing) : consiste à mettre à disposition du temps, des services et/ou des ressources, services et/ou compétences pour réaliser des actions le plus souvent d’intérêt général. Le MECENAT DE COMPETENCE ne se traduit pas par des contributions financières.</p>
-            <p>* OBJECTIF FINANCIER : montant à réunir pour la réalisation du PROJET.</p>
-            <p>* PORTAIL DE FINANCE PARTICIPATIVE : portail qui présente un projet de FINANCE PARTICIPATIVE. </p>
-            <p>* PREACHAT : Opération de FINANCE PARTICIPATIVE permettant de réserver un produit avant sa commercialisation.</p>
-            <p>* PORTEUR DE PROJET : celui qui initie et porte le PROJET.</p>
-            <p>* PROJET : Le PROJET est tout évènement, activité, produit, service et/ou cause qu’un PORTEUR DE PROJET souhaite financer Les éléments caractéristiques d’un PROJET sont :</p>
-            <p>* Son objet</p>
-            <p>* Le montant de l’OBJECTIF FINANCIER</p>
-            <p>* La durée de la COLLECTE</p>
-            <p>* Les différentes modes de CONTRIBUTIONS possibles (DON, PRÉ-ACHAT, MECENAT DE COMPETENCE)</p>
-            <p>* Les RÉCOMPENSES (ou CONTREPARTIES) affectées aux CONTRIBUTIONS</p>
-            <p>* PROJET avec MISE À DISPOSITION CONDITIONNEE DES FONDS COLLECTES : PROJET pour lequel la mise à disposition des fonds collectés au PORTEUR DE PROJET dépend des conditions de succès de la campagne de FINANCE PARTICIPATIVE.  Si l’OBJECTIF de la campagne n’est pas atteint, le PORTEUR DE PROJET ou le BENEFICIAIRE EFFECTIF a la faculté dans des conditions prévues ab initio de reporter la contribution sur des projets équivalents.</p>
-            <p>* PROJET SANS MISE À DISPOSITION CONDITIONNEE DES FONDS COLLECTES : PROJET pour lequel les fonds collectés sont collecté directement part un PORTEUR DE PROJET ou à UN BENEFICIAIRE EFFECTIF et ceci indépendamment de l’atteinte des objectifs de la campagne de FINANCE PARTICIPATIVE.</p>
-            <p>* RGPD : Règlement Européen pour la protection des données personnelles</p>
-            <p>* RÉCOMPENSES (ou CONTREPARTIES) : les RÉCOMPENSES sont les CONTREPARTIES reçues par les CONTRIBUTEURS en échange de leurs CONTRIBUTIONS. Elles sont fixées par le PORTEUR DE PROJET. Elles concernent également l’achat de produits à des conditions préférentielles dans le cadre d’opérations de PREACHAT lesquelles participent à la catégorie des dons avec contreparties.</p>
-            <p>* SERVICE COFLOW : mise à disposition de la solution technique développée par Mehdi Aknoun.</p>
-            <p>* UTILISATEUR DU COMPTE DE PAIEMENT : Le PORTEUR DE PROJET, le MANAGER DE PROJET(S) ou le CONTRIBUTEUR.</p>
-            <p>* UTILISATEUR DU SERVICE COFLOW : Le PORTEUR DE PROJET.</p>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <p>Cette boutique en ligne a été mise en place par le Vendeur production, SAS au capital de 5000€, qui est l'exploitante de ce site. Le siège social de l'entreprise est basé au 10 rue du Colisée à Paris (75008). La société est immatriculée au registre du commerce et des sociétés de Paris sous le numéro 877 497 842. Le directeur de publication est Kyan Khojandi. Cette boutique en ligne est hébergée par Shopify dont le siège social est situé 150 rue Elgin, Suite 800, Ottawa, Ontario K2P 1L4, Canada.</p>
+            <p>Toute prise de commande au titre d'un produit figurant au sein de cette boutique en ligne, briceshop.fr suppose la consultation préalable des présentes conditions générales. En conséquence, le consommateur reconnaît être parfaitement informé du fait que son accord concernant le contenu des présentes conditions générales ne nécessite pas la signature manuscrite de ce document, dans la mesure où le client souhaite commander en ligne les produits présentés dans le cadre de la boutique du site web.</p>
+            <p>Le consommateur dispose de la faculté de sauvegarder ou d'éditer les présentes conditions générales, étant précisé que tant la sauvegarde que l'édition de ce document relèvent de sa seule responsabilité. Le consommateur, préalablement à sa commande, déclare que l'acquisition de ces produits est sans rapport direct avec son activité professionnelle, leur acquisition étant réservée à une utilisation personnelle de sa part. En tant que consommateur, le client dispose donc de droits spécifiques, qui seraient remis en cause dans l'hypothèse où les produits ou services acquis dans le cadre du site web auraient en réalité un rapport avec son activité professionnelle.</p>
+            <p>La boutique en ligne mise en place par le Vendeur dans le cadre du site web mentionne les informations suivantes :</p>
+            <p>- notice légale permettant une identification précise du Vendeur</p>
+            <p>- présentation des caractéristiques essentielles des biens proposés</p>
+            <p>- indication, en Euros du prix des biens, ainsi que, le cas échéant, des frais de livraison</p>
+            <p>- indication des modalités de paiement, de livraison ou d'exécution</p>
+            <p>Les présentes conditions générales expriment l'intégralité des obligations des parties. En ce sens, le consommateur est réputé accepter sans réserve l'intégralité des dispositions prévues dans ces conditions générales. Aucune condition générale ou spécifique figurant dans les documents envoyés ou remis par le consommateur ne pourra s'intégrer aux présentes, dès lors que ces documents seraient incompatibles avec ces conditions générales.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">2. INSCRIPTION AU SERVICE COFLOW</h2>
-            <p>L’UTILISATEUR DU SERVICE COFLOW doit fournir a minima :</p>
-            <p>* Un pseudo</p>
-            <p>* Une adresse e-mail</p>
-            <p>Dès lors que l’UTILISATEUR DU SERVICE COFLOW souhaite ouvrir un compte de paiement les informations complémentaires peuvent lui être demandées.</p>
-            <p>Lors de l’inscription, un ESPACE UTILISATEUR (MANAGER, PORTEUR DE PROJET, CONTRIBUTEUR, PARTICIPANT) est mis à disposition de L’UTILISATEUR DU SERVICE COFLOW dans lequel celui-ci pourra le cas échéant charger ses pièces justificatives.</p>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 2 : Objet</h2>
+            <p>Les présentes conditions générales ont pour objet de définir les droits et obligations des parties dans le cadre de la vente en ligne de biens et services proposés par le Vendeur au consommateur.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">3. OUVERTURE D’UN COMPTE</h2>
-            <h3>3.1. Toute personne physique souhaitant ouvrir un compte doit fournir :</h3>
-            <p>* Son nom et son prénom</p>
-            <p>* Une adresse e-mail valide</p>
-            <p>* Sa date de naissance</p>
-            <p>* Son adresse postale</p>
-            <p>* Sa nationalité</p>
-            <p>* Son pays de résidence</p>
-            <h3>3.2. Toute personne morale souhaitant ouvrir un compte de paiement doit fournir :</h3>
-            <p>* La raison sociale de la personne morale</p>
-            <p>* Une adresse e-mail valide de la personne morale</p>
-            <p>* Un justificatif d’identité du dirigeant ou de la personne ayant pouvoir pour engager la personne morale dans le cadre des opérations réalisées.</p>
-            <h3>3.3. Tout UTILISATEUR du SERVICE COFLOW déclare que toutes les informations fournies sont sincères et exactes à ce jour.</h3>
-            <p>Il doit répondre impérativement à toute demande d'information complémentaire éventuellement formulée par COFLOW ou l’ETABLISSEMENT DE PAIEMENT.</p>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 3 : Documents contractuels</h2>
+            <p>Le présent contrat est formé par les documents contractuels suivants, présentés par ordre hiérarchique décroissant : les présentes conditions générales ; le bon de commande. En cas de contradiction entre les dispositions contenues dans les documents de rang différent, les dispositions du document de rang supérieur prévaudront.</p>
             <br/>
             
-            <h2 className="my-2 text-xl font-semibold">4. ACCESSIBILITÉ DU SERVICE COFLOW</h2>
-            <h3>4.1. Lors de l’inscription, l’UTILISATEUR- MANAGER de PORTAIL s’engage à fournir des données exactes et est tenu de remplir l’ensemble des champs obligatoires figurant dans le formulaire d’inscription. Une fois le formulaire rempli et validé, COFLOW adresse un email de confirmation de la demande.</h3>
-            <h3>4.2. La mise à disposition du SERVICE COFLOW (ouverture et lancement de la page) est soumise à la conclusion d’un contrat entre COFLOW et le PORTEUR DE PROJETS précisant notamment les conditions de rémunération de COFLOW.</h3>
-            <h3>4.3. COFLOW se réserve le droit de suspendre temporairement l’accès aux services de du portail pour des raisons techniques ou de maintenance sans que cela ouvre droit à une quelconque indemnité compensatrice en cas de préjudice. Ses clients en sont préalablement avisés. COFLOW s’engage à limiter le plus possible les interruptions de service pour des raisons techniques ou de maintenance.</h3>
-            <h3>4.4. COFLOW se réserve le droit de suspendre l’accès aux services du portail dans le cas d’un manquement d’un UTILISATEUR DU SERVICE COFLOW aux obligations visées à l’article 9 ci-après, sans que cela ouvre droit à une quelconque indemnité compensatrice en cas de préjudice.</h3>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 4 : Dispositions générales</h2>
+            <p>Les présentes conditions générales de vente s’appliquent à toutes les ventes de produits effectuées à travers le site internet du Vendeur sur le site briceshop.fr . Du reste, cette dernière se réserve la possibilité de modifier les présentes, à tout moment, par la publication d’une nouvelle version sur son site internet. Dès lors, les conditions générales de vente applicables sont celles étant en vigueur à la date du paiement de la commande.</p>
+            <p>le Vendeur s’assure que leur acceptation soit claire et sans réserve en mettant en place une case à cocher et un clic de validation.</p>
+            <p>Aussi, le client déclare avoir pris connaissance de l’ensemble des présentes conditions générales de vente et dus accepter sans restriction ni réserve. Le client reconnaît en outre avoir bénéficié des conseils et informations nécessaires afin de s’assurer de l’adéquation de l’offre à ses besoins.</p>
+            <p>Le client déclare être en mesure de contracter légalement en vertu des lois françaises ou valablement représenter la personne physique ou morale pour laquelle il s’engage.</p>
+            <p>Les informations enregistrées par le Vendeur constituent la preuve de l’ensemble des transactions, sauf preuve contraire.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">5. CAMPAGNE DE FINANCE PARTICIPATIVE</h2>
-            <h3>5.1. Le CONTRIBUTEUR choisit le montant de sa CONTRIBUTION et le cas échéant de la CONTREPARTIE (ou RECOMPENSE) associée. Le paiement sécurisé par carte bancaire est effectué par l’intermédiaire de L’ETABLISSEMENT DE PAIEMENT</h3>
-            <h3>5.2. Le montant de la CONTRIBUTION est directement versé sur le compte bénéficiaire</h3>
-            <h3>5.3. Les frais afférents au Service COFLOW sont à la charge du CLIENT COFLOW, à savoir le PORTEUR DE PROJET lorsque celui-ci agit directement avec COFLOW.  </h3>
-            <h3>5.4. COFLOW intervient uniquement pour la mise en œuvre technique de la solution de FINANCE PARTICIPATIVE. La gestion des comptes de paiement ainsi que la sécurisation des opérations de paiement, est assurée par L’ETABLISSEMENT DE PAIEMENT dont COFLOW est le partenaire.</h3>
-            <h3>5.5. La définition du PROJET, sa mise en œuvre, sa réussite ou son échec, la délivrance éventuelle de CONTREPARTIES, tout comme la gestion juridique et financière du PROJET sont de la responsabilité du PORTEUR DE PROJET.</h3>
-            <h3>5.6. La réussite du PROJET est réputée acquise lorsque l’OBJECTIF FINANCIER de la COLLECTE est atteint en montant et dans les délais impartis.</h3>
-            <h3>5.7. En cas de réussite du PROJET :</h3>
-            <p>* Lorsque l’OBJECTIF FINANCIER est atteint, la CONTRIBUTION est définitivement acquise au PORTEUR DE PROJET.</p>
-            <p>* La CONTRIBUTION est versée au COMPTE DE PAIEMENT DU PORTEUR DE PROJET.</p>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 5 : Entrée en vigueur - Durée</h2>
+            <p>Les présentes conditions générales entrent en vigueur à la date de signature du bon de commande. Les présentes conditions générales sont conclues pour la durée nécessaire à la fourniture des biens et services souscrits, jusqu'à l'extinction des garanties dues par le Vendeur.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">6. LES OBLIGATIONS DE L’UTILISATEUR DU SERVICE COFLOW</h2>
-            <h3>6.1. Tout UTILISATEUR du SERVICE COFLOW s’engage expressément</h3>
-            <p>* À ne pas enregistrer de lien, message, image, texte, vidéo, sons d’animation ou programme non conformes à la législation française,</p>
-            <p>* À ne pas enregistrer ou promouvoir des thèmes, contenus, liens expressément prohibés pouvant porter atteinte aux droits d’auteur ou aux droits à l’image ou à la vie privée d’autrui,</p>
-            <p>* À ne pas faire du prosélytisme religieux</p>
-            <p>* À ne pas enregistrer ou promouvoir des thèmes qui pourraient avoir trait à l’exploitation de mineurs ou qui consternaient à utiliser des images pornographiques de mineurs, des images dégradantes du corps de l’homme ou de la femme, à lancer des injures, diffamer, proférer des propos homophobes, négationnistes ou antisémites, provoquer ou inciter à la haine, à la violence, au racisme, au suicide ou plus généralement à inciter à tout crime ou délit,</p>
-            <p>* À obtenir les autorisations préalables concernant des données protégées par le droit de propriété,</p>
-            <p>* À obtenir les autorisations préalables auprès des titulaires de droits dans les conditions légales avant toute reproduction, représentation et communication au public,</p>
-            <p>* À prendre garde au fait que les adresses URL doivent respecter le droit des marques et les droits de la personnalité,</p>
-            <p>* À assumer la responsabilité des textes, images, programmes ou sons diffusés,</p>
-            <p>* À assumer seul tout préjudice direct ou indirect matériel ou corporel causé et faire sien tout litige pouvant survenir,</p>
-            <p>* À décharger COFLOW de toute responsabilité en cas de préjudice causé par un manquement à l’un des engagements qui précèdent.</p>
-            <h3>6.2. Tout UTILISATEUR DU SERVICE COFLOW s’engage expressément</h3>
-            <p>* À ne pas utiliser le service COFLOW pour diffuser et promouvoir des virus informatiques, chevaux de Troie ou tout autre programme de même nature, pour violer des systèmes informatiques ou pour perturber le bon fonctionnement général du service.</p>
-            <p>* À assumer seul tout préjudice direct ou indirect matériel ou corporel causé et à faire sien de tout litige pouvant survenir,</p>
-            <p>* À décharger COFLOW de toute responsabilité dans ce sens.</p>
-            <h3>6.3. Toute contravention à l’un des engagements ci-dessus entraîne une fois connu la suppression immédiate et sans préavis de l’élément litigieux.</h3>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 6 : Signature électronique</h2>
+            <p>Le "double clic" du consommateur au titre du bon de commande constitue une signature électronique qui a, entre les parties, la même valeur qu'une signature manuscrite.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">7. RESPONSABILITÉS</h2>
-            <h3>7.1. Pour l’ensemble de ses prestations, COFLOW est soumise à une obligation de moyen et non à une obligation de résultat. Le service COFLOW est une prestation technique. En aucun cas, COFLOW ne peut être tenu pour responsable pour ce qui s’apparenterait de près ou de loin au manquement d’une obligation de conseil.</h3>
-            <h3>7.2. COFLOW ne pourra en aucun cas être tenu responsable de tout dommage qui résulterait partiellement ou totalement du non-respect des présentes CGU.</h3>
-            <h3>7.3. COFLOW n’est pas responsable des activités et informations stockées par les CLIENTS COFLOW ou tout UTILISATEUR du service COFLOW.</h3>
-            <h3>7.4. COFLOW ne saurait voir sa responsabilité engagée du fait des activités ou des informations stockées par les CLIENTS COFLOW, si elle n’avait pas connaissance effective de leur caractère illicite ou si dès le moment où elle en a eu connaissance, elle a agi avec diligence pour retirer ces données et/ou en rendre l’accès impossible.</h3>
-            <h3>7.5. En aucun cas, COFLOW ne peut être tenu responsable des dommages directs et/ou indirects, tels que le préjudice commercial, perte de clientèle, trouble commercial quelconque, perte de bénéfice, perte d’image de marque subis par un UTILISATEUR, ou par un tiers, et qui pourraient résulter des prestations de COFLOW ou de la mise en œuvre ou de l’indisponibilité involontaire de son service. Toute action dirigée contre un UTILISATEUR par un tiers est assimilée à un préjudice indirect, et en conséquence n’ouvre pas droit à réparation.</h3>
-            <h3>7.6. L’UTILISATEUR DU SERVICE COFLOW reconnaît que les garanties et limitations de responsabilité stipulées ci-dessus opèrent entre les parties une répartition raisonnable des risques et des responsabilités eu égard au contexte et aux conditions financières encadrant la fourniture du SERVICE COFLOW.</h3>
-            <h3>7.7. Il est précisé que le contenu du PROJET, sa présentation et les éléments de son suivi (actualités etc.) sont élaborés par le PORTEUR DE PROJET sous sa seule responsabilité. COFLOW n’est responsable ni de la délivrance des CONTREPARTIES ni de la livraison des PRODUITS ou des BONUS achetés à l’occasion d’une opération de PRÉACHAT OU DE PARTICIPATION PRODUCTIVE.</h3>
-            <h3>7.8. Il est précisé que les conséquences fiscales du non-respect des règlementations en vigueur, et notamment de la réglementation fiscale par exemple par les UTILISATEURS du SERVICE COFLOW (PORTEURS DE PROJET) sont de la seule responsabilité des UTILISATEURS</h3>
-            <h3>7.9. Un CONTRIBUTEUR ne pourra rechercher la responsabilité de COFLOW en cas de défaillance d’un PORTEUR DE PROJETS à ses obligations.</h3>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 7 : Confirmation de commande</h2>
+            <p>Les informations contractuelles feront l'objet d'une confirmation par voie d'e-mail au plus tard au moment de la livraison ou à défaut, à l'adresse indiquée par le consommateur au sein du bon de commande.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">8. RÉMUNÉRATION DE COFLOW</h2>
-            <h3>8.1. COFLOW perçoit une commission auprès du PORTEUR DE PROJET correspondant à la mise à disposition de sa solution, associée à une solution de paiement ainsi qu’à la maintenance en continu de celle-là. Les conditions de rémunération sont actées dans un contrat spécifique lors de la mise en place du portail.</h3>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 8 : Preuve de la transaction</h2>
+            <p>Les registres informatisés, conservés dans les systèmes informatiques du Vendeur dans des conditions raisonnables de sécurité, seront considérés comme les preuves des communications, des commandes et des paiements intervenus entre les parties. L'archivage des bons de commande et des factures est effectué sur un support fiable et durable pouvant être produit à titre de preuve.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">9. OPPOSITION OU CONTESTATION</h2>
-            <h3>9.1. En cas de perte ou du vol de son identifiant, du détournement ou de toute utilisation non autorisée de celui-ci ou de ses données, l’UTILISATEUR DU COMPTE DE PAIEMENT doit en informer COFLOW afin de demander le blocage de son identifiant.</h3>
-            <p>L’émetteur exécutera immédiatement par l’intermédiaire de COFLOW la demande de mise en opposition de l’Identifiant concerné. L’événement sera enregistré et horodaté.</p>
-            <p>Toute demande d’opposition doit être confirmée sans délai par l’UTILISATEUR DU COMPTE concerné par lettre signée remise ou expédiée sous pli recommandé, ou par email à L’ETABLISSEMENT DE PAIEMENT ou de MONNAIE ELECTRONIQUE ou à l’adresse de COFLOW.</p>
-            <p>L’émetteur et le Distributeur ne sauraient être tenus pour responsables des conséquences d’une opposition par télécopie ou courriel, qui n’émanerait pas de L’UTILISATEUR DU COMPTE.</p>
-            <p>Une demande d’opposition est réputée faite à la date et à l’heure de réception effective de la demande par le Distributeur. En cas de vol ou d’utilisation frauduleuse de l’Identifiant, l’émetteur est habilité à demander par l’intermédiaire du Distributeur, un récépissé ou une copie du dépôt de plainte à l’UTILISATEUR DU COMPTE DE PAIEMENT qui s’engage à y répondre dans les plus brefs délais.</p>
-            <h3>9.2. En cas de contestation d’une opération de débit ou de crédit sur le COMPTE (Contribution, Annulation, Remboursement), l’UTILISATEUR DU COMPTE DE PAIEMENT s’adresse à COFLOW ou à L’ETABLISSEMENT DE PAIEMENT ou de MONNAIE ELECTRONIQUE. Toute contestation d’une opération doit être adressée dans un délai de 13 mois à compter de la date de l’opération contestée. La responsabilité de l’émetteur et du Distributeur ne saurait en aucun cas être engagée en cas de faute de l'UTILISATEUR DU COMPTE DE PAIEMENT de manquement intentionnel ou constitutif d’une négligence grave à ses obligations, de transmission tardive d’une opposition ou d’une contestation ou de mauvaise foi.</h3>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 9 : Informations sur les produits</h2>
+            <p>9-a : le Vendeur présente sur son site web briceshop.fr les produits à vendre avec les caractéristiques nécessaires qui permettent de respecter l'Article L 111-1 du Code de la consommation, qui prévoit la possibilité pour le consommateur potentiel de connaître avant la prise de commande définitive les caractéristiques essentielles des produits qu'il souhaite acheter.</p>
+            <p>9-b : Les offres présentées par le Vendeur sur briceshop.fr ne sont valables que dans la limite des stocks disponibles.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">10. DONNÉES PERSONNELLES ET RÈGLEMENT EUROPÉEN POUR LA PROTECTION DES DONNÉES PERSONNELLES (RGPD)</h2>
-            <p>La solution COFLOW est conçue de telle sorte qu'elle évite la possibilité de fuites de données personnelles. COFLOW met en œuvre les mesures physiques, organisationnelles, matérielles et logistiques nécessaires en l'état des règles de l'art en vigueur pour assurer la sécurité, l'intégrité, la sauvegarde, la confidentialité des données et empêcher que les données soient déformées, traitées de manière non conforme aux finalités du PORTAIL, endommagées ou que des tiers non autorisés y aient accès.</p>
-            <h3>10.1. COFLOW s'engage en tant que solution logicielle à développer les fonctionnalités nécessaires de façon que les portails puissent être en mesure de respecter le RGPD. C'est ainsi que COFLOW :</h3>
-            <p>* Donne la faculté à ses clients de récolter un consentement écrit, clair et explicite auprès des usagers avant la collecte et le traitement de leurs données personelles, acte nécessairement, libre, éclairé.</p>
-            <p>* Est en mesure de permettre aux usagers de revenir sur leur consentement, d'accéder à leurs données personnelles, de les modifier, de les supprimer sous réserve des délais de conservation légaux ou règlementaires</p>
-            <h3>10.2. Les données nominatives collectées et traitées par COFLOW sont celles que L’UTILISATEUR DU SERVICE COFLOW transmet volontairement notamment via les formulaires d'inscription.</h3>
-            <h3>10.3. L’UTILISATEUR DU SERVICE COFLOW s'engage à fournir des informations exactes à jour et à informer sans délai COFLOW de toute modification de ces informations par l’envoi d’un e-mail à contact@coflow.fr, à effectuer sans délai toutes les modifications correspondantes sur son Espace PERSONNEL</h3>
-            <h3>10.4. COFLOW est amené à collecter et à traiter :</h3>
-            <p>* Des données pour son propre compte : Email, nom, prénom, date de naissance, adresse, nationalité, téléphone, pièce d'identité, justificatif de domicile, RIB. COFLOW collecte tout ou partie de ces données exclusivement auprès de personnes qui cherchent à prendre contact, ou auprès de ses clients gestionnaire de portail dans son obligation de connaissance client.</p>
-            <p>* Des données alors en tant que sous-traitant pour le compte de ses clients plateformes et alors sous leur entière responsabilité de traitement et de durée de conservation.</p>
-            <h3>10.5. COFLOW s'engage à ne jamais vendre des données personnelles collectées d'aucune sorte.</h3>
-            <h3>10.6. COFLOW s'engage à ne jamais traiter des données personnelles pour son propre compte autrement que pour satisfaire à une mission légale ou à une règlementation ou bien encore pour les besoins strictement utiles à la bonne marche de son activité (envoi de newsletters, prospection commerciale, proposition de nouveaux services, présentation de nouveaux projets, invitations, contacts). Dans tous les cas, COFLOW collecte ces données après en avoir demandé explicitement l'autorisation à ses propriétaires.</h3>
-            <h3>10.7. COFLOW s'engage à effacer les données collectées pour son propre compte, au bout de trois ans si leur conservation n'est pas justifiée par l'activité en cours, par la loi ou par la règlementation.</h3>
-            <h3>10.8. COFLOW s'engage à effectuer une revue de de ses bases de données une fois par an.</h3>
-            <h3>10.9. COFLOW s'engage à ne jamais conserver les données personnelles et les pièces justificatives collectées momentanément (au demeurant après en avoir sollicité l'autorisation) pour l'exercice de son rôle d'intermédiaire-agent de paiement de STRIPE ou pour son rôle de sous- traitant de ses clients - s'agissant du traitement des KYC par STRIPE.</h3>
-            <h3>10.10. COFLOW s'engage à attirer l'attention de ses clients en cas de non-respect manifeste de leur part du règlement RGPD.</h3>
-            <h3>10.11. COFLOW s'engage à notifier le cas échéant à la CNIL ainsi qu'à toutes les personnes qui pourraient être impactées, sous 72 heures des fuites de données intempestives ou frauduleuses.</h3>
-            <h3>10.12. Les portails/clients COFLOW doivent se conformer à la règlementation RGPD.</h3>
-            <h3>10.13. Aucune des informations transmises par UN UTILISATEUR DU SERVICE COFLOW lors de la création de son Espace Individualisé n'est visible par d'autres UTILISATEURS. Ces informations sont protégées par un nom d'UTILISATEUR et un mot de passe de façon que seul L’UTILISATEUR DU SERVICE COFLO ait accès à ses informations personnelles.</h3>
-            <h3>10.14. Aucune des informations transmises par UN UTILISATEUR DU SERVICE COFLOW lors de la création de son Espace Individualisé n'est visible par les autres UTILISATEURS. Ces informations sont protégées par un nom d'UTILISATEUR et un mot de passe de que seul L’UTILISATEUR DU SERVICE COFLOW ait accès à ses informations personnelles.</h3>
-            <h3>10.15. Le mot de passe d’un UTILISATEUR est personnel et confidentiel. L’UTILISATEUR DU SERVICE COFLOW est seul responsable de l'utilisation de son mot de passe. L’UTILISATEUR DU SERVICE COFLOW s'engage à conserver secret son mot de passe et à ne pas le divulguer sous quelque forme que ce soit. Il assume notamment la responsabilité de l’utilisation de son mot de passe par une tierce personne pour la réalisation de transactions. Plus généralement il est seul responsable de l’utilisation et de la conservation des identifiants qu’il a créés.</h3>
-            <h3>10.16. NI UN PORTEUR DE PROJET ni COFLOW ne demanderont jamais à un CONTRIBUTEUR son mot de passe via un appel téléphonique ou un e-mail non sollicité. Le CONTRIBUTEUR ne devra en outre pas oublier de se déconnecter de son Espace CONTRIBUTEUR ni de fermer la fenêtre de son navigateur à l'issue de sa session de travail. Il évitera ainsi que des personnes accèdent à ses informations personnelles en cas de partage d'ordinateur, ou de travail dans un espace personnel, professionnel ou dans un lieu public.</h3>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 10 : Prix</h2>
+            <p>Les prix sont indiqués en euros toutes taxes comprises et ne sont valables qu'à la date de l'envoi du bon de commande par le consommateur. Pour les produits expédiés hors Union européenne, des droits de douane ou autres taxes locales ou droits d’importation ou taxes d’état sont susceptibles d’être exigibles dans certains cas, mais ces droits et sommes ne relèvent pas du ressort du Vendeur. Ils seront alors à la charge de l’acheteur et relèvent de sa responsabilité (paiement aux autorités compétentes, etc.) le Vendeur invite donc l’acheteur à se renseigner sur ces aspects auprès des autorités locales correspondantes.</p>
+            <p>Les prix ne tiennent pas compte des frais de livraison, facturés en supplément, et indiqués avant la validation de la commande.</p>
+            <p>Le paiement de la totalité du prix doit être réalisé lors de la commande. À aucun moment, les sommes versées ne pourront être considérées comme des arrhes ou des acomptes.</p>
+            <p>le Vendeur se réserve la possibilité de modifier ses prix à tout moment pour l’avenir.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">11. MODIFICATION DES CONDITIONS GÉNÉRALES D’UTILISATION DU SERVICE COFLOW</h2>
-            <p>COFLOW se réserve le droit de modifier unilatéralement les présentes Conditions générales d’Utilisation du service COFLOW et sans préavis.</p>
-            <p>Il appartient en particulier aux UTILISATEURS de consulter et d’accepter les Conditions Générales d’Utilisation du service COFLOW au moment où il utilise les services d'un PORTAIL ou le service COFLOW. Chaque utilisation du SERVICE COFLOW constitue l'acceptation de la dernière version des présentes Conditions Générales d’Utilisation du service COFLOW.</p>
-            <p>En cas de modifications substantielles des présentes conditions générales d’utilisation, les nouvelles conditions générales entreront en vigueur un mois après leur publication sur le site internet de COFLOW. Une notification concomitante sera adressée par e-mail au client direct de COFLOW à l’adresse e-mail que le client aura indiqué à COFLOW lors de son inscription. Le client direct de COFLOW disposera d'un délai d'un mois à compter de la notification pour mettre fin au contrat. En l’absence de dénonciation par le client dans ce délai, ce dernier sera réputé avoir accepté les conditions générales modifiées.</p>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 11 : Mode de paiement</h2>
+            <p>Le paiement est exigible immédiatement à la commande, y compris pour les produits en précommande.</p>
+            <p>Pour régler sa commande, le consommateur dispose, à son choix, de l'ensemble des modes de paiement visés au sein du bon de commande.</p>
+            <p>Conformément à l’article L. 132-2 du Code monétaire et financier, l’engagement de payer donné par carte est irrévocable. En communiquant ses informations bancaires lors de la vente, le client autorise de fait AAC à débiter sa carte du montant relatif au prix indiqué. Les cartes domiciliées hors de France doivent obligatoirement être des cartes bancaires internationales (Mastercard ou Visa). Du reste, les informations transmises sont chiffrées et ne peuvent être lues.</p>
+            <p>Le consommateur garantit au Vendeur qu'il dispose des autorisations éventuellement nécessaires pour utiliser le mode de paiement choisi par lui, lors de la validation du bon de commande. Le Vendeur se réserve le droit de suspendre toute gestion de commande et toute livraison en cas de refus d'autorisation de paiement par carte bancaire de la part des organismes officiellement accrédités ou en cas de non-paiement. Le Vendeur se réserve notamment le droit de refuser d'effectuer une livraison ou d'honorer une commande émanant d'un consommateur qui n'aurait pas réglé totalement ou partiellement une commande précédente ou avec lequel un litige de paiement serait en cours d'administration.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">12. PROPRIÉTÉ INTELLECTUELLE</h2>
-            <h3>12.1. Le contenu du SERVICE COFLOW ne peut être ni modifié, copié, distribué, encadré ou reproduit sans l’accord de COFLOW.</h3>
-            <h3>12.2. Tous les droits de propriété portant sur les programmes informatiques ainsi que toutes les mises à jour, nouvelles versions et copies des programmes mis à disposition de l’UTILISATEUR DU SERVICE COFLOW lors de l’utilisation sont de la propriété de COFLOW.</h3>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 12 : Clause de réserve de propriété</h2>
+            <p>Les produits demeurent la propriété du Vendeur jusqu’au complet paiement du prix.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">13. DURÉE – SUSPENSION - RÉSILIATION</h2>
-            <p>Les présentes Conditions générales sont applicables pour une durée indéterminée.</p>
-            <p>COFLOW se réserve le droit de résilier immédiatement et sans préavis le Service COFLOW, et de mettre un terme aux collectes en cours en cas de violation par le PORTEUR de PROJET des obligations mises à leur charge aux termes des présentes conditions générales.</p>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 13 : Disponibilité des produits</h2>
+            <p>Les commandes seront traitées dans la limite de nos stocks disponibles ou sous réserve des stocks disponibles chez nos fournisseurs.</p>
+            <p>La commande sera exécutée au plus tard dans un délai de 30 jours à compter du jour suivant celui où le consommateur a passé sa commande.</p>
+            <p>En cas d'indisponibilité du produit commandé, notamment du fait de nos fournisseurs, le consommateur en sera informé au plus tôt et aura la possibilité d'annuler sa commande gratuitement. Le consommateur aura alors le choix de demander soit le remboursement des sommes versées dans les 30 jours au plus tard de leur versement, soit l'échange du produit. Un geste commercial pourra aussi être proposé.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">14. COMPTES INACTIFS</h2>
-            <h3>14.1. COFLOW se réserve le droit de clôturer des comptes inactifs ; en ce sens : Toute ouverture du PORTAIL, non suivie de la prise d’un abonnement dans un délai de 6 mois, pourra faire l’objet d’une notification de clôture avec un préavis d’un mois adressé par e-mail. En l’absence de réponse, le PORTAIL sera clôturée.</h3>
-            <h3>14.2. Tout COMPTE non utilisé dans un délai de 24 mois pourra faire l’objet d’une notification de clôture avec un préavis d’un mois adressé par e-mail. Sa clôture ne pourra plus donner lieu à l’utilisation ultérieure du compte de paiement. Il sera procédé au remboursement de la créance diminué des éventuels frais de gestion de comptes inactifs, c’est à dire n’ayant pas mouvementés depuis plus de douze mois (15 €/an). Les comptes non utilisés depuis plus de douze mois à solde zéro seront clôturés d’office. En cas d’impossibilité de remboursement, il appartiendra à l’UTILISATEUR de transmettre ses coordonnées bancaires à jour permettant de réaliser un virement.</h3>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 14 : Modalités de livraison</h2>
+            <p>Les produits sont livrés à l'adresse indiquée par le consommateur sur le bon de commande, et ce, dans le monde entier. Le consommateur est tenu de vérifier l'état de l'emballage de la marchandise à la livraison et de signaler les dommages dus au transporteur sur le bon de livraison, ainsi qu'à le Vendeur, dans un délai d'une semaine. En ce qui concerne l'expédition, nous travaillons en priorité avec la société de transport La Poste. Dès que nous procédons à un envoi, vous recevez rapidement un mail vous en informant.</p>
+            <p>Vous pouvez obtenir plus d'informations sur le transport de votre colis sur la page "Livraison" de ce site.</p>
+            <p>En cas de retard de livraison, le consommateur dispose de la possibilité de résoudre le contrat dans les conditions et modalités définies à l’article L. 138-2 du Code de la consommation. Dès lors, le Vendeur procède au remboursement du produit et aux frais « aller » dans les conditions de l’article L. 138-3 du Code de la consommation.</p>
+            <p>Au moment où le client prend possession des produits, le risque de perte ou d’endommagement des produits lui est transféré. Il appartient donc au client de vérifier le colis et de notifier au transporteur, et ce selon les dispositions de l’article 13, toutes réserves sur la livraison.</p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">15. DROIT APPLICABLE ET JURIDICTIONS COMPÉTENTES</h2>
-            <p>Il est expressément stipulé que les présentes Conditions générales sont régies par la loi française. Tout litige qui naîtrait à l’occasion de l’exécution du présent contrat seront soumis aux tribunaux compétents de Paris.</p>
-            <div className="w-1/4 border-b border-black mt-4" />
+            <h2 className="my-2 text-lg font-semibold">Article 15 : Problèmes de livraison du fait du transporteur</h2>
+            <p>Toute anomalie concernant la livraison (avarie, produit manquant par rapport au bon de livraison, colis endommagé, produits cassés...) devra être impérativement indiquée sur le bon de livraison sous forme de "réserves manuscrites", accompagnée de la signature du client. Le consommateur devra parallèlement confirmer cette anomalie en adressant au transporteur dans les deux (2) jours ouvrables suivants la date de livraison un courrier recommandé avec accusé de réception exposant lesdites réclamations. Le consommateur devra transmettre copie de ce courrier par e-mail à : <span className="text-primary font-semibold">contact@briceshop.fr</span></p>
             <br/>
 
-            <h2 className="my-2 text-xl font-semibold">16. MENTIONS LÉGALES</h2>
-            <h3>16.1 Éditeur du Site COFLOW : le Site COFLOW est édité par COFLOW, immatriculée au registre du commerce et des sociétés de Paris sous le SIREN 978863272 et dont le siège social est situé au 6 rue d’armaillé - 75017 Paris 17, France.</h3>
-            <h3>16.2. Hébergeur du Site COFLOW : FIREBASE</h3>
-            <h3>16.3. Contact pour toute réclamation contact@coflow.fr.</h3>
+            <h2 className="my-2 text-lg font-semibold">Article 16 : Erreurs de livraisons</h2>
+            <h3>16-a : Le consommateur devra formuler auprès du Vendeur  le jour même de la livraison ou au plus tard le premier jour ouvré suivant la livraison, toute réclamation d'erreur de livraison et/ou de non-conformité des produits en nature ou en qualité par rapport aux indications figurant sur le bon de commande. </h3>
+            <h3>16-b : La formulation de cette réclamation auprès de la le Vendeur  pourra être faite en envoyant un mail à <span className="text-primary font-semibold">contact@briceshop.fr</span>, il sera important de préciser dans le mail la référence de la commande.</h3>
+            <h3>16-c : Toute réclamation non effectuée dans les règles définies ci-dessus et dans les délais impartis ne pourra être prise en compte et dégagera le Vendeur de toute responsabilité vis à vis du consommateur.</h3>
+            <h3>16-d : a réception de la réclamation, le Vendeur attribuera un numéro d'échange du ou des produit(s) concerné(s) et le communiquera par e-mail, par fax ou par téléphone au consommateur. L'échange d'un produit ne peut avoir lieu qu'après l'attribution au consommateur d'un numéro d'échange selon la démarche présentée ci-dessus.</h3>
+            <p>Pour être accepté, tout retour devra être signalé au préalable au Service Client de cette boutique en ligne. </p>
+            <p>Et ce, à l'adresse suivante : <span className="text-primary font-semibold">contact@briceshop.fr</span></p>
+            <br/>
+
+            <h2 className="my-2 text-lg font-semibold">Article 17 : Garantie des produits</h2>
+            <p>Conformément à la loi, les dispositions des présentes ne peuvent priver le consommateur de la garantie légale qui oblige le vendeur professionnel à le garantir contre toutes les conséquences des vices cachés de la chose vendue.</p>
+            <p>Ainsi, le Vendeur rappelle que la garantie légale offre au consommateur un délai de 2 ans à compter de la délivrance du bien pour agir. Le consommateur peut choisir entre le remplacement ou la réparation du bien, et celui-ci est dispensé d’apporter la preuve de l’existence du défaut de conformité du bien. En dehors de cette garantie, le consommateur a, à sa disposition, la garantie contre les vices cachés eu égard aux articles 1641 et s. du Code civil. Dans cette hypothèse, il peut choisir entre la résolution de la vente ou une réduction du prix de vente.</p>
+            <p>Du reste, le consommateur est expressément informé que le Vendeur n'est pas le producteur des produits présentés dans le cadre du site web, au sens de la loi n°98-389 du 19 mai 1998 et relative à la responsabilité du fait des produits défectueux. En conséquence, en cas de dommages causés à une personne ou à un bien par un défaut du produit, seule la responsabilité du producteur de celui-ci pourra être recherchée par le consommateur, sur la base des informations figurant sur l'emballage dudit produit.</p>
+            <p>Ainsi, le consommateur dispose aussi d’une garantie contractuelle offerte par le producteur. Les conditions et la durée de cette garantie sont indiquées sur les fiches produits. Compte tenu de la fréquence de renouvellement des composants des produits techniques, briceshop.fr pourra, sur demande, informer le consommateur de la disponibilité des pièces de rechange des produits proposés et des modalités pour se les procurer éventuellement.</p>
+            <br />
+
+            <h2 className="my-2 text-lg font-semibold">Article 18 : Droit de rétractation</h2>
+            <p>Eu égard à l’article L. 121-20 du Code de la consommation, « le consommateur dispose d’un délai de quatorze jours francs pour exercer son droit de rétractation sans avoir à justifier de motifs ni à payer de pénalités, à l’exception, le cas échéant, des frais de retour. » Ce délai court à compter du jour de la livraison de la commande du consommateur. Si ce délai expire un samedi, un dimanche ou un jour férié ou chômé, il est prorogé jusqu'au premier jour ouvrable suivant. Tout retour devra être signalé au préalable auprès du Service Client du Vendeur. Pour ce faire, vous devez nous envoyer à mail à <span className="text-primary font-semibold">contact@briceshop.fr</span> en précisant votre numéro de commande.</p>
+            <br/>
+            <p>Seuls seront repris les produits renvoyés dans leur ensemble, dans leur emballage d'origine complet et intact, et en parfait état de revente. Tout produit qui aura été abîmé, ou dont l'emballage d'origine aura été détérioré, ne sera ni remboursé ni échangé.</p>
+            <p>Ce droit de rétractation s'exerce sans pénalité, à l'exception des frais de retour. Dans l'hypothèse de l'exercice du droit de rétractation, le consommateur a le choix de demander soit le remboursement des sommes versées, soit l'échange du produit. Dans le cas d'un échange, la réexpédition se fera aux frais du consommateur.</p>
+            <p>En cas d'exercice du droit de rétractation, le Vendeur rembourse au plus tard dans les quatorze jours qui suivent la date à laquelle il a été informé de la décision de rétractation.</p>
+            <p>Le consommateur sera alors remboursé par re-crédit de son compte bancaire (transaction sécurisée) en cas de paiement par carte bancaire, ou par chèque dans les autres cas.</p>
+            <br />
+
+            <h2 className="my-2 text-lg font-semibold">Article 19 : Droits de propriété intellectuelle</h2>
+            <p>Les marques, noms de domaines, produits, logiciels, images, vidéos, textes ou plus généralement toute information faisant l’objet de droits de propriété intellectuelle sont et restent la propriété exclusive du vendeur. Aucune cession de droits de propriété intellectuelle n’est réalisée lors de la vente. Toute reproduction totale ou partielle, modification ou utilisation de ces biens pour quelque motif que ce soit est strictement interdite.</p>
+            <br />
+
+            <h2 className="my-2 text-lg font-semibold">Article 20 : Force majeure</h2>
+            <p>Aucune des deux parties n'aura failli à ses obligations contractuelles, dans la mesure où leur exécution sera retardée, entravée ou empêchée par un cas fortuit ou une force majeure. Sera considéré comme cas fortuit ou force majeure tous faits ou circonstances irrésistibles, extérieurs aux parties, imprévisibles, inévitables, indépendants de la volonté des parties et qui ne pourra être empêché par ces dernières, malgré tous les efforts raisonnablement possibles. La partie touchée par de telles circonstances en avisera l'autre dans les dix jours ouvrables suivant la date à laquelle elle en aura eu connaissance. Les deux parties se rapprocheront alors, dans un délai d'un mois, sauf impossibilité due au cas de force majeure, pour examiner l'incidence de l'événement et convenir des conditions dans lesquelles l'exécution du contrat sera poursuivie. Si le cas de force majeur a une durée supérieure à trois mois, les présentes conditions générales pourront être résiliées par la partie lésée. De façon expresse, sont considérés comme cas de force majeure ou cas fortuits, outre ceux habituellement retenus par la jurisprudence des cours et des tribunaux français : le blocage des moyens de transports ou d'approvisionnements, tremblements de terre, incendies, tempêtes, inondations, foudre, ainsi que l'arrêt des réseaux de télécommunication ou des difficultés propres aux réseaux de télécommunication externes aux clients.</p>
+            <br />
+
+            <h2 className="my-2 text-lg font-semibold">Article 21 : Non validation partielle</h2>
+            <p>Si une ou plusieurs stipulations des présentes conditions générales sont tenues pour non valides ou déclarées telles en application d'une loi, d'un règlement ou à la suite d'une décision définitive d'une juridiction compétente, les autres stipulations garderont toute leur force et leur portée.</p>
+            <br />
+
+            <h2 className="my-2 text-lg font-semibold">Article 22 : Non renonciation</h2>
+            <p>Le fait pour l'une des parties de ne pas se prévaloir d'un manquement par l'autre partie à l'une quelconque des obligations visées dans les présentes conditions générales ne saurait être interprété pour l'avenir comme une renonciation à l'obligation en cause.</p>
+            <br />
+
+            <h2 className="my-2 text-lg font-semibold">Article 23 : Titre</h2>
+            <p>En cas de difficulté d'interprétation entre l'un quelconque des titres figurant en tête des clauses, et l'une quelconque des clauses, les titres seront déclarés inexistants.</p>
+            <br />
+
+            <h2 className="my-2 text-lg font-semibold">Article 24 : Loi applicable</h2>
+            <p>Les présentes conditions générales sont soumises à la loi française. Il en est ainsi pour les règles de fonds comme pour les règles de forme.</p>
+            <p>En cas de litige ou de réclamation, le consommateur pourra s’adresser à le Vendeur via le service client à l'adresse mail suivante: <span className="text-primary font-semibold">contact@briceshop.fr</span> pour obtenir une solution amiable.</p>
+            <br />
+
+            <h2 className="my-2 text-lg font-semibold">Article 25 : Informatique et libertés</h2>
+            <p>Les informations qui sont demandées au consommateur sont nécessaires au traitement de sa commande et pourront être communiquées aux partenaires contractuels du Vendeur intervenant dans le cadre de l'exécution de cette commande. Le consommateur peut écrire à le Vendeur dont les coordonnées sont au sein de la charte de confidentialité figurant dans le cadre du site web, pour s'opposer à une telle communication, ou pour exercer ses droits d'accès, de rectification à l''égard des informations le concernant et figurant dans les fichiers du Vendeur, dans les conditions prévues par la loi du 6 janvier 1978.</p>
+            <p>Le site s'engage à ne transmettre aucune donnée personnelle à un quelconque tiers qui ne serait partenaire du site. Toutes les informations collectées sont conformes à la réglementation en vigueur de la CNIL.</p>
+            <br />
+
+            <h2 className="my-2 text-lg font-semibold">Article 26 : Clause limitative de responsabilité</h2>
+            <p>En dehors des cas expressément prévus par les dispositions en vigueur, la responsabilité du Vendeur est limitée aux dommages directs et prévisibles résultant de l’utilisation par le client du site web et des produits vendus et expédiés par ladite société. Ainsi, ni le Vendeur, ni ses fournisseurs ne sauraient engager leur responsabilité pour des dommages résultant d’une faute du client ou d’une inexécution ou d’une mauvaise exécution de ses obligations. Il en va de même pour un fait imprévisible et insurmontable d’un tiers étranger à la prestation ou en cas de force majeure imprévisible, irrésistible et extérieur.</p>
           </div>
           <div className="modal-action">
             <form method="dialog">

@@ -107,7 +107,6 @@ export function AppProvider({ children }) {
         }
       }
       productList = productList.sort((a, b) => {
-        console.log(a.variants[0].price.amount, b.variants[0].price.amount)
         return a.variants[0].price.amount - b.variants[0].price.amount;
       });
       setProducts(productList);

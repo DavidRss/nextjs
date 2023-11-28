@@ -18,10 +18,8 @@ const Navigate = ({ handleOnParticipate }) => {
     const handleScroll = () => {
       const threshold = 370;
       if (window.scrollY >= threshold) {
-        console.log("===== sticky true =====");
         setIsSticky(true);
       } else {
-        console.log("===== sticky false =====");
         setIsSticky(false);
       }
     };

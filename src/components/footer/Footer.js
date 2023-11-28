@@ -6,6 +6,9 @@ import icChat from "../../assets/icChat.svg";
 import icTwitter from "../../assets/icTwitter.svg";
 import icYoutube from "../../assets/icYoutube.svg";
 import icFacebook from "../../assets/icFacebook.svg";
+import Terms from "../term&policy/Terms";
+import Policy from "../term&policy/Policy";
+import Delivery from "../term&policy/Delivery";
 
 export default function Footer() {
   return (
@@ -43,12 +46,34 @@ export default function Footer() {
           </div>
         </Container>
       </div>
+      <div className="text-center pt-4">
+        <span
+          className="hover:cursor-pointer"
+          onClick={() => document.getElementById("termes").showModal()}
+        >
+          Termes et conditions
+        </span>
+        <span> &#8231; </span>
+        <span
+          className="hover:cursor-pointer"
+          onClick={() => document.getElementById("politique").showModal()}
+        >
+          Politique de confidentialité
+        </span>
+        <span> &#8231; </span>
+        <span
+          className="hover:cursor-pointer"
+          onClick={() => document.getElementById("delivery").showModal()}
+        >
+          Livraison et retour
+        </span>
+      </div>
       <footer className="w-full py-10 xl:py-4 flex justify-center ">
         <Container>
           <div className="w-full justify-between flex flex-col xl:flex-row items-center px-5 xl:px-0">
             <div className="flex flex-col xl:flex-row items-center gap-5">
               <h1 className="text-white text-xl font-semibold mb-6 xl:mb-0">
-              BBB Shop
+                BBB Shop
               </h1>
               <span className="hidden xl:block">
                 © 2023, Powered by Shopify
@@ -59,7 +84,12 @@ export default function Footer() {
                 <img src={icTwitter} />
               </span>
               <span className="hover:cursor-pointer hover:scale-105 transition-all">
-                <img src={icYoutube} />
+                <a
+                  href="https://www.youtube.com/@BriceBBriceYT"
+                  target="_blank"
+                >
+                  <img src={icYoutube} />
+                </a>
               </span>
               <span className="hover:cursor-pointer hover:scale-105 transition-all">
                 <img src={icFacebook} />
@@ -71,6 +101,9 @@ export default function Footer() {
           </div>
         </Container>
       </footer>
+      <Terms />
+      <Policy />
+      <Delivery />
     </>
   );
 }

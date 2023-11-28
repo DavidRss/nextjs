@@ -214,7 +214,7 @@ function Reward() {
                     </div>
                   </div>
                 </Link>
-                <Link to="/reward/levels" className="w-full">
+                {/* <Link to="/reward/levels" className="w-full">
                   <div className="card w-full bg-mainCard text-primary-content">
                     <div className="card-body flex flex-row justify-between items-center px-10">
                       <div className="flex flex-col items-start">
@@ -257,7 +257,7 @@ function Reward() {
                       </button>
                     </div>
                   </div>
-                </Link>
+                </Link> */}
               </div>
             </div>
             <Aside ref={donationForm} />

@@ -35,6 +35,7 @@ import { scrollToElement } from "../utils/ActionUtils";
 import { shopifyService } from "../services/ShopifyService";
 import { Notify, Order, Path } from "../constants/constants";
 import { useNavigate } from "react-router-dom";
+import ProductDialog from "../components/productDialog/productDialog";
 
 const Presentation = () => {
   const navigate = useNavigate();
@@ -56,9 +57,13 @@ const Presentation = () => {
   const timer = useRef(null);
 
   const [productList, setProductList] = useState([]);
+  const [selProduct, setSelProduct] = useState();
+  const [selVariant, setSelVariant] = useState(null);
   const [counter, setCounter] = useState(0);
   const [price, changePrice] = useState(0);
   const [errorPrice, setErrorPrice] = useState(false);
+
+  const [showDialog, setShowDialog] = useState(false);
 
   useEffect(() => {
     if (products.length > 0) {
@@ -92,14 +97,7 @@ const Presentation = () => {
     };
   }, [counter]);
 
-  const handleClickProduct = async (productId) => {
-    if (!currentUser) {
-      navigate(`/${Path.SIGNIN}`, { replace: true });
-      return;
-    }
-
-    const product = productList.find((item) => item.id === productId);
-    console.log("===== handleClickProduct: ", product);
+  const processPurchase = async () => {
     try {
       setLoading(true);
 
@@ -125,33 +123,49 @@ const Presentation = () => {
         inputValue
       );
 
-      const variants = product.variants;
-      if (variants.length > 0) {
-        const variant = variants[0];
-        const lineItems = {
-          variantId: variant.id,
-          quantity: 1,
-        };
-        checkoutInfo = await shopifyService.addLineItems(
-          checkoutInfo.id,
-          lineItems
-        );
+      const lineItems = {
+        variantId: selVariant,
+        quantity: 1,
+      };
+      checkoutInfo = await shopifyService.addLineItems(
+        checkoutInfo.id,
+        lineItems
+      );
 
-        saveCheckout(checkoutInfo);
-        console.log("===== checkoutInfo: ", checkoutInfo);
+      saveCheckout(checkoutInfo);
+      console.log("===== checkoutInfo: ", checkoutInfo);
 
-        window.open(checkoutInfo.webUrl);
-      } else {
-        showNotifyMessage({
-          type: Notify.Type.ERROR,
-          message: "This product is not available in a store.",
-        });
-      }
+      window.open(checkoutInfo.webUrl);
+
+      setShowDialog(false);
     } catch (err) {
       console.log("===== handleClickProduct error: ", err);
     }
 
     setLoading(false);
+  };
+
+  const onChangedVariant = (e) => {
+    setSelVariant(e.target.value);
+  };
+
+  const handleClickProduct = async (product) => {
+    if (!currentUser) {
+      navigate(`/${Path.SIGNIN}`, { replace: true });
+      return;
+    }
+
+    const variants = product.variants;
+    if (variants.length > 0) {
+      setSelProduct(product);
+      setSelVariant(variants[0].id);
+      setShowDialog(true);
+    } else {
+      showNotifyMessage({
+        type: Notify.Type.ERROR,
+        message: "This product is not available in a store.",
+      });
+    }
   };
 
   const handleChangePrice = (e) => {
@@ -185,18 +199,18 @@ const Presentation = () => {
     const variants = donationProduct.variants;
     let minPrice = parseFloat(variants[0].price.amount);
     let maxPrice = parseFloat(variants[variants.length - 1].price.amount);
-    console.log(minPrice, maxPrice)
-    for(const variant of variants) {
-      const vPrice = parseFloat(variant.price.amount)
-      if(minPrice > vPrice) {
+    console.log(minPrice, maxPrice);
+    for (const variant of variants) {
+      const vPrice = parseFloat(variant.price.amount);
+      if (minPrice > vPrice) {
         minPrice = vPrice;
       }
 
-      if(maxPrice < vPrice) {
+      if (maxPrice < vPrice) {
         maxPrice = vPrice;
       }
     }
-    console.log(minPrice, maxPrice)
+    console.log(minPrice, maxPrice);
 
     if (price < minPrice || price > maxPrice) {
       showNotifyMessage({
@@ -721,7 +735,7 @@ const Presentation = () => {
                           <button
                             className="btn btn-primary text-white mt-5"
                             onClick={() => {
-                              handleClickProduct(item.id);
+                              handleClickProduct(item);
                             }}
                           >
                             Participer
@@ -730,6 +744,16 @@ const Presentation = () => {
                       </div>
                     </CardM>
                   ))}
+                <ProductDialog
+                  open={showDialog}
+                  product={selProduct}
+                  variant={selVariant}
+                  onChangedVariant={onChangedVariant}
+                  processPurchase={processPurchase}
+                  hideDialog={() => {
+                    setShowDialog(false);
+                  }}
+                />
               </div>
               <div
                 ref={donationForm}

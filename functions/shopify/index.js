@@ -391,13 +391,13 @@ exports.getCheckout = functions.https.onRequest(async (request, response) => {
 
 exports.createPriceRule = functions.https.onRequest(
   async (request, response) => {
-    const priceRuleTitle = getPriceRuleTitle(Order.Discount.P10, productId);
-    console.log("===== priceRuleTitle: ", priceRuleTitle);
-    const priceRule = await createPriceRule(
-      priceRuleTitle,
-      Order.Discount.P10,
-      productId
-    );
+    // const priceRuleTitle = getPriceRuleTitle(Order.Discount.P10, productId);
+    // console.log("===== priceRuleTitle: ", priceRuleTitle);
+    // const priceRule = await createPriceRule(
+    //   priceRuleTitle,
+    //   Order.Discount.P10,
+    //   productId
+    // );
   }
 );
 
