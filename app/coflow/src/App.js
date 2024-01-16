@@ -13,6 +13,9 @@ import Earn from './pages/RewardsPages/Earn';
 import Lottery from './pages/RewardsPages/Lottery';
 import { UserProvider } from "./services/UserContext";
 
+/* New */
+import About from './pages/About';
+
 function App() {
   return (
     <UserProvider>
@@ -21,6 +24,7 @@ function App() {
             <Route index element={<Login />} />
             <Route path='/signup' element={<SignUp />} />
             <Route path='/presentation' element={<Presentation />} />
+            <Route path='/about' element={<About />} />
             <Route path='/leaderboard' element={<Leaderboard />} /> 
             <Route path='/chat' element={<Chat />} />   
             <Route path='/reward' element={<Reward />} />

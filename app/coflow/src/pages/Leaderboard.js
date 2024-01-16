@@ -95,7 +95,7 @@ function Leaderboard() {
                                                 <th className="text-base font-semibold text-center">{index + 1 + (currentPage - 1) * pageSize}</th>
                                                 <td>
                                                 <div className="flex items-center space-x-3 w-64">
-                                                    <div className="w-12 h-12 userIcon rounded-lg bg-primary flex justify-center items-center text-lg font-bold text-white">
+                                                    <div className="w-12 h-12 userIcon rounded-lg bg-main flex justify-center items-center text-lg font-bold text-white">
                                                         <span>{rowData.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('')}</span>
                                                     </div>
                                                     <div>

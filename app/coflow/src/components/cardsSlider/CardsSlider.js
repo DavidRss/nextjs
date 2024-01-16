@@ -40,10 +40,10 @@ function CardsSlider() {
                                 </ul>                                
                                 <div className='flex w-full justify-between items-center'>
                                     <div className='flex flex-col items-start'>
-                                        <span className='text-primary text-3xl font-extrabold'>{item.price} €</span>
+                                        <span className='text-main text-3xl font-extrabold'>{item.price} €</span>
                                         <span className='text-gray-400 text-sm font-normal'>{item.contributions} contributions</span>
                                     </div>
-                                    <button className="btn btn-primary text-white">Participer</button>
+                                    <button className="btn bg-main border-0 text-white">Participer</button>
                                 </div>
                             </div>
                         </CardM>

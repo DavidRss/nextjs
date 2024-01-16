@@ -56,27 +56,27 @@ function Reward() {
                 <Container>
                 <div className='w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start'>
                     <div className='flex flex-col w-full'>
-                        <h1 className='text-gray-900 font-bold text-3xl mb-8 text-left'>Welcome to <span className='text-primary'>Loyalty Program</span></h1>
+                        <h1 className='text-gray-900 font-bold text-3xl mb-8 text-left'>Welcome to <span className='text-main'>Loyalty Program</span></h1>
                         <div className='flex flex-col gap-5'>
                             <Link to='/reward' className='w-full'>
                             <div className="card w-full bg-secondary border-pagBg border text-primary-content">
                                 <div className="card-body flex flex-row justify-between items-center px-10">
                                     <div className='flex flex-col items-start'>
                                         <div className='flex items-center gap-4'>
-                                            <div className='p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center'>
-                                                <img src={coins} alt="coins" />
+                                            <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
+                                                <img src={coins} alt="coins" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                             </div>
                                             <h1 className='text-gray-900 font-semibold text-xl'>Points</h1>
                                         </div>
-                                        <span className='mt-3 text-2xl font-extrabold text-primary hidden sm:block'>{ballance.points}</span>
+                                        <span className='mt-3 text-2xl font-extrabold text-main hidden sm:block'>{ballance.points}</span>
                                         <span className='text-gray-900 opacity-50 text-sm font-normal hidden sm:block'>Equals {ballance.USD} USD</span>
                                     </div>
                                     <div className='flex flex-col'>
-                                        <span className='mt-3 text-2xl font-extrabold text-primary block sm:hidden text-right'>{ballance.points}</span>
+                                        <span className='mt-3 text-2xl font-extrabold text-main block sm:hidden text-right'>{ballance.points}</span>
                                         <span className='text-gray-900 opacity-50 text-sm font-normal block sm:hidden'>Equals {ballance.USD} USD</span>
                                     </div>
                                     <button className='hidden sm:block'>
-                                       <img src={arrow} alt="arrow" />
+                                       <img src={arrow} alt="arrow" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                     </button>
                                 </div>
                             </div>
@@ -88,14 +88,14 @@ function Reward() {
                                         <div className="card-body flex flex-row justify-between items-center px-10">
                                             <div className='flex flex-col items-start'>
                                                 <div className='flex items-center gap-4'>
-                                                    <div className='p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center'>
-                                                        <img src={earn} alt="coins" />
+                                                    <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
+                                                        <img src={earn} alt="coins" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                                     </div>
                                                     <h1 className='text-gray-900 font-semibold text-xl'>Earn</h1>
                                                 </div>
                                             </div>
                                             <button>
-                                                <img src={arrow} alt="arrow" />
+                                                <img src={arrow} alt="arrow" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                             </button>
                                         </div>
                                     </div>
@@ -105,14 +105,14 @@ function Reward() {
                                     <div className="card-body flex flex-row justify-between items-center px-10">
                                         <div className='flex flex-col items-start'>
                                             <div className='flex items-center gap-4'>
-                                                <div className='p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center'>
-                                                    <img src={gift} alt="coins" />
+                                                <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
+                                                    <img src={gift} alt="coins" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                                 </div>
                                                 <h1 className='text-gray-900 font-semibold text-xl'>Redeem</h1>
                                             </div>
                                         </div>
                                         <button>
-                                            <img src={arrow} alt="arrow" />
+                                            <img src={arrow} alt="arrow" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                         </button>
                                     </div>
                                 </div>
@@ -123,8 +123,8 @@ function Reward() {
                                 <div className="card-body flex flex-row justify-between items-center px-10">
                                     <div className='flex flex-col items-start'>
                                         <div className='flex items-center gap-4'>
-                                            <div className='p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center'>
-                                                <img src={ref} alt="coins" />
+                                            <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
+                                                <img src={ref} alt="coins" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                             </div>
                                             <h1 className='text-gray-900 font-semibold text-xl'>Referals</h1>
                                         </div>
@@ -138,7 +138,7 @@ function Reward() {
                                         </div>
                                     </div>
                                     <button>
-                                        <img src={arrow} alt="arrow" />
+                                        <img src={arrow} alt="arrow" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                     </button>
                                 </div>
                             </div>
@@ -148,8 +148,8 @@ function Reward() {
                                 <div className="card-body flex flex-row justify-between items-center px-10">
                                     <div className='flex flex-col items-start'>
                                         <div className='flex items-center gap-4'>
-                                            <div className='p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center'>
-                                                <img src={cup} alt="coins" />
+                                            <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
+                                                <img src={cup} alt="coins" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                             </div>
                                             <h1 className='text-gray-900 font-semibold text-xl'>{progress.currentLevel.title}</h1>
                                             <span className='text-gray-900 text-opacity-50 font-medium text-xl'>(level {progress.currentLevel.level})</span>
@@ -158,7 +158,7 @@ function Reward() {
                                         <progress className="progress progress-accent md:w-680 mt-3" value={spending} max={progress.nextLevel.spend}></progress>
                                     </div>
                                     <button>
-                                        <img src={arrow} alt="arrow" />
+                                        <img src={arrow} alt="arrow" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                     </button>
                                 </div>
                             </div>
@@ -168,15 +168,15 @@ function Reward() {
                                 <div className="card-body flex flex-row justify-between items-center px-10">
                                     <div className='flex flex-col items-start'>
                                         <div className='flex items-center gap-4'>
-                                            <div className='p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center'>
-                                                <img src={bar} alt="bar" />
+                                            <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
+                                                <img src={bar} alt="bar" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                             </div>
                                             <h1 className='text-gray-900 font-semibold text-xl'>Levels</h1>
                                         </div>
                                         <span className='text-gray-900 opacity-50 text-sm font-normal w-44 text-left mt-4'>Level up to get more benefits and discounts.</span>
                                     </div>
                                     <button>
-                                        <img src={arrow} alt="arrow" />
+                                        <img src={arrow} alt="arrow" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                     </button>
                                 </div>
                             </div>
@@ -186,15 +186,15 @@ function Reward() {
                                 <div className="card-body flex flex-row justify-between items-center px-10">
                                     <div className='flex flex-col items-start'>
                                         <div className='flex items-center gap-4'>
-                                            <div className='p-3 rounded-full bg-primary bg-opacity-10 flex justify-center items-center'>
-                                                <img src={calendar} alt="calendar" />
+                                            <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
+                                                <img src={calendar} alt="calendar" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                             </div>
                                             <h1 className='text-gray-900 font-semibold text-xl'>Lottery</h1>
                                         </div>
                                         <span className='text-gray-900 opacity-50 text-sm font-normal w-44 text-left mt-4'>Level up to get more benefits and discounts.</span>
                                     </div>
                                     <button>
-                                        <img src={arrow} alt="arrow" />
+                                        <img src={arrow} alt="arrow" style={{ filter: 'brightness(0) saturate(100%) hue-rotate(120deg)' }} />
                                     </button>
                                 </div>
                             </div>

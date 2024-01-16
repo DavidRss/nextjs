@@ -49,7 +49,7 @@ function Login() {
                     <div className='text-gray-900 text-base font-semibold flex justify-center w-full mt-6 lg:mt-8'>
                         <h3 className='px-0 lg:px-28 text-center'>En creant votre compte vous acceptez les <span className='text-primary hover:cursor-pointer' onClick={()=>document.getElementById('termes').showModal()}>termes et conditions</span>, et notre <span className='text-primary hover:cursor-pointer' onClick={()=>document.getElementById('politique').showModal()}>politique deconfidentialite</span></h3>
                     </div>
-                        <Link to="/presentation" className='w-full'>
+                        <Link to="/about" className='w-full'>
                         <button className='btn btn-primary text-white mt-6 lg:mt-8 mb-5 w-full hover:text-white hover:bg-primary hover:-translate-y-1 transition-all'>
                             Se connecter
                         </button>
