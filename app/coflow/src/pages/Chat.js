@@ -61,14 +61,14 @@ function Chat() {
 
     return (
         <Page>
-             <section className='bg-white w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0'>
+             <section className='bg-thrBg w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0'>
                 <Container>
                     <div className='w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start'>
                         <div className='flex flex-col w-full h-fit'>
-                            <h1 className='text-gray-900 font-bold text-3xl mb-8 text-left'>Chat</h1>
-                            <div className='mt-8 flex w-full flex-col rounded-xl bg-secondary pt-7'>
+                            <h1 className='text-white font-bold text-3xl mb-8 text-left'>Chat</h1>
+                            <div className='mt-8 flex w-full flex-col rounded-xl border pt-7 bg-thrBg' style={{borderColor: '#171b21'}}>
                                 {data.map((message, index) => (
-                                    <div key={index} className={`chat ${message.isResponse === true ? 'chat-end flex justify-end' : 'chat-start'} flex gap-4`}>
+                                    <div key={index} className={`chat ${message.isResponse === true ? 'chat-end flex justify-end' : 'chat-start'} flex gap-4 px-3`}>
                                         <div className={`chat ${message.isResponse === true ? 'flex flex-row-reverse' : 'flex'} gap-4`}>
                                             <div className="chat-image avatar">
                                                 <div className="w-10 rounded-full mb-5">
@@ -90,7 +90,7 @@ function Chat() {
                                         </div>
                                     </div>
                                 ))}
-                                <div className='bg-gray-200 px-8 pb-4 pt-3 rounded-b-xl mt-10 flex items-center w-full gap-6'>
+                                <div className='bg-secBg px-8 pb-4 pt-3 rounded-b-xl mt-10 flex items-center w-full gap-6'>
                                     {fileAttached  && (
                                             <div className="tooltip tooltip-open absolute before:bg-base-100 before:text-white attach" data-tip={'Attched ✔'} />
                                         )}

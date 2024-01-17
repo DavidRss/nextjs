@@ -17,7 +17,7 @@ const Navigate = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-          const threshold = 530;
+          const threshold = 830;
           if (window.scrollY >= threshold) {
             setIsSticky(true);
           } else {
@@ -32,8 +32,10 @@ const Navigate = () => {
     }, []);
 
     return (
-        <section className={`w-full  flex items-center justify-center sticky navbar -top-0.5 z-50 ${isSticky ? 'shadow-md bg-secBg' : ''}`}>
-            <div className={`w-full max-w-8xl px-16 hidden md:flex items-center shadow-lg rounded-xl relative py-2 ${isSticky ? 'px-0 shadow-none -top-0 w-full bg-secBg' : '-top-16 bg-container '}`}>
+        <section className={`w-full  flex items-center justify-center sticky navbar  z-50 ${isSticky ? 'shadow-md bg-secBg -top-0.5' : ''}`}>
+            {/*  */}
+            <div className={`w-full max-w-8xl px-16 hidden md:flex items-center shadow-lg rounded-xl relative py-2 ${isSticky ? 'px-0 shadow-none -top-0 w-full bg-secBg' : ' bg-container '}`}>
+            {/* -top-16 */}
                 <div className='flex w-full h-14 xl:h-24 gap-14 justify-center xl:justify-between'>
                     <div className={`relative -top-10 hidden xl:block ${isSticky ? 'hidden-on-sticky' : ''}`}>
                         <div className="avatar">

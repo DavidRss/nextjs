@@ -26,7 +26,9 @@ module.exports = {
         "main": "#4A9F2E",
       },
       height: {
-        '471': '471px'
+        '471': '471px',
+        '720': '720px',
+        '500': '500px',
       },
       width: {
         '489': '489px',
@@ -34,6 +36,10 @@ module.exports = {
       },
       maxWidth: {
         '8xl': '1680px',
+        'cover': '1800px',
+      },
+      maxHeight: {
+        '720': '720px',
       },
       backgroundColor: {
         'goldCard': '#FFDB65',
@@ -53,7 +59,8 @@ module.exports = {
         'silverCard': '#EDEDED',
         'bronzeCard': '#F2C7B3',
         'pagBg': '#F2F2F2',
-        "main": "#4A9F2E",
+        'main': '#4A9F2E',
+        'sec': '#222',
       },
       screens: {
         '3xl': '1680px',

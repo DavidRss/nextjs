@@ -34,7 +34,7 @@ const Home = () => {
                             />
                     </div>
                     <div className='flex flex-col gap-5'>
-                        <div className='badge uppercase px-5 py-4 font-semibold' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
+                        <div className='badge uppercase px-5 py-4 font-semibold text-white' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
                             platinum pack
                         </div>
                         <h2 className='text-6xl font-semibold text-white'>Platinum Pack</h2>
@@ -101,9 +101,9 @@ const Home = () => {
                 </div>
             </section>
             <section className='flex w-full justify-center py-10 3xl:py-20' style={{borderTop: '10px solid #404040'}}>
-                <div className='max-w-8xl w-full flex flex-col gap-14 px-4 xl:px-0'>
+                <div className='max-w-8xl w-full flex flex-col gap-14 px-4 3xl:px-0'>
                     <h2 className='text-4xl font-semibold px-4 xl:px-0'>Another Products:</h2>
-                    <div className='grid grid-cols-1 xl:grid-cols-3 w-full gap-5 xl:gap-0'>
+                    <div className='grid grid-cols-1 xl:grid-cols-3 w-full gap-5 3xl:gap-0'>
                         <div className='flex flex-col mx-auto h-full justify-between'>
                             <div className='flex flex-col'>
                                 <div className='rounded-3xl flex items-center justify-center w-full' style={{maxWidth: '480px', height: '300px'}}>
@@ -219,7 +219,7 @@ const Home = () => {
                 </div>
             </section>
             <section className='flex w-full bg-secBg justify-center'>
-                <div className='max-w-8xl w-full flex py-10 3xl:py-16 items-center px-4 xl:px-0 flex-col md:flex-row gap-5 md:gap-0'>
+                <div className='max-w-8xl w-full flex py-10 3xl:py-16 items-center px-4 3xl:px-0 flex-col md:flex-row gap-5 md:gap-0'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
                         <circle cx="60" cy="60" r="55" fill="#CDCDCD" stroke="white" stroke-width="10"/>
                     </svg>
@@ -249,7 +249,7 @@ const Home = () => {
                     boxShadow: '0px 4px 0px 0px #58A408 inset'
                 }}
             >
-                <div className='max-w-8xl w-full flex py-16 justify-between items-center px-4 xl:px-0 flex-col md:flex-row gap-5 md:gap-0'>
+                <div className='max-w-8xl w-full flex py-16 justify-between items-center px-4 3xl:px-0 flex-col md:flex-row gap-5 md:gap-0'>
                     <h2 className='text-white text-4xl font-semibold' style={{maxWidth: '631px'}}>
                         You want to participate with the amount of your choice?
                     </h2>
@@ -452,7 +452,7 @@ const Home = () => {
             <section className='w-full justify-center flex relative flex-wrap' style={{background: 'linear-gradient(180deg, rgba(51,51,51,1) 49%, rgba(255,255,255,0) 49%)'}}>
                 <div className='bg-thrBg flex h-full justify-center w-full 3xl:w-2/5'>
                     <div className='bg-secBg flex h-full w-full py-10 px-4 3xl:px-0 3xl:py-52' style={{borderRadius: '0 30px 0 0'}}>
-                        <div className='w-full xl:flex justify-center xl:justify-start items-center full:pl-44'>
+                        <div className='w-full xl:flex justify-center 2xl:justify-start items-center full:pl-44'>
                             <div className='flex justify-center 3xl:justify-normal 3xl:flex-col gap-7 items-center flex-wrap'>
                                 <img src={img1} alt='img1' style={{width: '146px'}} />
                                 <img src={img2} alt='img2' style={{width: '173px'}} />

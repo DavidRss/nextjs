@@ -31,11 +31,11 @@ function CardsSlider() {
                     <SwiperSlide key={index}>
                         <CardM>
                             <figure><img src={item.img} alt="Shoes" /></figure>
-                            <div className="py-4 px-5 xl:card-body">
-                                <h2 className="card-title font-semibold text-xl text-gray-900">{item.title}</h2>
-                                <ul className='text-left mb-8 text-sm xl:text-base text-slate-800 font-normal'>
+                            <div className="py-4 px-5 xl:card-body bg-secBg border-0 rounded-b-xl">
+                                <h2 className="card-title font-semibold text-xl text-white">{item.title}</h2>
+                                <ul className='text-left mb-8 text-sm xl:text-base text-white font-normal'>
                                     {item.desc.map((descItem, descIndex) => (
-                                        <li className='desc-item opacity-50 text-gray-900' key={descIndex}>{descItem}</li>
+                                        <li className='desc-item opacity-50 text-white' key={descIndex}>{descItem}</li>
                                     ))}
                                 </ul>                                
                                 <div className='flex w-full justify-between items-center'>
