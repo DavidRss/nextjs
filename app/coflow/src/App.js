@@ -11,6 +11,7 @@ import Levels from './pages/RewardsPages/Levels';
 import Referals from './pages/RewardsPages/Referals';
 import Earn from './pages/RewardsPages/Earn';
 import Lottery from './pages/RewardsPages/Lottery';
+import Faq from './pages/Faq'
 import { UserProvider } from "./services/UserContext";
 
 /* New */
@@ -28,6 +29,7 @@ function App() {
             <Route path='/leaderboard' element={<Leaderboard />} /> 
             <Route path='/chat' element={<Chat />} />   
             <Route path='/reward' element={<Reward />} />
+            <Route path='/faq' element={<Faq />} />
             <Route path='/reward/levels' element={<Levels />} />      
             <Route path='/reward/referals' element={<Referals />} />      
             <Route path='/reward/earn' element={<Earn />} /> 

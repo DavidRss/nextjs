@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import Page from '../layouts/Page/Page';
 import img1 from '../assets/new/image1.png';
 import img2 from '../assets/new/image6.png';
@@ -7,16 +8,27 @@ import img4 from '../assets/new/image4.png';
 import card from '../assets/new/card.png';
 import aboutBg from '../assets/new/about.png';
 import about2 from '../assets/new/about2.png';
-import card1 from '../assets/new/card1.png';
-import card2 from '../assets/new/card2.png';
-import card3 from '../assets/new/card3.png';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { itemsData } from '../stores/aboutData';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
+
+    const [data, setData] = useState();
+
+    useEffect(()=>{
+        itemsData ? setData(itemsData) : setData([]);
+    },[]);
+    
 
     return (
         <Page>
             <section className='flex w-full justify-center'>
-                <div className='max-w-8xl w-full flex flex-col xl:flex-row md:pt-16 pb-20 items-center xl:items-start gap-14 px-4 3xl:px-0'>
+                <div className='max-w-7xl w-full flex flex-col xl:flex-row md:pt-16 pb-20 items-center xl:items-start gap-14 px-4 3xl:px-0'>
                     <div className='h-full rounded-3xl bg-secBg flex items-center justify-center w-full min-h-60' style={{maxWidth: '489px', maxHeight: '590px'}}>
                             <img 
                                 src={card} 
@@ -66,12 +78,12 @@ const Home = () => {
                             <div className='flex flex-col gap-5'>
                                 <span className='uppercase text-lg font-semibold'>Sizes:</span>
                                 <div className='flex items-center gap-3'>
-                                   <button className='flex items-center justify-center uppercase w-8 h-8 rounded text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>XS</button>
-                                   <button className='flex items-center justify-center uppercase w-8 h-8 rounded text-white font-medium bg-main opacity-30 cursor-none'>S</button>
-                                   <button className='flex items-center justify-center uppercase w-8 h-8 rounded text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>M</button>
-                                   <button className='flex items-center justify-center uppercase w-8 h-8 rounded text-white font-medium bg-main opacity-30 cursor-none'>L</button>
-                                   <button className='flex items-center justify-center uppercase w-8 h-8 rounded text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>XL</button>
-                                   <button className='flex items-center justify-center uppercase w-8 h-8 rounded text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>XXL</button>
+                                   <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>XS</button>
+                                   <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main opacity-30 cursor-none'>S</button>
+                                   <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>M</button>
+                                   <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main opacity-30 cursor-none'>L</button>
+                                   <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>XL</button>
+                                   <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>XXL</button>
                                 </div>
                                 <button type='button' className='flex items-center gap-1'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" >
@@ -88,7 +100,7 @@ const Home = () => {
                             </div>
                             <button 
                                 type='button'
-                                className='rounded-full text-2xl font-medium px-12 py-5 transition-all text-white hover:scale-105'
+                                className='text-xl font-medium px-10 py-4 transition-all text-white hover:scale-105'
                                 style={{
                                     background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                     boxShadow: ' 0px 4px 0px 0px #196700',
@@ -101,10 +113,10 @@ const Home = () => {
                 </div>
             </section>
             <section className='flex w-full justify-center py-10 3xl:py-20' style={{borderTop: '10px solid #404040'}}>
-                <div className='max-w-8xl w-full flex flex-col gap-14 px-4 3xl:px-0'>
+                <div className='max-w-7xl w-full flex flex-col gap-14 px-4 3xl:px-0'>
                     <h2 className='text-4xl font-semibold px-4 xl:px-0'>Another Products:</h2>
-                    <div className='grid grid-cols-1 xl:grid-cols-3 w-full gap-5 3xl:gap-0'>
-                        <div className='flex flex-col mx-auto h-full justify-between'>
+                    {/* <div className='grid grid-cols-1 xl:grid-cols-3 w-full gap-5'>
+                        <div className='flex flex-col mx-auto h-full bg-mainCard rounded-b-md justify-between'>
                             <div className='flex flex-col'>
                                 <div className='rounded-3xl flex items-center justify-center w-full' style={{maxWidth: '480px', height: '300px'}}>
                                     <img src={card1} alt='item' />
@@ -137,7 +149,7 @@ const Home = () => {
                                 </div>
                                 <button 
                                     type='button' 
-                                    className='rounded-full text-2xl font-medium px-8 py-4 bg-main transition-all text-white hover:scale-105'
+                                    className='text-xl font-medium px-8 py-4 bg-main transition-all text-white hover:scale-105'
                                     style={{
                                         background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                         boxShadow: ' 0px 4px 0px 0px #196700',
@@ -147,7 +159,7 @@ const Home = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className='flex flex-col mx-auto h-full justify-between'>
+                        <div className='flex flex-col mx-auto h-full bg-mainCard justify-between'>
                             <div className='flex flex-col'>
                                 <div className='rounded-3xl flex items-center justify-center w-full' style={{maxWidth: '480px', height: '300px'}}>
                                     <img src={card2} alt='item' />
@@ -170,7 +182,7 @@ const Home = () => {
                                 </div>
                                 <button 
                                 type='button' 
-                                className='rounded-full text-2xl font-medium px-8 py-4 bg-main transition-all text-white hover:scale-105'
+                                className='text-xl font-medium px-8 py-4 bg-main transition-all text-white hover:scale-105'
                                 style={{
                                     background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                     boxShadow: ' 0px 4px 0px 0px #196700',
@@ -180,7 +192,7 @@ const Home = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className='flex flex-col mx-auto h-full justify-between'>
+                        <div className='flex flex-col mx-auto h-full bg-mainCard justify-between'>
                             <div className='flex flex-col'>
                                 <div className='rounded-3xl flex items-center justify-center w-full' style={{maxWidth: '480px', height: '300px'}}>
                                     <img src={card3} alt='item' />
@@ -205,7 +217,7 @@ const Home = () => {
                                 </div>
                                 <button 
                                 type='button' 
-                                className='rounded-full text-2xl font-medium px-8 py-4 bg-main transition-all text-white hover:scale-105'
+                                className='text-xl font-medium px-8 py-4 bg-main transition-all text-white hover:scale-105'
                                 style={{
                                     background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                     boxShadow: ' 0px 4px 0px 0px #196700',
@@ -215,11 +227,46 @@ const Home = () => {
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
+
+                    <Swiper 
+                        slidesPerView={3}
+                        spaceBetween={40}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        loop={true}
+                        modules={[Pagination]}
+                        style={{ width: '100%', height: '100%' }}
+                    >
+
+                        {data && data.map((item, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="card w-80 bg-secBg shadow-xl mb-12">
+                                    <figure><img src={item.img} alt="Shoes" /></figure>
+                                    <div className="py-4 px-5 xl:card-body bg-secBg border-0 rounded-b-xl">
+                                        <h2 className="card-title font-semibold text-xl text-white">{item.title}</h2>
+                                        <ul className='text-left mb-8 list-disc text-sm xl:text-base text-white font-normal'>
+                                            {item.desc.map((descItem, descIndex) => (
+                                                <li className='desc-item opacity-50 text-white' key={descIndex}>{descItem}</li>
+                                            ))}
+                                        </ul>                                
+                                        <div className='flex w-full justify-between items-center'>
+                                            <div className='flex flex-col items-start'>
+                                                <span className='text-main text-3xl font-extrabold'>{item.price} €</span>
+                                                <span className='text-gray-400 text-sm font-normal'>{item.contributions} contributions</span>
+                                            </div>
+                                            <button className="btn bg-main border-0 text-white">Participer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>                    
                 </div>
             </section>
             <section className='flex w-full bg-secBg justify-center'>
-                <div className='max-w-8xl w-full flex py-10 3xl:py-16 items-center px-4 3xl:px-0 flex-col md:flex-row gap-5 md:gap-0'>
+                <div className='max-w-7xl w-full flex py-10 3xl:py-16 items-center px-4 3xl:px-0 flex-col md:flex-row gap-5 md:gap-0'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
                         <circle cx="60" cy="60" r="55" fill="#CDCDCD" stroke="white" stroke-width="10"/>
                     </svg>
@@ -232,7 +279,7 @@ const Home = () => {
                     </div>
                     <button 
                         type='buttom' 
-                        className='rounded-full text-white px-10 py-5 text-2xl'
+                        className='text-white px-10 py-5 text-xl font-semibold'
                         style={{
                             background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                             boxShadow: ' 0px 4px 0px 0px #196700',
@@ -249,7 +296,7 @@ const Home = () => {
                     boxShadow: '0px 4px 0px 0px #58A408 inset'
                 }}
             >
-                <div className='max-w-8xl w-full flex py-16 justify-between items-center px-4 3xl:px-0 flex-col md:flex-row gap-5 md:gap-0'>
+                <div className='max-w-7xl w-full flex py-16 justify-between items-center px-4 3xl:px-0 flex-col md:flex-row gap-5 md:gap-0'>
                     <h2 className='text-white text-4xl font-semibold' style={{maxWidth: '631px'}}>
                         You want to participate with the amount of your choice?
                     </h2>
@@ -261,7 +308,7 @@ const Home = () => {
                             type='email' 
                         />
                         <button 
-                            className='py-6 px-9 text-white transition-all hover:scale-105 rounded-full md:absolute right-5 top-5 text-2xl font-medium'
+                            className='py-6 px-9 text-white transition-all hover:scale-105 rounded-full md:absolute top-5 right-24 text-2xl font-medium'
                             style={{
                                 background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                 boxShadow: ' 0px 4px 0px 0px #196700',
@@ -273,7 +320,7 @@ const Home = () => {
                 </div>
             </section>
             <section className='py-24 flex justify-center bg-thrBg'>
-                <div className='max-w-8xl w-full flex flex-col xl:flex-row gap-5 xl:gap-0 py-16 justify-between items-center px-4 3xl:px-0'>
+                <div className='max-w-7xl w-full flex flex-col xl:flex-row gap-5 py-16 justify-between items-center px-4 3xl:px-0'>
                     <div className='flex flex-col gap-20'>
                         <h2 className='text-6xl font-semibold'>
                             About This Project
@@ -294,7 +341,7 @@ const Home = () => {
                         </div>
                         <button 
                             type='button' 
-                            className='py-5 px-9 rounded-full text-white text-2xl max-w-fit hover:scale-105 transition-all hover:bg-main'
+                            className='py-5 px-9 text-white text-xl max-w-fit hover:scale-105 transition-all hover:bg-main'
                             style={{
                                 background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                 boxShadow: ' 0px 4px 0px 0px #196700',
@@ -302,10 +349,10 @@ const Home = () => {
                         >
                             Read More
                         </button>
-                        <div className='flex items-center gap-5 xl:gap-24 flex-wrap px-4 3xl:px-0'>
+                        <div className='flex items-center gap-5 xl:gap-16 flex-wrap px-4 3xl:px-0'>
                             <div className='flex items-center gap-4'>
                                 <div 
-                                    className='p-5 flex justify-center items-center rounded-xl w-20 h-20'
+                                    className='p-5 flex justify-center items-center w-16 h-16'
                                     style={{
                                         background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                         boxShadow: ' 0px 4px 0px 0px #196700',
@@ -340,7 +387,7 @@ const Home = () => {
                                         background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                         boxShadow: ' 0px 4px 0px 0px #196700',
                                     }} 
-                                    className='p-5 flex justify-center items-center rounded-xl w-20 h-20'>
+                                    className='p-5 flex justify-center items-center w-16 h-16'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="44" viewBox="0 0 30 44" fill="none">
                                         <g filter="url(#filter0_d_187_7081)">
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 0.5C10.7877 0.5 7 4.41339 7 9C7 11.0731 7.57966 13.5787 8.87003 15.6281C10.1897 17.7241 12.3805 19.5 15.5 19.5C18.6195 19.5 20.8103 17.7241 22.13 15.6281C23.4203 13.5787 24 11.0731 24 9C24 4.41339 20.2123 0.5 15.5 0.5ZM11 9C11 6.58661 13.0326 4.5 15.5 4.5C17.9674 4.5 20 6.58661 20 9C20 10.4269 19.5797 12.1713 18.745 13.4969C17.9397 14.7759 16.8805 15.5 15.5 15.5C14.1195 15.5 13.0603 14.7759 12.255 13.4969C11.4203 12.1713 11 10.4269 11 9Z" fill="white"/>
@@ -370,7 +417,7 @@ const Home = () => {
                                         background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                         boxShadow: ' 0px 4px 0px 0px #196700',
                                     }}
-                                    className='p-5 flex justify-center items-center rounded-xl w-20 h-20'>
+                                    className='p-5 flex justify-center items-center w-16 h-16'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="46" height="48" viewBox="0 0 46 48" fill="none">
                                         <g filter="url(#filter0_d_187_7075)">
                                             <path d="M21.9972 0.0215015C22.3298 0.0072124 22.6641 0 23 0C35.7025 0 46 10.2975 46 23C46 35.7025 35.7025 46 23 46C22.6641 46 22.3298 45.9928 21.9972 45.9785C20.8937 45.9311 20.0375 44.998 20.0849 43.8945C20.1323 42.7909 21.0654 41.9348 22.1689 41.9822C22.4443 41.994 22.7214 42 23 42C33.4934 42 42 33.4934 42 23C42 12.5066 33.4934 4 23 4C22.7214 4 22.4443 4.00598 22.1689 4.01782C21.0654 4.06523 20.1323 3.20905 20.0849 2.1055C20.0375 1.00195 20.8937 0.0689124 21.9972 0.0215015Z" fill="white"/>
@@ -478,7 +525,7 @@ const Home = () => {
                         </div>
                         <button 
                             type='button' 
-                            className='py-5 px-9 rounded-full text-white text-2xl max-w-fit hover:scale-105 transition-all hover:bg-main'
+                            className='py-4 px-8 text-white text-xl max-w-fit hover:scale-105 transition-all hover:bg-main'
                             style={{
                                 background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                 boxShadow: ' 0px 4px 0px 0px #196700',
@@ -544,16 +591,18 @@ const Home = () => {
                         <p className='text-xl max-w-96'>
                             Delivery available in France and internationally, safe and fast (almost as much as a portal, but not quite)
                         </p>
-                        <button 
-                            type='button' 
-                            className='rounded-full text-2xl font-medium px-8 py-4 bg-main transition-all text-white hover:scale-105'
-                            style={{
-                                background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
-                                boxShadow: ' 0px 4px 0px 0px #196700',
-                            }}
-                        >
-                            Participate
-                        </button>
+                        <Link to='/faq'>
+                            <button 
+                                type='button' 
+                                className='text-xl font-medium px-8 py-4 bg-main transition-all text-white hover:scale-105'
+                                style={{
+                                    background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
+                                    boxShadow: ' 0px 4px 0px 0px #196700',
+                                }}
+                            >
+                                Participate
+                            </button>
+                        </Link>
                     </div>
                     <div className='flex flex-col gap-10 items-center text-center justify-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">

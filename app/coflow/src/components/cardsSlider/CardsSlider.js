@@ -31,7 +31,7 @@ function CardsSlider() {
                     <SwiperSlide key={index}>
                         <CardM>
                             <figure><img src={item.img} alt="Shoes" /></figure>
-                            <div className="py-4 px-5 xl:card-body bg-secBg border-0 rounded-b-xl">
+                            <div className="py-4 bg-mainCard px-5 xl:card-body border-0 rounded-b-xl">
                                 <h2 className="card-title font-semibold text-xl text-white">{item.title}</h2>
                                 <ul className='text-left mb-8 text-sm xl:text-base text-white font-normal'>
                                     {item.desc.map((descItem, descIndex) => (

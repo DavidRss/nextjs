@@ -61,7 +61,7 @@ function Chat() {
 
     return (
         <Page>
-             <section className='bg-thrBg w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0'>
+             <section className='bg-secBg w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0'>
                 <Container>
                     <div className='w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start'>
                         <div className='flex flex-col w-full h-fit'>
@@ -76,7 +76,7 @@ function Chat() {
                                                 </div>
                                             </div>
                                             <div className={`chat flex flex-col ${message.isResponse === true ? 'items-end' : 'items-start'} gap-4`}>
-                                                <div className="chat-header text-base-100 font-medium">
+                                                <div className="chat-header text-white font-medium">
                                                     {message.name}
                                                     <time className="text-sm font-normal opacity-50 ml-2">{message.time}</time>
                                                 </div>
@@ -90,7 +90,7 @@ function Chat() {
                                         </div>
                                     </div>
                                 ))}
-                                <div className='bg-secBg px-8 pb-4 pt-3 rounded-b-xl mt-10 flex items-center w-full gap-6'>
+                                <div className='bg-mainCard px-8 pb-4 pt-3 rounded-b-xl mt-10 flex items-center w-full gap-6'>
                                     {fileAttached  && (
                                             <div className="tooltip tooltip-open absolute before:bg-base-100 before:text-white attach" data-tip={'Attched ✔'} />
                                         )}

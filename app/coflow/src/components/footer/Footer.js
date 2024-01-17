@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Footer() {
   return (
     <footer className='w-full text-white flex flex-col items-center bg-black bg-opacity-45'>
-        <div className='w-full flex flex-col gap-5 2xl:flex-row items-center max-w-8xl 3xl:gap-40 pb-11 pt-14 px-4 3xl:px-0'>
+        <div className='w-full flex flex-col gap-5 xl:flex-row items-center max-w-8xl 3xl:gap-40 pb-11 pt-14 px-4 3xl:px-0'>
         <div className='flex flex-col gap-8 items-center w-fit px-4 3xl:px-0'>
             <h1 className='text-white text-4xl font-black mb-6 xl:mb-0'>Coflow</h1>
             <div className='flex flex-col gap-1'>
@@ -14,25 +14,25 @@ export default function Footer() {
             </div>
         </div>
         <div className='flex flex-col w-full items-center 2xl:items-start px-4 3xl:px-0'>
-            <ul className='flex items-center w-full xl:gap-10 h-full pb-7 max-w-fit border-b border-white gap-8 flex-wrap md:flex-nowrap'>
+            <ul className='flex items-start w-full xl:gap-10 flex-wrap pb-7 sm:pb-0 h-full sm:h-14 max-w-fit border-b border-white gap-8 md:flex-nowrap z-10'>
                 <Link to="/about" className='h-full'>
-                    <li className={`text-white hover:text-main nav__item hover:border-b-8 border-main rounded-b text-2xl font-semibold transition-all cursor-pointer  h-full sm:text-left`}>About</li>
+                    <li className={`text-white hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}>About</li>
                 </Link>
                 <span style={{color: '#595959'}}>•</span>
                 <Link to="/about" className='h-full'>
-                    <li className={`text-white hover:text-main nav__item hover:border-b-8 border-main rounded-b text-2xl font-semibold transition-all cursor-pointer h-ful sm:text-left`}>Merch</li>
+                    <li className={`text-white hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer h-full sm:text-left`}>Merch</li>
                 </Link>
                 <span style={{color: '#595959'}}>•</span>
                 <Link to="/leaderboard" className='h-full'>
-                    <li className={`text-white hover:text-main nav__item hover:border-b-8 border-main rounded-b text-2xl font-semibold transition-all cursor-pointer  h-full sm:text-left`}>Leaderboard</li>
+                    <li className={`text-white hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}>Leaderboard</li>
                 </Link>
                 <span style={{color: '#595959'}}>•</span>
                 <Link to="/chat" className='h-full'>
-                    <li className={`text-white hover:text-main nav__item hover:border-b-8 border-main rounded-b text-2xl font-semibold transition-all cursor-pointer  h-full sm:text-left`}>Chat</li>
+                    <li className={`text-white hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}>Chat</li>
                 </Link>
                 <span style={{color: '#595959'}}>•</span>
                 <Link to="/reward" className='h-full'>
-                    <li className={`text-white hover:text-main nav__item hover:border-b-8 border-main rounded-b text-2xl font-semibold transition-all cursor-pointer  h-full sm:text-left`}>Rewards</li>
+                    <li className={`text-white hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}>Rewards</li>
                 </Link>
             </ul>
             <div className='flex items-center gap-10 pt-6 max-w-fit'>
@@ -66,13 +66,13 @@ export default function Footer() {
         </div>   
         </div>
         <div 
-            className='w-full display justify-center flex items-center py-8 px-4 xl:px-0'
+            className='w-full display justify-center flex items-center py-2 px-4 xl:px-0'
             style={{
                 background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                 boxShadow: ' 0px 4px 0px 0px #196700',
             }}
         >
-            <div className='max-w-8xl w-full justify-between flex flex-col xl:flex-row items-center gap-5 xl:gap-0'>
+            <div className='max-w-8xl w-full justify-between flex flex-col xl:flex-row items-center px-4 2xl:p-0 gap-5 xl:gap-0'>
                 <div className='flex items-center gap-5 flex-col md:flex-row'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="39" viewBox="0 0 48 39" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M15.1432 22.425C15.1432 17.5787 19.1083 13.65 23.9996 13.65C28.8909 13.65 32.856 17.5787 32.856 22.425C32.856 27.2713 28.8909 31.2 23.9996 31.2C19.1083 31.2 15.1432 27.2713 15.1432 22.425ZM23.9996 17.55C21.2822 17.55 19.0794 19.7326 19.0794 22.425C19.0794 25.1174 21.2822 27.3 23.9996 27.3C26.717 27.3 28.9198 25.1174 28.9198 22.425C28.9198 19.7326 26.717 17.55 23.9996 17.55Z" fill="#3F3F3F"/>
@@ -81,7 +81,7 @@ export default function Footer() {
                     <span className='text-center md:text-left text-white'>
                         Our website uses cookies to ensure you have the best experience possible!
                     </span>
-                    <Link to="/about" className='pb-1.5 border-b text-white'>Learn more</Link>
+                    <Link to="/about" className='border-b text-white'>Learn more</Link>
                 </div> 
                 <div className='flex gap-5 items-center'>
                     <button className='py-4 px-6 rounded-full hover:scale-105 transition-all bg-white text-main'>Accept Cookies</button>

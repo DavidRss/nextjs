@@ -52,15 +52,15 @@ function Reward() {
 
     return (
         <Page>
-             <section className='bg-thrBg w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0'>
+             <section className='bg-secBg w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0'>
                 <Container>
                 <div className='w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start'>
                     <div className='flex flex-col w-full'>
                         <h1 className='text-white font-bold text-3xl mb-8 text-left'>Welcome to <span className='text-main'>Loyalty Program</span></h1>
                         <div className='flex flex-col gap-5'>
                             <Link to='/reward' className='w-full'>
-                            <div className="card w-full bg-secondary border-sec border text-primary-content">
-                                <div className="card-body bg-secBg rounded-xl flex flex-row justify-between items-center px-10">
+                            <div className="card w-full bg-mainCard border-sec border text-primary-content">
+                                <div className="card-body card-bg rounded-xl flex flex-row justify-between items-center px-10">
                                     <div className='flex flex-col items-start'>
                                         <div className='flex items-center gap-4'>
                                             <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
@@ -84,8 +84,8 @@ function Reward() {
 
                             <div className='flex flex-col sm:flex-row gap-5 items-center'>
                                 <Link to="/reward/earn" className='w-full'>
-                                    <div className="card w-full bg-secondary border-sec border text-primary-content">
-                                        <div className="card-body bg-secBg rounded-xl flex flex-row justify-between items-center px-10">
+                                    <div className="card w-full bg-mainCard border-sec border text-primary-content">
+                                        <div className="card-body bg-mainCard rounded-xl flex flex-row justify-between items-center px-10">
                                             <div className='flex flex-col items-start'>
                                                 <div className='flex items-center gap-4'>
                                                     <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
@@ -101,8 +101,8 @@ function Reward() {
                                     </div>
                                 </Link>
                                 <Link to='/reward' className='w-full'>
-                                <div className="card w-full bg-secondary border-sec border text-primary-content">
-                                    <div className="card-body bg-secBg rounded-xl flex flex-row justify-between items-center px-10">
+                                <div className="card w-full bg-mainCard border-sec border text-primary-content">
+                                    <div className="card-body bg-mainCard rounded-xl flex flex-row justify-between items-center px-10">
                                         <div className='flex flex-col items-start'>
                                             <div className='flex items-center gap-4'>
                                                 <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
@@ -119,8 +119,8 @@ function Reward() {
                                 </Link>
                             </div>                            
                             <Link to="/reward/referals" className='w-full'>
-                            <div className="card w-full bg-secondary border-sec border text-primary-content">
-                                <div className="card-body bg-secBg rounded-xl flex flex-row justify-between items-center px-10">
+                            <div className="card w-full bg-mainCard border-sec border text-primary-content">
+                                <div className="card-body bg-mainCard rounded-xl flex flex-row justify-between items-center px-10">
                                     <div className='flex flex-col items-start'>
                                         <div className='flex items-center gap-4'>
                                             <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
@@ -144,8 +144,8 @@ function Reward() {
                             </div>
                             </Link>
                             <Link to="/reward/levels" className='w-full'>
-                            <div className="card w-full bg-secondary border-sec border text-primary-content">
-                                <div className="card-body bg-secBg rounded-xl flex flex-row justify-between items-center px-10">
+                            <div className="card w-full bg-mainCard border-sec border text-primary-content">
+                                <div className="card-body bg-mainCard rounded-xl flex flex-row justify-between items-center px-10">
                                     <div className='flex flex-col items-start'>
                                         <div className='flex items-center gap-4'>
                                             <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
@@ -164,8 +164,8 @@ function Reward() {
                             </div>
                             </Link>
                             <Link to="/reward/levels" className='w-full'>
-                            <div className="card w-full bg-secondary border-sec border text-primary-content">
-                                <div className="card-body bg-secBg rounded-xl flex flex-row justify-between items-center px-10">
+                            <div className="card w-full bg-mainCard border-sec border text-primary-content">
+                                <div className="card-body bg-mainCard rounded-xl flex flex-row justify-between items-center px-10">
                                     <div className='flex flex-col items-start'>
                                         <div className='flex items-center gap-4'>
                                             <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>
@@ -182,8 +182,8 @@ function Reward() {
                             </div>
                             </Link>
                             <Link to='/reward/lottery' className='w-full'>
-                            <div className="card w-full bg-secondary border-sec border text-primary-content">
-                                <div className="card-body bg-secBg rounded-xl flex flex-row justify-between items-center px-10">
+                            <div className="card w-full bg-mainCard border-sec border text-primary-content">
+                                <div className="card-body bg-mainCard rounded-xl flex flex-row justify-between items-center px-10">
                                     <div className='flex flex-col items-start'>
                                         <div className='flex items-center gap-4'>
                                             <div className='p-3 rounded-full bg-main bg-opacity-10 flex justify-center items-center'>

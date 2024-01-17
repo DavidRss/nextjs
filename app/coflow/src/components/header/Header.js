@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 // import Circles from '../../assets/Group.svg'
 // import avatarMain from '../../assets/avatarMain.png';
 
@@ -8,36 +9,58 @@ import headerCover from '../../assets/new/header-bg.png';
 
 export default function Header() {
 
+    /* Btns triggers */
+    const [hovered, setHovered] = useState(false);
+
     // const { userData } = useUser();
     // const { name, img } = userData;
+
+    const [days, setDays] = useState(5);
+    const [hours, setHours] = useState(12);
+    const [minutes, setMinutes] = useState(25);
+    const [seconds, setSeconds] = useState(0);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setSeconds(prevSeconds => (prevSeconds + 1) % 60);
+            setMinutes(prevMinutes => (prevMinutes + Math.floor(seconds / 60)) % 60);
+            setHours(prevHours => (prevHours + Math.floor(minutes / 60)) % 24);
+            setDays(prevDays => prevDays + Math.floor(hours / 24));
+        }, 1000); 
+
+        return () => clearInterval(intervalId); 
+    }, [seconds, minutes, hours]);
 
 
   return (
     <>  
+       
         <div className='relative w-full flex justify-center items-center py-6 border-b border-sec overflow-hidden' style={{background: 'linear-gradient(90deg, #328019 0%, #5EAC0C 50.02%, #327F19 100%)', border: '16px'}}>
             <div className="flex gap-5 relative z-20">
                 <div>
-                    <span className="countdown font-mono text-2xl md:text-6xl">
-                        <span style={{"--value":15}}></span>
+                    <span className="countdown font-mono text-2xl md:text-4xl">
+                        <span style={{"--value":days}}></span>
                         Days
                     </span>
                 </div> 
-                <div>
-                    <span className="countdown font-mono text-2xl md:text-6xl">
-                        <span style={{"--value":10}}></span>
-                    :
-                    </span>
-                </div> 
-                <div>
-                    <span className="countdown font-mono text-2xl md:text-6xl">
-                    <span style={{"--value":24}}></span>
-                    :
-                    </span>
-                </div> 
-                <div>
-                    <span className="countdown font-mono text-2xl md:text-6xl">
-                    <span style={{"--value":39}}></span>
-                    </span>
+                <div className='flex gap-1'>
+                    <div>
+                        <span className="countdown font-mono text-2xl md:text-4xl">
+                            <span style={{"--value":hours}}></span>
+                        :
+                        </span>
+                    </div> 
+                    <div>
+                        <span className="countdown font-mono text-2xl md:text-4xl">
+                        <span style={{"--value":minutes}}></span>
+                        :
+                        </span>
+                    </div> 
+                    <div>
+                        <span className="countdown font-mono text-2xl md:text-4xl">
+                        <span style={{"--value":seconds}}></span>
+                        </span>
+                    </div>
                 </div>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="1920" className='absolute z-10' height="118" viewBox="0 0 1920 118" fill="none">
@@ -293,10 +316,10 @@ export default function Header() {
             </svg>
         </div>
         <div className='flex flex-col items-center relative w-full'>
-            <div className='flex w-full justify-between items-start py-14 px-14 bg-thrBg z-20 h-72 sm:h-96 md:h-500 2xl:mb-72'>
+            <div className='flex w-full justify-between items-start max-w-7xl py-5 md:py-10 px-14 z-20'>
                 <h1 className='text-4xl font-black pt-4'>Coflow</h1>
                 <div className='hidden md:flex items-center gap-7'>
-                    <button type='button' className='flex items-center justify-center text-3xl font-semibold gap-4 transition-all hover:scale-105 bg-transparent border-0 hover:shadow-lg rounded-full px-7 py-4'>
+                    <button type='button' className='flex items-center justify-center text-2xl font-semibold gap-4 transition-all hover:scale-105 bg-transparent border-0 hover:shadow-lg rounded-full px-7 py-4'>
                         8
                         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
                             <path d="M15.3335 21.167C15.3335 23.467 19.0651 25.3337 23.6668 25.3337C28.2684 25.3337 32.0001 23.467 32.0001 21.167M2.00024 12.8337C2.00024 15.1337 5.73189 17.0004 10.3335 17.0004C12.2102 17.0004 13.9418 16.6904 15.3335 16.167M2.00024 18.667C2.00024 20.967 5.73189 22.8337 10.3335 22.8337C12.2102 22.8337 13.9402 22.5237 15.3335 22.0003M23.6668 18.667C19.0651 18.667 15.3335 16.8004 15.3335 14.5004C15.3335 12.2004 19.0651 10.3337 23.6668 10.3337C28.2684 10.3337 32.0001 12.2004 32.0001 14.5004C32.0001 16.8004 28.2684 18.667 23.6668 18.667Z" stroke="white" stroke-width="2.37382" stroke-linecap="round" stroke-linejoin="round"/>
@@ -306,7 +329,7 @@ export default function Header() {
                     </button>
                     <button 
                         type='button'
-                        className='rounded-full text-2xl font-medium px-10 py-4 transition-all text-white hover:scale-105'
+                        className='text-xl font-medium px-8 py-3 transition-all text-white hover:scale-105'
                         style={{
                             background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                             boxShadow: ' 0px 4px 0px 0px #196700',
@@ -315,14 +338,52 @@ export default function Header() {
                         Connect
                     </button>
                 </div>
-                <button className="block md:hidden btn mt-4" style={{background: '#4A9F2E'}}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 text-white stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button> 
             </div>
-            <div className='absolute z-30 top-36 max-h-720 w-full max-w-cover px-4 3xl:px-0'>
+            <div className='relative z-30 sm:-bottom-5 max-h-720 w-full max-w-cover px-4 3xl:px-0'>
                 <img src={headerCover} alt='cover' />
+                <button 
+                    type='button' 
+                    className='flex md:hidden absolute items-center top-1/3 left-2/4 -translate-x-2/4 justify-start py-3 text-white bg-white bg-opacity-20 pl-3 pr-5 text-2xl font-semibold border-4 border-white rounded-full gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50'
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                    onClick={()=>document.getElementById('mainVideo').showModal()}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none" className={`${hovered ? 'translate-x-2' : ''} transition-all`}>
+                        <circle cx="25" cy="25" r="25" fill="#4E9D35"/>
+                        <path d="M19 17.5281C19 15.1477 21.6392 13.7155 23.635 15.0127L35.1303 22.4847C36.9503 23.6677 36.9503 26.3323 35.1303 27.5153L23.635 34.9873C21.6392 36.2845 19 34.8523 19 32.4719V17.5281Z" fill="white"/>
+                    </svg>
+                    <span className={`${hovered ? '-translate-y-1' : ''} transition-all whitespace-nowrap`}>Watch Video</span>
+                </button>
+                <button 
+                    type='button' 
+                    className='hidden md:flex absolute right-16 bottom-32 items-center justify-start py-3 text-white bg-white bg-opacity-20 pl-3 pr-5 text-2xl font-semibold border-4 border-white rounded-full gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50'
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                    onClick={()=>document.getElementById('mainVideo').showModal()}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none" className={`${hovered ? 'translate-x-2' : ''} transition-all`}>
+                        <circle cx="25" cy="25" r="25" fill="#4E9D35"/>
+                        <path d="M19 17.5281C19 15.1477 21.6392 13.7155 23.635 15.0127L35.1303 22.4847C36.9503 23.6677 36.9503 26.3323 35.1303 27.5153L23.635 34.9873C21.6392 36.2845 19 34.8523 19 32.4719V17.5281Z" fill="white"/>
+                    </svg>
+                    <span className={`${hovered ? '-translate-y-1' : ''} transition-all whitespace-nowrap`}>Watch Video</span>
+                </button>
             </div>
         </div>
+        <dialog id="mainVideo" className="modal">
+            <div className="modal-box max-w-7xl pt-11 pb-0 px-0">
+                <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-main text-main absolute right-2 top-2">✕</button>
+                </form>
+                <iframe
+                    width='100%'
+                    height='500px'
+                    src={`https://www.youtube.com/embed/4kLviL8XwAI`}
+                    frameBorder='0'
+                    allowFullScreen
+                    title='YouTube Video'
+                ></iframe>
+            </div>
+        </dialog>
     </>
   )
 }

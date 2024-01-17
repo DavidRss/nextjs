@@ -28,6 +28,10 @@ li::marker {
   color: #4E9D35;
 } 
 
+.list-disc li:before {
+  content: '';
+} 
+
 .App-link {
   color: #61dafb;
 }

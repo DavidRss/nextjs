@@ -179,6 +179,24 @@ span.swiper-pagination-bullet.swiper-pagination-bullet{
   width: 8px !important;
 }
 
+.table-zebra tbody tr:nth-child(odd) {
+  border-color: #292929!important;
+}
+
+.bg-input {
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 64 64/var(--tw-bg-opacity));
+}
+
+.odd\:bg-odd:nth-child(odd) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(41 41 41/var(--tw-bg-opacity));
+}
+
+.bg-mainCard {
+  background-color: #ffffff0a;
+}
+
 @media (max-width: 1280px) {
   .youtube-video-iframe {
     width: 375px;

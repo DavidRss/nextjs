@@ -43,7 +43,7 @@ function Leaderboard() {
     
     return (
         <Page>
-             <section className='bg-thrBg w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0'>
+             <section className='bg-secBg w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0'>
                 <Container>
                     <div className='w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start'>
                         <div className='flex flex-col w-full'>
@@ -79,10 +79,10 @@ function Leaderboard() {
                                 </div>
                             </div>
                             <div className='mt-4'>
-                                <div className="overflow-x-auto border border-neutral rounded-lg scroll">
+                                <div className="overflow-x-auto bg-mainCard rounded-lg scroll min-h-[500px]">
                                     <table className="table">
-                                        <thead className='bg-secBg'>
-                                        <tr className='border-sec text-white opacity-30 text-base font-semibold'>
+                                        <thead className='bg-thrdBg'>
+                                        <tr className=' text-white opacity-30 text-base font-semibold'>
                                             <th className='w-20 text-center'>Place</th>
                                             <th>Name</th>
                                             <th>Dons</th>
@@ -91,7 +91,7 @@ function Leaderboard() {
                                         </thead>
                                         <tbody>
                                             {displayedData.map((rowData, index) => (
-                                            <tr key={index} className="border-secBg text-white">
+                                            <tr key={index} className="text-white-90 even:bg-even odd:bg-odd">
                                                 <th className="text-base font-semibold text-center">{index + 1 + (currentPage - 1) * pageSize}</th>
                                                 <td>
                                                 <div className="flex items-center space-x-3 w-64">
