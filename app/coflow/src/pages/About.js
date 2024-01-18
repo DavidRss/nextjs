@@ -132,7 +132,7 @@ const Home = () => {
                         }}
                         loop={true}
                         modules={[Pagination]}
-                        style={{ width: '100%', height: '100%', maxWidth: '425px' }}
+                        style={{ width: '100%', height: '100%'}}
                         navigation={{
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
@@ -140,6 +140,7 @@ const Home = () => {
                         breakpoints={{
                             768: {
                                slidesPerView: 1,
+                               maxWidth: '425px',
                             },
                             1024: {
                                slidesPerView: 3,
