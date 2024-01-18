@@ -76,14 +76,6 @@ const Navigate = () => {
                                 </ul>
                             </nav>
                         </div>
-                        <button 
-                            className='hidden xl:flex py-4 px-8 text-white text-xl max-w-fit hover:scale-105 transition-all hover:bg-main'
-                            style={{
-                                background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
-                                boxShadow: ' 0px 4px 0px 0px #196700',
-                            }}
-
-                        >Se connecter</button>
                     </div>
                 </div>            
            </Container>

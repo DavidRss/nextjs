@@ -13,9 +13,9 @@ function Faq() {
 
     return (
         <Page>
-             <section className='bg-secBg w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0'>
+             <section className='w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0'>
                 <Container>
-                    <div className='w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start'>
+                    <div className='w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-6 items-center xl:items-start'>
                         <div className='flex flex-col w-full h-fit'>
                             <h1 className='text-white font-bold text-3xl mb-8 text-left'>FAQ</h1>
                             <div className='mt-8 flex w-full flex-col rounded-xl first-letter:pt-7 gap-2'>

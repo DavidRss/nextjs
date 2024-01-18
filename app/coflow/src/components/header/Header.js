@@ -328,8 +328,8 @@ export default function Header() {
                         </svg>                   
                     </button>
                     <button 
-                        type='button'
-                        className='text-xl font-medium px-8 py-3 transition-all text-white hover:scale-105'
+                        type='buttom' 
+                        className='text-white py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
                         style={{
                             background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                             boxShadow: ' 0px 4px 0px 0px #196700',
@@ -343,7 +343,7 @@ export default function Header() {
                 <img src={headerCover} alt='cover' />
                 <button 
                     type='button' 
-                    className='flex md:hidden absolute items-center top-1/3 left-2/4 -translate-x-2/4 justify-start py-3 text-white bg-white bg-opacity-20 pl-3 pr-5 text-2xl font-semibold border-4 border-white rounded-full gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50'
+                    className='flex md:hidden absolute items-center top-1/3 left-2/4 -translate-x-2/4 justify-start py-3 text-black bg-white bg-opacity-40 pl-3 pr-5 text-2xl font-semibold rounded-xl gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50'
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
                     onClick={()=>document.getElementById('mainVideo').showModal()}
@@ -356,7 +356,7 @@ export default function Header() {
                 </button>
                 <button 
                     type='button' 
-                    className='hidden md:flex absolute right-16 bottom-32 items-center justify-start py-3 text-white bg-white bg-opacity-20 pl-3 pr-5 text-2xl font-semibold border-4 border-white rounded-full gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50'
+                    className='hidden md:flex absolute right-16 bottom-32 items-center justify-start py-3 text-white bg-white bg-opacity-20 pl-3 pr-5 text-2xl font-semibold rounded-xl gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50'
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
                     onClick={()=>document.getElementById('mainVideo').showModal()}

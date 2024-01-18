@@ -37,9 +37,14 @@ module.exports = {
       maxWidth: {
         '8xl': '1680px',
         'cover': '1800px',
+        '680': '680px',
+        '1920': '1920px'
       },
       maxHeight: {
         '720': '720px',
+      },
+      minWidth: {
+        '425': '425px',
       },
       backgroundColor: {
         'goldCard': '#FFDB65',

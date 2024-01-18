@@ -45,7 +45,7 @@ function Leaderboard() {
         <Page>
              <section className='bg-secBg w-full py-14 flex flex-col xl:flex-row items-center justify-center px-5 xl:px-0'>
                 <Container>
-                    <div className='w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start'>
+                    <div className='w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-6 items-center xl:items-start'>
                         <div className='flex flex-col w-full'>
                             <h1 className='text-white font-bold text-3xl mb-8 text-left'>Leaderboard</h1>
                             <div className='flex flex-wrap xl:flex-row gap-4'>
@@ -53,26 +53,27 @@ function Leaderboard() {
                                     {tableData.slice(0, 3).map((rowData, index) => (
                                         <div
                                         key={index}
-                                        className={`stats md:max-w-sm ${
+                                        className={`stats w-full ${
                                             index === 0
-                                            ? "bg-goldCard"
+                                            ? "bg-mainCard"
                                             : index === 1
-                                            ? "bg-silverCard"
-                                            : "bg-bronzeCard"
-                                        } text-primary-content`}
+                                            ? "bg-mainCard"
+                                            : "bg-mainCard"
+                                        } text-white`}
                                         >
-                                        <div className="stat text-slate-900">
-                                            <div className="stat-title text-slate-900 text-left font-semibold opacity-70">
-                                            {`${index + 1}st place`}
+                                        <div className="stat flex justify-between items-center text-white">
+                                            <div className='flex flex-col gap-2'>
+                                                <div className="stat-value text-lg font-semibold text-left">
+                                                    {rowData.name}
+                                                </div>
+                                                <div className="stat-desc flex gap-1.5 text-white text-opacity-50 font-normal text-sm opacity-40 mt-1">
+                                                    <span>{rowData.dons || rowData.spending} Dons</span>
+                                                    <span>{rowData.points || rowData.ballance.points} Points</span>
+                                                </div>
                                             </div>
-                                            <div className="stat-value text-xl font-extrabold text-left">
-                                            {rowData.name}
-                                            </div>
-                                            <div className="stat-desc flex gap-1.5 text-slate-900 font-normal text-sm opacity-40 mt-1">
-                                            <span>{rowData.dons || rowData.spending} Dons</span>
-                                            ●
-                                            <span>{rowData.points || rowData.ballance.points} Points</span>
-                                            </div>
+                                            <div className="stat-title text-white text-opacity-20 text-7xl font-black text-left">
+                                                {`${index + 1}`}
+                                            </div>                                            
                                         </div>
                                         </div>
                                     ))}
@@ -82,7 +83,7 @@ function Leaderboard() {
                                 <div className="overflow-x-auto bg-mainCard rounded-lg scroll min-h-[500px]">
                                     <table className="table">
                                         <thead className='bg-thrdBg'>
-                                        <tr className=' text-white opacity-30 text-base font-semibold'>
+                                        <tr className=' text-white text-base font-semibold' style={{borderColor: 'rgba(242, 242, 242, 0.12)'}}>
                                             <th className='w-20 text-center'>Place</th>
                                             <th>Name</th>
                                             <th>Dons</th>
@@ -91,7 +92,7 @@ function Leaderboard() {
                                         </thead>
                                         <tbody>
                                             {displayedData.map((rowData, index) => (
-                                            <tr key={index} className="text-white-90 even:bg-even odd:bg-odd">
+                                            <tr key={index} className="text-white-90 even:bg-even odd:bg-odd" style={{borderColor: 'rgba(242, 242, 242, 0.12)'}}>
                                                 <th className="text-base font-semibold text-center">{index + 1 + (currentPage - 1) * pageSize}</th>
                                                 <td>
                                                 <div className="flex items-center space-x-3 w-64">
