@@ -2,7 +2,7 @@ import React from 'react';
 import Circles from '../../assets/Group.svg'
 import avatarMain from '../../assets/avatarMain.png';
 
-import { useUser } from "../../services/UserContext";
+import { useUser } from "../../services/app.context";
 import { Link } from 'react-router-dom';
 
 export default function Header() {
