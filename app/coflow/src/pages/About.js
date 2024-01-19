@@ -11,7 +11,7 @@ import star from '../assets/new/star-fill.svg'
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
+import { Pagination, EffectCreative } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { itemsData } from '../stores/aboutData';
 // import { Link } from 'react-router-dom';
@@ -28,29 +28,114 @@ const Home = () => {
     useEffect(()=>{
         itemsData ? setData(itemsData) : setData([]);
     },[]);
-    
+
+    const [swiper1, setSwiper1] = useState(null);
+    const [swiper2, setSwiper2] = useState(null);
+
+    const handleRadioChange1 = (index) => {
+      if (swiper1) {
+        swiper1.slideTo(index);
+      }
+    };
+  
+    const handleRadioChange2 = (index) => {
+      if (swiper2) {
+        swiper2.slideTo(index);
+      }
+    };  
 
     return (
         <Main>
             <Header />
             <Navigate />
-            <section className='flex w-full justify-center'>
-                <div className='max-w-7xl w-full flex flex-col xl:flex-row pt-5 md:pt-16 pb-20 items-center xl:items-start gap-14 px-4 3xl:px-0'>
+            <section className='flex w-full flex-col items-center justify-center'>
+                <div className='max-w-7xl w-full flex flex-col xl:flex-row pt-5 md:pt-16 pb-16 items-center xl:items-start gap-14 px-4 3xl:px-0'>
                     <div className='h-full relative rounded-3xl bg-secBg flex items-center justify-center w-full min-h-60' style={{maxWidth: '489px', maxHeight: '590px'}}>
-                            <img 
-                                src={card} 
-                                alt='card'
-                                style={{
-                                    width: '480px', 
-                                    height: '590px', 
-                                    display: 'block',
-                                    objectPosition: 'bottom',
-                                    objectFit: 'cover',
-                                    border: '9px solid rgba(255, 255, 255, 0.20)',
-                                    borderRadous: '30px'
+                            <Swiper
+                                grabCursor={true}
+                                effect="creative"
+                                creativeEffect={{
+                                  prev: {
+                                    shadow: true,
+                                    origin: 'left center',
+                                    translate: ['-5%', 0, -200],
+                                    rotate: [0, 100, 0],
+                                  },
+                                  next: {
+                                    origin: 'right center',
+                                    translate: ['5%', 0, -200],
+                                    rotate: [0, -100, 0],
+                                  },
                                 }}
-                                className='rounded-3xl'
-                            />
+                                modules={[EffectCreative]}
+                                className="mySwiper6"
+                                onSwiper={(s) => setSwiper1(s)}
+                            >
+                                <SwiperSlide>
+                                    <img 
+                                        src={card} 
+                                        alt='card'
+                                        style={{
+                                            width: '480px', 
+                                            height: '590px', 
+                                            display: 'block',
+                                            objectPosition: 'bottom',
+                                            objectFit: 'cover',
+                                            border: '9px solid rgba(255, 255, 255, 0.20)',
+                                            borderRadous: '30px'
+                                        }}
+                                        className='rounded-3xl'
+                                    />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <img 
+                                        src={card} 
+                                        alt='card'
+                                        style={{
+                                            width: '480px', 
+                                            height: '590px', 
+                                            display: 'block',
+                                            objectPosition: 'bottom',
+                                            objectFit: 'cover',
+                                            border: '9px solid rgba(255, 255, 255, 0.20)',
+                                            borderRadous: '30px'
+                                        }}
+                                        className='rounded-3xl'
+                                    />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <img 
+                                        src={card} 
+                                        alt='card'
+                                        style={{
+                                            width: '480px', 
+                                            height: '590px', 
+                                            display: 'block',
+                                            objectPosition: 'bottom',
+                                            objectFit: 'cover',
+                                            border: '9px solid rgba(255, 255, 255, 0.20)',
+                                            borderRadous: '30px'
+                                        }}
+                                        className='rounded-3xl'
+                                    />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <img 
+                                        src={card} 
+                                        alt='card'
+                                        style={{
+                                            width: '480px', 
+                                            height: '590px', 
+                                            display: 'block',
+                                            objectPosition: 'bottom',
+                                            objectFit: 'cover',
+                                            border: '9px solid rgba(255, 255, 255, 0.20)',
+                                            borderRadous: '30px'
+                                        }}
+                                        className='rounded-3xl'
+                                    />
+                                </SwiperSlide>
+                            </Swiper>
                             <div className='block lg:hidden absolute rounded-lg -bottom-5 uppercase px-5 py-4 font-semibold text-white' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
                                 platinum pack
                             </div>
@@ -75,10 +160,217 @@ const Home = () => {
                             <div className='flex flex-col gap-5'>
                                 <span className='uppercase text-lg font-semibold'>Colors:</span>
                                 <div className='flex items-center gap-3'>
-                                    <input type="radio" name="radio-10" style={{background: '#0041DF'}} className="radio checked:bg-white" checked />
-                                    <input type="radio" name="radio-10" style={{background: '#FF0000'}} className="radio checked:bg-white" />
-                                    <input type="radio" name="radio-10" style={{background: '#21344B'}} className="radio checked:bg-white" />
-                                    <input type="radio" name="radio-10" style={{background: '#FFA825'}} className="radio checked:bg-white" />
+                                    <input
+                                        type="radio"
+                                        name="radio-2"
+                                        style={{ background: '#0041DF' }}
+                                        className="radio checked:bg-white"
+                                        defaultChecked
+                                        onChange={() => handleRadioChange1(0)}
+                                        />
+                                        <input
+                                        type="radio"
+                                        name="radio-2"
+                                        style={{ background: '#FF0000' }}
+                                        className="radio checked:bg-white"
+                                        onChange={() => handleRadioChange1(1)}
+                                        />
+                                        <input
+                                        type="radio"
+                                        name="radio-2"
+                                        style={{ background: '#21344B' }}
+                                        className="radio checked:bg-white"
+                                        onChange={() => handleRadioChange1(2)}
+                                        />
+                                        <input
+                                        type="radio"
+                                        name="radio-2"
+                                        style={{ background: '#FFA825' }}
+                                        className="radio checked:bg-white"
+                                        onChange={() => handleRadioChange1(3)}
+                                    />
+                                </div>
+                            </div>
+                            <div className='flex flex-col gap-5'>
+                                <span className='uppercase text-lg font-semibold'>Materials:</span>
+                                <p className='text-xl lg:text-2xl'>100% Organic Cotton</p>
+                            </div>
+                            <div className='flex flex-col gap-5'>
+                                <span className='uppercase text-lg font-semibold'>Sizes:</span>
+                                <div className='flex items-center gap-3'>
+                                   <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>XS</button>
+                                   <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main opacity-30 cursor-none'>S</button>
+                                   <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>M</button>
+                                   <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main opacity-30 cursor-none'>L</button>
+                                   <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>XL</button>
+                                   <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>XXL</button>
+                                </div>
+                                <button type='button' className='flex items-center gap-1'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" >
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.8295 1.12803C17.3255 -0.37601 14.8869 -0.37601 13.3829 1.12803L1.12803 13.3829C-0.376009 14.8869 -0.37601 17.3255 1.12803 18.8295L3.17051 20.872C4.67454 22.376 7.11307 22.376 8.61711 20.872L20.872 8.61711C22.376 7.11307 22.376 4.67454 20.872 3.17051L18.8295 1.12803ZM14.7445 2.48968C15.4966 1.73766 16.7158 1.73766 17.4678 2.48968L19.5103 4.53216C20.2623 5.28418 20.2623 6.50344 19.5103 7.25546L18.7434 8.02242L17.7499 7.02892C17.3738 6.65291 16.7642 6.65291 16.3882 7.02892C16.0122 7.40493 16.0122 8.01456 16.3882 8.39057L17.3817 9.38408L16.3363 10.4295L13.8985 7.99176C13.5225 7.61575 12.9129 7.61575 12.5369 7.99176C12.1609 8.36776 12.1609 8.9774 12.5369 9.35341L14.9746 11.7912L13.9292 12.8366L12.9357 11.8431C12.5597 11.4671 11.95 11.4671 11.574 11.8431C11.198 12.2191 11.198 12.8287 11.574 13.2047L12.5675 14.1982L11.5221 15.2437L9.08436 12.8059C8.70835 12.4299 8.09871 12.4299 7.7227 12.8059C7.34669 13.1819 7.34669 13.7916 7.7227 14.1676L10.1605 16.6053L9.11503 17.6508L8.12152 16.6572C7.74551 16.2812 7.13588 16.2812 6.75987 16.6572C6.38386 17.0333 6.38386 17.6429 6.75987 18.0189L7.75337 19.0124L7.25546 19.5103C6.50344 20.2623 5.28418 20.2623 4.53216 19.5103L2.48968 17.4678C1.73766 16.7158 1.73766 15.4966 2.48968 14.7445L14.7445 2.48968Z" fill="#fff"/>
+                                    </svg>
+                                    <span className='text-xl pb-1 border-b border-main'>Size Guide</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div className='flex items-center gap-8 pt-8 border-t' style={{borderColor: '#D9D9D9'}}>
+                            <div className='flex flex-col gap-3'>
+                                <span className='text-4xl font-semibold text-white'>35€</span>
+                                <span className='font-semibold text-lg' style={{color: '#6D6D6D'}}>6 contributors</span>
+                            </div>
+                            <button 
+                                type='buttom' 
+                                className='text-white py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
+                                style={{
+                                    background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
+                                    boxShadow: ' 0px 4px 0px 0px #196700',
+                                }}
+                            >
+                                Participate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className='max-w-7xl w-full flex flex-col xl:flex-row-reverse pt-5 pb-20 items-center xl:items-start gap-14 px-4 3xl:px-0'>
+                    <div className='h-full relative rounded-3xl bg-secBg flex items-center justify-center w-full min-h-60' style={{maxWidth: '489px', maxHeight: '590px'}}>
+                            <Swiper
+                                grabCursor={true}
+                                effect="creative"
+                                creativeEffect={{
+                                  prev: {
+                                    shadow: true,
+                                    origin: 'left center',
+                                    translate: ['-5%', 0, -200],
+                                    rotate: [0, 100, 0],
+                                  },
+                                  next: {
+                                    origin: 'right center',
+                                    translate: ['5%', 0, -200],
+                                    rotate: [0, -100, 0],
+                                  },
+                                }}
+                                modules={[EffectCreative]}
+                                className="mySwiper6"
+                                onSwiper={(s) => setSwiper2(s)}
+                            >
+                                <SwiperSlide>
+                                    <img 
+                                        src={card} 
+                                        alt='card'
+                                        style={{
+                                            width: '480px', 
+                                            height: '590px', 
+                                            display: 'block',
+                                            objectPosition: 'bottom',
+                                            objectFit: 'cover',
+                                            border: '9px solid rgba(255, 255, 255, 0.20)',
+                                            borderRadous: '30px'
+                                        }}
+                                        className='rounded-3xl'
+                                    />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <img 
+                                        src={card} 
+                                        alt='card'
+                                        style={{
+                                            width: '480px', 
+                                            height: '590px', 
+                                            display: 'block',
+                                            objectPosition: 'bottom',
+                                            objectFit: 'cover',
+                                            border: '9px solid rgba(255, 255, 255, 0.20)',
+                                            borderRadous: '30px'
+                                        }}
+                                        className='rounded-3xl'
+                                    />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <img 
+                                        src={card} 
+                                        alt='card'
+                                        style={{
+                                            width: '480px', 
+                                            height: '590px', 
+                                            display: 'block',
+                                            objectPosition: 'bottom',
+                                            objectFit: 'cover',
+                                            border: '9px solid rgba(255, 255, 255, 0.20)',
+                                            borderRadous: '30px'
+                                        }}
+                                        className='rounded-3xl'
+                                    />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <img 
+                                        src={card} 
+                                        alt='card'
+                                        style={{
+                                            width: '480px', 
+                                            height: '590px', 
+                                            display: 'block',
+                                            objectPosition: 'bottom',
+                                            objectFit: 'cover',
+                                            border: '9px solid rgba(255, 255, 255, 0.20)',
+                                            borderRadous: '30px'
+                                        }}
+                                        className='rounded-3xl'
+                                    />
+                                </SwiperSlide>
+                            </Swiper>
+                            <div className='block lg:hidden absolute rounded-lg -bottom-5 uppercase px-5 py-4 font-semibold text-white' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
+                                platinum pack
+                            </div>
+                    </div>
+                    <div className='flex flex-col gap-5'>
+                        <div className='hidden lg:flex badge uppercase px-5 py-4 font-semibold text-white' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
+                            platinum pack
+                        </div>
+                        <h2 className='text-4xl text-center lg:text-left lg:text-6xl font-semibold text-white'>Platinum Pack</h2>
+                        <div className='flex flex-col gap-5 max-w-4xl'>
+                            <p className='text-lg lg:text-2xl'>Le pack platinum contient:</p>
+                            <ul className='flex flex-col text-lg lg:text-2xl gap-1 list-disc pl-5'>
+                                <li>Un grand merci de toute l’équipe! et ton nom dans le générique de la vidéo</li>
+                                <li>Un ticket de participation à la loterie</li>
+                                <li>Et le tee-shirt premium dans la couleur de ton choix!</li>
+                            </ul>
+                            <p className='text-lg lg:text-2xl'>
+                                C’est la pièce centrale de cette collection, il est imprimé en France et fait à partir de coton 100% biologique ! Crois moi on a vraiment mis <br/> le paquet sur la qualité
+                            </p>
+                        </div>
+                        <div className='flex flex-col md:flex-row md:items-start gap-4 lg:gap-14'>
+                            <div className='flex flex-col gap-5'>
+                                <span className='uppercase text-lg font-semibold'>Colors:</span>
+                                <div className='flex items-center gap-3'>
+                                    <input
+                                        type="radio"
+                                        name="radio-1"
+                                        style={{ background: '#0041DF' }}
+                                        className="radio checked:bg-white"
+                                        defaultChecked
+                                        onChange={() => handleRadioChange2(0)}
+                                        />
+                                        <input
+                                        type="radio"
+                                        name="radio-1"
+                                        style={{ background: '#FF0000' }}
+                                        className="radio checked:bg-white"
+                                        onChange={() => handleRadioChange2(1)}
+                                        />
+                                        <input
+                                        type="radio"
+                                        name="radio-1"
+                                        style={{ background: '#21344B' }}
+                                        className="radio checked:bg-white"
+                                        onChange={() => handleRadioChange2(2)}
+                                        />
+                                        <input
+                                        type="radio"
+                                        name="radio-1"
+                                        style={{ background: '#FFA825' }}
+                                        className="radio checked:bg-white"
+                                        onChange={() => handleRadioChange2(3)}
+                                    />
                                 </div>
                             </div>
                             <div className='flex flex-col gap-5'>
@@ -253,8 +545,8 @@ const Home = () => {
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M23 0C10.2975 0 0 10.2975 0 23C0 35.7025 10.2975 46 23 46C35.7025 46 46 35.7025 46 23C46 10.2975 35.7025 0 23 0ZM4 23C4 12.5066 12.5066 4 23 4C33.4934 4 42 12.5066 42 23C42 33.4934 33.4934 42 23 42C12.5066 42 4 33.4934 4 23Z" fill="white"/>
                                         </g>
                                         <defs>
-                                            <filter id="filter0_d_187_6945" x="0" y="0" width="46" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                            <filter id="filter0_d_187_6945" x="0" y="0" width="46" height="48" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                                             <feOffset dy="2"/>
                                             <feComposite in2="hardAlpha" operator="out"/>
@@ -283,8 +575,8 @@ const Home = () => {
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M15 21.5C7.1984 21.5 0 26.5264 0 33.6818C0 35.4499 0.466075 36.9905 1.46983 38.225C2.45236 39.4333 3.79425 40.156 5.19892 40.6048C7.90866 41.4705 11.5014 41.5 15 41.5C18.4986 41.5 22.0913 41.4705 24.8011 40.6048C26.2057 40.156 27.5476 39.4333 28.5302 38.225C29.5339 36.9905 30 35.4499 30 33.6818C30 26.5264 22.8016 21.5 15 21.5ZM4 33.6818C4 29.5907 8.44219 25.5 15 25.5C21.5578 25.5 26 29.5907 26 33.6818C26 34.7254 25.7385 35.3179 25.4266 35.7015C25.0935 36.1112 24.5316 36.4917 23.5837 36.7945C21.5884 37.432 18.6811 37.5 15 37.5C11.3189 37.5 8.41164 37.432 6.4163 36.7945C5.46843 36.4917 4.90652 36.1112 4.57338 35.7015C4.26146 35.3179 4 34.7254 4 33.6818Z" fill="white"/>
                                         </g>
                                         <defs>
-                                            <filter id="filter0_d_187_7081" x="0" y="0.5" width="30" height="43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                            <filter id="filter0_d_187_7081" x="0" y="0.5" width="30" height="43" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                                             <feOffset dy="2"/>
                                             <feComposite in2="hardAlpha" operator="out"/>
@@ -318,8 +610,8 @@ const Home = () => {
                                             <path d="M34.9143 16.4342C35.6953 15.6532 35.6953 14.3869 34.9143 13.6058C34.1332 12.8248 32.8669 12.8248 32.0859 13.6058L18.3801 27.3116L13.4943 22.4258C12.7132 21.6448 11.4469 21.6448 10.6659 22.4258C9.88482 23.2069 9.88482 24.4732 10.6659 25.2542L16.9659 31.5542C17.7469 32.3353 19.0132 32.3353 19.7943 31.5542L34.9143 16.4342Z" fill="white"/>
                                         </g>
                                         <defs>
-                                            <filter id="filter0_d_187_7075" x="0" y="0" width="46" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                            <filter id="filter0_d_187_7075" x="0" y="0" width="46" height="48" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                                             <feOffset dy="2"/>
                                             <feComposite in2="hardAlpha" operator="out"/>
@@ -352,8 +644,8 @@ const Home = () => {
                             </g>
                             <path d="M46.6665 45.1585C46.6665 41.2026 51.0427 38.8134 54.3703 40.9526L77.4573 55.7942C80.519 57.7624 80.519 62.2378 77.4573 64.206L54.3703 79.0477C51.0427 81.1868 46.6665 78.7976 46.6665 74.8418V45.1585Z" fill="white"/>
                             <defs>
-                                <filter id="filter0_d_187_6898" x="0" y="0" width="120" height="124" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <filter id="filter0_d_187_6898" x="0" y="0" width="120" height="124" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                                 <feOffset dy="4"/>
                                 <feComposite in2="hardAlpha" operator="out"/>
@@ -444,8 +736,8 @@ const Home = () => {
                             </g>
                             <path d="M46.6665 45.1585C46.6665 41.2026 51.0427 38.8134 54.3703 40.9526L77.4573 55.7942C80.519 57.7624 80.519 62.2378 77.4573 64.206L54.3703 79.0477C51.0427 81.1868 46.6665 78.7976 46.6665 74.8418V45.1585Z" fill="white"/>
                             <defs>
-                                <filter id="filter0_d_187_6898" x="0" y="0" width="120" height="124" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <filter id="filter0_d_187_6898" x="0" y="0" width="120" height="124" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                                 <feOffset dy="4"/>
                                 <feComposite in2="hardAlpha" operator="out"/>

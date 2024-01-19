@@ -316,7 +316,7 @@ export default function Header() {
             </svg>
         </div>
         <div className='flex flex-col items-center relative w-full'>
-            <div className='flex w-full justify-between items-start max-w-7xl py-5 md:py-10 px-14 z-20'>
+            <div className='flex w-full justify-between items-start max-w-8xl py-5 md:py-10 px-6 z-20'>
                 <h1 className='text-4xl font-black pt-4'>Coflow</h1>
                 <div className='hidden md:flex items-center gap-7'>
                     <button type='button' className='flex items-center justify-center text-2xl font-semibold gap-4 transition-all hover:scale-105 bg-transparent border-0 hover:shadow-lg rounded-full px-7 py-4'>
@@ -339,7 +339,7 @@ export default function Header() {
                     </button>
                 </div>
             </div>
-            <div className='relative z-30 sm:-bottom-5 max-h-720 w-full max-w-cover px-4 3xl:px-0'>
+            <div className='relative z-30 sm:-bottom-5 max-h-720 w-full max-w-8xl px-4 3xl:px-0'>
                 <img src={headerCover} alt='cover' />
                 <button 
                     type='button' 
@@ -356,7 +356,7 @@ export default function Header() {
                 </button>
                 <button 
                     type='button' 
-                    className='hidden md:flex absolute right-16 bottom-32 items-center justify-start py-3 text-white bg-white bg-opacity-20 pl-3 pr-5 text-2xl font-semibold rounded-xl gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50'
+                    className='hidden md:flex absolute right-16 bottom-14 items-center justify-start py-3 text-white bg-white bg-opacity-20 pl-3 pr-5 text-2xl font-semibold rounded-xl gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50'
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
                     onClick={()=>document.getElementById('mainVideo').showModal()}
