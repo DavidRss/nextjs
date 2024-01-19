@@ -136,7 +136,7 @@ const Home = () => {
                                     />
                                 </SwiperSlide>
                             </Swiper>
-                            <div className='block lg:hidden absolute rounded-lg -bottom-5 uppercase px-5 py-4 font-semibold text-white' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
+                            <div className='block lg:hidden absolute rounded-lg -bottom-5 uppercase px-5 py-4 font-semibold text-white z-50' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
                                 platinum pack
                             </div>
                     </div>
@@ -318,7 +318,7 @@ const Home = () => {
                                     />
                                 </SwiperSlide>
                             </Swiper>
-                            <div className='block lg:hidden absolute rounded-lg -bottom-5 uppercase px-5 py-4 font-semibold text-white' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
+                            <div className='block lg:hidden absolute rounded-lg -bottom-5 uppercase px-5 py-4 font-semibold text-white z-50' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
                                 platinum pack
                             </div>
                     </div>
