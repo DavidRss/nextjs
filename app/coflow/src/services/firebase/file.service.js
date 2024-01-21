@@ -1,5 +1,5 @@
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { FBStorage } from "../FirebaseService";
+import { FBStorage } from "../firebase.service";
 
 export default class FileService {
   constructor(storage) {

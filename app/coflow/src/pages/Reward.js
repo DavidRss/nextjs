@@ -14,12 +14,12 @@ import arrow from "../assets/iconamoon_arrow-left-2.svg";
 import { Link } from "react-router-dom";
 import Aside from "../components/aside/Aside";
 
-import { useUser } from "../services/app.context";
+import { useApp } from "../services/app.context";
 import { levels } from "../stores/levelsData";
 
 function Reward() {
-  const { userData } = useUser();
-  const { ballance, spending } = userData;
+  const { currentUser } = useApp();
+  const { ballance, spending } = currentUser;
 
   const calculateProgress = () => {
     let currentLevel = null;

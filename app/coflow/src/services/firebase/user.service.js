@@ -8,7 +8,7 @@ import {
     updateDoc,
     where,
   } from "firebase/firestore";
-  import { FBCollections } from "../FirebaseService";
+  import { FBCollections } from "../firebase.service";
   import { EARN, Notification } from "../../constants/constants";
   
   export default class UserService {

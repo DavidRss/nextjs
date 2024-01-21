@@ -8,11 +8,12 @@ import copyWhite from "../../assets/Copy-white.svg";
 import ticket from "../../assets/Ticket Sale.svg";
 import refGift from "../../assets/Gift-points.svg";
 
-import { useUser } from "../../services/app.context";
+import { useApp } from "../../services/app.context";
 
 function Referals() {
-  const { userData } = useUser();
-  const { name } = userData;
+  const { currentUser } = useApp();
+  
+  const name = "";
 
   const inputRef = useRef(null);
   const [copied, setCopied] = useState(false);

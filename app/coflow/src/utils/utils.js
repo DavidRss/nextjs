@@ -1,5 +1,5 @@
 import { EARN, Order } from "../constants/constants";
-import { shopifyService } from "../services/ShopifyService";
+import { shopifyService } from "../services/shopify.service";
 
 export const getFormatTimeRemaining = (seconds) => {
   const ss = Math.floor(seconds % 60);

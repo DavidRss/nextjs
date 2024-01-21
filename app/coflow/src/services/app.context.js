@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { projectService, userService } from "./FirebaseService";
+import { projectService, userService } from "./firebase.service";
 import { PROJECT_ID, STORAE_KEY } from "../constants/constants";
-import { shopifyService } from "./ShopifyService";
+import { shopifyService } from "./shopify.service";
 import {
   getCurrentTimestamp,
   getDailyPoints,

@@ -11,7 +11,7 @@ import {
     startAfter,
     updateDoc,
   } from "firebase/firestore";
-  import { FBCollections } from "../FirebaseService";
+  import { FBCollections } from "../firebase.service";
   import { DEFAULT_USER_COUNTRY } from "../../constants/constants";
   import { ref, set } from "firebase/database";
   
