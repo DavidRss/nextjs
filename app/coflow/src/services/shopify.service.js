@@ -1,5 +1,10 @@
 import Client from "shopify-buy";
 import { shopifyConfig } from "../constants/config";
+import {
+  getCheckoutCustomAttributes,
+  removeLineItemsFromCheckout,
+} from "../utils/utils";
+import { Order } from "../constants/constants";
 
 const client = Client.buildClient({
   storefrontAccessToken: shopifyConfig.publicToken,
@@ -118,6 +123,37 @@ class ShopifyService {
           reject(err);
         });
     });
+  }
+
+  async processPurchase(checkout, variant, user) {
+    try {
+      let checkoutInfo = null;
+      if (checkout) {
+        checkoutInfo = await removeLineItemsFromCheckout(checkout);
+      } else {
+        checkoutInfo = await this.createCheckout();
+      }
+
+      checkoutInfo = await this.updateEmail(checkoutInfo.id, user.email);
+
+      const inputValue = getCheckoutCustomAttributes(user, Order.Types.PRODUCT);
+
+      checkoutInfo = await this.updateCheckoutAttributes(
+        checkoutInfo.id,
+        inputValue
+      );
+
+      const lineItems = {
+        variantId: variant,
+        quantity: 1,
+      };
+      checkoutInfo = await this.addLineItems(checkoutInfo.id, lineItems);
+
+      return checkoutInfo;
+    } catch (err) {
+      console.log("===== processPurchase error: ", err);
+      throw err;
+    }
   }
 }
 

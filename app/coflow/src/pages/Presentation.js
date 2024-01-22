@@ -1,21 +1,252 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Page from "../layouts/Page/Page";
 import Container from "../layouts/Container/Container";
 import YouTubeVideo from "../components/youtube/Youtube";
 import CardS from "../components/cardsMini/CardS";
 import CardM from "../components/cardsMedium/cardsM";
+import ProductDialog from "../components/productDialog/productDialog";
+
 import img1 from "../assets/image1.png";
 import tree from "../assets/tree.png";
 
 import CardsSlider from "../components/cardsSlider/CardsSlider";
-import { cardsData } from "../stores/cardsData";
+import { useNavigate } from "react-router-dom";
+import { useApp } from "../services/app.context";
+import {
+  getCheckoutCustomAttributes,
+  getFormatTimeRemaining,
+  nFormatter,
+  removeLineItemsFromCheckout,
+} from "../utils/utils";
+import { shopifyService } from "../services/shopify.service";
+import { Notify, Order, Path } from "../constants/constants";
+import { scrollToElement } from "../utils/action.utils";
 
 const Presentation = () => {
-  const [data, setData] = useState();
+  const navigate = useNavigate();
+
+  const {
+    currentUser,
+    setLoading,
+    loadedProject,
+    project,
+    numberOfParticipant,
+    showNotifyMessage,
+    products,
+    donationProduct,
+    checkout,
+    saveCheckout,
+  } = useApp();
+
+  const donationForm = useRef(null);
+  const timer = useRef(null);
+
+  const [productList, setProductList] = useState([]);
+  const [selProduct, setSelProduct] = useState();
+  const [selVariant, setSelVariant] = useState(null);
+  const [counter, setCounter] = useState(0);
+  const [price, changePrice] = useState(0);
+  const [errorPrice, setErrorPrice] = useState(false);
+
+  const [showDialog, setShowDialog] = useState(false);
 
   useEffect(() => {
-    cardsData ? setData(cardsData) : setData([]);
-  }, []);
+    if (products.length > 0) {
+      console.log("===== products: ", products);
+      setProductList(products);
+    }
+  }, [products]);
+
+  useEffect(() => {
+    if (loadedProject && project) {
+      const endSeconds = project.endOfDate.seconds;
+      const curSeconds = parseInt(new Date().getTime() / 1000);
+      if (endSeconds && endSeconds - curSeconds > 0) {
+        setCounter(endSeconds - curSeconds);
+      }
+    }
+  }, [loadedProject, project]);
+
+  useEffect(() => {
+    if (counter > 0) {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+      timer.current = setTimeout(() => setCounter(counter - 1), 1000);
+    }
+
+    return () => {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+    };
+  }, [counter]);
+
+  const processPurchase = async () => {
+    try {
+      setLoading(true);
+
+      let checkoutInfo = await shopifyService.processPurchase(
+        checkout,
+        selVariant,
+        currentUser
+      );
+
+      saveCheckout(checkoutInfo);
+      console.log("===== checkoutInfo: ", checkoutInfo);
+
+      window.open(checkoutInfo.webUrl);
+
+      setShowDialog(false);
+    } catch (err) {
+      console.log("===== handleClickProduct error: ", err);
+    }
+
+    setLoading(false);
+  };
+
+  const onChangedVariant = (e) => {
+    setSelVariant(e.target.value);
+  };
+
+  const handleClickProduct = async (product) => {
+    if (!currentUser) {
+      navigate(`/${Path.SIGNIN}`, { replace: true });
+      return;
+    }
+
+    const variants = product.variants;
+    if (variants.length > 0) {
+      setSelProduct(product);
+      setSelVariant(variants[0].id);
+      setShowDialog(true);
+    } else {
+      showNotifyMessage({
+        type: Notify.Type.ERROR,
+        message: "This product is not available in a store.",
+      });
+    }
+  };
+
+  const handleChangePrice = (e) => {
+    changePrice(e.target.value);
+    if (e.target.value !== "") {
+      setErrorPrice(false);
+    }
+  };
+
+  const handleParticipate = async () => {
+    console.log("===== donationProduct: ", donationProduct);
+    if (!currentUser) {
+      navigate(`/${Path.SIGNIN}`, { replace: true });
+      return;
+    }
+
+    if (!price) {
+      setErrorPrice(true);
+      return;
+    }
+
+    if (!donationProduct) {
+      showNotifyMessage({
+        type: Notify.Type.INFO,
+        message: "You can't donate at this time. Please try later.",
+      });
+      return;
+    }
+
+    console.log("===== donationProduct: ", donationProduct);
+    const variants = donationProduct.variants;
+    let minPrice = parseFloat(variants[0].price.amount);
+    let maxPrice = parseFloat(variants[variants.length - 1].price.amount);
+    console.log(minPrice, maxPrice);
+    for (const variant of variants) {
+      const vPrice = parseFloat(variant.price.amount);
+      if (minPrice > vPrice) {
+        minPrice = vPrice;
+      }
+
+      if (maxPrice < vPrice) {
+        maxPrice = vPrice;
+      }
+    }
+    console.log(minPrice, maxPrice);
+
+    if (price < minPrice || price > maxPrice) {
+      showNotifyMessage({
+        type: Notify.Type.INFO,
+        message: `You can donate the price between ${minPrice} and ${maxPrice} EUR`,
+      });
+      return;
+    }
+
+    const cPrice = Math.ceil(price);
+    console.log("===== variants: ", variants);
+    console.log("===== cPrice: ", cPrice);
+    let selVariant = null;
+    for (const item of variants) {
+      if (parseInt(item.price.amount) === cPrice) {
+        selVariant = item;
+        break;
+      }
+    }
+    console.log("===== selVariant: ", selVariant);
+    if (!selVariant) {
+      showNotifyMessage({
+        type: Notify.Type.INFO,
+        message: "You can't donate at this time. Please try later.",
+      });
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      let checkoutInfo = null;
+      if (checkout) {
+        checkoutInfo = await removeLineItemsFromCheckout(checkout);
+      } else {
+        checkoutInfo = await shopifyService.createCheckout();
+      }
+
+      checkoutInfo = await shopifyService.updateEmail(
+        checkoutInfo.id,
+        currentUser.email
+      );
+
+      const inputValue = getCheckoutCustomAttributes(
+        currentUser,
+        Order.Types.DONATION
+      );
+
+      checkoutInfo = await shopifyService.updateCheckoutAttributes(
+        checkoutInfo.id,
+        inputValue
+      );
+
+      const lineItems = {
+        variantId: selVariant.id,
+        quantity: 1,
+      };
+      checkoutInfo = await shopifyService.addLineItems(
+        checkoutInfo.id,
+        lineItems
+      );
+
+      saveCheckout(checkoutInfo);
+      console.log("===== checkoutInfo: ", checkoutInfo);
+
+      window.open(checkoutInfo.webUrl);
+    } catch (err) {
+      console.log("===== donation processs error: ", err);
+    }
+
+    setLoading(false);
+  };
+
+  const handleOnParticipate = () => {
+    scrollToElement(donationForm.current);
+  };
 
   return (
     <Page>
@@ -29,72 +260,78 @@ const Presentation = () => {
               </h1>
               <div className="hidden sm:flex gap-4 flex-wrap justify-center xl:justify-between">
                 <CardS>
-                  <h3 className="text-base font-semibold text-gray-500">
-                    Total Likes{" "}
+                  <h3 className="text-base font-semibold text-white-50">
+                    Montant total{" "}
                   </h3>
-                  <span className="text-3xl font-extrabold text-gray-900">
-                    25.6K{" "}
+                  <span className="text-3xl font-extrabold text-white">
+                    {nFormatter(project?.amount, 2)}{" "}
                   </span>
-                  <span className="text-xs font-normal text-gray-400">
+                  {/* <span className="text-xs font-normal text-gray-400">
                     21% more than last month
-                  </span>
+                  </span> */}
                 </CardS>
                 <CardS>
-                  <h3 className="text-base font-semibold text-gray-500">
-                    Page Views{" "}
+                  <h3 className="text-base font-semibold text-white-50">
+                    Participants{" "}
                   </h3>
-                  <span className="text-3xl font-extrabold text-gray-900">
-                    2.6M{" "}
+                  <span className="text-3xl font-extrabold text-white">
+                    {nFormatter(numberOfParticipant, 2)}{" "}
                   </span>
-                  <span className="text-xs font-normal text-gray-400">
+                  {/* <span className="text-xs font-normal text-gray-400">
                     36% more than last month
-                  </span>
+                  </span> */}
                 </CardS>
                 <CardS>
-                  <h3 className="text-base font-semibold text-gray-500">
-                    Tasks done{" "}
+                  <h3 className="text-base font-semibold text-white-50">
+                    End date{" "}
                   </h3>
-                  <span className="text-3xl font-extrabold text-gray-900">
-                    86%{" "}
+                  <span className="text-3xl font-extrabold text-white">
+                    {counter > 0 ? getFormatTimeRemaining(counter) : "---"}{" "}
                   </span>
-                  <span className="text-xs font-normal text-gray-400">
+                  {/* <span className="text-xs font-normal text-gray-400">
                     opacity: 0.6;
-                  </span>
+                  </span> */}
                 </CardS>
               </div>
               <div className="flex w-full justify-center sm:hidden">
                 <div className="stats bg-white text-gray-900">
                   <div className="stat place-items-start w-28 px-1.5">
-                    <div className="stat-title text-xs">Total Likes </div>
+                    <div className="stat-title text-xs">Montant total </div>
                     <div className="flex items-end">
                       <div className="stat-value text-xl text-center">
-                        25.6K{" "}
+                        {nFormatter(project?.amount, 2)}{" "}
                       </div>
-                      <div className="stat-desc text-success mb-0.5">
+                      {/* <div className="stat-desc text-success mb-0.5">
                         ↗︎ 21%
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="stat place-items-start w-28 px-1.5">
-                    <div className="stat-title text-center text-xs">Users</div>
-                    <div className="flex items-end">
-                      <div className="stat-value text-xl text-center">2.6M</div>
-                      <div className="stat-desc text-success mb-0.5">
-                        ↗︎ 36%
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 
                   <div className="stat place-items-start w-28 px-1.5">
                     <div className="stat-title text-center text-xs">
-                      Tasks done
+                      Participants{" "}
                     </div>
                     <div className="flex items-end">
-                      <div className="stat-value text-xl text-center">86%</div>
-                      <div className="stat-desc text-success mb-0.5">
-                        ↘︎ 24%
+                      <div className="stat-value text-xl text-center">
+                        {nFormatter(numberOfParticipant, 2)}{" "}
                       </div>
+                      {/* <div className="stat-desc text-success mb-0.5">
+                        ↗︎ 36%
+                      </div> */}
+                    </div>
+                  </div>
+
+                  <div className="stat place-items-start w-28 px-1.5">
+                    <div className="stat-title text-center text-xs">
+                      End date{" "}
+                    </div>
+                    <div className="flex items-end">
+                      <div className="stat-value text-xl text-center">
+                        {counter > 0 ? getFormatTimeRemaining(counter) : "---"}{" "}
+                      </div>
+                      {/* <div className="stat-desc text-success mb-0.5">
+                        ↘︎ 24%
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -111,10 +348,15 @@ const Presentation = () => {
                   ></progress>
                 </div>
                 <span className="text-gray-900 text-xl font-semibold">
-                  Niveau 0
+                  Niveau 18
                 </span>
               </div>
-              <button className="btn btn-primary text-white">Participer</button>
+              <button
+                className="btn btn-primary text-white"
+                onClick={handleOnParticipate}
+              >
+                Participer
+              </button>
             </div>
           </div>
         </Container>
@@ -226,17 +468,19 @@ const Presentation = () => {
                 <CardsSlider />
               </div>
               <div className="hidden xl:flex flex-col gap-9 w-full">
-                {data &&
-                  data.slice(0, 3).map((item, index) => (
+                {productList &&
+                  productList.slice(0, 3).map((item, index) => (
                     <CardM key={index}>
                       <figure>
-                        <img src={item.img} alt="Shoes" />
+                        {item.images.length > 0 && (
+                          <img src={item.images[0].src} alt="Shoes" />
+                        )}
                       </figure>
                       <div className="py-4 px-5 xl:card-body">
                         <h2 className="card-title font-semibold text-xl text-gray-900">
                           {item.title}
                         </h2>
-                        <ul className="text-left mb-8 text-sm xl:text-base text-slate-800 font-normal">
+                        {/* <ul className="text-left mb-8 text-sm xl:text-base text-slate-800 font-normal">
                           {item.desc.map((descItem, descIndex) => (
                             <li
                               className="desc-item opacity-50 text-gray-900"
@@ -245,25 +489,49 @@ const Presentation = () => {
                               {descItem}
                             </li>
                           ))}
-                        </ul>
+                        </ul> */}
+                        <div
+                          className="mt-3"
+                          dangerouslySetInnerHTML={{
+                            __html: item.descriptionHtml,
+                          }}
+                        />
                         <div className="flex w-full justify-between items-center">
                           <div className="flex flex-col items-start">
                             <span className="text-primary text-3xl font-extrabold">
-                              {item.price} €
+                              {parseInt(item?.variants[0].price.amount)} €
                             </span>
                             <span className="text-gray-400 text-sm font-normal">
                               {item.contributions} contributions
                             </span>
                           </div>
-                          <button className="btn btn-primary text-white">
+                          <button
+                            className="btn btn-primary text-white"
+                            onClick={() => {
+                              handleClickProduct(item);
+                            }}
+                          >
                             Participer
                           </button>
                         </div>
                       </div>
                     </CardM>
                   ))}
+                <ProductDialog
+                  open={showDialog}
+                  product={selProduct}
+                  variant={selVariant}
+                  onChangedVariant={onChangedVariant}
+                  processPurchase={processPurchase}
+                  hideDialog={() => {
+                    setShowDialog(false);
+                  }}
+                />
               </div>
-              <div className="flex flex-col p-6 font-semibold shadow-lg rounded-lg">
+              <div
+                ref={donationForm}
+                className="flex flex-col p-6 font-semibold shadow-lg rounded-lg"
+              >
                 <h1 className="text-xl text-gray-900 mb-5">
                   Donne le montant que tu veux Montant à donner
                 </h1>
@@ -273,8 +541,12 @@ const Presentation = () => {
                   id="price"
                   className="block w-full rounded-md bg-inputBg border-0 py-4 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 mb-3"
                   placeholder="Ex : 30"
+                  onChange={handleChangePrice}
                 />
-                <button className="btn btn-primary text-white">
+                <button
+                  className="btn btn-primary text-white"
+                  onClick={handleParticipate}
+                >
                   Participer
                 </button>
               </div>

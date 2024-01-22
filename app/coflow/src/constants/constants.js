@@ -16,36 +16,41 @@ export const EARN = {
   REFER: 400,
 };
 
-export const Levels = {
+export const LevelData = {
   L1: {
     level: 1,
     title: "Basic",
     spend: 0,
     points: 0,
+    description: "",
   },
   L2: {
     level: 2,
     title: "Bronze",
     spend: 1500,
     points: 400,
+    description: "Earn 2 Points for every 1 USD spent.",
   },
   L3: {
     level: 3,
     title: "Silver",
     spend: 3500,
     points: 700,
+    description: "Earn 2 Points for every 1 USD spent.",
   },
   L4: {
     level: 4,
     title: "Gold",
     spend: 7500,
     points: 400,
+    description: "Earn 2 Points for every 1 USD spent.",
   },
   L5: {
     level: 5,
     title: "Platinum",
     spend: 10000,
     points: 1000,
+    description: "Earn 2 Points for every 1 USD spent.",
   },
 };
 
@@ -96,7 +101,7 @@ export const Notify = {
     ERROR: "error",
   },
   Option: {
-    position: "",
+    position: "top-right",
     hideProgressBar: true,
   },
 };
@@ -128,3 +133,6 @@ export const Notification = {
 };
 
 export const IMAGE_TYPE = ["png", "jpg", "jpeg"];
+
+export const ProductColors = ["#0041DF", "#FF0000", "#21344B", "#FFA825"];
+export const ProductVariants = ["XS", "S", "M", "L", "XL", "XXL"];

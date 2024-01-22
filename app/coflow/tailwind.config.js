@@ -58,6 +58,7 @@ module.exports = {
         "btnBg": 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
         'secBg': '#222',
         'thrBg': '#333',
+        'dialog': '#2E2E2E',
       },
       borderColor: {
         'goldCard': '#FFDB65',
