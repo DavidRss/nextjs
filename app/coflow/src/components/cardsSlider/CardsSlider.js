@@ -39,14 +39,14 @@ function CardsSlider() {
                                         <li className='desc-item opacity-50 text-white' key={descIndex}>{descItem}</li>
                                     ))}
                                 </ul>                                
-                                <div className='flex w-full justify-between items-center'>
-                                    <div className='flex flex-col items-start'>
+                                <div className='flex w-full justify-between items-center flex-col sm:flex-row gap-2 sm:gap-0'>
+                                    <div className='flex flex-col items-center sm:items-start'>
                                         <span className='text-main text-3xl font-extrabold'>{item.price} €</span>
                                         <span className='text-gray-400 text-sm font-normal'>{item.contributions} contributions</span>
                                     </div>
                                     <button 
                                         type='buttom' 
-                                        className='text-white py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
+                                        className='text-white w-full sm:w-fit py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
                                         style={{
                                             background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                             boxShadow: ' 0px 4px 0px 0px #196700',

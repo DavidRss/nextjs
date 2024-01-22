@@ -29,20 +29,65 @@ const Home = () => {
         itemsData ? setData(itemsData) : setData([]);
     },[]);
 
+    const getRadioColor = (index) => {
+        const colors = ['#0041DF', '#FF0000', '#21344B', '#FFA825'];
+        return colors[index] || '#0041DF';
+    };
+
     const [swiper1, setSwiper1] = useState(null);
+    const [activeRadioIndex1, setActiveRadioIndex1] = useState(0);
     const [swiper2, setSwiper2] = useState(null);
+    const [activeRadioIndex2, setActiveRadioIndex2] = useState(0);
 
     const handleRadioChange1 = (index) => {
       if (swiper1) {
         swiper1.slideTo(index);
+        setActiveRadioIndex1(index);
       }
     };
-  
+
+    useEffect(() => {
+        const handleSlideChange = () => {
+          if (swiper1) {
+            setActiveRadioIndex1(swiper1.activeIndex);
+          }
+        };
+    
+        if (swiper1) {
+          swiper1.on('slideChange', handleSlideChange);
+        }
+    
+        return () => {
+          if (swiper1) {
+            swiper1.off('slideChange', handleSlideChange);
+          }
+        };
+    }, [swiper1]);
+
     const handleRadioChange2 = (index) => {
-      if (swiper2) {
-        swiper2.slideTo(index);
-      }
+        if (swiper2) {
+          swiper2.slideTo(index);
+          setActiveRadioIndex2(index);
+        }
     };  
+
+    useEffect(() => {
+        const handleSlideChange2 = () => {
+          if (swiper2) {
+            setActiveRadioIndex2(swiper2.activeIndex);
+          }
+        };
+    
+        if (swiper2) {
+          swiper2.on('slideChange', handleSlideChange2);
+        }
+    
+        return () => {
+          if (swiper2) {
+            swiper2.off('slideChange', handleSlideChange2);
+          }
+        };
+    }, [swiper2]);
 
     return (
         <Main>
@@ -77,14 +122,13 @@ const Home = () => {
                                         alt='card'
                                         style={{
                                             width: '480px', 
-                                            height: '590px', 
                                             display: 'block',
                                             objectPosition: 'bottom',
                                             objectFit: 'cover',
                                             border: '9px solid rgba(255, 255, 255, 0.20)',
                                             borderRadous: '30px'
                                         }}
-                                        className='rounded-3xl'
+                                        className='rounded-3xl h-460 md:h-590'
                                     />
                                 </SwiperSlide>
                                 <SwiperSlide>
@@ -93,14 +137,13 @@ const Home = () => {
                                         alt='card'
                                         style={{
                                             width: '480px', 
-                                            height: '590px', 
                                             display: 'block',
                                             objectPosition: 'bottom',
                                             objectFit: 'cover',
                                             border: '9px solid rgba(255, 255, 255, 0.20)',
                                             borderRadous: '30px'
                                         }}
-                                        className='rounded-3xl'
+                                        className='rounded-3xl h-460 md:h-590'
                                     />
                                 </SwiperSlide>
                                 <SwiperSlide>
@@ -109,14 +152,13 @@ const Home = () => {
                                         alt='card'
                                         style={{
                                             width: '480px', 
-                                            height: '590px', 
                                             display: 'block',
                                             objectPosition: 'bottom',
                                             objectFit: 'cover',
                                             border: '9px solid rgba(255, 255, 255, 0.20)',
                                             borderRadous: '30px'
                                         }}
-                                        className='rounded-3xl'
+                                        className='rounded-3xl h-460 md:h-590'
                                     />
                                 </SwiperSlide>
                                 <SwiperSlide>
@@ -125,14 +167,13 @@ const Home = () => {
                                         alt='card'
                                         style={{
                                             width: '480px', 
-                                            height: '590px', 
                                             display: 'block',
                                             objectPosition: 'bottom',
                                             objectFit: 'cover',
                                             border: '9px solid rgba(255, 255, 255, 0.20)',
                                             borderRadous: '30px'
                                         }}
-                                        className='rounded-3xl'
+                                        className='rounded-3xl h-460 md:h-590'
                                     />
                                 </SwiperSlide>
                             </Swiper>
@@ -160,35 +201,17 @@ const Home = () => {
                             <div className='flex flex-col gap-5'>
                                 <span className='uppercase text-lg font-semibold'>Colors:</span>
                                 <div className='flex items-center gap-3'>
-                                    <input
-                                        type="radio"
-                                        name="radio-2"
-                                        style={{ background: '#0041DF' }}
-                                        className="radio checked:bg-white"
-                                        defaultChecked
-                                        onChange={() => handleRadioChange1(0)}
-                                        />
+                                    {[0, 1, 2, 3].map((index) => (
                                         <input
-                                        type="radio"
-                                        name="radio-2"
-                                        style={{ background: '#FF0000' }}
-                                        className="radio checked:bg-white"
-                                        onChange={() => handleRadioChange1(1)}
+                                            key={index}
+                                            type="radio"
+                                            name="radio-2"
+                                            style={{ background: getRadioColor(index) }}
+                                            className="radio checked:bg-white"
+                                            onChange={() => handleRadioChange1(index)}
+                                            checked={activeRadioIndex1 === index}
                                         />
-                                        <input
-                                        type="radio"
-                                        name="radio-2"
-                                        style={{ background: '#21344B' }}
-                                        className="radio checked:bg-white"
-                                        onChange={() => handleRadioChange1(2)}
-                                        />
-                                        <input
-                                        type="radio"
-                                        name="radio-2"
-                                        style={{ background: '#FFA825' }}
-                                        className="radio checked:bg-white"
-                                        onChange={() => handleRadioChange1(3)}
-                                    />
+                                    ))}
                                 </div>
                             </div>
                             <div className='flex flex-col gap-5'>
@@ -213,14 +236,14 @@ const Home = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className='flex items-center gap-8 pt-8 border-t' style={{borderColor: '#D9D9D9'}}>
+                        <div className='flex flex-col sm:flex-row items-center gap-8 pt-8 border-t' style={{borderColor: '#D9D9D9'}}>
                             <div className='flex flex-col gap-3'>
-                                <span className='text-4xl font-semibold text-white'>35€</span>
+                                <span className='text-4xl text-center sm:text-left font-semibold text-white'>35€</span>
                                 <span className='font-semibold text-lg' style={{color: '#6D6D6D'}}>6 contributors</span>
                             </div>
                             <button 
                                 type='buttom' 
-                                className='text-white py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
+                                className='text-white w-full sm:w-fit py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
                                 style={{
                                     background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                     boxShadow: ' 0px 4px 0px 0px #196700',
@@ -259,14 +282,13 @@ const Home = () => {
                                         alt='card'
                                         style={{
                                             width: '480px', 
-                                            height: '590px', 
                                             display: 'block',
                                             objectPosition: 'bottom',
                                             objectFit: 'cover',
                                             border: '9px solid rgba(255, 255, 255, 0.20)',
                                             borderRadous: '30px'
                                         }}
-                                        className='rounded-3xl'
+                                        className='rounded-3xl h-460 md:h-590'
                                     />
                                 </SwiperSlide>
                                 <SwiperSlide>
@@ -275,14 +297,13 @@ const Home = () => {
                                         alt='card'
                                         style={{
                                             width: '480px', 
-                                            height: '590px', 
                                             display: 'block',
                                             objectPosition: 'bottom',
                                             objectFit: 'cover',
                                             border: '9px solid rgba(255, 255, 255, 0.20)',
                                             borderRadous: '30px'
                                         }}
-                                        className='rounded-3xl'
+                                        className='rounded-3xl h-460 md:h-590'
                                     />
                                 </SwiperSlide>
                                 <SwiperSlide>
@@ -291,14 +312,13 @@ const Home = () => {
                                         alt='card'
                                         style={{
                                             width: '480px', 
-                                            height: '590px', 
                                             display: 'block',
                                             objectPosition: 'bottom',
                                             objectFit: 'cover',
                                             border: '9px solid rgba(255, 255, 255, 0.20)',
                                             borderRadous: '30px'
                                         }}
-                                        className='rounded-3xl'
+                                        className='rounded-3xl h-460 md:h-590'
                                     />
                                 </SwiperSlide>
                                 <SwiperSlide>
@@ -307,14 +327,13 @@ const Home = () => {
                                         alt='card'
                                         style={{
                                             width: '480px', 
-                                            height: '590px', 
                                             display: 'block',
                                             objectPosition: 'bottom',
                                             objectFit: 'cover',
                                             border: '9px solid rgba(255, 255, 255, 0.20)',
                                             borderRadous: '30px'
                                         }}
-                                        className='rounded-3xl'
+                                        className='rounded-3xl h-460 md:h-590'
                                     />
                                 </SwiperSlide>
                             </Swiper>
@@ -342,7 +361,7 @@ const Home = () => {
                             <div className='flex flex-col gap-5'>
                                 <span className='uppercase text-lg font-semibold'>Colors:</span>
                                 <div className='flex items-center gap-3'>
-                                    <input
+                                    {/* <input
                                         type="radio"
                                         name="radio-1"
                                         style={{ background: '#0041DF' }}
@@ -370,7 +389,19 @@ const Home = () => {
                                         style={{ background: '#FFA825' }}
                                         className="radio checked:bg-white"
                                         onChange={() => handleRadioChange2(3)}
-                                    />
+                                    /> */}
+
+                                    {[0, 1, 2, 3].map((index) => (
+                                        <input
+                                            key={index}
+                                            type="radio"
+                                            name="radio-1"
+                                            style={{ background: getRadioColor(index) }}
+                                            className="radio checked:bg-white"
+                                            onChange={() => handleRadioChange2(index)}
+                                            checked={activeRadioIndex2 === index}
+                                        />
+                                    ))}
                                 </div>
                             </div>
                             <div className='flex flex-col gap-5'>
@@ -395,14 +426,14 @@ const Home = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className='flex items-center gap-8 pt-8 border-t' style={{borderColor: '#D9D9D9'}}>
+                        <div className='flex flex-col sm:flex-row items-center gap-8 pt-8 border-t' style={{borderColor: '#D9D9D9'}}>
                             <div className='flex flex-col gap-3'>
-                                <span className='text-4xl font-semibold text-white'>35€</span>
+                                <span className='text-4xl text-center sm:text-left font-semibold text-white'>35€</span>
                                 <span className='font-semibold text-lg' style={{color: '#6D6D6D'}}>6 contributors</span>
                             </div>
                             <button 
                                 type='buttom' 
-                                className='text-white py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
+                                className='text-white w-full sm:w-fit py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
                                 style={{
                                     background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                     boxShadow: ' 0px 4px 0px 0px #196700',
@@ -415,7 +446,7 @@ const Home = () => {
                 </div>
             </section>
             <section className='flex w-full justify-center py-10 3xl:py-20 bg-thrBg' style={{borderTop: '10px solid #404040'}}>
-                <div className='max-w-7xl w-full flex flex-col gap-14 px-4 3xl:px-0'>
+                <div className='w-full flex flex-col gap-14 px-4 3xl:px-0 max-w-480 lg:max-w-7xl'>
                     <h2 className='text-4xl font-semibold px-4 xl:px-0'>Another Products:</h2>
                     <Swiper 
                         spaceBetween={40}
@@ -453,14 +484,14 @@ const Home = () => {
                                                 ))}
                                             </ul> 
                                         </div>                               
-                                        <div className='flex w-full justify-between items-center'>
-                                            <div className='flex flex-col items-start'>
+                                        <div className='flex w-full justify-between items-center flex-col sm:flex-row gap-2 sm:gap-0'>
+                                            <div className='flex flex-col items-center sm:items-start'>
                                                 <span className='text-main text-3xl font-extrabold'>{item.price} €</span>
                                                 <span className='text-gray-400 text-sm font-normal'>{item.contributions} contributions</span>
                                             </div>
                                             <button 
                                                 type='buttom' 
-                                                className='text-white py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
+                                                className='text-white w-full sm:w-fit py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
                                                 style={{
                                                     background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                                     boxShadow: ' 0px 4px 0px 0px #196700',
@@ -492,7 +523,7 @@ const Home = () => {
                     </div>
                     <button 
                         type='buttom' 
-                        className='text-white py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
+                        className='text-white w-full md:w-fit py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
                         style={{
                             background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                             boxShadow: ' 0px 4px 0px 0px #196700',
@@ -504,9 +535,9 @@ const Home = () => {
             </section>       
         <Footer>
             <section className='py-5 lg:py-14 flex justify-center bg-thrBg'>
-                <div className='max-w-7xl w-full flex flex-col-reverse items-center xl:flex-row gap-5 py-16 justify-between xl:items-start px-4 3xl:px-0'>
+                <div className='max-w-7xl w-full flex flex-col-reverse items-center lg:flex-row gap-5 py-16 justify-between xl:items-start px-4 3xl:px-0'>
                     <div className='flex flex-col gap-10'>
-                        <h2 className='text-4xl font-semibold hidden xl:block'>
+                        <h2 className='text-4xl font-semibold hidden lg:block'>
                             About This Project
                         </h2>
                         <div className='flex flex-col gap-3'>
@@ -522,7 +553,7 @@ const Home = () => {
                         </div>
                         <button 
                             type='buttom' 
-                            className='text-white w-fit py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
+                            className='text-white w-full md:w-fit py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105'
                             style={{
                                 background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                 boxShadow: ' 0px 4px 0px 0px #196700',
@@ -660,7 +691,7 @@ const Home = () => {
                             </defs>
                         </svg>
                     </div>
-                    <h2 className='text-4xl font-semibold text-center block xl:hidden'>
+                    <h2 className='text-4xl font-semibold text-center block lg:hidden'>
                         About This Project
                     </h2>
                     <dialog id="my_modal_1" className="modal">
@@ -681,11 +712,11 @@ const Home = () => {
                 </div>                
             </section>
             <section className='w-full justify-center flex'>
-                <div className='w-full justify-center flex relative flex-col-reverse 2xl:flex-row max-w-1920' style={{background: 'linear-gradient(180deg, rgba(51,51,51,1) 49%, rgba(255,255,255,0) 49%)'}}>
+                <div className='w-full justify-center flex relative flex-col-reverse xl:flex-row max-w-1920' style={{background: 'linear-gradient(180deg, rgba(51,51,51,1) 49%, rgba(255,255,255,0) 49%)'}}>
                     <div className='bg-thrBg flex h-full justify-center w-full 3xl:w-2/5'>
                         <div className='bg-secBg flex h-full w-full py-10 px-4 3xl:px-0 3xl:py-52' style={{borderRadius: '0 30px 0 0'}}>
-                            <div className='w-full xl:flex justify-center 2xl:justify-start flex-wrap items-center full:pl-44'>
-                                <div className='flex justify-center 3xl:justify-normal 3xl:flex-col gap-6 items-center flex-wrap'>
+                            <div className='w-full xl:flex justify-center lg:justify-start flex-wrap items-center full:pl-44'>
+                                <div className='flex justify-center 3xl:justify-normal xl:flex-col gap-6 items-center flex-wrap xl:max-w-36 2xl:max-w-none'>
                                     <img src={img1} alt='img1' style={{width: '146px'}} />
                                     <img src={img2} alt='img2' style={{width: '173px'}} />
                                     <img src={img3} alt='img3' style={{width: '178px'}} />
@@ -694,10 +725,10 @@ const Home = () => {
                             </div>
                         </div>
                     </div>                
-                    <div className='w-full 3xl:w-3/5 flex justify-center 3xl:justify-end full:pr-44 bg-thrBg' style={{borderRadius: '0px 0px 0px 30px'}}>
-                        <div className='flex flex-col justify-start pt-10 py-10 px-4 3xl:px-0 3xl:py-0 3xl:pt-20 max-w-xl gap-16 w-full text-white'>
+                    <div className='w-full 3xl:w-3/5 flex justify-center xl:justify-end full:pr-44 bg-thrBg' style={{borderRadius: '0px 0px 0px 30px'}}>
+                        <div className='flex flex-col justify-start items-center xl:items-start pt-10 py-10 px-4 3xl:px-0 3xl:py-0 3xl:pt-20 max-w-none xl:max-w-md 2xl:max-w-xl gap-16 w-full text-white'>
                             <h2 className='text-4xl font-semibold'>About This Project</h2>
-                            <div className='flex flex-col gap-7 text-xl' style={{lineHeight: '36px'}}>
+                            <div className='flex flex-col gap-7 text-xl xl:max-w-md 2xl:max-w-none' style={{lineHeight: '36px'}}>
                             <p>
                                 On voulait vous assurer le meilleur, alors on a choisi des fournisseurs qui promettent de la qualité.  
                             </p>
@@ -710,7 +741,7 @@ const Home = () => {
                             </div>
                             <button 
                                 type='buttom' 
-                                className='text-white py-3 px-8 rounded-md w-fit text-lg font-semibold transition-all hover:scale-105'
+                                className='text-white py-3 px-8 rounded-md w-full md:w-fit text-lg font-semibold transition-all hover:scale-105'
                                 style={{
                                     background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                     boxShadow: ' 0px 4px 0px 0px #196700',
@@ -721,9 +752,8 @@ const Home = () => {
                         </div>
                     </div>
                     <div 
-                        className='rounded-3xl flex items-center justify-center cursor-pointer 2xl:absolute top-20 px-4 3xl:px-0'
+                        className='rounded-3xl flex items-center justify-center cursor-pointer xl:left-20p xl:top-10 2xl:left-28p xl:absolute 2xl:top-20 px-4 3xl:px-0'
                         onClick={()=>document.getElementById('my_modal_1').showModal()}
-                        style={{left: '28%'}}
                     >
                         <img 
                             src={about2} 

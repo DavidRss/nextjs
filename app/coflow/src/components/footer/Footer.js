@@ -40,7 +40,7 @@ export default function Footer({children}) {
                         />
                         <button 
                             type='buttom' 
-                            className='text-white py-3 px-8 rounded-md text-lg font-semibold md:absolute top-1.5 right-1.5 transition-all hover:scale-105'
+                            className='text-white w-full md:w-fit py-3 px-8 rounded-md text-lg font-semibold md:absolute top-1.5 right-1.5 transition-all hover:scale-105'
                             style={{
                                 background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%)',
                                 boxShadow: ' 0px 4px 0px 0px #196700',
