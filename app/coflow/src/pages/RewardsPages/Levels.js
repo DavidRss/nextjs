@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Page from "../../layouts/Page/Page";
 import Container from "../../layouts/Container/Container";
 import Aside from "../../components/aside/Aside";
@@ -9,17 +9,6 @@ import { useApp } from "../../services/app.context";
 import { LevelData } from "../../constants/constants";
 
 function Levels() {
-  const [levels, setLevels] = useState([]);
-
-  useEffect(() => {
-    const levelArray = [];
-    if (LevelData) {
-      for (const item of Object.values(LevelData)) {
-        levelArray.push(item);
-      }
-      setLevels(levelArray);
-    }
-  }, []);
 
   const { currentUser } = useApp();
   const { spending } = currentUser;
@@ -40,7 +29,7 @@ function Levels() {
                   </div>
                   <div className="flex flex-col items-start justify-start w-full mt-11 gap-2">
                     <ul className="cup steps steps-vertical w-full overflow-hidden">
-                      {levels.map((lvl, index) => (
+                      {LevelData.map((lvl, index) => (
                         <li
                           key={index}
                           className={`cup step step-neutral w-full ml-5 sm:ml-10 ${
@@ -60,30 +49,28 @@ function Levels() {
                                 After spending {lvl.spend.toLocaleString()} USD
                               </span>
                             )}
-                            {lvl.spend !== 0 && (
-                              <div
-                                className="collapse collapse-arrow w-52 sm:w-full border-pagBg rounded-lg mt-4 mb-4 sm:mb-0"
-                                style={{
-                                  background: "rgba(255, 255, 255, 0.10)",
-                                }}
-                              >
-                                <input type="radio" name="my-accordion-2" />
-                                <div className="collapse-title">
-                                  <h1 className="font-semibold text-white text-sm sm:text-xl text-left">
-                                    Benefits
-                                  </h1>
-                                </div>
-                                <div className="collapse-content text-left px-4">
-                                  <span className="font-normal text-white text-xs sm:text-sm opacity-50">
-                                    {lvl.description}
-                                  </span>
-                                  <span className="flex items-center gap-1.5 mt-3 sm:mt-6 text-yellow-300 font-medium text-sm">
-                                    <img src={star} alt="star" />
-                                    {lvl.points} Points
-                                  </span>
-                                </div>
+                            <div
+                              className="collapse collapse-arrow w-52 sm:w-full border-pagBg rounded-lg mt-4 mb-4 sm:mb-0"
+                              style={{
+                                background: "rgba(255, 255, 255, 0.10)",
+                              }}
+                            >
+                              <input type="radio" name="my-accordion-2" />
+                              <div className="collapse-title">
+                                <h1 className="font-semibold text-white text-sm sm:text-xl text-left">
+                                  Benefits
+                                </h1>
                               </div>
-                            )}
+                              <div className="collapse-content text-left px-4">
+                                <span className="font-normal text-white text-xs sm:text-sm opacity-50">
+                                  {lvl.description}
+                                </span>
+                                <span className="flex items-center gap-1.5 mt-3 sm:mt-6 text-yellow-300 font-medium text-sm">
+                                  <img src={star} alt="star" />
+                                  {lvl.points} Points
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         </li>
                       ))}

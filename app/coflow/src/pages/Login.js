@@ -272,7 +272,6 @@ function Login() {
               </span>
             </h3>
           </div>
-          {/* <Link to="/about" className="w-full"> */}
           <button
             type="buttom"
             className="text-white py-3 px-8 rounded-md mt-6 lg:mt-8 mb-5 text-lg font-semibold w-full transition-all hover:-translate-y-1"

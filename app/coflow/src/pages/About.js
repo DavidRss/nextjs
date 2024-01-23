@@ -28,6 +28,7 @@ import { getFormatTimeRemaining, nFormatter } from "../utils/utils";
 import Dollar from "../components/Icons/Dollar";
 import User from "../components/Icons/User";
 import Timer from "../components/Icons/Timer";
+import { calculateProgress } from "../utils/level.util";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -57,13 +58,18 @@ const Home = () => {
 
   const [showDialog, setShowDialog] = useState(false);
 
+  const levelProgress = calculateProgress(currentUser?.spending ?? 0);
+  console.log("===== levelProgress: ", levelProgress);
+
   useEffect(() => {
     if (products.length > 0) {
-      console.log("===== products: ", products);
       setProductList(products);
-      setProduct1(products[0]);
-      if (products.length > 2) {
-        setProduct2(products[2]);
+      for (const product of products) {
+        if (product.title === "Le pack Fer") {
+          setProduct1(product);
+        } else if (product.title === "Le pack Or") {
+          setProduct2(product);
+        }
       }
     }
   }, [products]);
@@ -93,18 +99,17 @@ const Home = () => {
     };
   }, [counter]);
 
-  const processPurchase = async () => {
+  const processPurchase = async (variant) => {
     try {
       setLoading(true);
 
       let checkoutInfo = await shopifyService.processPurchase(
         checkout,
-        selVariant,
+        variant,
         currentUser
       );
 
       saveCheckout(checkoutInfo);
-      console.log("===== checkoutInfo: ", checkoutInfo);
 
       window.open(checkoutInfo.webUrl);
 
@@ -145,8 +150,12 @@ const Home = () => {
       <Navigate />
 
       <section className="flex w-full flex-col items-center justify-center">
-        <ProductSwiper product={product1} />
-        <ProductSwiper product={product2} isReversed />
+        <ProductSwiper product={product1} processPurchase={processPurchase} />
+        <ProductSwiper
+          product={product2}
+          isReversed
+          processPurchase={processPurchase}
+        />
       </section>
       <section
         className="flex w-full justify-center py-10 3xl:py-20 bg-thrBg"
@@ -210,7 +219,7 @@ const Home = () => {
                     <div className="flex w-full justify-between items-center">
                       <div className="flex flex-col items-start">
                         <span className="text-main text-3xl font-extrabold">
-                          {item.price} €
+                          {nFormatter(item?.variants[0].price.amount, 2)} €
                         </span>
                         <span className="text-gray-400 text-sm font-normal">
                           {item.contributions} contributions
@@ -263,12 +272,16 @@ const Home = () => {
           </span>
           <div className="flex flex-col items-center w-full px-16">
             <div className="w-full flex justify-between items-center">
-              <span className="font-bold text-2xl mb-5">Level 1</span>
-              <span className="font-bold text-2xl mb-5">18%</span>
+              <span className="font-bold text-2xl mb-5">
+                Level {levelProgress?.currentLevel?.level || 1}
+              </span>
+              <span className="font-bold text-2xl mb-5">
+                {levelProgress?.percent ?? 0}%
+              </span>
             </div>
             <progress
               className="progress progress-success h-4"
-              value="40"
+              value={levelProgress?.percent ?? 0}
               max="100"
             ></progress>
           </div>

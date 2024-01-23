@@ -1,3 +1,5 @@
+import { nFormatter } from "../../utils/utils";
+
 export default function ProductDialog({
   product,
   open,
@@ -6,6 +8,13 @@ export default function ProductDialog({
   onChangedVariant,
   processPurchase,
 }) {
+  const handleConfirm = () => {
+    const selVariant = product?.variants.find((item) => item.id === variant);
+    if (selVariant) {
+      processPurchase(selVariant);
+    }
+  };
+
   if (product === null) {
     return <></>;
   }
@@ -54,7 +63,7 @@ export default function ProductDialog({
                     <div className="flex w-full justify-between items-center">
                       <div className="flex flex-col items-start">
                         <span className="text-white text-3xl font-extrabold">
-                          {parseInt(product?.variants[0].price.amount)} €
+                          {nFormatter(product?.variants[0].price.amount, 2)} €
                         </span>
                       </div>
                     </div>
@@ -80,7 +89,7 @@ export default function ProductDialog({
                   </select>
                   <button
                     className="btn btn-primary mt-8"
-                    onClick={processPurchase}
+                    onClick={handleConfirm}
                   >
                     Confirm
                   </button>

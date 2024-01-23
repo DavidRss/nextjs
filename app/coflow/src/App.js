@@ -1,7 +1,6 @@
 import "./App.css";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Presentation from "./pages/Presentation";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Leaderboard from "./pages/Leaderboard";
@@ -25,7 +24,7 @@ function App() {
           index
           element={
             <AuthRoute>
-              <Presentation />
+              <About />
             </AuthRoute>
           }
         />
@@ -42,15 +41,6 @@ function App() {
           element={
             <AuthRoute>
               <SignUp />
-            </AuthRoute>
-          }
-        />
-        {/* <Route path="/presentation" element={<Presentation />} /> */}
-        <Route
-          path="/about"
-          element={
-            <AuthRoute>
-              <About />
             </AuthRoute>
           }
         />

@@ -47,6 +47,7 @@ export interface User {
     type: string; // reward, order
     createdAt: string; // timestamp string
   }]
+  isCookie: boolean;
 }
 
 export interface Project {

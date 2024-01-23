@@ -34,7 +34,7 @@ const Navigate = () => {
     }, []);    
 
     const links = [
-        { to: "/about", label: "Shop", icon: shop },
+        { to: "/", label: "Shop", icon: shop },
         { to: "/reward", label: "Rewards", icon: rewards },
         { to: "/leaderboard", label: "Leaderboard", icon: star },
         { to: "/chat", label: "Chat", icon: chat },

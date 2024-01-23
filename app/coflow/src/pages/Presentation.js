@@ -181,8 +181,6 @@ const Presentation = () => {
     }
 
     const cPrice = Math.ceil(price);
-    console.log("===== variants: ", variants);
-    console.log("===== cPrice: ", cPrice);
     let selVariant = null;
     for (const item of variants) {
       if (parseInt(item.price.amount) === cPrice) {
@@ -190,7 +188,6 @@ const Presentation = () => {
         break;
       }
     }
-    console.log("===== selVariant: ", selVariant);
     if (!selVariant) {
       showNotifyMessage({
         type: Notify.Type.INFO,
@@ -499,7 +496,7 @@ const Presentation = () => {
                         <div className="flex w-full justify-between items-center">
                           <div className="flex flex-col items-start">
                             <span className="text-primary text-3xl font-extrabold">
-                              {parseInt(item?.variants[0].price.amount)} €
+                              {nFormatter(item?.variants[0].price.amount, 2)} €
                             </span>
                             <span className="text-gray-400 text-sm font-normal">
                               {item.contributions} contributions

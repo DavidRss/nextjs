@@ -1,48 +1,106 @@
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { EffectCreative } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Ruler from "../Icons/Ruler";
 
 import card from "../../assets/new/card.png";
-import { ProductColors, ProductVariants } from "../../constants/constants";
+import { ProductVariants } from "../../constants/constants";
+import { nFormatter } from "../../utils/utils";
 
-export default function ProductSwiper({ isReversed = false, product }) {
+export default function ProductSwiper({
+  isReversed = false,
+  product,
+  processPurchase,
+}) {
   const [swiper, setSwiper] = useState(null);
 
-  const [selVariant, setSelVariant] = useState(null);
+  const [colorList, setColorList] = useState([]);
+  const [color, setColor] = useState(-1);
+  const [sizeList, setSizeList] = useState([]);
+  const [size, setSize] = useState(-1);
+  const [variant, setVariant] = useState(null);
 
-  const handleRadioChange = (index) => {
+  const handleChangeVariant = () => {
+    for (const variant of product.variants) {
+      let isColor = false;
+      let isSize = false;
+      for (const selectedOption of variant.selectedOptions) {
+        if (selectedOption.value === colorList[color]) {
+          isColor = true;
+        }
+        if (selectedOption.value === sizeList[size]) {
+          isSize = true;
+        }
+      }
+
+      if (isColor === true && isSize === true) {
+        setVariant(variant);
+      }
+    }
+  };
+
+  const handleChangeColor = (index) => {
+    setColor(index);
+
     if (swiper) {
       swiper.slideTo(index);
     }
   };
 
-  const isAvailableVariant = (title) => {
-    if (product && product.variants) {
-      for (const variant of product.variants) {
-        if (variant.title.toLowerCase() === title.toLowerCase()) {
-          return true;
+  const isAvailableSize = (title) => {
+    return sizeList.find((item) => item === title);
+  };
+
+  const handleChangeSize = (index) => {
+    setSize(index);
+  };
+
+  const handleParticipate = () => {
+    if (variant) {
+      processPurchase(variant);
+    }
+  };
+
+  useEffect(() => {
+    if (product) {
+      const options = product.options;
+      for (const option of options) {
+        if (option.name === "Taille") {
+          const optionValues = option.values;
+          const tempSizeList = [];
+          for (const optionValue of optionValues) {
+            tempSizeList.push(optionValue.value);
+          }
+          setSizeList(tempSizeList);
+          if (tempSizeList.length > 0) {
+            setSize(0);
+          }
+        }
+
+        if (option.name === "Color") {
+          const optionValues = option.values;
+          const tempColorList = [];
+          for (const optionValue of optionValues) {
+            tempColorList.push(optionValue.value);
+          }
+          setColorList(tempColorList);
+          if (tempColorList.length > 0) {
+            setColor(0);
+          }
         }
       }
     }
+  }, [product]);
 
-    return false;
-  };
-
-  const handleChangedVariant = (title) => {
-    if (product && product.variants) {
-      for (const variant of product.variants) {
-        if (variant.title.toLowerCase() === title.toLowerCase()) {
-          setSelVariant(variant);
-          break;
-        }
-      }
+  useEffect(() => {
+    if (color !== -1 && size !== -1) {
+      handleChangeVariant();
     }
-  };
+  }, [color, size]);
 
   return (
     <div
@@ -130,14 +188,14 @@ export default function ProductSwiper({ isReversed = false, product }) {
           <div className="flex flex-col gap-5">
             <span className="uppercase text-lg font-semibold">Colors:</span>
             <div className="flex items-center gap-3">
-              {ProductColors.map((color, index) => (
+              {colorList.map((color, index) => (
                 <input
                   type="radio"
                   name="radio-2"
                   style={{ background: color }}
                   className="radio checked:bg-white"
-                  defaultChecked={index === 0}
-                  onChange={() => handleRadioChange(index)}
+                  defaultChecked={index === color}
+                  onChange={() => handleChangeColor(index)}
                 />
               ))}
             </div>
@@ -152,12 +210,12 @@ export default function ProductSwiper({ isReversed = false, product }) {
               {ProductVariants.map((variant, index) => (
                 <button
                   className={`flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main ${
-                    isAvailableVariant(variant)
+                    isAvailableSize(variant)
                       ? "hover:shadow-lg hover:shadow-main/50"
                       : "opacity-30 cursor-none"
-                  } ${selVariant?.title === variant ? "border-2" : ""}`}
+                  } ${size === index ? "border-2" : ""}`}
                   onClick={() => {
-                    handleChangedVariant(variant);
+                    handleChangeSize(index);
                   }}
                 >
                   {variant}
@@ -178,7 +236,7 @@ export default function ProductSwiper({ isReversed = false, product }) {
         >
           <div className="flex flex-col gap-3">
             <span className="text-4xl font-semibold text-white">
-              {parseInt(product?.variants[0].price.amount)} €
+              {nFormatter(product?.variants[0].price.amount, 2)} €
             </span>
             <span
               className="font-semibold text-lg"
@@ -194,6 +252,7 @@ export default function ProductSwiper({ isReversed = false, product }) {
               background: "linear-gradient(45deg, #328019 0%, #5EAC0C 100%)",
               boxShadow: " 0px 4px 0px 0px #196700",
             }}
+            onClick={handleParticipate}
           >
             Participate
           </button>

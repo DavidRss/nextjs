@@ -15,9 +15,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Aside from "../components/aside/Aside";
 
 import { useApp } from "../services/app.context";
-import { levels } from "../stores/levelsData";
 import { scrollToElement } from "../utils/action.utils";
 import { Path } from "../constants/constants";
+import { calculateProgress } from "../utils/level.util";
 
 function Reward() {
   const navigate = useNavigate();
@@ -25,32 +25,6 @@ function Reward() {
   const { loadingUser, currentUser } = useApp();
 
   const donationForm = useRef(null);
-
-  const calculateProgress = (spending) => {
-    let currentLevel = null;
-    let remainingToNextLevel = null;
-    let nextLevel = null;
-
-    for (let i = 0; i < levels.length; i++) {
-      if (spending < levels[i].spend) {
-        currentLevel = levels[i - 1] || levels[0];
-        nextLevel = levels[i];
-        remainingToNextLevel = levels[i].spend - spending;
-        break;
-      }
-    }
-
-    if (!currentLevel) {
-      currentLevel = levels[levels.length - 1];
-      remainingToNextLevel = 0;
-    }
-
-    return {
-      currentLevel,
-      nextLevel,
-      remainingToNextLevel,
-    };
-  };
 
   const progress = calculateProgress(currentUser?.spending ?? 0);
 

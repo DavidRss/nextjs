@@ -76,8 +76,6 @@ const Aside = forwardRef((props, ref) => {
     }
 
     const cPrice = Math.ceil(price);
-    console.log("===== variants: ", variants);
-    console.log("===== cPrice: ", cPrice);
     let selVariant = null;
     for (const item of variants) {
       if (parseInt(item.price.amount) === cPrice) {

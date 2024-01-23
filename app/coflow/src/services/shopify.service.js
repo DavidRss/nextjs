@@ -127,6 +127,7 @@ class ShopifyService {
 
   async processPurchase(checkout, variant, user) {
     try {
+      console.log("===== checkout: ", checkout);
       let checkoutInfo = null;
       if (checkout) {
         checkoutInfo = await removeLineItemsFromCheckout(checkout);
@@ -144,7 +145,7 @@ class ShopifyService {
       );
 
       const lineItems = {
-        variantId: variant,
+        variantId: variant.id,
         quantity: 1,
       };
       checkoutInfo = await this.addLineItems(checkoutInfo.id, lineItems);

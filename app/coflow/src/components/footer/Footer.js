@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Cookies from "js-cookie";
 
 import masterCard from "../../assets/new/Mastercard.png";
 import payPal from "../../assets/new/PayPal.png";
@@ -23,6 +24,10 @@ import {
   getCheckoutCustomAttributes,
   removeLineItemsFromCheckout,
 } from "../../utils/utils";
+import { userService } from "../../services/firebase.service";
+import Youtube from "../Icons/Youtube";
+
+const COOKIE_CONSENT = "cookieConsent";
 
 export default function Footer({ children }) {
   const navigate = useNavigate();
@@ -36,8 +41,26 @@ export default function Footer({ children }) {
     setLoading,
   } = useApp();
 
+  const [isCookieSet, setCookie] = useState(Cookies.get(COOKIE_CONSENT));
+
   const [price, changePrice] = useState(0);
   const [errorPrice, setErrorPrice] = useState(false);
+
+  const handleAcceptCookies = () => {
+    Cookies.set(COOKIE_CONSENT, true);
+    setCookie(true);
+
+    currentUser.isCookie = true;
+    userService.updateUser(currentUser.id, currentUser);
+  };
+
+  const handleDeclineCookies = () => {
+    Cookies.set(COOKIE_CONSENT, false);
+    setCookie(false);
+
+    currentUser.isCookie = false;
+    userService.updateUser(currentUser.id, currentUser);
+  };
 
   const handleChangePrice = (e) => {
     changePrice(e.target.value);
@@ -92,8 +115,6 @@ export default function Footer({ children }) {
     }
 
     const cPrice = Math.ceil(price);
-    console.log("===== variants: ", variants);
-    console.log("===== cPrice: ", cPrice);
     let selVariant = null;
     for (const item of variants) {
       if (parseInt(item.price.amount) === cPrice) {
@@ -370,7 +391,7 @@ export default function Footer({ children }) {
           </div>
           <div className="flex flex-col w-full items-center xl:items-start px-4 3xl:px-0">
             <ul className="flex w-full gap-1  md:gap-8 xl:gap-10 pb-7 flex-col items-center md:items-start md:flex-row sm:pb-0 h-full sm:h-14 max-w-fit md:border-b border-white z-10">
-              <Link to="/about" className="h-8">
+              <Link to="/" className="h-8">
                 <li
                   className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}
                 >
@@ -378,7 +399,7 @@ export default function Footer({ children }) {
                 </li>
               </Link>
               <span style={{ color: "#595959" }}>•</span>
-              <Link to="/about" className="h-8">
+              <Link to="/" className="h-8">
                 <li
                   className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer h-full sm:text-left`}
                 >
@@ -421,22 +442,9 @@ export default function Footer({ children }) {
           </div>
           <div className="flex flex-col w-full gap-8 items-center xl:items-end">
             <div className="flex items-center justify-center gap-5 px-4 3xl:px-0 w-full">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="60"
-                height="60"
-                viewBox="0 0 60 60"
-                fill="none"
-                className="hover:scale-105 transition-all cursor-pointer hover:shadow-lg hover:shadow-main/50 rounded-full"
-              >
-                <rect width="60" height="60" rx="30" fill="#3F3F3F" />
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M39.8373 23.1599C40.1779 23.5111 40.4198 23.9459 40.5386 24.4205C40.8559 26.1792 41.0098 27.9634 40.9986 29.7505C41.0049 31.5108 40.851 33.2681 40.5386 35.0005C40.4198 35.4751 40.1779 35.9099 39.8373 36.2611C39.4966 36.6122 39.0694 36.8673 38.5986 37.0005C36.8786 37.4605 29.9986 37.4605 29.9986 37.4605C29.9986 37.4605 23.1186 37.4605 21.3986 37.0005C20.9374 36.8743 20.5166 36.6313 20.1768 36.295C19.8369 35.9586 19.5896 35.5403 19.4586 35.0805C19.1414 33.3218 18.9874 31.5375 18.9986 29.7505C18.9899 27.9768 19.1438 26.206 19.4586 24.4605C19.5774 23.9859 19.8193 23.5511 20.16 23.1999C20.5006 22.8487 20.9279 22.5937 21.3986 22.4605C23.1186 22.0005 29.9986 22.0005 29.9986 22.0005C29.9986 22.0005 36.8786 22.0005 38.5986 22.4205C39.0694 22.5537 39.4966 22.8087 39.8373 23.1599ZM28.7941 32.4257C28.3274 32.6911 27.748 32.354 27.748 31.8172V27.6839C27.748 27.1471 28.3274 26.8101 28.7941 27.0755L32.4281 29.1421C32.9 29.4105 32.9 30.0907 32.4281 30.3591L28.7941 32.4257Z"
-                  fill="white"
-                />
-              </svg>
+              <a href="https://www.youtube.com/@BriceBBriceYT" target="_blank">
+                <Youtube />
+              </a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="60"
@@ -558,39 +566,45 @@ export default function Footer({ children }) {
             </span>
           </div>
         </div>
-        <div
-          className="w-full display justify-center flex items-center py-4 px-4 xl:px-0"
-          style={{
-            background: "linear-gradient(45deg, #328019 0%, #5EAC0C 100%)",
-            boxShadow: " 0px 4px 0px 0px #196700",
-          }}
-        >
-          <div className="max-w-8xl w-full justify-between flex flex-col xl:flex-row items-center px-4 2xl:p-0 gap-5 xl:gap-0">
-            <div className="flex items-center gap-5 flex-col md:flex-row">
-              <span className="text-center text-xl font-medium md:text-left text-white">
-                Our website uses cookies to ensure you have the best experience
-                possible!
-              </span>
-              <Link
-                to="/about"
-                className="border-b text-white text-xl font-medium"
-              >
-                Learn more
-              </Link>
-            </div>
-            <div className="flex gap-5 items-center">
-              <button className="py-3 px-6 rounded-lg hover:scale-105 text-lg transition-all font-medium bg-white text-main">
-                Accept Cookies
-              </button>
-              <button
-                className="bg-transparent text-white text-lg font-medium py-3 px-6 rounded-lg hover:scale-105 transition-all"
-                style={{ border: "3px solid rgba(255, 255, 255, 0.15)" }}
-              >
-                Decline Cookies
-              </button>
+        {typeof isCookieSet === "undefined" && (
+          <div
+            className="w-full display justify-center flex items-center py-4 px-4 xl:px-0"
+            style={{
+              background: "linear-gradient(45deg, #328019 0%, #5EAC0C 100%)",
+              boxShadow: " 0px 4px 0px 0px #196700",
+            }}
+          >
+            <div className="max-w-8xl w-full justify-between flex flex-col xl:flex-row items-center px-4 2xl:p-0 gap-5 xl:gap-0">
+              <div className="flex items-center gap-5 flex-col md:flex-row">
+                <span className="text-center text-xl font-medium md:text-left text-white">
+                  Our website uses cookies to ensure you have the best
+                  experience possible!
+                </span>
+                <Link
+                  to="/"
+                  className="border-b text-white text-xl font-medium"
+                >
+                  Learn more
+                </Link>
+              </div>
+              <div className="flex gap-5 items-center">
+                <button
+                  className="py-3 px-6 rounded-lg hover:scale-105 text-lg transition-all font-medium bg-white text-main"
+                  onClick={handleAcceptCookies}
+                >
+                  Accept Cookies
+                </button>
+                <button
+                  className="bg-transparent text-white text-lg font-medium py-3 px-6 rounded-lg hover:scale-105 transition-all"
+                  style={{ border: "3px solid rgba(255, 255, 255, 0.15)" }}
+                  onClick={handleDeclineCookies}
+                >
+                  Decline Cookies
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </footer>
     </>
   );

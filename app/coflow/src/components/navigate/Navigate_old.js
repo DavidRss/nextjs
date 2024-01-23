@@ -50,7 +50,7 @@ const Navigate = () => {
 
                         <div class="text-white w-full h-full">
                             <ul className='flex items-center w-full justify-between gap-5 h-full flex-wrap'>
-                                <Link to="/about" className='h-full'>
+                                <Link to="/" className='h-full'>
                                     <li className={`flex nav__item hover:border-b-8 border-main rounded-b items-center lg:text-2xl gap-3 h-full text-white hover:text-main font-semibold transition-all cursor-pointer ${isActive('/reward')} h-full  sm:text-center`}>
                                         <img src={shop} className='w-6 lg:w-11' alt='shop' />                                    
                                         Shop
@@ -77,7 +77,7 @@ const Navigate = () => {
                                         Chat
                                     </li>
                                 </Link>
-                                <Link to="/about" className='h-full'>
+                                <Link to="/" className='h-full'>
                                     <li className={`flex nav__item hover:border-b-8 border-main rounded-b items-center lg:text-2xl gap-3 h-full text-white hover:text-main font-semibold transition-all cursor-pointer ${isActive('/reward')} h-full  sm:text-center`}>
                                         <img src={faq} className='w-6 lg:w-11' alt='faq' />
                                         FAQ

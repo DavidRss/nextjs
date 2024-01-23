@@ -8,13 +8,10 @@ import { Pagination } from "swiper/modules";
 import CardM from "../cardsMedium/cardsM";
 import { useNavigate } from "react-router-dom";
 import { useApp } from "../../services/app.context";
-import {
-  getCheckoutCustomAttributes,
-  removeLineItemsFromCheckout,
-} from "../../utils/utils";
 import { shopifyService } from "../../services/shopify.service";
-import { Notify, Order, Path } from "../../constants/constants";
+import { Notify, Path } from "../../constants/constants";
 import ProductDialog from "../productDialog/productDialog";
+import { nFormatter } from "../../utils/utils";
 
 function CardsSlider() {
   const navigate = useNavigate();
@@ -40,13 +37,14 @@ function CardsSlider() {
     }
   }, [products]);
 
-  const processPurchase = async () => {
+  const processPurchase = async (variant) => {
+    console.log("===== processPurchase: ", variant);
     try {
       setLoading(true);
 
       let checkoutInfo = await shopifyService.processPurchase(
         checkout,
-        selVariant,
+        variant,
         currentUser
       );
       
@@ -117,7 +115,7 @@ function CardsSlider() {
                 <div className="flex w-full justify-between items-center">
                   <div className="flex flex-col items-start">
                     <span className="text-main text-3xl font-extrabold">
-                      {parseInt(item?.variants[0].price.amount)} €
+                      {nFormatter(item?.variants[0].price.amount, 2)} €
                     </span>
                     <span className="text-gray-400 text-sm font-normal">
                       {item.contributions} contributions
