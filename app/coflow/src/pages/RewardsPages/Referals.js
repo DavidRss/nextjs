@@ -31,7 +31,7 @@ function Referals() {
                 <Container>
                 <div className='w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-6 items-center xl:items-start'>
                     <div className='flex flex-col w-full'>
-                        <h1 className='text-white font-bold text-3xl mb-8 text-left'>Welcome to <span className='text-main'>Loyalty Program</span></h1>
+                        <h1 className='text-white font-bold text-3xl mb-8 text-left'>Réalises des challenges <span className='text-main'>Gagnes des Points</span></h1>
                         <div className='flex flex-col gap-5'>
 
                         <div className='flex flex-col bg-mainCard border-pagBg rounded-xl pt-8 sm:px-6'>
@@ -39,8 +39,8 @@ function Referals() {
                                     <BackBtn title="Referral" />
                                 </div>
                                 <div className='flex flex-col items-center justify-start w-full mt-11 gap-2'>
-                                    <h1 className='text-white font-semibold text-2xl mb-2'>We value friendship</h1>
-                                    <p className='text-base font-normal text-white text-center mt-8'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                                    <h1 className='text-white font-semibold text-2xl mb-2'>L'amitié compte beaucoup pour nous</h1>
+                                    <p className='text-base font-normal text-white text-center mt-8'>Invite tes amis à nous rejoindre sur le shop et bénéficie de récompenses. Partage le lien ci-dessous pour parrainer tes amis!</p>
                                     <div className="divider my-6" /> 
                                     <div className='mt-7 w-full flex flex-col items-center'>
                                         <ul className="ref steps steps-vertical flex flex-col gap-8 mb-8">
@@ -52,7 +52,7 @@ function Referals() {
                                                     className='flex gap-2 items-center text-white text-xl font-semibold underline cursor-pointer'
                                                     onClick={copyToClipboard}
                                                 >
-                                                    Share your link
+                                                    Partage ton lien
                                                     <img src={copy} alt="copy" />
                                                 </button>
                                             </li>
@@ -61,7 +61,7 @@ function Referals() {
                                                     2
                                                 </span>
                                                 <span className='text-white text-xl font-semibold'>
-                                                    Your friend signup using your link
+                                                Ton ami s'inscrit en utilisant ton lien
                                                 </span>
                                             </li>
                                             <li className="flex items-center gap-5">
@@ -69,7 +69,7 @@ function Referals() {
                                                     3
                                                 </span>
                                                 <span className='text-white text-xl font-semibold'>
-                                                    Your friend places an order
+                                                Ton ami passe une commande
                                                 </span>
                                             </li>
                                         </ul>
@@ -81,8 +81,8 @@ function Referals() {
                                                             <img src={ticket} alt="icon" />
                                                         </div>
                                                         <div className='flex flex-col items-start gap-0.5 text-white'>
-                                                            <span className='font-normal text-sm opacity-50'>You get</span>
-                                                            <span className='font-semibold text-xl'>10% coupon</span>
+                                                            <span className='font-normal text-sm opacity-50'>Tu reçois</span>
+                                                            <span className='font-semibold text-xl'>10% de réduction</span>
                                                         </div>
                                                     </div>
                                                     <div className='flex items-center gap-2'>
@@ -90,8 +90,8 @@ function Referals() {
                                                             <img src={ticket} alt="icon" />
                                                         </div>
                                                         <div className='flex flex-col items-start gap-0.5 text-white'>
-                                                            <span className='font-normal text-sm opacity-50'>They get</span>
-                                                            <span className='font-semibold text-xl'>10% coupon</span>
+                                                            <span className='font-normal text-sm opacity-50'>Il reçoit</span>
+                                                            <span className='font-semibold text-xl'>10% de réduction</span>
                                                         </div>
                                                     </div>
                                                 </div>  
@@ -100,8 +100,8 @@ function Referals() {
                                                         <img src={refGift} alt="icon" />
                                                     </div>
                                                     <div className='flex flex-col items-start gap-0.5 text-white'>
-                                                        <span className='font-semibold text-xl'>500 Points (5 USD)</span>
-                                                        <span className='text-left font-normal text-sm opacity-50'>For every 3 friend you refer, you’ll get this extra reward</span>
+                                                        <span className='font-semibold text-xl'>400 Points</span>
+                                                        <span className='text-left font-normal text-sm opacity-50'>Un fois que ton ami passe sa commande, tu reçois cette récompense en bonus</span>
                                                     </div>
                                                 </div>                                    
                                             </div>     
@@ -128,7 +128,7 @@ function Referals() {
                                                     }}
                                                 >
                                                     <img src={copyWhite} alt="copy-icon white" />  
-                                                    copy
+                                                    copier
                                                 </button>
                                             </div> 
                                             <div className='mt-12 flex w-full flex-col items-center gap-7 pb-9'>
@@ -149,7 +149,7 @@ function Referals() {
                                                         </svg>
                                                     </span>
                                                 </div>
-                                                <span className='text-white font-semibold text-xl'>You have referred 0 friends</span>
+                                                <span className='text-white font-semibold text-xl'>Tu as recommandé 0 amis</span>
                                             </div>   
                                         </div>                                   
                                     </div>

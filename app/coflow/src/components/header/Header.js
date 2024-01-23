@@ -40,7 +40,7 @@ export default function Header() {
                 <div>
                     <span className="countdown font-mono text-2xl md:text-4xl">
                         <span style={{"--value":days}}></span>
-                        Days
+                        Jours
                     </span>
                 </div> 
                 <div className='flex gap-1'>
@@ -317,7 +317,7 @@ export default function Header() {
         </div>
         <div className='flex flex-col items-center relative w-full'>
             <div className='flex w-full justify-between items-start max-w-8xl py-5 md:py-10 px-6 z-20'>
-                <h1 className='text-4xl font-black pt-4'>Coflow</h1>
+                <h1 className='text-4xl font-black pt-4'>Briceshop</h1>
                 <div className='hidden md:flex items-center gap-7'>
                     <button type='button' className='flex items-center justify-center text-2xl font-semibold gap-4 transition-all hover:scale-105 bg-transparent border-0 hover:shadow-lg rounded-full px-7 py-4'>
                         8
@@ -335,7 +335,7 @@ export default function Header() {
                             boxShadow: ' 0px 4px 0px 0px #196700',
                         }}
                     >
-                        Connect
+                        Se connecter
                     </button>
                 </div>
             </div>
@@ -352,7 +352,7 @@ export default function Header() {
                         <circle cx="25" cy="25" r="25" fill="#4E9D35"/>
                         <path d="M19 17.5281C19 15.1477 21.6392 13.7155 23.635 15.0127L35.1303 22.4847C36.9503 23.6677 36.9503 26.3323 35.1303 27.5153L23.635 34.9873C21.6392 36.2845 19 34.8523 19 32.4719V17.5281Z" fill="white"/>
                     </svg>
-                    <span className={`${hovered ? '-translate-y-1' : ''} transition-all whitespace-nowrap`}>Watch Video</span>
+                    <span className={`${hovered ? '-translate-y-1' : ''} transition-all whitespace-nowrap`}>Regarder la Vidéo</span>
                 </button>
                 <button 
                     type='button' 

@@ -11,8 +11,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import masterCard from '../../assets/new/Mastercard.png';
 import payPal from '../../assets/new/PayPal.png';
-import googlePay from '../../assets/new/GooglePay.png';
-import amazon from '../../assets/new/AmazonPay.png';
+// import googlePay from '../../assets/new/GooglePay.png';
+// import shopPay from '../../assets/new/shopPay.png';
 import webMoney from '../../assets/new/Webmoney.png';
 import visa from '../../assets/new/Visa.png';
 import applePay from '../../assets/new/ApplePay.png';
@@ -29,13 +29,13 @@ export default function Footer({children}) {
             >
                 <div className='max-w-7xl w-full flex py-10 md:py-16 justify-between items-center px-4 3xl:px-0 flex-col md:flex-row gap-5 md:gap-0'>
                     <h2 className='text-white text-xl md:text-4xl font-semibold text-center md:text-left' style={{maxWidth: '631px'}}>
-                        You want to participate with the amount of your choice?
+                        Tu veux participer avec le montant de ton choix?
                     </h2>
                     <form className='relative flex flex-col items-center md:items-end gap-5 md:block md:gap-0 w-full max-w-680'>
                         <input 
                             className='py-4 pl-10 rounded-xl w-full text-lg xl:text-xl font-semibold bg-white' 
                             style={{ borderColor: 'rgba(27, 86, 2, 0.65)', borderWidth: '4px' }} 
-                            placeholder='Enter your amount here' 
+                            placeholder='Entre ton montant ici' 
                             type='email' 
                         />
                         <button 
@@ -46,7 +46,7 @@ export default function Footer({children}) {
                                 boxShadow: ' 0px 4px 0px 0px #196700',
                             }}
                         >
-                            Participate
+                            Participer
                         </button>
                     </form>
                 </div>
@@ -59,10 +59,10 @@ export default function Footer({children}) {
                         <img src={shield} alt='levels' />
                     </span>
                     <h2 className='text-2xl font-semibold'>
-                        100% Secure Payment
+                        Paiement 100% Sécurisé 
                     </h2>
                     <p className='text-lg max-w-96'>
-                        All our payments are 100% secure, whether they are made by credit card, diamonds or gold bars ;)
+                    Tous nos paiements sont 100% sécurisés, qu’ils soient fait en carte bleue, en diamant ou en lingot d’or ;)
                     </p>
                 </div>
                 <div className='hidden xl:flex flex-col gap-5 items-center text-center justify-center'>
@@ -70,10 +70,10 @@ export default function Footer({children}) {
                         <img src={chat} alt='levels' />
                     </span>
                     <h2 className='text-2xl font-semibold'>
-                        Fast and safe delivery
+                    Livraison Rapide et Sûre
                     </h2>
                     <p className='text-lg max-w-96'>
-                        Delivery available in France and internationally, safe and fast (almost as much as a portal, but not quite)
+                    Livraison disponible en France et à l’international, sûre et rapide (presque autant qu’un portail, mais pas tout à fait)
                     </p>
                 </div>
                 <div className='hidden xl:flex flex-col gap-5 items-center text-center justify-center'>
@@ -81,14 +81,14 @@ export default function Footer({children}) {
                         <img src={box} alt='levels' />
                     </span>
                     <h2 className='text-2xl font-semibold'>
-                        Have a Question?
+                        Une question?
                     </h2>
                     <p className='text-lg max-w-96'>
-                        Integer vulputate mauris risus, nec ligula turpis ante, aliquam . 
-                        Phasellus ullamcorper enim sed mauris .
+                    Contactez-nous à l’adresse contact@briceshop.fr
+                        Un PNJ s’occupera de vous répondre au plus vite!
                     </p>
                     <Link to='/faq' className='hidden lg:flex text-white text-lg font-semibold transition-all hover:scale-105 underline'>
-                        Participate
+                        Nous contacter
                     </Link>
                 </div>
                 <div className='flex w-full justify-center items-center xl:hidden h-96'>
@@ -117,10 +117,10 @@ export default function Footer({children}) {
                                         <img src={shield} alt='levels' />
                                     </span>
                                     <h2 className='text-2xl font-semibold'>
-                                        100% Secure Payment
+                                    Paiement 100% Sécurisé
                                     </h2>
                                     <p className='text-lg max-w-96'>
-                                        All our payments are 100% secure, whether they are made by credit card, diamonds or gold bars ;)
+                                    Tous nos paiements sont 100% sécurisés, qu’ils soient fait en carte bleue, en diamant ou en lingot d’or ;)
                                     </p>
                                 </div>
                             </SwiperSlide>
@@ -130,10 +130,10 @@ export default function Footer({children}) {
                                         <img src={chat} alt='levels' />
                                     </span>
                                     <h2 className='text-2xl font-semibold'>
-                                        Fast and safe delivery
+                                    Livraison Rapide et Sûre
                                     </h2>
                                     <p className='text-lg max-w-96'>
-                                        Delivery available in France and internationally, safe and fast (almost as much as a portal, but not quite)
+                                    Livraison disponible en France et à l’international, sûre et rapide (presque autant qu’un portail, mais pas tout à fait)
                                     </p>
                                 </div>
                             </SwiperSlide>
@@ -144,15 +144,15 @@ export default function Footer({children}) {
                                             <img src={box} alt='levels' />
                                         </span>
                                         <h2 className='text-2xl font-semibold'>
-                                            Have a Question?
+                                        Une Question?
                                         </h2>
                                         <p className='text-lg max-w-96'>
-                                            Integer vulputate mauris risus, nec ligula turpis ante, aliquam . 
-                                            Phasellus ullamcorper enim sed mauris .
+                                        Contactez-nous à l’adresse contact@briceshop.fr
+Un PNJ s’occupera de vous répondre au plus vite!
                                         </p>
                                     </div>
                                     <Link to='/faq' className='flex lg:hidden text-white text-lg font-semibold transition-all hover:scale-105 underline'>
-                                        Participate
+                                        Nous contacter
                                     </Link>
                                 </div>
                             </SwiperSlide>
@@ -166,20 +166,20 @@ export default function Footer({children}) {
         <footer className='w-full text-white flex flex-col items-center bg-thrBg border-t-8' style={{borderColor: '#404040'}}>
         <div className='w-full flex flex-col gap-5 xl:flex-row items-center max-w-8xl 3xl:gap-40 pb-11 pt-14 px-4 3xl:px-0'>
         <div className='flex flex-col gap-8 items-center w-fit px-4 3xl:px-0'>
-            <h1 className='text-white text-4xl font-black mb-6 xl:mb-0'>Coflow</h1>
+            <h1 className='text-white text-4xl font-black mb-6 xl:mb-0'>Briceshop</h1>
             <div className='hidden md:flex flex-col gap-1'>
-                <span className='text-xl font-bold whitespace-nowrap'>© 2023, Coflow</span>
+                <span className='text-xl font-bold whitespace-nowrap'>© 2024, Website by Coflow</span>
                 <span className='text-base font-semibold whitespace-nowrap'>Powered by Shopify</span>
             </div>
         </div>
         <div className='flex flex-col w-full items-center xl:items-start px-4 3xl:px-0'>
             <ul className='flex w-full gap-1  md:gap-8 xl:gap-10 pb-7 flex-col items-center md:items-start md:flex-row sm:pb-0 h-full sm:h-14 max-w-fit md:border-b border-white z-10'>
                 <Link to="/about" className='h-8'>
-                    <li className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}>About</li>
+                    <li className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}>Shop</li>
                 </Link>
                 <span style={{color: '#595959'}}>•</span>
-                <Link to="/about" className='h-8'>
-                    <li className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer h-full sm:text-left`}>Merch</li>
+                <Link to="/reward" className='h-8'>
+                    <li className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer h-full sm:text-left`}>Reward</li>
                 </Link>
                 <span style={{color: '#595959'}}>•</span>
                 <Link to="/leaderboard" className='h-8'>
@@ -190,16 +190,16 @@ export default function Footer({children}) {
                         <li className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}>Chat</li>
                     </Link>
                     <span style={{color: '#595959'}}>•</span>
-                    <Link to="/reward" className='h-8'>
-                        <li className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}>Rewards</li>
+                    <Link to="/faq" className='h-8'>
+                        <li className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}>FAQ</li>
                     </Link>
             </ul>
                 <div className='items-center gap-10 pt-6 max-w-fit hidden md:flex'>
                     <span className='text-base font-semibold cursor-pointer transition-colors hover:text-main'>
-                        Privacy Policy
+                    Politique de Confidentialité
                     </span>
                     <span className='text-base font-semibold cursor-pointer transition-colors hover:text-main'>
-                        Terms & Conditions
+                        CGV/CGU
                     </span>
                 </div>
             </div>
@@ -226,31 +226,31 @@ export default function Footer({children}) {
                 </div>
                 <div className='flex items-center justify-center gap-3 flex-wrap'>
                     <span className='text-white text-base font-semibold'>
-                        We Accept:
+                        Nous acceptons:
                     </span>
                     <div className='flex items-center gap-1'>
                         <img src={visa} alt='Visa' className='transition-all hover:scale-105' />
                         <img src={masterCard} alt='MasterCard' className='transition-all hover:scale-105'  />
                         <img src={payPal} alt='PayPal' className='transition-all hover:scale-105'  />
-                        <img src={googlePay} alt='GooglePay' className='transition-all hover:scale-105'  />
+                        {/* <img src={googlePay} alt='GooglePay' className='transition-all hover:scale-105'  /> */}
                         <img src={applePay} alt='ApplePay' className='transition-all hover:scale-105'  />
-                        <img src={amazon} alt='Amazon' className='transition-all hover:scale-105'  />
-                        <img src={webMoney} alt='WebMoney' className='transition-all hover:scale-105'  />
+                        {/* <img src={webMoney} alt='WebMoney' className='transition-all hover:scale-105'  /> */}
+                        {/* <img src={shopPay} alt='shopPay' className='transition-all hover:scale-105'  /> */}
                     </div>
                 </div>
                 
             </div> 
                 <div className='items-center gap-10 w-full flex-wrap justify-center flex md:hidden border-t border-b py-9' style={{borderColor: 'rgba(217,217,217, 0.2)'}}>
                     <span className='text-base font-semibold cursor-pointer transition-colors hover:text-main'>
-                        Privacy Policy
+                    Politique de Confidentialité
                     </span>
                     <span className='text-base font-semibold cursor-pointer transition-colors hover:text-main'>
-                        Terms & Conditions
+                        CGV/CGU
                     </span>
                 </div>
 
                 <div className='flex md:hidden flex-col gap-1'>
-                    <span className='text-xl font-bold whitespace-nowrap'>© 2023, Coflow</span>
+                    <span className='text-xl font-bold whitespace-nowrap'>© 2024, Website by Coflow</span>
                     <span className='text-base font-semibold whitespace-nowrap'>Powered by Shopify</span>
                 </div>
             </div>
@@ -264,13 +264,13 @@ export default function Footer({children}) {
                 <div className='max-w-8xl w-full justify-between flex flex-col xl:flex-row items-center px-4 2xl:p-0 gap-5 xl:gap-0'>
                     <div className='flex items-center gap-5 flex-col md:flex-row'>
                         <span className='text-center text-xl font-medium md:text-left text-white'>
-                            Our website uses cookies to ensure you have the best experience possible!
+                           Notre site web utilise des cookies pour s'assurer que vous ayez la meilleure expérience possible!
                         </span>
-                        <Link to="/about" className='border-b text-white text-xl font-medium'>Learn more</Link>
+                        <Link to="/about" className='border-b text-white text-xl font-medium'>En savoir plus</Link>
                     </div> 
                     <div className='flex gap-5 items-center'>
-                        <button className='py-3 px-6 rounded-lg hover:scale-105 text-lg transition-all font-medium bg-white text-main'>Accept Cookies</button>
-                        <button className='bg-transparent text-white text-lg font-medium py-3 px-6 rounded-lg hover:scale-105 transition-all' style={{border: '3px solid rgba(255, 255, 255, 0.15)'}}>Decline Cookies</button>
+                        <button className='py-3 px-6 rounded-lg hover:scale-105 text-lg transition-all font-medium bg-white text-main'>Autoriser</button>
+                        <button className='bg-transparent text-white text-lg font-medium py-3 px-6 rounded-lg hover:scale-105 transition-all' style={{border: '3px solid rgba(255, 255, 255, 0.15)'}}>Décliner</button>
                     </div>    
                 </div>
             </div>

@@ -21,7 +21,7 @@ function Earn() {
                 <Container>
                 <div className='w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start'>
                     <div className='flex flex-col w-full'>
-                        <h1 className='text-white font-bold text-3xl mb-8 text-left'>Welcome to <span className='text-main'>Loyalty Program</span></h1>
+                        <h1 className='text-white font-bold text-3xl mb-8 text-left'>Réalises des challenges <span className='text-main'>Gagnes des Points</span></h1>
                         <div className='flex flex-col gap-5'>
 
                         <div className='flex flex-col bg-mainCard border-pagBg rounded-xl pt-7 pb-20 px-6'>
@@ -30,12 +30,12 @@ function Earn() {
                                 </div>
                                 <div className='flex flex-col items-center justify-start w-full mt-11 gap-2'>
                                     <h2 className='text-white font-semibold text-2xl'>Cashback</h2>
-                                    <span className='text-white font-normal text-base'>Earn 10 Vibes for every 1 EUR spent.</span>
+                                    <span className='text-white font-normal text-base'>Gagne 10 Points pour chaque 1 EUR dépensé.</span>
                                 </div>
                                 <div className="divider my-6" /> 
                                 <div className='flex flex-col items-center justify-start w-full mt-8 gap-2'>
                                     <h2 className='text-white font-semibold text-2xl'>Challenge Board</h2>
-                                    <span className='text-white font-normal text-base'>Collect badges and get rewarded</span>
+                                    <span className='text-white font-normal text-base'>Collectionne les badges et reçoit des récompenses</span>
                                 </div>
 
                                 <div className="grid grid-cols-2 sm:grid-cols-3 justify-items-center xl:justify-items-start gap-6 mt-8">
@@ -43,27 +43,27 @@ function Earn() {
                                         <div className='bg-white rounded-full border-pagBg p-2'>
                                             <img src={welcome} alt="icon" />
                                         </div>
-                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Welcome to the family</h1>
-                                        <h2 className='text-base font-semibold text-white'>50 Vibes</h2>
+                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Bienvenue dans la Famille</h1>
+                                        <h2 className='text-base font-semibold text-white'>50 Points</h2>
                                     </div>
 
                                     <div className='flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 '>
                                         <div className='bg-white rounded-full border-pagBg p-2'>
                                             <img src={dons} alt="icon" />
                                         </div>
-                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>First donation</h1>
-                                        <h2 className='text-base font-semibold text-white'>50 Vibes</h2>
+                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Premier Achat</h1>
+                                        <h2 className='text-base font-semibold text-white'>50 Points</h2>
                                     </div>
 
                                     <div className='flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 '>
                                         <div className='bg-white rounded-full border-pagBg p-2'>
                                             <img src={secDons} alt="icon" />
                                         </div>
-                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Second donation</h1>
+                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Deuxième Achat</h1>
                                         <h2 className='text-base font-semibold text-white'>150 Vibes</h2>
                                     </div>
 
-                                    <div className='flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 '>
+                                    {/* <div className='flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 '>
                                         <div className='bg-white rounded-full border-pagBg p-2'>
                                             <img src={tiktok} alt="icon" />
                                         </div>
@@ -85,30 +85,30 @@ function Earn() {
                                         </div>
                                         <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Post a clip on Instagram Reels (Rules : Clip must promote this page and you must tag @bricebbrice)</h1>
                                         <h2 className='text-base font-semibold text-white'>300 points Vibes</h2>
-                                    </div>
+                                    </div> */}
 
                                     <div className='flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 '>
                                         <div className='bg-white rounded-full border-pagBg p-2'>
                                             <img src={daily} alt="icon" />
                                         </div>
-                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Visit the page daily</h1>
-                                        <h2 className='text-base font-semibold text-white'>10 Vibes</h2>
+                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Connecte à la page chaque jour</h1>
+                                        <h2 className='text-base font-semibold text-white'>10 Points chaque jour</h2>
                                     </div>
 
                                     <div className='flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 '>
                                         <div className='bg-white rounded-full border-pagBg p-2'>
                                             <img src={comments} alt="icon" />
                                         </div>
-                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Leave a comment</h1>
-                                        <h2 className='text-base font-semibold text-white'>100 Vibes</h2>
+                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Envoie un message dans le chat</h1>
+                                        <h2 className='text-base font-semibold text-white'>20 Points chaque jour</h2>
                                     </div>
 
                                     <div className='flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 '>
                                         <div className='bg-white rounded-full border-pagBg p-2'>
                                             <img src={refIcon} alt="icon" />
                                         </div>
-                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Refer a friend</h1>
-                                        <h2 className='text-base font-semibold text-white'>400 Vibes</h2>
+                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Recommande un ami</h1>
+                                        <h2 className='text-base font-semibold text-white'>400 Points</h2>
                                     </div>
                                 </div>
                             </div>

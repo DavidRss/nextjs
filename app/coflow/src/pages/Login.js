@@ -13,13 +13,13 @@ function Login() {
             </section>
             <section className='w-full flex justify-center px-5 lg:px-0'>
                 <div className='rounded-md shadow-md py-8 lg:py-14 px-10 w-full max-w-3xl flex flex-col items-center' style={{background: '#333'}}>
-                    <h1 className='text-2xl lg:text-3xl font-bold text-white text-center w-full md:px-20'>Creez votre compte pour poursuivre votre participation</h1>
+                    <h1 className='text-2xl lg:text-3xl font-bold text-white text-center w-full md:px-20'>Crée ton compte pour poursuivre ton achat</h1>
                     
                     <button className='btn bg-transparent border border-gray-200 flex gap-3 mt-4 mb-5 lg:mt-6 lg:mb-7 text-white hover:bg-white hover:scale-105 transition-all hover:border-gray-300'>
                         <img src={googleIcon} alt="signUp by google" />
-                        S’inscrire via google
+                        S’inscrire via Google
                     </button>                  
-                    <h2 className='text-base font-semibold text-white'>Ou bien inscrivez-vous avec votre adresse email</h2>
+                    <h2 className='text-base font-semibold text-white'>Ou bien inscris-toi avec ton adresse mail</h2>
                     <div className='w-full mt-8 flex flex-col gap-10'>
                         <div className="sm:col-span-4">
                             <label for="password" className="block text-base text-left font-bold text-white">Nom d’utilisateur</label>
@@ -35,7 +35,7 @@ function Login() {
                             </div>
                         </div>
                         <div className="sm:col-span-4">
-                            <label for="email" className="block text-base text-left font-bold text-white">Adresse email</label>
+                            <label for="email" className="block text-base text-left font-bold text-white">Adresse mail</label>
                             <div className="mt-2">
                                 <input 
                                     style={{background: 'rgba(249, 250, 251, 0.10)'}}
@@ -62,7 +62,7 @@ function Login() {
                         </div>
                     </div>
                     <div className='text-white text-base font-semibold flex justify-center w-full mt-6 lg:mt-8'>
-                        <h3 className='px-0 lg:px-28 text-center'>En creant votre compte vous acceptez les<br/> <span className='text-main hover:cursor-pointer' onClick={()=>document.getElementById('termes').showModal()}>termes et conditions</span>, et notre <span className='text-main hover:cursor-pointer' onClick={()=>document.getElementById('politique').showModal()}>politique deconfidentialite</span></h3>
+                        <h3 className='px-0 lg:px-28 text-center'>En créant ton compte tu acceptes les<br/> <span className='text-main hover:cursor-pointer' onClick={()=>document.getElementById('termes').showModal()}>termes et conditions</span>, et notre <span className='text-main hover:cursor-pointer' onClick={()=>document.getElementById('politique').showModal()}>politique de confidentialité</span></h3>
                     </div>
                         <Link to="/about" className='w-full'>
                         <button 
@@ -77,7 +77,7 @@ function Login() {
                             </button>
                         </Link>
                     <div className='w-full justify-center flex flex-col sm:flex-row gap-2 sm:gap-0 items-center'>
-                        <span className='text-base text-white font-bold'>Deja inscrit? <Link to="/signup"><span className='text-main'>Inscris toi</span></Link></span>
+                        <span className='text-base text-white font-bold'>Déjà inscrit? <Link to="/signup"><span className='text-main'>Connecte-toi</span></Link></span>
                     </div>
                 </div>
             </section>

@@ -9,11 +9,11 @@ function SignUp() {
     return (
         <div className='bg-white w-full flex flex-col pb-14 lg:pb-20'>
             <section className='flex flex-col items-center lg:items-start mt-12 lg:mt-9 mb-7 lg:mb-0 lg:px-9 w-full'>
-                <h1 className='text-gray-900 text-2xl font-semibold'>Coflow</h1>
+                <h1 className='text-gray-900 text-2xl font-semibold'>Briceshop</h1>
             </section>
             <section className='w-full flex justify-center px-5 lg:px-0'>
                 <div className='border border-gray-200 rounded-md shadow-md py-8 lg:py-14 px-10 w-full max-w-3xl flex flex-col items-center'>
-                    <h1 className='text-2xl lg:text-3xl font-bold text-gray-900 w-full max-w-md'>Creez votre compte pour poursuivre votre participation</h1>
+                    <h1 className='text-2xl lg:text-3xl font-bold text-gray-900 w-full max-w-md'>Créez votre compte pour poursuivre votre participation</h1>
                     <button className='btn bg-white border border-gray-200 flex gap-3 mt-4 mb-5 lg:mt-6 lg:mb-7 text-gray-900 hover:bg-white hover:scale-105 transition-all hover:border-gray-300'>
                         <img src={googleIcon} alt="signUp by google" />
                         S’inscrire via google
@@ -45,7 +45,7 @@ function SignUp() {
                     <Link to="/presentation" className='w-full'>
                         <button className='btn btn-primary text-white mt-6 lg:mt-8 mb-5 w-full hover:text-white hover:bg-primary hover:-translate-y-1 transition-all'>S’inscrire</button>
                     </Link>
-                    <span className='text-base text-gray-900 font-bold'>Deja inscrit? <Link to="/"><span className='text-primary'>Connecte toi</span></Link></span>
+                    <span className='text-base text-gray-900 font-bold'>Déjà inscrit? <Link to="/"><span className='text-primary'>Connecte toi</span></Link></span>
                 </div>
             </section>
             <Terms />

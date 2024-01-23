@@ -178,16 +178,16 @@ const Home = () => {
                                 </SwiperSlide>
                             </Swiper>
                             <div className='block lg:hidden absolute rounded-lg -bottom-5 uppercase px-5 py-4 font-semibold text-white z-50' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
-                                platinum pack
+                                Pack Fer
                             </div>
                     </div>
                     <div className='flex flex-col gap-5'>
                         <div className='hidden lg:flex badge uppercase px-5 py-4 font-semibold text-white' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
-                            platinum pack
+                        Pack Fer
                         </div>
-                        <h2 className='text-4xl text-center lg:text-left lg:text-6xl font-semibold text-white'>Platinum Pack</h2>
+                        <h2 className='text-4xl text-center lg:text-left lg:text-6xl font-semibold text-white'>pack or</h2>
                         <div className='flex flex-col gap-5 max-w-4xl'>
-                            <p className='text-lg lg:text-2xl'>Le pack platinum contient:</p>
+                            <p className='text-lg lg:text-2xl'>Félicitations pour ta première pioche en fer, tu vas pouvoir chopper du diams ! Le pack fer contient:</p>
                             <ul className='flex flex-col text-lg lg:text-2xl gap-1 list-disc pl-5'>
                                 <li>Un grand merci de toute l’équipe! et ton nom dans le générique de la vidéo</li>
                                 <li>Un ticket de participation à la loterie</li>
@@ -199,7 +199,7 @@ const Home = () => {
                         </div>
                         <div className='flex flex-col md:flex-row md:items-start gap-4 lg:gap-14'>
                             <div className='flex flex-col gap-5'>
-                                <span className='uppercase text-lg font-semibold'>Colors:</span>
+                                <span className='uppercase text-lg font-semibold'>Couleurs:</span>
                                 <div className='flex items-center gap-3'>
                                     {[0, 1, 2, 3].map((index) => (
                                         <input
@@ -215,11 +215,11 @@ const Home = () => {
                                 </div>
                             </div>
                             <div className='flex flex-col gap-5'>
-                                <span className='uppercase text-lg font-semibold'>Materials:</span>
-                                <p className='text-xl lg:text-2xl'>100% Organic Cotton</p>
+                                <span className='uppercase text-lg font-semibold'>Composition:</span>
+                                <p className='text-xl lg:text-2xl'>100% Coton Bio</p>
                             </div>
                             <div className='flex flex-col gap-5'>
-                                <span className='uppercase text-lg font-semibold'>Sizes:</span>
+                                <span className='uppercase text-lg font-semibold'>Tailles:</span>
                                 <div className='flex items-center gap-3'>
                                    <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>XS</button>
                                    <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main opacity-30 cursor-none'>S</button>
@@ -232,14 +232,14 @@ const Home = () => {
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" >
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M18.8295 1.12803C17.3255 -0.37601 14.8869 -0.37601 13.3829 1.12803L1.12803 13.3829C-0.376009 14.8869 -0.37601 17.3255 1.12803 18.8295L3.17051 20.872C4.67454 22.376 7.11307 22.376 8.61711 20.872L20.872 8.61711C22.376 7.11307 22.376 4.67454 20.872 3.17051L18.8295 1.12803ZM14.7445 2.48968C15.4966 1.73766 16.7158 1.73766 17.4678 2.48968L19.5103 4.53216C20.2623 5.28418 20.2623 6.50344 19.5103 7.25546L18.7434 8.02242L17.7499 7.02892C17.3738 6.65291 16.7642 6.65291 16.3882 7.02892C16.0122 7.40493 16.0122 8.01456 16.3882 8.39057L17.3817 9.38408L16.3363 10.4295L13.8985 7.99176C13.5225 7.61575 12.9129 7.61575 12.5369 7.99176C12.1609 8.36776 12.1609 8.9774 12.5369 9.35341L14.9746 11.7912L13.9292 12.8366L12.9357 11.8431C12.5597 11.4671 11.95 11.4671 11.574 11.8431C11.198 12.2191 11.198 12.8287 11.574 13.2047L12.5675 14.1982L11.5221 15.2437L9.08436 12.8059C8.70835 12.4299 8.09871 12.4299 7.7227 12.8059C7.34669 13.1819 7.34669 13.7916 7.7227 14.1676L10.1605 16.6053L9.11503 17.6508L8.12152 16.6572C7.74551 16.2812 7.13588 16.2812 6.75987 16.6572C6.38386 17.0333 6.38386 17.6429 6.75987 18.0189L7.75337 19.0124L7.25546 19.5103C6.50344 20.2623 5.28418 20.2623 4.53216 19.5103L2.48968 17.4678C1.73766 16.7158 1.73766 15.4966 2.48968 14.7445L14.7445 2.48968Z" fill="#fff"/>
                                     </svg>
-                                    <span className='text-xl pb-1 border-b border-main'>Size Guide</span>
+                                    <span className='text-xl pb-1 border-b border-main'>Guide des Tailles</span>
                                 </button>
                             </div>
                         </div>
                         <div className='flex flex-col sm:flex-row items-center gap-8 pt-8 border-t' style={{borderColor: '#D9D9D9'}}>
                             <div className='flex flex-col gap-3'>
-                                <span className='text-4xl text-center sm:text-left font-semibold text-white'>35€</span>
-                                <span className='font-semibold text-lg' style={{color: '#6D6D6D'}}>6 contributors</span>
+                                <span className='text-4xl text-center sm:text-left font-semibold text-white'>29,8€</span>
+                                <span className='font-semibold text-lg' style={{color: '#6D6D6D'}}>6 Participants</span>
                             </div>
                             <button 
                                 type='buttom' 
@@ -249,7 +249,7 @@ const Home = () => {
                                     boxShadow: ' 0px 4px 0px 0px #196700',
                                 }}
                             >
-                                Participate
+                                Achetez
                             </button>
                         </div>
                     </div>
@@ -338,28 +338,28 @@ const Home = () => {
                                 </SwiperSlide>
                             </Swiper>
                             <div className='block lg:hidden absolute rounded-lg -bottom-5 uppercase px-5 py-4 font-semibold text-white z-50' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
-                                platinum pack
+                                Pack Or
                             </div>
                     </div>
                     <div className='flex flex-col gap-5'>
                         <div className='hidden lg:flex badge uppercase px-5 py-4 font-semibold text-white' style={{ background: 'linear-gradient(45deg, #328019 0%, #5EAC0C 100%) #4E9D35' }}>
-                            platinum pack
+                            Pack or
                         </div>
-                        <h2 className='text-4xl text-center lg:text-left lg:text-6xl font-semibold text-white'>Platinum Pack</h2>
+                        <h2 className='text-4xl text-center lg:text-left lg:text-6xl font-semibold text-white'>Pack or</h2>
                         <div className='flex flex-col gap-5 max-w-4xl'>
-                            <p className='text-lg lg:text-2xl'>Le pack platinum contient:</p>
+                            <p className='text-lg lg:text-2xl'>Bravo mineur fou et merci pour ta participation, grâce à toi la vidéo va être folle ! Le pack or contient:</p>
                             <ul className='flex flex-col text-lg lg:text-2xl gap-1 list-disc pl-5'>
                                 <li>Un grand merci de toute l’équipe! et ton nom dans le générique de la vidéo</li>
                                 <li>Un ticket de participation à la loterie</li>
-                                <li>Et le tee-shirt premium dans la couleur de ton choix!</li>
+                                <li>Et le sweat premium dans la couleur de ton choix!</li>
                             </ul>
                             <p className='text-lg lg:text-2xl'>
-                                C’est la pièce centrale de cette collection, il est imprimé en France et fait à partir de coton 100% biologique ! Crois moi on a vraiment mis <br/> le paquet sur la qualité
+                            De quoi être élégant et montrer que t’es un vrai, tout en ayant chaud ! Un must, également imprimé en France et fait à partir de coton biologique pour une qualité super premium
                             </p>
                         </div>
                         <div className='flex flex-col md:flex-row md:items-start gap-4 lg:gap-14'>
                             <div className='flex flex-col gap-5'>
-                                <span className='uppercase text-lg font-semibold'>Colors:</span>
+                                <span className='uppercase text-lg font-semibold'>Couleurs:</span>
                                 <div className='flex items-center gap-3'>
                                     {/* <input
                                         type="radio"
@@ -406,10 +406,10 @@ const Home = () => {
                             </div>
                             <div className='flex flex-col gap-5'>
                                 <span className='uppercase text-lg font-semibold'>Materials:</span>
-                                <p className='text-xl lg:text-2xl'>100% Organic Cotton</p>
+                                <p className='text-xl lg:text-2xl'>85% Coton Biologique</p>
                             </div>
                             <div className='flex flex-col gap-5'>
-                                <span className='uppercase text-lg font-semibold'>Sizes:</span>
+                                <span className='uppercase text-lg font-semibold'>Tailles:</span>
                                 <div className='flex items-center gap-3'>
                                    <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main hover:shadow-lg hover:shadow-main/50'>XS</button>
                                    <button className='flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main opacity-30 cursor-none'>S</button>
@@ -422,14 +422,14 @@ const Home = () => {
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" >
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M18.8295 1.12803C17.3255 -0.37601 14.8869 -0.37601 13.3829 1.12803L1.12803 13.3829C-0.376009 14.8869 -0.37601 17.3255 1.12803 18.8295L3.17051 20.872C4.67454 22.376 7.11307 22.376 8.61711 20.872L20.872 8.61711C22.376 7.11307 22.376 4.67454 20.872 3.17051L18.8295 1.12803ZM14.7445 2.48968C15.4966 1.73766 16.7158 1.73766 17.4678 2.48968L19.5103 4.53216C20.2623 5.28418 20.2623 6.50344 19.5103 7.25546L18.7434 8.02242L17.7499 7.02892C17.3738 6.65291 16.7642 6.65291 16.3882 7.02892C16.0122 7.40493 16.0122 8.01456 16.3882 8.39057L17.3817 9.38408L16.3363 10.4295L13.8985 7.99176C13.5225 7.61575 12.9129 7.61575 12.5369 7.99176C12.1609 8.36776 12.1609 8.9774 12.5369 9.35341L14.9746 11.7912L13.9292 12.8366L12.9357 11.8431C12.5597 11.4671 11.95 11.4671 11.574 11.8431C11.198 12.2191 11.198 12.8287 11.574 13.2047L12.5675 14.1982L11.5221 15.2437L9.08436 12.8059C8.70835 12.4299 8.09871 12.4299 7.7227 12.8059C7.34669 13.1819 7.34669 13.7916 7.7227 14.1676L10.1605 16.6053L9.11503 17.6508L8.12152 16.6572C7.74551 16.2812 7.13588 16.2812 6.75987 16.6572C6.38386 17.0333 6.38386 17.6429 6.75987 18.0189L7.75337 19.0124L7.25546 19.5103C6.50344 20.2623 5.28418 20.2623 4.53216 19.5103L2.48968 17.4678C1.73766 16.7158 1.73766 15.4966 2.48968 14.7445L14.7445 2.48968Z" fill="#fff"/>
                                     </svg>
-                                    <span className='text-xl pb-1 border-b border-main'>Size Guide</span>
+                                    <span className='text-xl pb-1 border-b border-main'>Guide des Tailles</span>
                                 </button>
                             </div>
                         </div>
                         <div className='flex flex-col sm:flex-row items-center gap-8 pt-8 border-t' style={{borderColor: '#D9D9D9'}}>
                             <div className='flex flex-col gap-3'>
-                                <span className='text-4xl text-center sm:text-left font-semibold text-white'>35€</span>
-                                <span className='font-semibold text-lg' style={{color: '#6D6D6D'}}>6 contributors</span>
+                                <span className='text-4xl text-center sm:text-left font-semibold text-white'>59,8</span>
+                                <span className='font-semibold text-lg' style={{color: '#6D6D6D'}}>6 participants</span>
                             </div>
                             <button 
                                 type='buttom' 
@@ -439,7 +439,7 @@ const Home = () => {
                                     boxShadow: ' 0px 4px 0px 0px #196700',
                                 }}
                             >
-                                Participate
+                                Achetez
                             </button>
                         </div>
                     </div>
@@ -447,7 +447,7 @@ const Home = () => {
             </section>
             <section className='flex w-full justify-center py-10 3xl:py-20 bg-thrBg' style={{borderTop: '10px solid #404040'}}>
                 <div className='w-full flex flex-col gap-14 px-4 3xl:px-0 max-w-480 lg:max-w-7xl'>
-                    <h2 className='text-4xl font-semibold px-4 xl:px-0'>Another Products:</h2>
+                    <h2 className='text-4xl font-semibold px-4 xl:px-0'>Autres produits (pour les joueurs toujours à l'age de pierre ):</h2>
                     <Swiper 
                         spaceBetween={40}
                         pagination={{
@@ -487,7 +487,7 @@ const Home = () => {
                                         <div className='flex w-full justify-between items-center flex-col sm:flex-row gap-2 sm:gap-0'>
                                             <div className='flex flex-col items-center sm:items-start'>
                                                 <span className='text-main text-3xl font-extrabold'>{item.price} €</span>
-                                                <span className='text-gray-400 text-sm font-normal'>{item.contributions} contributions</span>
+                                                <span className='text-gray-400 text-sm font-normal'>{item.contributions} Participants</span>
                                             </div>
                                             <button 
                                                 type='buttom' 
@@ -497,7 +497,7 @@ const Home = () => {
                                                     boxShadow: ' 0px 4px 0px 0px #196700',
                                                 }}
                                             >
-                                                Participate
+                                                Achetez
                                             </button>
                                         </div>
                                     </div>
@@ -516,8 +516,8 @@ const Home = () => {
                     </span>
                     <div className='flex flex-col items-center w-full px-16'>
                         <div className='w-full flex justify-between items-center'>
-                            <span className='font-bold text-2xl mb-5'>Level 1</span>
                             <span className='font-bold text-2xl mb-5'>18%</span>
+                            <span className='font-bold text-2xl mb-5'>15000€</span>
                         </div>
                         <progress className="progress progress-success h-4" value="40" max="100"></progress>
                     </div>
@@ -529,7 +529,7 @@ const Home = () => {
                             boxShadow: ' 0px 4px 0px 0px #196700',
                         }}
                     >
-                        Participate
+                        Achetez
                     </button>
                 </div>
             </section>       
@@ -538,7 +538,7 @@ const Home = () => {
                 <div className='max-w-7xl w-full flex flex-col-reverse items-center lg:flex-row gap-5 py-16 justify-between xl:items-start px-4 3xl:px-0'>
                     <div className='flex flex-col gap-10'>
                         <h2 className='text-4xl font-semibold hidden lg:block'>
-                            About This Project
+                            A propos de ce projet
                         </h2>
                         <div className='flex flex-col gap-3'>
                             <p className='text-xl max-w-4xl'>
@@ -548,7 +548,7 @@ const Home = () => {
                                 Imaginez une vidéo Minecraft IRL avec un scénario incroyable, des costumes et des décors qui déchirent et pleins d’accessoires pour donner vie à Minecraft dans le vrai monde! C’est un projet qui me tient vraiment à coeur et que je travaille avec mes équipes depuis longtemps et ça va enfin exister! Mais pour ça j’ai besoin de vous: je veux que ça soit une aventure en équipe et vous pouvez tous participer en soutenant le projet! 
                             </p>   
                             <p className='text-xl max-w-4xl'>
-                                Tous les bénéfices tirés des produits que vous allez acheter font permettre de financer la vidéo (et oui parce que pour faire une dinguerie pareille, on a besoin de budget pour les décors, les caméras, l’équipe, et peut être même des invités surprise…).
+                                Tous les bénéfices tirés des produits que vous allez acheter vont permettre de financer la vidéo (et oui parce que pour faire une dinguerie pareille, on a besoin de budget pour les décors, les caméras, l’équipe, et peut être même des invités surprise…).
                             </p>   
                         </div>
                         <button 
@@ -559,7 +559,7 @@ const Home = () => {
                                 boxShadow: ' 0px 4px 0px 0px #196700',
                             }}
                         >
-                            Read More
+                            En savoir plus
                         </button>
                         <div className='flex items-center gap-5 xl:gap-16 flex-wrap px-4 3xl:px-0'>
                             <div className='flex items-center gap-4'>
@@ -590,7 +590,7 @@ const Home = () => {
                                 </div>
                                 <div className='flex flex-col gap-1'>
                                     <h3 className='text-4xl font-semibold'>25.6K</h3>
-                                    <span className='text-lg font-semibold uppercase'>Amount raised</span>
+                                    <span className='text-lg font-semibold uppercase'>Montant récolté</span>
                                 </div>
                             </div>
                             <div className='flex items-center gap-4'>
@@ -655,7 +655,7 @@ const Home = () => {
                                 </div>
                                 <div className='flex flex-col gap-1'>
                                     <h3 className='text-4xl font-semibold'>86%</h3>
-                                    <span className='text-lg font-semibold uppercase'>progress</span>
+                                    <span className='text-lg font-semibold uppercase'>Objectif</span>
                                 </div>
                             </div>
                         </div>
@@ -692,7 +692,7 @@ const Home = () => {
                         </svg>
                     </div>
                     <h2 className='text-4xl font-semibold text-center block lg:hidden'>
-                        About This Project
+                        About this project
                     </h2>
                     <dialog id="my_modal_1" className="modal">
                         <div className="modal-box max-w-7xl pt-11 pb-0 px-0">
@@ -727,7 +727,7 @@ const Home = () => {
                     </div>                
                     <div className='w-full 3xl:w-3/5 flex justify-center xl:justify-end full:pr-44 bg-thrBg' style={{borderRadius: '0px 0px 0px 30px'}}>
                         <div className='flex flex-col justify-start items-center xl:items-start pt-10 py-10 px-4 3xl:px-0 3xl:py-0 3xl:pt-20 max-w-none xl:max-w-md 2xl:max-w-xl gap-16 w-full text-white'>
-                            <h2 className='text-4xl font-semibold'>About This Project</h2>
+                            <h2 className='text-4xl font-semibold'>Origine des produits</h2>
                             <div className='flex flex-col gap-7 text-xl xl:max-w-md 2xl:max-w-none' style={{lineHeight: '36px'}}>
                             <p>
                                 On voulait vous assurer le meilleur, alors on a choisi des fournisseurs qui promettent de la qualité.  
@@ -747,7 +747,7 @@ const Home = () => {
                                     boxShadow: ' 0px 4px 0px 0px #196700',
                                 }}
                             >
-                                Learn more
+                                En savoir plus
                             </button>
                         </div>
                     </div>

@@ -83,9 +83,9 @@ function Chat() {
                                                 <div className={`chat-bubble max-w-xs ${message.isResponse === true ? 'bg-chatMsg' : 'bg-base-100'} text-white`}>
                                                     {message.text}
                                                 </div>
-                                                <div className="chat-footer text-sm font-normal">
+                                                {/* <div className="chat-footer text-sm font-normal">
                                                     {message.status}
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                     </div>
@@ -112,7 +112,7 @@ function Chat() {
                                     <form className='w-full'>
                                         <input 
                                             type="text" 
-                                            placeholder="Write a message..." 
+                                            placeholder="Laissez un message..." 
                                             className="input input-bordered w-full bg-white rounded-3xl text-gray-900"
                                             value={text}
                                             onChange={handleTextInput}
