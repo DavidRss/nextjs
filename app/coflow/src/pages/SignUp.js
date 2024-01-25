@@ -296,7 +296,7 @@ function SignUp() {
             S’inscrire
           </button>
           <span className="text-base text-white font-bold">
-            Deja inscrit?{" "}
+            Déjà inscrit?{" "}
             <Link to="/signin">
               <span className="text-main">Connecte toi</span>
             </Link>

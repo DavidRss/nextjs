@@ -298,7 +298,7 @@ function Chat() {
                   <form className="w-full">
                     <input
                       type="text"
-                      placeholder="Write a message..."
+                      placeholder="Laissez un message..."
                       className="input input-bordered w-full bg-white rounded-3xl text-gray-900"
                       value={text}
                       onChange={handleTextInput}

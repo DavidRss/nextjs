@@ -139,16 +139,13 @@ const Aside = forwardRef((props, ref) => {
 
   return (
     <aside className="flex flex-col gap-9 w-full min-w-425 xl:w-fit items-center">
-      <h2 className="text-white font-bold text-3xl text-left w-full">
-        Countreparties
+      <h2 className="text-white font-bold text-3xl text-left w-full px-4 md:px-0">
+        Autres Produits
       </h2>
       <CardsSlider />
-      <div
-        ref={ref}
-        className="card bg-mainCard flex flex-col p-6 font-semibold shadow-xl max-w-sm mb-12 xl:mb-0"
-      >
+      <div className="card bg-mainCard flex flex-col p-6 font-semibold shadow-xl max-w-sm mb-12 xl:mb-0">
         <h2 className="text-xl text-white mb-5">
-          Donne le montant que tu veux Montant à donner
+          Donne le montant que tu veux:
         </h2>
         <input
           type="number"

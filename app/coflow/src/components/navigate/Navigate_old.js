@@ -99,7 +99,7 @@ const Navigate = () => {
                         <circle cx="25" cy="25" r="25" fill="#4E9D35"/>
                         <path d="M19 17.5281C19 15.1477 21.6392 13.7155 23.635 15.0127L35.1303 22.4847C36.9503 23.6677 36.9503 26.3323 35.1303 27.5153L23.635 34.9873C21.6392 36.2845 19 34.8523 19 32.4719V17.5281Z" fill="white"/>
                     </svg>
-                    <span className={`${hovered ? '-translate-y-1' : ''} transition-all`}>Watch Video</span>
+                    <span className={`${hovered ? '-translate-y-1' : ''} transition-all`}>Regarder la Vidéo</span>
                 </button>      
            </div>
            <dialog id="mainVideo" className="modal">

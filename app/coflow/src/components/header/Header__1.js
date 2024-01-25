@@ -16,7 +16,7 @@ export default function Header() {
         <div className="navbar text-white my-7 max-w-7xl rounded-xl p-6" style={{background: '#3F3F3F'}}>
             <div className="navbar-start">
                 <Link to="/presentation">
-                    <span className="normal-case text-xl font-semibold text-white">Coflow</span>
+                    <span className="normal-case text-xl font-semibold text-white">Briceshop</span>
                 </Link>
                 <div className="divider lg:divider-horizontal "></div> 
                 <div className='hidden xl:flex gap-2 items-center'>

@@ -98,8 +98,8 @@ function Leaderboard() {
                         style={{ borderColor: "rgba(242, 242, 242, 0.12)" }}
                       >
                         <th className="w-20 text-center">Place</th>
-                        <th>Name</th>
-                        <th>Dons</th>
+                        <th>Nom</th>
+                        <th>Participation</th>
                         <th>Points</th>
                       </tr>
                     </thead>
@@ -148,16 +148,14 @@ function Leaderboard() {
                   <div className="flex sm:flex-1 sm:items-center sm:justify-between w-full mb-4 sm:mb-0">
                     <div>
                       <p className="text-white font-semibold text-base">
-                        Showing
-                        <span className="font-medium"> 1 </span>
-                        to
+                        Résultat
+                        <span className="font-medium"> 1 </span>à
                         <span className="font-medium"> 10 </span>
-                        of
+                        sur
                         <span className="font-medium">
                           {" "}
                           {participants.length}{" "}
                         </span>
-                        results
                       </p>
                     </div>
                   </div>

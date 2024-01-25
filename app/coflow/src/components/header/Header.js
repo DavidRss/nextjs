@@ -59,7 +59,7 @@ export default function Header() {
           <div>
             <span className="countdown font-mono text-2xl md:text-4xl">
               <span style={{ "--value": days }}></span>
-              Days
+              Jours
             </span>
           </div>
           <div className="flex gap-1">
@@ -85,7 +85,7 @@ export default function Header() {
       <div className="flex flex-col items-center relative w-full">
         <div className="flex w-full justify-between items-start max-w-8xl py-5 md:py-10 px-6 z-20">
           <Link to="/">
-            <h1 className="text-4xl font-black pt-4">Coflow</h1>
+          <h1 className="text-4xl font-black pt-4">Briceshop</h1>
           </Link>
           <div className="hidden md:flex items-center gap-7">
             {currentUser && (
@@ -108,7 +108,7 @@ export default function Header() {
                 }}
                 onClick={onClickSignin}
               >
-                Connect
+                Se connecter
               </button>
             )}
             {currentUser && (
@@ -155,7 +155,7 @@ export default function Header() {
                 hovered ? "-translate-y-1" : ""
               } transition-all whitespace-nowrap`}
             >
-              Watch Video
+              Regarder la Vidéo
             </span>
           </button>
           <button

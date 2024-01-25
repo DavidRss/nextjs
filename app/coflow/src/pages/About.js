@@ -160,9 +160,9 @@ const Home = () => {
         className="flex w-full justify-center py-10 3xl:py-20 bg-thrBg"
         style={{ borderTop: "10px solid #404040" }}
       >
-        <div className="max-w-7xl w-full flex flex-col gap-14 px-4 3xl:px-0">
+        <div className="w-full flex flex-col gap-14 px-4 3xl:px-0 max-w-480 lg:max-w-7xl">
           <h2 className="text-4xl font-semibold px-4 xl:px-0">
-            Another Products:
+            Autres produits (pour les joueurs toujours à l'age de pierre ):
           </h2>
           <Swiper
             spaceBetween={40}
@@ -215,18 +215,18 @@ const Home = () => {
                         }}
                       />
                     </div>
-                    <div className="flex w-full justify-between items-center">
-                      <div className="flex flex-col items-start">
+                      <div className="flex w-full justify-between items-center flex-col sm:flex-row gap-2 sm:gap-0">
+                        <div className="flex flex-col items-center sm:items-start">
                         <span className="text-main text-3xl font-extrabold">
                           {nFormatter(item?.variants[0].price.amount, 2)} €
                         </span>
                         <span className="text-gray-400 text-sm font-normal">
-                          {item.contributions} contributions
+                            {item.contributions} Participants
                         </span>
                       </div>
                       <button
                         type="buttom"
-                        className="text-white py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105"
+                          className="text-white w-full sm:w-fit py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105"
                         style={{
                           background:
                             "linear-gradient(45deg, #328019 0%, #5EAC0C 100%)",
@@ -236,7 +236,7 @@ const Home = () => {
                           handleClickProduct(item);
                         }}
                       >
-                        Participate
+                          Achetez
                       </button>
                     </div>
                   </div>
@@ -286,22 +286,22 @@ const Home = () => {
           </div>
           <button
             type="buttom"
-            className="text-white py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105"
+            className="text-white w-full md:w-fit py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105"
             style={{
               background: "linear-gradient(45deg, #328019 0%, #5EAC0C 100%)",
               boxShadow: " 0px 4px 0px 0px #196700",
             }}
           >
-            Participate
+            Achetez
           </button>
         </div>
       </section>
       <Footer>
         <section className="py-5 lg:py-14 flex justify-center bg-thrBg">
-          <div className="max-w-7xl w-full flex flex-col-reverse items-center xl:flex-row gap-5 py-16 justify-between xl:items-start px-4 3xl:px-0">
+          <div className="max-w-7xl w-full flex flex-col-reverse items-center lg:flex-row gap-5 py-16 justify-between xl:items-start px-4 3xl:px-0">
             <div className="flex flex-col gap-10">
-              <h2 className="text-4xl font-semibold hidden xl:block">
-                About This Project
+              <h2 className="text-4xl font-semibold hidden lg:block">
+                A propos de ce projet
               </h2>
               <div className="flex flex-col gap-3">
                 <p className="text-xl max-w-4xl">Salut les potes!</p>
@@ -317,7 +317,7 @@ const Home = () => {
                 </p>
                 <p className="text-xl max-w-4xl">
                   Tous les bénéfices tirés des produits que vous allez acheter
-                  font permettre de financer la vidéo (et oui parce que pour
+                  vont permettre de financer la vidéo (et oui parce que pour
                   faire une dinguerie pareille, on a besoin de budget pour les
                   décors, les caméras, l’équipe, et peut être même des invités
                   surprise…).
@@ -325,14 +325,14 @@ const Home = () => {
               </div>
               <button
                 type="buttom"
-                className="text-white w-fit py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105"
+                className="text-white w-full md:w-fit py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105"
                 style={{
                   background:
                     "linear-gradient(45deg, #328019 0%, #5EAC0C 100%)",
                   boxShadow: " 0px 4px 0px 0px #196700",
                 }}
               >
-                Read More
+                En savoir plus
               </button>
               <div className="flex items-center gap-5 xl:gap-16 flex-wrap px-4 3xl:px-0">
                 <div className="flex items-center gap-4">
@@ -351,7 +351,7 @@ const Home = () => {
                       {nFormatter(project?.amount, 2)}
                     </h3>
                     <span className="text-lg font-semibold uppercase">
-                      Montant total
+                      Montant récolté
                     </span>
                   </div>
                 </div>
@@ -391,7 +391,7 @@ const Home = () => {
                       {counter > 0 ? getFormatTimeRemaining(counter) : "---"}{" "}
                     </h3>
                     <span className="text-lg font-semibold uppercase">
-                      End date
+                      Objectif
                     </span>
                   </div>
                 </div>
@@ -475,8 +475,8 @@ const Home = () => {
                 </defs>
               </svg>
             </div>
-            <h2 className="text-4xl font-semibold text-center block xl:hidden">
-              About This Project
+            <h2 className="text-4xl font-semibold text-center block lg:hidden">
+              About this project
             </h2>
             <dialog id="my_modal_1" className="modal">
               <div className="modal-box max-w-7xl pt-11 pb-0 px-0">
@@ -510,8 +510,8 @@ const Home = () => {
                 className="bg-secBg flex h-full w-full py-10 px-4 3xl:px-0 3xl:py-52"
                 style={{ borderRadius: "0 30px 0 0" }}
               >
-                <div className="w-full xl:flex justify-center 2xl:justify-start flex-wrap items-center full:pl-44">
-                  <div className="flex justify-center 3xl:justify-normal 3xl:flex-col gap-6 items-center flex-wrap">
+                <div className="w-full xl:flex justify-center lg:justify-start flex-wrap items-center full:pl-44">
+                  <div className="flex justify-center 3xl:justify-normal xl:flex-col gap-6 items-center flex-wrap xl:max-w-36 2xl:max-w-none">
                     <img src={img1} alt="img1" style={{ width: "146px" }} />
                     <img src={img2} alt="img2" style={{ width: "173px" }} />
                     <img src={img3} alt="img3" style={{ width: "178px" }} />
@@ -521,13 +521,13 @@ const Home = () => {
               </div>
             </div>
             <div
-              className="w-full 3xl:w-3/5 flex justify-center 3xl:justify-end full:pr-44 bg-thrBg"
+              className="w-full 3xl:w-3/5 flex justify-center xl:justify-end full:pr-44 bg-thrBg"
               style={{ borderRadius: "0px 0px 0px 30px" }}
             >
-              <div className="flex flex-col justify-start pt-10 py-10 px-4 3xl:px-0 3xl:py-0 3xl:pt-20 max-w-xl gap-16 w-full text-white">
-                <h2 className="text-4xl font-semibold">About This Project</h2>
+              <div className="flex flex-col justify-start items-center xl:items-start pt-10 py-10 px-4 3xl:px-0 3xl:py-0 3xl:pt-20 max-w-none xl:max-w-md 2xl:max-w-xl gap-16 w-full text-white">
+                <h2 className="text-4xl font-semibold">Origine des produits</h2>
                 <div
-                  className="flex flex-col gap-7 text-xl"
+                  className="flex flex-col gap-7 text-xl xl:max-w-md 2xl:max-w-none"
                   style={{ lineHeight: "36px" }}
                 >
                   <p>
@@ -547,21 +547,20 @@ const Home = () => {
                 </div>
                 <button
                   type="buttom"
-                  className="text-white py-3 px-8 rounded-md w-fit text-lg font-semibold transition-all hover:scale-105"
+                  className="text-white py-3 px-8 rounded-md w-full md:w-fit text-lg font-semibold transition-all hover:scale-105"
                   style={{
                     background:
                       "linear-gradient(45deg, #328019 0%, #5EAC0C 100%)",
                     boxShadow: " 0px 4px 0px 0px #196700",
                   }}
                 >
-                  Learn more
+                  En savoir plus
                 </button>
               </div>
             </div>
             <div
-              className="rounded-3xl flex items-center justify-center cursor-pointer 2xl:absolute top-20 px-4 3xl:px-0"
+              className="rounded-3xl flex items-center justify-center cursor-pointer xl:left-20p xl:top-10 2xl:left-28p xl:absolute 2xl:top-20 px-4 3xl:px-0"
               onClick={() => document.getElementById("my_modal_1").showModal()}
-              style={{ left: "28%" }}
             >
               <img
                 src={about2}

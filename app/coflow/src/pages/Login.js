@@ -176,7 +176,7 @@ function Login() {
           style={{ background: "#333" }}
         >
           <h1 className="text-2xl lg:text-3xl font-bold text-white text-center w-full md:px-20">
-            Creez votre compte pour poursuivre votre participation
+            Crée ton compte pour poursuivre ton achat
           </h1>
 
           <button
@@ -184,10 +184,10 @@ function Login() {
             onClick={handleSignInGoogle}
           >
             <img src={googleIcon} alt="signUp by google" />
-            S’inscrire via google
+            S’inscrire via Google
           </button>
           <h2 className="text-base font-semibold text-white">
-            Ou bien inscrivez-vous avec votre adresse email
+            Ou bien inscris-toi avec ton adresse mail
           </h2>
           <div className="w-full mt-8 flex flex-col gap-10">
             {/* <div className="sm:col-span-4">
@@ -255,7 +255,7 @@ function Login() {
           </div>
           <div className="text-white text-base font-semibold flex justify-center w-full mt-6 lg:mt-8">
             <h3 className="px-0 lg:px-28 text-center">
-              En creant votre compte vous acceptez les
+              En créant ton compte tu acceptes les
               <br />{" "}
               <span
                 className="text-main hover:cursor-pointer"
@@ -268,7 +268,7 @@ function Login() {
                 className="text-main hover:cursor-pointer"
                 onClick={() => document.getElementById("politique").showModal()}
               >
-                politique deconfidentialite
+                politique de confidentialité
               </span>
             </h3>
           </div>
@@ -286,9 +286,9 @@ function Login() {
           {/* </Link> */}
           <div className="w-full justify-center flex flex-col sm:flex-row gap-2 sm:gap-0 items-center">
             <span className="text-base text-white font-bold">
-              Deja inscrit?{" "}
+              Déjà inscrit?{" "}
               <Link to="/signup">
-                <span className="text-main">Inscris toi</span>
+                <span className="text-main">Connecte-toi</span>
               </Link>
             </span>
           </div>

@@ -26,7 +26,8 @@ function Earn() {
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-32 items-center xl:items-start">
             <div className="flex flex-col w-full">
               <h1 className="text-white font-bold text-3xl mb-8 text-left">
-                Welcome to <span className="text-main">Loyalty Program</span>
+                Réalises des challenges{" "}
+                <span className="text-main">Gagnes des Points</span>
               </h1>
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col bg-mainCard border-pagBg rounded-xl pt-7 pb-20 px-6">
@@ -38,7 +39,7 @@ function Earn() {
                       Cashback
                     </h2>
                     <span className="text-white font-normal text-base">
-                      Earn 10 Vibes for every 1 EUR spent.
+                      Gagne 10 Points pour chaque 1 EUR dépensé.
                     </span>
                   </div>
                   <div className="divider my-6" />
@@ -47,7 +48,7 @@ function Earn() {
                       Challenge Board
                     </h2>
                     <span className="text-white font-normal text-base">
-                      Collect badges and get rewarded
+                      Collectionne les badges et reçoit des récompenses
                     </span>
                   </div>
 
@@ -63,7 +64,7 @@ function Earn() {
                         <img src={welcome} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        Welcome to the family
+                        Bienvenue dans la Famille
                       </h1>
                       <h2 className="text-base font-semibold text-white">
                         {EARN.FAMILY} Points
@@ -81,7 +82,7 @@ function Earn() {
                         <img src={dons} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        Premier achat
+                        Premier Achat
                       </h1>
                       <h2 className="text-base font-semibold text-white">
                         {EARN.DONATION1} Points
@@ -99,76 +100,43 @@ function Earn() {
                         <img src={secDons} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        Deuxième achat
+                        Deuxième Achat
                       </h1>
                       <h2 className="text-base font-semibold text-white">
                         {EARN.DONATION2} Points
                       </h2>
                     </div>
 
-                    <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
-                      <div
-                        className={`${
-                          currentUser.earned.tiktok
-                            ? "bg-emerald-500"
-                            : "bg-white"
-                        } rounded-full border-pagBg p-2`}
-                      >
-                        <img src={tiktok} alt="icon" />
-                      </div>
-                      <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        Post a clip on Tik Tok (Rules : Clip must promote this
-                        page and you must tag @bricebbrice)
-                      </h1>
-                      <h2 className="text-base font-semibold text-white">
-                        {EARN.TIKTOK} Points
-                      </h2>
-                    </div>
+                    {/* <div className='flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 '>
+                                        <div className='bg-white rounded-full border-pagBg p-2'>
+                                            <img src={tiktok} alt="icon" />
+                                        </div>
+                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Post a clip on Tik Tok (Rules : Clip must promote this page and you must tag @bricebbrice)</h1>
+                                        <h2 className='text-base font-semibold text-white'>300 points Vibes</h2>
+                                    </div>
 
-                    <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
-                      <div
-                        className={`${
-                          currentUser.earned.youtube
-                            ? "bg-emerald-500"
-                            : "bg-white"
-                        } rounded-full border-pagBg p-2`}
-                      >
-                        <img src={youtube} alt="icon" />
-                      </div>
-                      <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        Post a clip on Youtube short (Rules : Clip must promote
-                        this page and you must tag @bricebbrice)
-                      </h1>
-                      <h2 className="text-base font-semibold text-white">
-                        {EARN.YOUTUBE} Points
-                      </h2>
-                    </div>
+                                    <div className='flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 '>
+                                        <div className='bg-white rounded-full border-pagBg p-2'>
+                                            <img src={youtube} alt="icon" />
+                                        </div>
+                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Post a clip on Youtube short (Rules : Clip must promote this page and you must tag @bricebbrice)</h1>
+                                        <h2 className='text-base font-semibold text-white'>300 points Vibes</h2>
+                                    </div>
 
-                    <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
-                      <div
-                        className={`${
-                          currentUser.earned.instagram
-                            ? "bg-emerald-500"
-                            : "bg-white"
-                        } rounded-full border-pagBg p-2`}
-                      >
-                        <img src={instagram} alt="icon" />
-                      </div>
-                      <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        Post a clip on Instagram Reels (Rules : Clip must
-                        promote this page and you must tag @bricebbrice)
-                      </h1>
-                      <h2 className="text-base font-semibold text-white">
-                        {EARN.INSTAGRAM} Points
-                      </h2>
-                    </div>
+                                    <div className='flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 '>
+                                        <div className='bg-white rounded-full border-pagBg p-2'>
+                                            <img src={instagram} alt="icon" />
+                                        </div>
+                                        <h1 className='text-base font-normal tetx-gray-900 opacity-90 text-center'>Post a clip on Instagram Reels (Rules : Clip must promote this page and you must tag @bricebbrice)</h1>
+                                        <h2 className='text-base font-semibold text-white'>300 points Vibes</h2>
+                                    </div> */}
 
                     <div className="flex flex-col items-center justify-start sm:justify-center gap-2 sm:w-44 ">
                       <div className="bg-white rounded-full border-pagBg p-2">
                         <img src={daily} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        Visite la page chaque jours
+                        Connecte à la page chaque jour
                       </h1>
                       <h2 className="text-base font-semibold text-white">
                         {EARN.DAILY} Points
@@ -186,7 +154,7 @@ function Earn() {
                         <img src={comments} alt="icon" />
                       </div>
                       <h1 className="text-base font-normal tetx-gray-900 opacity-90 text-center">
-                        Laisse un commentaire
+                        Envoie un message dans le chat
                       </h1>
                       <h2 className="text-base font-semibold text-white">
                         {EARN.COMMENT} Points

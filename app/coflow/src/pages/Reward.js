@@ -45,7 +45,8 @@ function Reward() {
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-6 items-center xl:items-start">
             <div className="flex flex-col w-full">
               <h1 className="text-white font-bold text-3xl mb-8 text-left">
-                Welcome to <span className="text-main">Loyalty Program</span>
+                Réalises des challenges{" "}
+                <span className="text-main">Gagnes des Points</span>
               </h1>
               <div className="flex flex-col gap-5">
                 <Link to="/reward" className="w-full">
@@ -70,7 +71,7 @@ function Reward() {
                           {currentUser?.points}
                         </span>
                         <span className="text-white opacity-50 text-sm font-normal hidden sm:block">
-                          Equals {currentUser?.donations} EUR
+                          Points
                         </span>
                       </div>
                       <div className="flex flex-col">
@@ -78,16 +79,12 @@ function Reward() {
                           {currentUser?.points}
                         </span>
                         <span className="text-white opacity-50 text-sm font-normal block sm:hidden">
-                          Equals {currentUser?.donations} EUR
+                          Points
                         </span>
                       </div>
-                      <button className="hidden sm:block">
-                        <img
-                          src={arrow}
-                          alt="arrow"
-                          className="brightness-150"
-                        />
-                      </button>
+                      {/* <button className='hidden sm:block'>
+                                       <img src={arrow} alt="arrow" className='brightness-150' />
+                                    </button> */}
                     </div>
                   </div>
                 </Link>
@@ -108,7 +105,7 @@ function Reward() {
                               <img src={earn} alt="coins" />
                             </div>
                             <h1 className="text-white font-semibold text-xl">
-                              Earn
+                              Challenge
                             </h1>
                           </div>
                         </div>
@@ -133,7 +130,7 @@ function Reward() {
                               <img src={gift} alt="coins" />
                             </div>
                             <h1 className="text-white font-semibold text-xl">
-                              Redeem
+                              Récompenses
                             </h1>
                           </div>
                         </div>
@@ -159,16 +156,16 @@ function Reward() {
                             <img src={ref} alt="coins" />
                           </div>
                           <h1 className="text-white font-semibold text-xl">
-                            Referals
+                            Parrainage
                           </h1>
                         </div>
                         <div className="flex items-center mt-3 gap-1 text-sm font-normal text-white">
-                          <span className="opacity-50">You get</span>
-                          <span className="opacity-100">10% coupon</span>
+                          <span className="opacity-50">Tu reçois</span>
+                          <span className="opacity-100">10% de réduction</span>
                         </div>
                         <div className="flex items-center gap-1 text-sm font-normal text-white">
-                          <span className="opacity-50">They get</span>
-                          <span className="opacity-100">10% coupon</span>
+                          <span className="opacity-50">Il reçoit</span>
+                          <span className="opacity-100">10% de réduction</span>
                         </div>
                       </div>
                       <button>
@@ -199,7 +196,7 @@ function Reward() {
                           </span>
                         </div>
                         <span className="mt-3 text-white text-base font-semibold">
-                          {progress && progress.remainingToNextLevel} USD to{" "}
+                          {progress && progress.remainingToNextLevel} Points avant le level{" "}
                           {progress && progress.nextLevel.title}
                         </span>
                         <progress
@@ -233,7 +230,7 @@ function Reward() {
                           </h1>
                         </div>
                         <span className="text-white opacity-50 text-sm font-normal w-44 text-left mt-4">
-                          Level up to get more benefits and discounts.
+                          Passes au niveau supérieur pour gagner des récompenses
                         </span>
                       </div>
                       <button>
@@ -242,34 +239,30 @@ function Reward() {
                     </div>
                   </div>
                 </Link>
-                <Link to="/reward/lottery" className="w-full">
-                  <div className="card w-full bg-mainCard border-sec border text-primary-content">
-                    <div className="card-body bg-mainCard rounded-xl flex flex-row justify-between items-center px-10">
-                      <div className="flex flex-col items-start">
-                        <div className="flex items-center gap-4">
-                          <div
-                            className="p-3 rounded-full flex justify-center items-center border-2"
-                            style={{
-                              borderColor: "rgba(255, 255, 255, 0.11)",
-                              background: "#414141",
-                            }}
-                          >
-                            <img src={calendar} alt="calendar" />
-                          </div>
-                          <h1 className="text-white font-semibold text-xl">
-                            Lottery
-                          </h1>
-                        </div>
-                        <span className="text-white opacity-50 text-sm font-normal w-44 text-left mt-4">
-                          Level up to get more benefits and discounts.
-                        </span>
-                      </div>
-                      <button>
-                        <img src={arrow} alt="arrow" />
-                      </button>
-                    </div>
-                  </div>
-                </Link>
+                {/* <Link to='/reward/lottery' className='w-full'>
+                            <div className="card w-full bg-mainCard border-sec border text-primary-content">
+                                <div className="card-body bg-mainCard rounded-xl flex flex-row justify-between items-center px-10">
+                                    <div className='flex flex-col items-start'>
+                                        <div className='flex items-center gap-4'>
+                                            <div 
+                                                className='p-3 rounded-full flex justify-center items-center border-2'
+                                                style={{
+                                                    borderColor: 'rgba(255, 255, 255, 0.11)',
+                                                    background: '#414141',
+                                                }}
+                                            >
+                                                <img src={calendar} alt="calendar" />
+                                            </div>
+                                            <h1 className='text-white font-semibold text-xl'>Lottery</h1>
+                                        </div>
+                                        <span className='text-white opacity-50 text-sm font-normal w-44 text-left mt-4'>Level up to get more benefits and discounts.</span>
+                                    </div>
+                                    <button>
+                                        <img src={arrow} alt="arrow" />
+                                    </button>
+                                </div>
+                            </div>
+                            </Link> */}
               </div>
             </div>
             <Aside />

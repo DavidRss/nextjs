@@ -43,7 +43,8 @@ function Referals() {
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-6 items-center xl:items-start">
             <div className="flex flex-col w-full">
               <h1 className="text-white font-bold text-3xl mb-8 text-left">
-                Welcome to <span className="text-main">Loyalty Program</span>
+                Réalises des challenges{" "}
+                <span className="text-main">Gagnes des Points</span>
               </h1>
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col bg-mainCard border-pagBg rounded-xl pt-8 sm:px-6">
@@ -56,8 +57,8 @@ function Referals() {
                     </h1>
                     <p className="text-base font-normal text-white text-center mt-8">
                       Invite tes amis à nous rejoindre sur le shop et bénéficie
-                      de récompenses. Partage le lien ci-dessous pour t'inscrire
-                      maintenant !
+                      de récompenses. Partage le lien ci-dessous pour parrainer
+                      tes amis!
                     </p>
                     <div className="divider my-6" />
                     <div className="mt-7 w-full flex flex-col items-center">
@@ -73,7 +74,7 @@ function Referals() {
                             className="flex gap-2 items-center text-white text-xl font-semibold underline cursor-pointer"
                             onClick={copyToClipboard}
                           >
-                            Share your link
+                            Partage ton lien
                             <img src={copy} alt="copy" />
                           </button>
                         </li>
@@ -85,7 +86,7 @@ function Referals() {
                             2
                           </span>
                           <span className="text-white text-xl font-semibold">
-                            Your friend signup using your link
+                            Ton ami s'inscrit en utilisant ton lien
                           </span>
                         </li>
                         <li className="flex items-center gap-5">
@@ -96,7 +97,7 @@ function Referals() {
                             3
                           </span>
                           <span className="text-white text-xl font-semibold">
-                            Your friend places an order
+                            Ton ami passe une commande
                           </span>
                         </li>
                       </ul>
@@ -112,10 +113,10 @@ function Referals() {
                               </div>
                               <div className="flex flex-col items-start gap-0.5 text-white">
                                 <span className="font-normal text-sm opacity-50">
-                                  You get
+                                  Tu reçois
                                 </span>
                                 <span className="font-semibold text-xl">
-                                  10% coupon
+                                  10% de réduction
                                 </span>
                               </div>
                             </div>
@@ -125,10 +126,10 @@ function Referals() {
                               </div>
                               <div className="flex flex-col items-start gap-0.5 text-white">
                                 <span className="font-normal text-sm opacity-50">
-                                  They get
+                                  Il reçoit
                                 </span>
                                 <span className="font-semibold text-xl">
-                                  10% coupon
+                                  10% de réduction
                                 </span>
                               </div>
                             </div>
@@ -139,11 +140,11 @@ function Referals() {
                             </div>
                             <div className="flex flex-col items-start gap-0.5 text-white">
                               <span className="font-semibold text-xl">
-                                500 Points (5 USD)
+                                400 Points
                               </span>
                               <span className="text-left font-normal text-sm opacity-50">
-                                For every 3 friend you refer, you’ll get this
-                                extra reward
+                                Un fois que ton ami passe sa commande, tu reçois
+                                cette récompense en bonus
                               </span>
                             </div>
                           </div>
@@ -160,6 +161,7 @@ function Referals() {
                             }`}
                             value={`${origin}/signup?referralCode=${referralCode}`}
                             ref={inputRef}
+                            style={{ background: "#464646" }}
                           />
 
                           <button
@@ -173,7 +175,7 @@ function Referals() {
                             }}
                           >
                             <img src={copyWhite} alt="copy-icon white" />
-                            copy
+                            copier
                           </button>
                         </div>
                         <div className="mt-12 flex w-full flex-col items-center gap-7 pb-9">
@@ -226,7 +228,7 @@ function Referals() {
                             {currentUser?.referrals
                               ? currentUser.referrals.length
                               : 0}{" "}
-                            ami
+                            amis
                           </span>
                         </div>
                       </div>

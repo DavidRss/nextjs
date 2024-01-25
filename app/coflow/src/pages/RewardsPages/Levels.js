@@ -20,7 +20,8 @@ function Levels() {
           <div className="w-full flex flex-col-reverse xl:flex-row gap-5 xl:gap-6 items-center xl:items-start">
             <div className="flex flex-col w-full">
               <h1 className="text-white font-bold text-3xl mb-8 text-left">
-                Welcome to <span className="text-main">Loyalty Program</span>
+                Réalises des challenges{" "}
+                <span className="text-main">Gagnes des Points</span>
               </h1>
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col bg-mainCard border-pagBg rounded-xl pt-8 sm:pb-20 sm:px-6">
