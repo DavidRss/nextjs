@@ -10,7 +10,7 @@ export interface User {
   points: number;
   referralCode: string;
   referrer: string;
-  referrals: Array<string>;
+  referrals: { referralUserId: boolean };
   earned: {
     family: boolean;
     donation1: boolean;
@@ -27,26 +27,30 @@ export interface User {
       orderId: string;
       orderNumber: string;
       totalPrice: number;
-      type: "product" | "donation",
+      type: "product" | "donation";
       createdAt: string;
     }
-  ],
+  ];
   spending: number;
-  rewards: [{
-    productId: string;
-    discountCode: string;
-    used: boolean;
-    viewed: boolean;
-    createdAt: string; // timestamp string
-  }]
-  notifications: [{
-    productId: string;
-    discountCode: string;
-    viewed: boolean;
-    message: string;
-    type: string; // reward, order
-    createdAt: string; // timestamp string
-  }]
+  rewards: [
+    {
+      productId: string;
+      discountCode: string;
+      used: boolean;
+      viewed: boolean;
+      createdAt: string; // timestamp string
+    }
+  ];
+  notifications: [
+    {
+      productId: string;
+      discountCode: string;
+      viewed: boolean;
+      message: string;
+      type: string; // reward, order
+      createdAt: string; // timestamp string
+    }
+  ];
   isCookie: boolean;
 }
 
@@ -59,7 +63,7 @@ export interface Project {
   amount: number;
   numberOfParticipant: number;
   endOfDate: Timestamp; // timestamp string
-  lotteryDate: Timestamp; // 
+  lotteryDate: Timestamp; //
 }
 
 export interface Participant {

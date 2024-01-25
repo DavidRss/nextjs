@@ -26,9 +26,6 @@ export const calculateProgress = (spending) => {
   if (spending > 0 && nextLevelSpend === 0) {
     percent = 100;
   } else {
-    console.log("===== spending: ", spending);
-    console.log("===== nextLevelSpend: ", nextLevelSpend);
-    console.log("===== percent: ", spending / nextLevelSpend)
     percent = nFormatter(spending / nextLevelSpend, 1);
   }
 

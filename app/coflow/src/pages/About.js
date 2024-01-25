@@ -59,7 +59,6 @@ const Home = () => {
   const [showDialog, setShowDialog] = useState(false);
 
   const levelProgress = calculateProgress(currentUser?.spending ?? 0);
-  console.log("===== levelProgress: ", levelProgress);
 
   useEffect(() => {
     if (products.length > 0) {

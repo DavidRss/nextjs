@@ -1,5 +1,3 @@
-import { toast } from "react-toastify";
-
 export const PROJECT_ID = "wGJO9iMDd6cQdtjw2D8s";
 export const DEFAULT_USER_COUNTRY = "Frence";
 export const DEFAULT_DONATION = 100;
@@ -38,14 +36,14 @@ export const LevelData = [
     points: 1500,
     description: "Earn 2 Points for every 1 USD spent.",
   },
-  // L4: {
+  // {
   //   level: 4,
   //   title: "Gold",
   //   spend: 7500,
   //   points: 400,
   //   description: "Earn 2 Points for every 1 USD spent.",
   // },
-  // L5: {
+  // {
   //   level: 5,
   //   title: "Platinum",
   //   spend: 10000,
@@ -61,7 +59,7 @@ export const INIT_USER = {
   firstName: "",
   lastName: "",
   avatar: "",
-  points: EARN.FAMILY,
+  points: EARN.FAMILY + LevelData[0].points,
   referralCode: "",
   referrer: "",
   referrals: [],
@@ -134,5 +132,4 @@ export const Notification = {
 
 export const IMAGE_TYPE = ["png", "jpg", "jpeg"];
 
-export const ProductColors = ["#0041DF", "#FF0000", "#21344B", "#FFA825"];
 export const ProductVariants = ["XS", "S", "M", "L", "XL", "XXL"];
