@@ -76,7 +76,7 @@ export default function ProductDialog({
                   <label className="label">
                     <span className="label-text-alt">Taille</span>
                   </label>
-                  <select
+                  {product?.variants && <select
                     className="select select-bordered"
                     onChange={onChangedVariant}
                     value={variant}
@@ -86,7 +86,7 @@ export default function ProductDialog({
                         {item.title}
                       </option>
                     ))}
-                  </select>
+                  </select>}
                   <button
                     className="btn btn-primary mt-8"
                     onClick={handleConfirm}

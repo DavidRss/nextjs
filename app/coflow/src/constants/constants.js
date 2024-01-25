@@ -132,4 +132,11 @@ export const Notification = {
 
 export const IMAGE_TYPE = ["png", "jpg", "jpeg"];
 
+export const ProductColors = {
+  Noir: "#363636",
+  Vert: "#285747",
+  Bleu: "#00639E",
+  Blanc: "#EEEEEE"
+}
+
 export const ProductVariants = ["XS", "S", "M", "L", "XL", "XXL"];

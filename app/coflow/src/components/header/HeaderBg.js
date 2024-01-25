@@ -215,8 +215,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_186_6290"
@@ -226,8 +226,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_186_6290"
@@ -237,8 +237,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_186_6290"
@@ -248,8 +248,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_186_6290"
@@ -259,8 +259,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_186_6290"
@@ -270,8 +270,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_186_6290"
@@ -281,8 +281,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint7_linear_186_6290"
@@ -292,8 +292,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint8_linear_186_6290"
@@ -303,8 +303,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint9_linear_186_6290"
@@ -314,8 +314,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint10_linear_186_6290"
@@ -325,8 +325,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint11_linear_186_6290"
@@ -336,8 +336,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint12_linear_186_6290"
@@ -347,8 +347,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint13_linear_186_6290"
@@ -358,8 +358,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint14_linear_186_6290"
@@ -369,8 +369,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint15_linear_186_6290"
@@ -380,8 +380,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint16_linear_186_6290"
@@ -391,8 +391,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint17_linear_186_6290"
@@ -402,8 +402,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint18_linear_186_6290"
@@ -413,8 +413,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint19_linear_186_6290"
@@ -424,8 +424,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint20_linear_186_6290"
@@ -435,8 +435,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint21_linear_186_6290"
@@ -446,8 +446,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint22_linear_186_6290"
@@ -457,8 +457,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint23_linear_186_6290"
@@ -468,8 +468,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint24_linear_186_6290"
@@ -479,8 +479,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint25_linear_186_6290"
@@ -490,8 +490,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint26_linear_186_6290"
@@ -501,8 +501,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint27_linear_186_6290"
@@ -512,8 +512,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint28_linear_186_6290"
@@ -523,8 +523,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint29_linear_186_6290"
@@ -534,8 +534,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint30_linear_186_6290"
@@ -545,8 +545,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint31_linear_186_6290"
@@ -556,8 +556,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint32_linear_186_6290"
@@ -567,8 +567,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint33_linear_186_6290"
@@ -578,8 +578,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint34_linear_186_6290"
@@ -589,8 +589,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint35_linear_186_6290"
@@ -600,8 +600,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint36_linear_186_6290"
@@ -611,8 +611,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint37_linear_186_6290"
@@ -622,8 +622,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint38_linear_186_6290"
@@ -633,8 +633,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint39_linear_186_6290"
@@ -644,8 +644,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint40_linear_186_6290"
@@ -655,8 +655,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint41_linear_186_6290"
@@ -666,8 +666,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint42_linear_186_6290"
@@ -677,8 +677,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint43_linear_186_6290"
@@ -688,8 +688,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint44_linear_186_6290"
@@ -699,8 +699,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint45_linear_186_6290"
@@ -710,8 +710,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint46_linear_186_6290"
@@ -721,8 +721,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint47_linear_186_6290"
@@ -732,8 +732,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
         <linearGradient
           id="paint48_linear_186_6290"
@@ -743,8 +743,8 @@ export default function HeaderBg() {
           y2="118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#155804" stop-opacity="0.2" />
-          <stop offset="1" stop-color="#125804" />
+          <stop stopColor="#155804" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#125804" />
         </linearGradient>
       </defs>
     </svg>

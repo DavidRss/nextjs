@@ -13,8 +13,8 @@ export default function Dollar() {
           fill="white"
         />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M23 0C10.2975 0 0 10.2975 0 23C0 35.7025 10.2975 46 23 46C35.7025 46 46 35.7025 46 23C46 10.2975 35.7025 0 23 0ZM4 23C4 12.5066 12.5066 4 23 4C33.4934 4 42 12.5066 42 23C42 33.4934 33.4934 42 23 42C12.5066 42 4 33.4934 4 23Z"
           fill="white"
         />

@@ -8,14 +8,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Ruler from "../Icons/Ruler";
 
 import card from "../../assets/new/card.png";
-import { ProductVariants } from "../../constants/constants";
+import {
+  Path,
+  ProductColors,
+  ProductVariants,
+} from "../../constants/constants";
 import { nFormatter } from "../../utils/utils";
+import { useApp } from "../../services/app.context";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductSwiper({
   isReversed = false,
   product,
   processPurchase,
 }) {
+  const navigate = useNavigate();
+
+  const { currentUser } = useApp();
+
   const [swiper, setSwiper] = useState(null);
 
   const [colorList, setColorList] = useState([]);
@@ -51,6 +61,24 @@ export default function ProductSwiper({
     }
   };
 
+  useEffect(() => {
+    const handleSlideChange = () => {
+      if (swiper) {
+        setColor(swiper.activeIndex);
+      }
+    };
+
+    if (swiper) {
+      swiper.on("slideChange", handleSlideChange);
+    }
+
+    return () => {
+      if (swiper) {
+        swiper.off("slideChange", handleSlideChange);
+      }
+    };
+  }, [swiper]);
+
   const isAvailableSize = (title) => {
     return sizeList.find((item) => item === title);
   };
@@ -60,6 +88,11 @@ export default function ProductSwiper({
   };
 
   const handleParticipate = () => {
+    if (!currentUser) {
+      navigate(`/${Path.SIGNIN}`, { replace: true });
+      return;
+    }
+
     if (variant) {
       processPurchase(variant);
     }
@@ -81,7 +114,7 @@ export default function ProductSwiper({
           }
         }
 
-        if (option.name === "Color") {
+        if (option.name === "Couleur") {
           const optionValues = option.values;
           const tempColorList = [];
           for (const optionValue of optionValues) {
@@ -134,7 +167,7 @@ export default function ProductSwiper({
         >
           {product &&
             product.images.map((item, index) => (
-              <SwiperSlide>
+              <SwiperSlide key={index}>
                 <img
                   src={item.src ? item.src : card}
                   alt="card"
@@ -188,13 +221,14 @@ export default function ProductSwiper({
           <div className="flex flex-col gap-5">
             <span className="uppercase text-lg font-semibold">Colors:</span>
             <div className="flex items-center gap-3">
-              {colorList.map((color, index) => (
+              {colorList.map((item, index) => (
                 <input
+                  key={index}
                   type="radio"
-                  name="radio-2"
-                  style={{ background: color }}
+                  name={`color_${product.id}`}
+                  style={{ background: ProductColors[item] ?? "#EEEEEE" }}
                   className="radio checked:bg-white"
-                  defaultChecked={index === color}
+                  checked={index === color}
                   onChange={() => handleChangeColor(index)}
                 />
               ))}
@@ -209,6 +243,7 @@ export default function ProductSwiper({
             <div className="flex items-center gap-3">
               {ProductVariants.map((variant, index) => (
                 <button
+                  key={index}
                   className={`flex items-center justify-center uppercase w-8 h-8 text-white font-medium bg-main ${
                     isAvailableSize(variant)
                       ? "hover:shadow-lg hover:shadow-main/50"

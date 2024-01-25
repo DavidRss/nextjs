@@ -149,12 +149,12 @@ const Home = () => {
       <Navigate />
 
       <section className="flex w-full flex-col items-center justify-center">
-        <ProductSwiper product={product1} processPurchase={processPurchase} />
-        <ProductSwiper
+        {product1 && <ProductSwiper product={product1} processPurchase={processPurchase} />}
+        {product2 && <ProductSwiper
           product={product2}
           isReversed
           processPurchase={processPurchase}
-        />
+        />}
       </section>
       <section
         className="flex w-full justify-center py-10 3xl:py-20 bg-thrBg"
@@ -469,8 +469,8 @@ const Home = () => {
                     y2="9.65892e-05"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#328019" />
-                    <stop offset="1" stop-color="#5EAC0C" />
+                    <stop stopColor="#328019" />
+                    <stop offset="1" stopColor="#5EAC0C" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -630,8 +630,8 @@ const Home = () => {
                     y2="9.65892e-05"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#328019" />
-                    <stop offset="1" stop-color="#5EAC0C" />
+                    <stop stopColor="#328019" />
+                    <stop offset="1" stopColor="#5EAC0C" />
                   </linearGradient>
                 </defs>
               </svg>
