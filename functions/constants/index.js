@@ -31,38 +31,43 @@ const EARN = {
   REFER: 400,
 };
 
-const Levels = {
-  L1: {
+export const Levels = [
+  {
     level: 1,
     title: "Basic",
     spend: 0,
-    points: 0,
+    points: 500,
+    description: "",
   },
-  L2: {
+  {
     level: 2,
     title: "Bronze",
     spend: 1500,
-    points: 400,
+    points: 1000,
+    description: "Earn 2 Points for every 1 USD spent.",
   },
-  L3: {
+  {
     level: 3,
     title: "Silver",
     spend: 3500,
-    points: 700,
+    points: 1500,
+    description: "Earn 2 Points for every 1 USD spent.",
   },
-  L4: {
-    level: 4,
-    title: "Gold",
-    spend: 7500,
-    points: 400,
-  },
-  L5: {
-    level: 5,
-    title: "Platinum",
-    spend: 10000,
-    points: 1000,
-  },
-};
+  // {
+  //   level: 4,
+  //   title: "Gold",
+  //   spend: 7500,
+  //   points: 400,
+  //   description: "Earn 2 Points for every 1 USD spent.",
+  // },
+  // {
+  //   level: 5,
+  //   title: "Platinum",
+  //   spend: 10000,
+  //   points: 1000,
+  //   description: "Earn 2 Points for every 1 USD spent.",
+  // },
+];
 
 const Order = {
   Keys: {
@@ -95,5 +100,5 @@ module.exports = {
   EARN,
   Levels,
   Order,
-  Notification
+  Notification,
 };

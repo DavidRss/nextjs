@@ -151,23 +151,22 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
             createdAt,
           });
 
-          if (user.referrer || user.referrals.length > 0) {
-            const priceRules = await getPriceRules();
-            const priceRuleTitle = getPriceRuleTitle(Order.Discount.P10);
-            let selPriceRule = priceRules.find(
-              (item) => item.title === priceRuleTitle
-            );
-
-            if (typeof selPriceRule === "undefined") {
-              console.log("===== create price rule =====");
-              selPriceRule = await createPriceRule(
-                priceRuleTitle,
-                Order.Discount.P10
+          if (user.referrer && user.earned.referral === false) {
+            const referUser = await getUserByReferralCode(user.referrer);
+            if (referUser) {
+              const priceRules = await getPriceRules();
+              const priceRuleTitle = getPriceRuleTitle(Order.Discount.P10);
+              let selPriceRule = priceRules.find(
+                (item) => item.title === priceRuleTitle
               );
-            }
 
-            if (user.referrer) {
-              const referUser = await getUserByReferralCode(user.referrer);
+              if (typeof selPriceRule === "undefined") {
+                console.log("===== create price rule =====");
+                selPriceRule = await createPriceRule(
+                  priceRuleTitle,
+                  Order.Discount.P10
+                );
+              }
 
               const discount = await createDiscountCode(selPriceRule.id);
               const reward = {
@@ -178,12 +177,11 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
                 createdAt,
               };
 
-              const rewards = referUser.rewards || [];
+              const rewards = user.rewards || [];
               rewards.push(reward);
 
-              const referUserNotifications = referUser.notifications || [];
-              const notificationMessage = `Your friend ${user.username} purchased the product.\n You got 10% coupon.`;
-              referUserNotifications.unshift({
+              const notificationMessage = `You referred ${referUser.username}.\n You got 10% discount coupon.`;
+              notifications.unshift({
                 productId,
                 discountCode: discount.code,
                 viewed: false,
@@ -192,42 +190,40 @@ exports.handleShopifyCheckoutSuccess = functions.https.onRequest(
                 createdAt,
               });
 
-              await updateUser(referUser.id, {
+              await updateUser(userId, {
                 rewards,
-                notifications: referUserNotifications,
+                earned: {
+                  referral: true,
+                },
               });
-            } else if (user.referrals.length > 0) {
-              for (let idx = 0; idx < user.referrals.length; idx++) {
-                const userId = user.referrals[idx];
-                const refUser = await getUserById(userId);
-                const discount = await createDiscountCode(selPriceRule.id);
-                const reward = {
-                  productId,
-                  discountCode: discount.code,
-                  used: false,
-                  viewed: false,
-                  createdAt,
-                };
 
-                const rewards = refUser.rewards || [];
-                rewards.push(reward);
+              const referRewards = referUser.rewards || [];
+              const referNotifications = referUser.notifications || [];
 
-                const referUserNotifications = refUser.notifications || [];
-                const notificationMessage = `Your friend ${user.username} purchased the product.\n You got 10% coupon.`;
-                referUserNotifications.unshift({
-                  productId,
-                  discountCode: discount.code,
-                  viewed: false,
-                  message: notificationMessage,
-                  type: Notification.Type.COUPON,
-                  createdAt,
-                });
+              const referDiscount = await createDiscountCode(selPriceRule.id);
 
-                await updateUser(refUser.id, {
-                  rewards,
-                  notifications: referUserNotifications,
-                });
-              }
+              referRewards.push({
+                productId,
+                discountCode: referDiscount.code,
+                used: false,
+                viewed: false,
+                createdAt,
+              });
+
+              referNotifications.unshift({
+                productId,
+                discountCode: discount.code,
+                viewed: false,
+                message: `${user.username} referred you.\n You got 10% discount coupon.`,
+                type: Notification.Type.COUPON,
+                createdAt,
+              });
+
+              await updateUser(referUser.id, {
+                rewards: referRewards,
+                notifications: referNotifications,
+                points: referUser.points + EARN.REFER,
+              });
             }
           }
         }
@@ -330,6 +326,108 @@ exports.checkRewards = onSchedule("every day 00:00", async (event) => {
     console.log("===== err: ", err);
   }
   return response.send({ success: false });
+});
+
+exports.addCouponToUser = functions.https.onCall(async (data, context) => {
+  if (data) {
+    const userId = data.userId;
+    const referUsername = data.referUsername;
+    const user = await getUserById(userId);
+    if (user) {
+      try {
+        const priceRules = await getPriceRules();
+        const priceRuleTitle = getPriceRuleTitle(Order.Discount.P10);
+        let selPriceRule = priceRules.find(
+          (item) => item.title === priceRuleTitle
+        );
+
+        if (typeof selPriceRule === "undefined") {
+          console.log("===== create price rule =====");
+          selPriceRule = await createPriceRule(
+            priceRuleTitle,
+            Order.Discount.P10
+          );
+        }
+
+        const discount = await createDiscountCode(selPriceRule.id);
+        const reward = {
+          productId,
+          discountCode: discount.code,
+          used: false,
+          viewed: false,
+          createdAt,
+        };
+
+        const rewards = user.rewards || [];
+        rewards.push(reward);
+
+        const userNotifications = user.notifications || [];
+        const notificationMessage = `You referred ${referUsername}.\n You got 10% coupon.`;
+        userNotifications.unshift({
+          productId,
+          discountCode: discount.code,
+          viewed: false,
+          message: notificationMessage,
+          type: Notification.Type.COUPON,
+          createdAt,
+        });
+
+        await updateUser(userId, {
+          rewards,
+          notifications: userNotifications,
+        });
+
+        if (user.referrals.length > 0) {
+          for (let idx = 0; idx < user.referrals.length; idx++) {
+            const userId = user.referrals[idx];
+            const refUser = await getUserById(userId);
+            const discount = await createDiscountCode(selPriceRule.id);
+            const reward = {
+              productId,
+              discountCode: discount.code,
+              used: false,
+              viewed: false,
+              createdAt,
+            };
+
+            const rewards = refUser.rewards || [];
+            rewards.push(reward);
+
+            const referUserNotifications = refUser.notifications || [];
+            const notificationMessage = `Your friend ${user.username} purchased the product.\n You got 10% coupon.`;
+            referUserNotifications.unshift({
+              productId,
+              discountCode: discount.code,
+              viewed: false,
+              message: notificationMessage,
+              type: Notification.Type.COUPON,
+              createdAt,
+            });
+
+            await updateUser(refUser.id, {
+              rewards,
+              notifications: referUserNotifications,
+            });
+          }
+        }
+      } catch (err) {
+        return {
+          success: false,
+          message: "The create discount error",
+        };
+      }
+    } else {
+      return {
+        success: false,
+        message: "The user doesn't exist",
+      };
+    }
+  } else {
+    return {
+      success: false,
+      message: "Required userID",
+    };
+  }
 });
 
 exports.getProductList = functions.https.onRequest(
