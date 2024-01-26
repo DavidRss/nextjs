@@ -9,7 +9,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #222;
 }
 
 code {
@@ -38,18 +37,18 @@ code {
 
 .list-item::before {
   content: '●';
-  color: #4A9F2E;
+  color: #C73E00;
   margin-right: 11px;
 }
 
 .swiper {
-  width: 425px;
+  width: 350px;
   height: fit-content;
-  /* margin-right: -35px !important; */
+  margin-right: -35px !important;
 }
 
 span.swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color: #4A9F2E !important;
+  background-color: #C73E00 !important;
   opacity: 1;
 }
 
@@ -92,9 +91,8 @@ span.swiper-pagination-bullet.swiper-pagination-bullet{
   gap: 2.25rem !important;
 }
 
-.cup.steps-vertical .step:before {
+.cup.steps-vertical .step:before, .ref.steps-vertical .step:before {
   width: 2px !important;
-  background: #464646 !important;
 }
 
 .cup.steps-vertical .step:before {
@@ -105,14 +103,14 @@ span.swiper-pagination-bullet.swiper-pagination-bullet{
   width: 73px !important;
   height: 73px !important;
   place-self: start center !important;
-  background-image: url('./assets/new/cup-disabled.svg');
+  background-image: url('./assets/cup-disabled.svg');
   background-repeat: no-repeat;
   background-position-x: 50%;
   background-position-y: 65%;
   background-size: auto;
   border: 2px solid rgba(34,34,34, 0.2);
-  color: grey!important;
-  background-color: #464646 !important;
+  color: rgba(34,34,34, 0.2) !important;
+  background-color: #FFF !important;
   font-weight: 600 !important;
   font-size: 14px !important;
   background-blend-mode: difference;
@@ -121,18 +119,18 @@ span.swiper-pagination-bullet.swiper-pagination-bullet{
 .ref.steps .ref:after {
   width: 63px !important;
   height: 63px !important;
-  background-color: #464646 !important;
-  color: white;
+  background-color: #FFF !important;
+  color: #222;
   font-size: 20px;
   font-weight: 600;
-  border: 2px solid #464646;
+  border: 2px solid rgba(34,34,34, 0.2);
 }
 
 .cup.step.step-primary:after{
   opacity: 1;
-  border-color: #4A9F2E !important;
-  color: #4A9F2E !important;
-  background-image: url('./assets/new/up-lvl.svg');
+  border-color: #C73E00 !important;
+  color: #C73E00 !important;
+  background-image: url('./assets/cup.svg');
   background-blend-mode: unset;
 }
 
@@ -171,38 +169,15 @@ span.swiper-pagination-bullet.swiper-pagination-bullet{
   display: none !important;
 }
 
+
+
 ::-webkit-scrollbar-track {
   background-color: transparent;
   border-radius: 17px; 
-  background: #222 !important;
 }
 
 ::-webkit-scrollbar:vertical {
   width: 8px !important;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #4A9F2E !important; 
-  opacity: 0.79;
-  border-radius: 17px; 
-}
-
-.table-zebra tbody tr:nth-child(odd) {
-  border-color: #292929!important;
-}
-
-.bg-input {
-  --tw-bg-opacity: 1;
-  background-color: rgb(64 64 64/var(--tw-bg-opacity));
-}
-
-.odd\:bg-odd:nth-child(odd) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(41 41 41/var(--tw-bg-opacity));
-}
-
-.bg-mainCard {
-  background-color: #323232;
 }
 
 @media (max-width: 1280px) {
@@ -251,9 +226,5 @@ br {
 @media screen and (max-width: 500px) {
   .cup.steps-vertical .step {
     gap: 2.5rem !important;
-  }
-
-  .swiper {
-    width: 350px;
   }
 }

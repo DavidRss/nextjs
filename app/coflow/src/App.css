@@ -23,15 +23,6 @@
   color: white;
 }
 
-li::marker {
-  font-size: 14px;
-  color: #4E9D35;
-} 
-
-.list-disc li:before {
-  content: '';
-} 
-
 .App-link {
   color: #61dafb;
 }
@@ -46,17 +37,9 @@ li::marker {
 }
 
 .swiper-pagination-bullet-active {
-  color: #4A9F2E !important;
+  color: #C73E00 !important;
 }
 
 .swiper-pagination-bullet {
   color: #FAECE6 !important;
-}
-
-.nav__item {
-  transition: all 0.4s;
-}
-
-.nav__item:hover {
-  transform: scale(1.03);
 }

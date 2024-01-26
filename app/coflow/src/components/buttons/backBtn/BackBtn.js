@@ -1,5 +1,5 @@
 import React from 'react';
-import arrowBack from '../../../assets/new/arrowBack.svg';
+import arrowBack from '../../../assets/iconamoon_arrow-left-3.svg';
 
 function BackBtn(props) {
     const handleBackClick = () => {
@@ -9,7 +9,7 @@ function BackBtn(props) {
     return (
         <button 
             onClick={handleBackClick}
-            className='text-white flex items-center gap-3 text-2xl font-semibold leading-8 hover:scale-105 hover:text-main transition-all'
+            className='text-primary flex items-end gap-3 text-2xl font-semibold leading-8 hover:scale-105 transition-all'
         >
             <img src={arrowBack} alt="back button" />
             {props.title}
