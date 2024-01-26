@@ -276,12 +276,12 @@ export default function Footer({ children }) {
               Contactez-nous à l’adresse contact@briceshop.fr Un PNJ s’occupera
               de vous répondre au plus vite!
             </p>
-            <Link
-              to="/faq"
+            <a 
+              href="mailto:contact@briceshop.fr">
               className="hidden lg:flex text-white text-lg font-semibold transition-all hover:scale-105 underline"
             >
               Nous contacter
-            </Link>
+            </a>
           </div>
           <div className="flex w-full justify-center items-center xl:hidden h-96">
             <Swiper
@@ -387,7 +387,7 @@ export default function Footer({ children }) {
               Briceshop
             </h1>
             <div className="hidden md:flex flex-col gap-1">
-              <span className="text-xl font-bold whitespace-nowrap">
+              <span className="text-base font-bold whitespace-nowrap">
                 © 2024, Website by Coflow
               </span>
               <span className="text-base font-semibold whitespace-nowrap">
