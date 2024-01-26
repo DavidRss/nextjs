@@ -32,6 +32,13 @@ const COOKIE_CONSENT = "cookieConsent";
 export default function Footer({ children }) {
   const navigate = useNavigate();
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+        top: 500,
+        behavior: 'smooth',
+    });
+  };   
+  
   const {
     checkout,
     saveCheckout,
@@ -390,7 +397,7 @@ export default function Footer({ children }) {
           </div>
           <div className="flex flex-col w-full items-center xl:items-start px-4 3xl:px-0">
             <ul className="flex w-full gap-1  md:gap-8 xl:gap-10 pb-7 flex-col items-center md:items-start md:flex-row sm:pb-0 h-full sm:h-14 max-w-fit md:border-b border-white z-10">
-              <Link to="/" className="h-8">
+              <Link to="/" className="h-8" onClick={handleScrollToTop}>
                 <li
                   className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}
                 >
@@ -398,7 +405,7 @@ export default function Footer({ children }) {
                 </li>
               </Link>
               <span style={{ color: "#595959" }}>•</span>
-              <Link to="/reward" className="h-8">
+              <Link to="/reward" className="h-8" onClick={handleScrollToTop}>
                 <li
                   className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer h-full sm:text-left`}
                 >
@@ -406,7 +413,7 @@ export default function Footer({ children }) {
                 </li>
               </Link>
               <span style={{ color: "#595959" }}>•</span>
-              <Link to="/leaderboard" className="h-8">
+              <Link to="/leaderboard" className="h-8" onClick={handleScrollToTop}>
                 <li
                   className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}
                 >
@@ -414,7 +421,7 @@ export default function Footer({ children }) {
                 </li>
               </Link>
               <span style={{ color: "#595959" }}>•</span>
-              <Link to="/chat" className="h-8">
+              <Link to="/chat" className="h-8" onClick={handleScrollToTop}>
                 <li
                   className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}
                 >
@@ -422,7 +429,7 @@ export default function Footer({ children }) {
                 </li>
               </Link>
               <span style={{ color: "#595959" }}>•</span>
-              <Link to="/faq" className="h-8">
+              <Link to="/faq" className="h-8" onClick={handleScrollToTop}>
                 <li
                   className={`text-white text-xl hover:text-main nav__item hover:border-b border-main font-semibold transition-all cursor-pointer  h-full sm:text-left`}
                 >
