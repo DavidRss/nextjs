@@ -19,9 +19,10 @@ export interface User {
     youtube: boolean;
     instagram: boolean;
     comment: boolean;
-    friend: boolean;
+    referral: boolean;
   };
   visited: Timestamp;
+  commentDate: Timestamp;
   orders: [
     {
       orderId: string;

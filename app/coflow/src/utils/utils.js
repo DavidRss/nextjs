@@ -12,7 +12,7 @@ export const getFormatTimeRemaining = (seconds) => {
   const s_hh = hh < 10 ? `0${hh}` : hh;
 
   if (dd > 0) {
-    return `${dd} days`;
+    return `${dd} Jours`;
   } else if (s_hh > 0) {
     return `${s_hh}:${s_mm}:${s_ss}`;
   } else if (s_mm > 0) {
@@ -147,6 +147,23 @@ export const getDailyPoints = (visited) => {
     }
   } else {
     return EARN.DAILY;
+  }
+  return 0;
+};
+
+export const getDailyComment = (commentDate) => {
+  if (commentDate) {
+    const vDate = getDateFromTimestamp(commentDate);
+    const curDate = getCurrentDate();
+    if (
+      curDate.year !== vDate.year ||
+      curDate.month !== vDate.month ||
+      curDate.day !== vDate.day
+    ) {
+      return EARN.DAILY_COMMENt;
+    }
+  } else {
+    return EARN.DAILY_COMMENt;
   }
   return 0;
 };

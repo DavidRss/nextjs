@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState, useEffect } from "react";
 import headerCover from "../../assets/new/header-bg.png";
 import HeaderBg from "./HeaderBg";
@@ -7,33 +7,70 @@ import { useApp } from "../../services/app.context";
 import { Path } from "../../constants/constants";
 import Coins from "../Icons/Coins";
 import { useAuth } from "../../hooks/useAuth";
+import { count } from "firebase/firestore";
+import { getFormatedDateFromSeconds } from "../../utils/utils";
 
 export default function Header() {
-  const { currentUser } = useApp();
+  const { currentUser, loadedProject, project } = useApp();
   const { logout } = useAuth();
 
   const navigate = useNavigate();
 
+  const timer = useRef(null);
+
   /* Btns triggers */
   const [hovered, setHovered] = useState(false);
+
+  const [counter, setCounter] = useState(0);
 
   const [days, setDays] = useState(5);
   const [hours, setHours] = useState(12);
   const [minutes, setMinutes] = useState(25);
   const [seconds, setSeconds] = useState(0);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setSeconds((prevSeconds) => (prevSeconds + 1) % 60);
-      setMinutes(
-        (prevMinutes) => (prevMinutes + Math.floor(seconds / 60)) % 60
-      );
-      setHours((prevHours) => (prevHours + Math.floor(minutes / 60)) % 24);
-      setDays((prevDays) => prevDays + Math.floor(hours / 24));
-    }, 1000);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setSeconds((prevSeconds) => (prevSeconds + 1) % 60);
+  //     setMinutes(
+  //       (prevMinutes) => (prevMinutes + Math.floor(seconds / 60)) % 60
+  //     );
+  //     setHours((prevHours) => (prevHours + Math.floor(minutes / 60)) % 24);
+  //     setDays((prevDays) => prevDays + Math.floor(hours / 24));
+  //   }, 1000);
 
-    return () => clearInterval(intervalId);
-  }, [seconds, minutes, hours]);
+  //   return () => clearInterval(intervalId);
+  // }, [seconds, minutes, hours]);
+
+  useEffect(() => {
+    if (loadedProject && project) {
+      const endSeconds = project.endOfDate.seconds;
+      const curSeconds = parseInt(new Date().getTime() / 1000);
+      if (endSeconds && endSeconds - curSeconds > 0) {
+        setCounter(endSeconds - curSeconds);
+      }
+    }
+  }, [loadedProject, project]);
+
+  useEffect(() => {
+    if (counter > 0) {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+      timer.current = setTimeout(() => setCounter(counter - 1), 1000);
+
+      const dd = getFormatedDateFromSeconds(counter);
+      setDays(dd.days);
+      setHours(dd.hours);
+      setMinutes(dd.minutes);
+      setSeconds(dd.seconds);
+    }
+
+    return () => {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+    };
+  }, [counter]);
 
   const handleLogout = () => {
     logout();
@@ -85,7 +122,7 @@ export default function Header() {
       <div className="flex flex-col items-center relative w-full">
         <div className="flex w-full justify-between items-start max-w-8xl py-5 md:py-10 px-6 z-20">
           <Link to="/">
-          <h1 className="text-4xl font-black pt-4">Briceshop</h1>
+            <h1 className="text-4xl font-black pt-4">Briceshop</h1>
           </Link>
           <div className="hidden md:flex items-center gap-7">
             {currentUser && (

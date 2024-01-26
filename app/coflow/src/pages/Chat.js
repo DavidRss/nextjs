@@ -11,6 +11,7 @@ import { EARN, IMAGE_TYPE, PROJECT_ID, Path } from "../constants/constants";
 import {
   getCurrentDate,
   getCurrentTimestamp,
+  getDailyComment,
   getDateFromTimestamp,
 } from "../utils/utils";
 import {
@@ -88,6 +89,10 @@ function Chat() {
             setIsLoading(false);
           }
 
+          currentUser.points =
+            currentUser.points + getDailyComment(currentUser.commentDate);
+          currentUser.commentDate = getCurrentTimestamp();
+
           if (currentUser.earned.comment === false) {
             const idx = comments.findIndex(
               (item) => item.userId === currentUser.id
@@ -95,12 +100,12 @@ function Chat() {
             if (idx === -1) {
               currentUser.points = currentUser.points + EARN.COMMENT;
               currentUser.earned.comment = true;
-
-              await userService.updateUser(currentUser.id, currentUser);
-
-              saveUser(currentUser);
             }
           }
+
+          await userService.updateUser(currentUser.id, currentUser);
+
+          saveUser(currentUser);
 
           setComments((prevComments) => [...prevComments, comment]);
 

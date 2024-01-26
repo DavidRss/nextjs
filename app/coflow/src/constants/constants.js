@@ -11,7 +11,9 @@ export const EARN = {
   INSTAGRAM: 300,
   DAILY: 10,
   COMMENT: 100,
-  REFER: 400,
+  DAILY_COMMENt: 50,
+  REFER: 50,
+  FIRST_REFERRAL_PURCHASE: 400,
 };
 
 export const LevelData = [
@@ -74,6 +76,7 @@ export const INIT_USER = {
     referral: false,
   },
   visited: 0,
+  commentDate: 0,
   orders: [],
   spending: 0,
   rewards: [],
