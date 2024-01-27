@@ -263,7 +263,7 @@ export default function ProductSwiper({
               <Ruler />
               <span
                 className="text-xl pb-1 border-b border-main"
-                onClick={() => document.getElementById("product_size_modal").showModal()}
+                onClick={() => document.getElementById(`${product?.title === "Le pack Fer" ? 'product_size_modal1':'product_size_modal2'}`).showModal()}
               >
                 Size Guide
               </span>
@@ -298,7 +298,7 @@ export default function ProductSwiper({
           </button>
         </div>
       </div>
-      <dialog id="product_size_modal" className="modal">
+      <dialog id="product_size_modal1" className="modal">
         <div className="modal-box pt-11 pb-0 px-0">
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-main text-main absolute right-2 top-2">
@@ -306,7 +306,21 @@ export default function ProductSwiper({
             </button>
           </form>
           <img
-            src={product?.title === "Le pack Fer" ? product1Size : product2Size}
+            src={product1Size}
+            alt="about"
+            style={{ maxHeight: "840px", minHeight: "500px" }}
+          />
+        </div>
+      </dialog>
+      <dialog id="product_size_modal2" className="modal">
+        <div className="modal-box pt-11 pb-0 px-0">
+          <form method="dialog">
+            <button className="btn btn-sm btn-circle btn-main text-main absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+          <img
+            src={product2Size}
             alt="about"
             style={{ maxHeight: "840px", minHeight: "500px" }}
           />
