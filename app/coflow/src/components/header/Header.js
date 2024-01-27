@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useState, useEffect } from "react";
 import headerCover from "../../assets/new/header-bg.png";
+import headerCoverMobile from "../../assets/new/header-bg-mobile.png";
 import HeaderBg from "./HeaderBg";
 import { Link, useNavigate } from "react-router-dom";
 import { useApp } from "../../services/app.context";
@@ -27,6 +28,7 @@ export default function Header() {
   const [hours, setHours] = useState(12);
   const [minutes, setMinutes] = useState(25);
   const [seconds, setSeconds] = useState(0);
+  const [hide, setHide] = useState(false)
 
   // useEffect(() => {
   //   const intervalId = setInterval(() => {
@@ -165,10 +167,40 @@ export default function Header() {
           </div>
         </div>
         <div className="relative z-30 sm:-bottom-5 max-h-720 w-full max-w-8xl px-4 3xl:px-0">
-          <img src={headerCover} alt="cover" />
+          <img src={headerCover} className="hidden md:block" alt="cover" />
+          <img src={headerCoverMobile} className="md:hidden w-full" alt="cover" />
           <button
             type="button"
-            className="flex md:hidden absolute items-center top-1/3 left-2/4 -translate-x-2/4 justify-start py-3 text-black bg-white bg-opacity-40 pl-3 pr-5 text-2xl font-semibold rounded-xl gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50"
+            className="hidden md:flex absolute right-16 bottom-14 items-center justify-start py-3 text-white bg-white bg-opacity-20 pl-3 pr-5 text-2xl font-semibold rounded-xl gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50"
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            onClick={() => {setHide(false); document.getElementById("mainVideo").showModal()}}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              fill="none"
+              className={`${hovered ? "translate-x-2" : ""} transition-all`}
+            >
+              <circle cx="25" cy="25" r="25" fill="#4E9D35" />
+              <path
+                d="M19 17.5281C19 15.1477 21.6392 13.7155 23.635 15.0127L35.1303 22.4847C36.9503 23.6677 36.9503 26.3323 35.1303 27.5153L23.635 34.9873C21.6392 36.2845 19 34.8523 19 32.4719V17.5281Z"
+                fill="white"
+              />
+            </svg>
+            <span
+              className={`${
+                hovered ? "-translate-y-1" : ""
+              } transition-all whitespace-nowrap`}
+            >
+              Watch Video
+            </span>
+          </button>
+          <button
+            type="button"
+            className="mt-4 mb-8 w-full flex md:hidden items-center justify-start py-3 text-black bg-white bg-opacity-40 pl-3 pr-5 text-2xl font-semibold rounded-xl gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             onClick={() => document.getElementById("mainVideo").showModal()}
@@ -195,52 +227,24 @@ export default function Header() {
               Regarder la Vidéo
             </span>
           </button>
-          <button
-            type="button"
-            className="hidden md:flex absolute right-16 bottom-14 items-center justify-start py-3 text-white bg-white bg-opacity-20 pl-3 pr-5 text-2xl font-semibold rounded-xl gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50"
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            onClick={() => document.getElementById("mainVideo").showModal()}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
-              viewBox="0 0 50 50"
-              fill="none"
-              className={`${hovered ? "translate-x-2" : ""} transition-all`}
-            >
-              <circle cx="25" cy="25" r="25" fill="#4E9D35" />
-              <path
-                d="M19 17.5281C19 15.1477 21.6392 13.7155 23.635 15.0127L35.1303 22.4847C36.9503 23.6677 36.9503 26.3323 35.1303 27.5153L23.635 34.9873C21.6392 36.2845 19 34.8523 19 32.4719V17.5281Z"
-                fill="white"
-              />
-            </svg>
-            <span
-              className={`${
-                hovered ? "-translate-y-1" : ""
-              } transition-all whitespace-nowrap`}
-            >
-              Watch Video
-            </span>
-          </button>
         </div>
       </div>
       <dialog id="mainVideo" className="modal">
         <div className="modal-box max-w-7xl pt-11 pb-0 px-0">
           <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-main text-main absolute right-2 top-2">
+            <button onClick={() => setHide(true)} className="btn btn-sm btn-circle btn-main text-main absolute right-2 top-2">
               ✕
             </button>
           </form>
-          <iframe
+          {!hide && <iframe
             width="100%"
             height="500px"
-            src={`https://www.youtube.com/embed/4kLviL8XwAI`}
+            src={`https://www.youtube.com/embed/b0STrOQtFvo`}
             frameBorder="0"
             allowFullScreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             title="YouTube Video"
-          ></iframe>
+          ></iframe>}
         </div>
       </dialog>
     </>

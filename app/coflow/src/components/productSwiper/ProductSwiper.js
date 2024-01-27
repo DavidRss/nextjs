@@ -8,6 +8,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Ruler from "../Icons/Ruler";
 
 import card from "../../assets/new/card.png";
+import product1Size from "../../assets/new/product1-size.png";
+import product2Size from "../../assets/new/product2-size.png";
 import {
   Path,
   ProductColors,
@@ -259,7 +261,10 @@ export default function ProductSwiper({
             </div>
             <button type="button" className="flex items-center gap-1">
               <Ruler />
-              <span className="text-xl pb-1 border-b border-main">
+              <span
+                className="text-xl pb-1 border-b border-main"
+                onClick={() => document.getElementById("product_size_modal").showModal()}
+              >
                 Size Guide
               </span>
             </button>
@@ -293,6 +298,20 @@ export default function ProductSwiper({
           </button>
         </div>
       </div>
+      <dialog id="product_size_modal" className="modal">
+        <div className="modal-box pt-11 pb-0 px-0">
+          <form method="dialog">
+            <button className="btn btn-sm btn-circle btn-main text-main absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+          <img
+            src={product?.title === "Le pack Fer" ? product1Size : product2Size}
+            alt="about"
+            style={{ maxHeight: "840px", minHeight: "500px" }}
+          />
+        </div>
+      </dialog>
     </div>
   );
 }

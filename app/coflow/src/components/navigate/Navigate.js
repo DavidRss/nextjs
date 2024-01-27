@@ -57,7 +57,7 @@ const Navigate = () => {
           alt="avatar"
           className="max-w-32 rounded-full ring-4 ring-gray-200"
         />
-        <div className="flex flex-col items-center gap-5">
+        {/* <div className="flex flex-col items-center gap-5">
           <h2
             className="text-3xl font-semibold"
             style={{ letterSpacing: "-1.28px" }}
@@ -67,7 +67,7 @@ const Navigate = () => {
           <span className="text-lg font-semibold">
             {subcribers.toLocaleString()} Subcribers
           </span>
-        </div>
+        </div> */}
       </section>
       <section
         className={`bg-thrBg w-full py-5 flex items-center justify-center sticky navbar -top-0.5 z-60 ${

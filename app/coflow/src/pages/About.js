@@ -4,8 +4,8 @@ import img1 from "../assets/new/image1.png";
 import img2 from "../assets/new/image6.png";
 import img3 from "../assets/new/image3.png";
 import img4 from "../assets/new/image4.png";
-import aboutBg from "../assets/new/about11.png";
-import about2 from "../assets/new/about22.png";
+import aboutBg from "../assets/new/about11.gif";
+import about2 from "../assets/new/about22.gif";
 import star from "../assets/new/star-fill.svg";
 
 import "swiper/css";
@@ -57,6 +57,7 @@ const Home = () => {
   const [counter, setCounter] = useState(0);
 
   const [showDialog, setShowDialog] = useState(false);
+  const [hideVideo, setHideVideo] = useState(false);
 
   const levelProgress = calculateProgress(currentUser?.spending ?? 0);
 
@@ -399,12 +400,12 @@ const Home = () => {
             </div>
             <div
               className="relative rounded-3xl flex items-center justify-center cursor-pointer"
-              onClick={() => document.getElementById("my_modal_1").showModal()}
+              onClick={() => {setHideVideo(false); document.getElementById("my_modal_1").showModal()}}
             >
               <img
                 src={aboutBg}
                 alt="about"
-                style={{ maxHeight: "840px", minHeight: "500px" }}
+                style={{ maxHeight: "520px", minHeight: "500px", borderRadius: "16px" }}
               />
               <svg
                 className="hover:scale-105 transition-all absolute"
@@ -481,31 +482,48 @@ const Home = () => {
             <dialog id="my_modal_1" className="modal">
               <div className="modal-box max-w-7xl pt-11 pb-0 px-0">
                 <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-main text-main absolute right-2 top-2">
+                  <button onClick={() => setHideVideo(true)} className="btn btn-sm btn-circle btn-main text-main absolute right-2 top-2">
                     ✕
                   </button>
                 </form>
-                <iframe
+                {!hideVideo && <iframe
                   width="100%"
                   height="500px"
-                  src={`https://www.youtube.com/embed/4kLviL8XwAI`}
+                  src="https://youtube.com/embed/dXV4c4-XURE"
                   frameBorder="0"
                   allowFullScreen
                   title="YouTube Video"
-                ></iframe>
+                ></iframe>}
+              </div>
+            </dialog>
+            <dialog id="my_modal_2" className="modal">
+              <div className="modal-box max-w-7xl pt-11 pb-0 px-0">
+                <form method="dialog">
+                  <button onClick={() => setHideVideo(true)} className="btn btn-sm btn-circle btn-main text-main absolute right-2 top-2">
+                    ✕
+                  </button>
+                </form>
+                {!hideVideo && <iframe
+                  width="100%"
+                  height="500px"
+                  src="https://youtube.com/embed/FD0ErB2ZFFk"
+                  frameBorder="0"
+                  allowFullScreen
+                  title="YouTube Video"
+                ></iframe>}
               </div>
             </dialog>
           </div>
         </section>
         <section className="w-full justify-center flex">
           <div
-            className="w-full justify-center flex relative flex-col-reverse 2xl:flex-row max-w-1920"
+            className="w-full justify-center flex flex-col relative flex-col-reverse xl:flex-row max-w-1920"
             style={{
               background:
                 "linear-gradient(180deg, rgba(51,51,51,1) 49%, rgba(255,255,255,0) 49%)",
             }}
           >
-            <div className="bg-thrBg flex h-full justify-center w-full 3xl:w-2/5">
+            <div className="bg-thrBg flex h-full justify-center xl:w-2/5">
               <div
                 className="bg-secBg flex h-full w-full py-10 px-4 3xl:px-0 3xl:py-52"
                 style={{ borderRadius: "0 30px 0 0" }}
@@ -521,7 +539,7 @@ const Home = () => {
               </div>
             </div>
             <div
-              className="w-full 3xl:w-3/5 flex justify-center xl:justify-end full:pr-44 bg-thrBg"
+              className="w-full xl:w-3/5 flex justify-center xl:justify-end full:pr-44 bg-thrBg"
               style={{ borderRadius: "0px 0px 0px 30px" }}
             >
               <div className="flex flex-col justify-start items-center xl:items-start pt-10 py-10 px-4 3xl:px-0 3xl:py-0 3xl:pt-20 max-w-none xl:max-w-md 2xl:max-w-xl gap-16 w-full text-white">
@@ -559,13 +577,13 @@ const Home = () => {
               </div>
             </div>
             <div
-              className="rounded-3xl flex items-center justify-center cursor-pointer xl:left-20p xl:top-10 2xl:left-28p xl:absolute 2xl:top-20 px-4 3xl:px-0"
-              onClick={() => document.getElementById("my_modal_1").showModal()}
+              className="rounded-3xl flex items-center justify-center cursor-pointer xl:left-28p xl:top-10 2xl:left-28p xl:absolute 2xl:top-20 px-4 3xl:px-0"
+              onClick={() => {setHideVideo(false); document.getElementById("my_modal_2").showModal()}}
             >
               <img
                 src={about2}
                 alt="about"
-                style={{ maxHeight: "840px", minHeight: "500px" }}
+                className="w-full md:w-72 lg:w-72 xl:w-80 3xl:w-96 rounded-xl"
               />
               <svg
                 className="hover:scale-105 transition-all absolute"

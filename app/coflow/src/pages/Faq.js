@@ -36,22 +36,7 @@ function Faq() {
                   </div>
                   <div className="collapse-content">
                     <p>
-                      Vous vous dites peut-être, "Pourquoi ils demandent pas à
-                      une grosse marque de les financer ?". Eh bien, laissez-moi
-                      vous expliquer. Dans le gaming, les budgets ne sont
-                      souvent pas énormes, et les marques qu'on a contactées
-                      n'ont pas vraiment capté l'essence de notre concept
-                      génial. Pour résumer personne n’a pris au sérieux ce qu’on
-                      voulait faire et on a failli abandonner plusieurs fois
-                      l’idée. On aurait pu essayer de négocier avec elles, mais
-                      ça aurait signifié lâcher certaines de nos idées
-                      originales. Et on ne veut pas sacrifier notre créativité
-                      pour plaire à des sponsors. Ce projet, c'est avant tout
-                      pour nous et pour vous, alors on veut qu'il reflète notre
-                      passion à fond. C'est pourquoi on se tourne vers vous, la
-                      vraie team, ceux qui comprennent ce qu'on veut faire. Avec
-                      votre soutien, on peut rendre cette aventure Minecraft IRL
-                      aussi géniale qu'on l'imagine !
+                      Vous vous dites peut-être que ce projet, on aurait pu le financer autrement mais j’avais envie de vous inclure dans ce projet ! Ca fait longtemps que je veux lancer ma marque et je me suis dis que ca serait super si je pouvais utiliser les fonds récoltés pour vous faire kiffer, vous, mes abonnés ! J’avais envie en tant que communauté qu’on ait quelque chose qui nous unit, et quoi de mieux qu’un super concept Minecraft IRL ! Cette vidéo, je veux qu’elle nous représente, toute la communauté, et tout ce qu’on peut faire ensemble. C’est grâce à vous que cette vidéo va se faire et ça la rend encore plus spéciale ! Ensemble on peut aller vraiment loin et je sais que je peux vous faire confiance pour m’accompagner dans ce projet, alors merci !
                     </p>
                   </div>
                 </div>
@@ -71,37 +56,11 @@ function Faq() {
                   </div>
                   <div className="collapse-content">
                     <p>
-                      {" "}
-                      D'accord, les gars, c'est important que vous sachiez
-                      comment l’argent récolté va être utilisé pour faire de ce
-                      projet Minecraft IRL une réalité. Voici comment nous
-                      allons répartir les fonds : - **35% pour payer le produit
-                      en soit** : Plus d’un tiers de l’argent sert tout
-                      simplement à fabriquer les revenus et rémunérer le
-                      fabricant et le fournisseur, payer la matière première et
-                      financer la logistique de transport des sweatshirts. Une
-                      partie de cet argent assure aussi la gestion de l’envoi
-                      des colis et le service client. On veut que tout se passe
-                      comme sur des roulettes pour vous ! - **7% pour le
-                      prestataire de paiement et le site Shopify** : Pour que
-                      tout soit transparent et sécurisé, on utilise un
-                      partenaire logistique et un prestataire de paiement. Ces
-                      5% couvrent les frais de transaction, de gestion, et de
-                      maintenance du site, pour que tout se déroule sans accroc.
-                      - **20% de TVA qui va directement dans les poches de
-                      l'État** : Oui, on sait que c'est un peu dur à avaler,
-                      mais la TVA est incontournable. On peut récupérer une
-                      petite partie de cette taxe, mais une grande partie part
-                      dans les caisses de l'État. - **Et surtout, 38% pour la
-                      production de la vidéo** : Voilà où les choses deviennent
-                      vraiment excitantes ! Presque quarante pourcents de vos
-                      contributions seront investies dans la production de la
-                      vidéo Minecraft IRL de vos rêves. Cela couvrira les coûts
-                      liés aux costumes incroyables, aux décors époustouflants,
-                      aux équipements de tournage de qualité, et même pour faire
-                      venir des invités mystères. Cette part sera essentielle
-                      pour donner vie à notre vision et créer une vidéo
-                      inoubliable.{" "}
+                      La transparence c’est super important pour nous et on veut que vous sachiez comment l’argent récolté va être utilisé pour faire de ce projet Minecraft IRL une réalité. Voici comment nous allons répartir les fonds :<br />
+                      37,5% pour payer le produit en soit : Plus d’un tiers de l’argent sert tout simplement à fabriquer les vêtements et rémunérer le fournisseur. Une partie de cet argent assure aussi la gestion de l’envoi des colis et le service client. On veut que tout se passe bien pour vous !<br />
+                      5% pour le prestataire de paiement et le site Shopify : Pour que tout soit transparent, fiable et sécurisé, on a recours à un partenaire informatique et un prestataire de paiement. Ces 5% couvrent les frais de transaction, de gestion, et de maintenance du site, pour que tout se déroule sans accroc.<br />
+                      20% de TVA récupérée par l'État : comme sur tout ce que vous achetez en France, il y a une part de TVA dans le prix, c’est une taxe incontournable. On peut récupérer une petite partie de cette taxe, mais une grande partie part dans les caisses de l'État.<br />
+                      Et surtout, 37,5% pour la production de la vidéo : Voilà où les choses deviennent vraiment excitantes ! Presque quarante pourcent de vos contributions seront investis dans la production de notre super vidéo Minecraft IRL. Cela couvrira les coûts liés aux costumes, aux décors incroyables, aux équipements et aux équipes de tournage et de montage, et permettront même de faire venir des invités surprises. C’est la part la plus essentielle parce qu’elle nous permettra de donner vie à notre vision pour créer une vidéo incroyable.
                     </p>
                   </div>
                 </div>
@@ -121,14 +80,9 @@ function Faq() {
                   </div>
                   <div className="collapse-content">
                     <p>
-                      Pour vous remercier de vos participations et vous montrer
-                      à quel point on est reconnaissant de vos participations,
-                      on a mis en place une Loterie de Communauté ! Pour chaque
-                      achat, vous recevez une entrée dans la loterie ! Pour les
-                      lots on a mis le budget pour vous faire plaisir et le
-                      grand gagnant remportera une PS5 ! Il y aura aussi pleins
-                      de lots Minecraft issus de la vidéo, mais on ne vous en
-                      dit pas plus, ça sera la surprise ;)
+                      Remercier la communauté c’est le plus important pour nous. C’est pourquoi on a créé une loterie pour vous faire kiffer ! On a mis le budget pour les lots avec une PlayStation 5, mais aussi pleins de lots Minecraft issus de la vidéo et de ma chaîne, mais on vous garde la surprise ;)<br />
+                      Pour chaque achat sur le site (attention ça ne marche pas pour les dons libres) vous recevez un ticket d’entrée dans la loterie. <br />
+                      Qu’est-ce que ça veut dire ? Ça veut dire que si vous achetez un tee-shirt, vous recevez un tee-shirt quali, vous soutenez le projet de vidéo et en plus vous gagnez peut-être une PS5 !
                     </p>
                   </div>
                 </div>
@@ -148,20 +102,9 @@ function Faq() {
                   </div>
                   <div className="collapse-content">
                     <p>
-                      Vous avez peut-être remarqué qu’en plus du shop, il y a un
-                      système de points sur le site ! Comme on sait qu’au fond
-                      vous êtes des gamers, on a mis en place des petites quêtes
-                      pour vous ! *Comment ça marche ?* Pour chaque quête que
-                      vous remplissez, vous gagnez des points. Vous gagnez aussi
-                      des points en dépensant sur le site : pour chaque euro
-                      dépensé, vous recevez 10 points ! Au bout d’un certain
-                      nombre de points atteints, vous passez au niveau suivant
-                      et vous gagnez une récompense ! Il y a aussi un classement
-                      général et plus vous faites de quêtes, plus vous aurez de
-                      chance d’arriver à sa tête ! *A quoi ça sert les points ?*
-                      C’est bien beau de gagner pleins de points, mais à quoi ça
-                      sert ? Et bien une fois que vous avez atteint suffisamment
-                      de points, vous gagnez des récompenses!{" "}
+                      Vous avez peut-être remarqué qu’en plus du shop, il y a un système de points sur le site. Comme on sait qu’au fond vous êtes des gamers, on a mis en place des petites quêtes pour vous !<br />
+                      Pour chaque quête que vous remplissez, vous gagnez des points. Vous gagnez aussi des points en dépensant sur le site : pour chaque euro dépensé, vous recevez 10 points.<br />
+                      Au bout d’un certain nombre de points atteints, vous passez au niveau suivant et vous gagnez une récompense ! Il y a aussi un classement général et plus vous faites de quêtes, plus vous aurez de chance d’arriver à sa tête !
                     </p>
                   </div>
                 </div>
@@ -181,9 +124,7 @@ function Faq() {
                   </div>
                   <div className="collapse-content">
                     <p>
-                      Pour vous aider à trouver la taille parfaite de votre
-                      armure diamant, on met à votre disposition un super guide
-                      des tailles juste ici !{" "}
+                      Pour vous aider à trouver la taille parfaite de votre armure diamant, on met à votre disposition un super guide des tailles juste ici !
                     </p>
                   </div>
                 </div>
@@ -203,41 +144,12 @@ function Faq() {
                   </div>
                   <div className="collapse-content">
                     <p>
-                      Nos produits sont fabriqués au Bengladesh, et imprimés en
-                      France. Notre fournisseur est convaincu que c’est
-                      bénéfique de fabriquer en Asie, tant que c’est bien fait.
-                      Toutes les usines partenaires sont régulièrement
-                      contrôlées, et auditées par la Fair Wear Foundation. La
-                      Fair Wear Foundation lutte pour que les entreprises et les
-                      usines dans le secteur du textile offrent de **bonnes
-                      conditions de travail** à leurs salariés. Nous
-                      privilégions les matières biologiques, les sweats et
-                      tee-shirt sont fait de coton 100% bio. Le coton bio est
-                      une fibre naturelle qui consomme bien moins d’eau que le
-                      coton traditionnel. Il est produit sans substances
-                      chimiques afin de respecter l’environnement mais aussi
-                      votre peau. La production est certifiée selon les
-                      standards les plus stricts du marché sur toute la chaîne
-                      de production. - Le label Global Organic Textile Standard
-                      (GOTS) garantit une production respectueuse de
-                      l’environnement et exige le respect d’un certain nombre de
-                      critères concernant la transformation, la fabrication,
-                      l’emballage, l’étiquetage, la vente et la distribution des
-                      textiles, à minimum 70% en fibres naturelles biologiques.
-                      Il garantit également le respect des conventions de
-                      l’Organisation Internationale du Travail et la qualité
-                      technique du textile. - Le standard Oeko-Tex 100 protège
-                      la santé des consommateurs en contrôlant que la production
-                      du textile n’implique pas de produits chimiques dangereux
-                      pour la santé durant l’entièreté du processus de
-                      fabrication. - La certification PETA certifie qu’aucun des
-                      produits, ou de leurs composants n’a été ou ne sera
-                      (jamais!) testé sur les animaux et que les produits sont
-                      composés de matières 100% véganes. Bref, on a cherché le
-                      mieux pour vous proposer des vêtements de bonne qualité,
-                      fabriqués dans des conditions éthique et respectueuses de
-                      l’environnement et des travailleurs, et tout ça au
-                      meilleur prix !
+                      Nos produits sont imprimés en France, dans une usine près de Caen en Normandie. Notre fournisseur est reconnu pour la qualité de ses produits et travaille régulièrement avec des marques de merchandising comme celle d’Orelsan, de BigFlo et Oli ou encore avec des influenceurs. Reconnu pour sa fiabilité, notre imprimeur a choisi un fournisseur de textile proposant des vêtements durables et de qualité. Tous les produits sont en textile 100% bio ou recyclé. Notre fournisseur respecte les standards et certifications les plus strictes et contrôlées du marché pour assurer une production responsable et respectueuse de l’homme et de la planète. Les produits sont certifiés :<br />
+                      Fair Wear Foundation: Toutes les usines partenaires du fournisseur sont régulièrement contrôlées, et auditées par la Fair Wear Foundation. Elle lutte pour que les entreprises et les usines dans le secteur du textile offrent de bonnes conditions de travail à leurs salariés.<br />
+                      Global Organic Textile Standard (GOTS): Tous les produits en coton sont réalisés à partir de coton 100% biologique. Le coton bio est une fibre naturelle qui consomme bien moins d’eau que le coton traditionnel. Il est produit sans substances chimiques afin de respecter l’environnement mais aussi votre peau. Le label Global Organic Textile Standard (GOTS) garantit une production respectueuse de l’environnement et exige le respect d’un certain nombre de critères concernant la transformation, la fabrication, l’emballage, l’étiquetage, la vente et la distribution des textiles, à minimum 70% en fibres naturelles biologiques. Il garantit également le respect des conventions de l’Organisation Internationale du Travail et la qualité technique du textile.<br />
+                      Oeko-Tex 100 : Le standard Oeko-Tex 100 protège la santé des consommateurs en contrôlant que la production du textile n’implique pas de produits chimiques dangereux pour la santé durant l’entièreté du processus de fabrication.<br />
+                      PETA : La certification PETA certifie qu’aucun des produits, ou de leurs composants n’a été ou ne sera (jamais!) testé sur les animaux et que les produits sont composés de matières 100% véganes.<br />
+                      Bref, on a cherché le mieux pour vous proposer des vêtements de bonne qualité, fabriqués dans des conditions éthique et respectueuses de l’environnement et des travailleurs, et tout ça au meilleur prix !
                     </p>
                   </div>
                 </div>
@@ -257,13 +169,7 @@ function Faq() {
                   </div>
                   <div className="collapse-content">
                     <p>
-                      Quand vous commandez votre sweat ou votre tee-shirt, en
-                      fait c’est comme une précommande ! Vous recevrez une
-                      confirmation de commande, mais le produit n’arrivera pas
-                      tout de suite. C’est à la fin (et seulement à la fin !) de
-                      la campagne que tous vos achats vous seront envoyés dans
-                      un délai de 5 à 8 jours. On a trop hâte que vous les
-                      découvriez et de vous voir avec !{" "}
+                      Quand vous commandez votre sweat ou votre tee-shirt, en fait c’est comme une précommande ! Vous recevrez une confirmation de commande, mais le produit n’arrivera pas tout de suite. C’est à la fin de la campagne que tous vos achats vous seront envoyés dans un délai maximum de 15 jours. On a trop hâte que vous les découvriez et de vous voir avec !
                     </p>
                   </div>
                 </div>
@@ -283,15 +189,7 @@ function Faq() {
                   </div>
                   <div className="collapse-content">
                     <p>
-                      En cas d’erreur lors de la saisie de l’adresse de
-                      livraison, il suffit de nous envoyer un petit mail à
-                      [contact@briceshop.fr](mailto:contact@briceshop.fr) et on
-                      vous répondra au plus vite ! Attention, on ne sera en
-                      mesure de modifier l’adresse de livraison qu’avant
-                      l’expédition du produit ! N’oubliez pas de préciser dans
-                      le mail votre nom, numéro de commande et l’adresse
-                      correcte où envoyer le produit dans le mail pour faciliter
-                      le changement.
+                      En cas d’erreur lors de la saisie de l’adresse de livraison, il suffit de nous envoyer un petit mail à contact@briceshop.fr et on vous répondra au plus vite ! Attention, il n’est possible de modifier l’adresse de livraison qu’avant l’expédition du produit ! N’oubliez pas de préciser dans le mail votre nom, numéro de commande et l’adresse correcte où envoyer le produit dans le mail pour faciliter le changement.
                     </p>
                   </div>
                 </div>
@@ -311,29 +209,8 @@ function Faq() {
                   </div>
                   <div className="collapse-content">
                     <p>
-                      Si par malheur, vous recevez le sweat ou le tee-shirt et
-                      qu’il ne vous va pas (ou qu’il ne vous plaît pas, mais ça,
-                      on n’y croit pas trop…)  alors, il est possible de
-                      renvoyer la commande ! Nous acceptons uniquement les
-                      retours sous 14 jours à compter de la réception de la
-                      commande.  Seuls les articles en l’état d’origine pourront
-                      faire l’objet d’un remboursement. Ils ne doivent être ni
-                      portés, ni lavés ou endommagés et accompagnés de leurs
-                      étiquettes et emballage d’origine. Les frais de retour
-                      seront déduits du remboursement. Il est important
-                      d’inclure le bon de retour dans le colis. Pour lancer la
-                      procédure de retour, écrivez nous à contact@briceshop.fr !
-                      Si jamais la commande arrive avec un défaut ou qu’il y a
-                      une erreur sur le produit envoyé (promis on fait tout pour
-                      que ça n’arrive pas mais comme vous le savez, l’erreur est
-                      humaine !), nous prendrons en charge le retour du produit
-                      et en renverrons un autre, à nos frais. Encore une fois,
-                      vous devez nous écrire à
-                      [contact@briceshop.fr](mailto:contact@briceshop.fr) pour
-                      qu’un membre de notre team puisse vous assister dans la
-                      démarche ! N’oubliez pas de nous communiquer votre numéro
-                      de commande et d’inclure des photos des défauts du produit
-                      pour qu’on puisse vous aider au mieux !
+                      Si par malheur, vous recevez le sweat ou le tee-shirt et qu’il ne vous va pas (ou qu’il ne vous plaît pas, mais ça, on n’y croit pas trop…) alors, il est possible de renvoyer la commande ! Nous acceptons uniquement les retours sous 14 jours à compter de la réception de la commande. Seuls les articles en l’état d’origine pourront faire l’objet d’un remboursement. Ils ne doivent être ni portés, ni lavés ou endommagés et accompagnés de leurs étiquettes et emballage d’origine. Les frais de retour seront déduits du remboursement. Il est important d’inclure le bon de retour dans le colis. Pour lancer la procédure de retour, écrivez-nous à contact@briceshop.fr.<br />
+                      Si jamais la commande arrive avec un défaut ou qu’il y a une erreur sur le produit envoyé (promis on fait tout pour que ça n’arrive pas mais comme vous le savez, l’erreur est humaine !), nous prendrons en charge le retour du produit et en renverrons un autre, à nos frais. Encore une fois, vous devez nous écrire à contact@briceshop.frpour qu’un membre de notre team puisse vous assister dans la démarche. N’oubliez pas de nous communiquer votre numéro de commande et d’inclure des photos des défauts du produit pour qu’on puisse vous aider au mieux.
                     </p>
                   </div>
                 </div>
@@ -353,18 +230,13 @@ function Faq() {
                   </div>
                   <div className="collapse-content">
                     <p>
-                      Si votre paiement est refusé, vous pouvez commencer par
-                      vérifier les éléments suivants : - Les informations
-                      bancaires communiquées sont correctes, - Le code de
-                      sécurité CVV à bien été renseigné, - Le solde de votre
-                      compte est suffisant à régler l’achat, -
-                      L’authentification n’as pas été refusée, si c’est le cas
-                      renseignez-vous auprès de votre banque, - Votre connexion
-                      internet fonctionne. Un problème de connexion peut
-                      interférer avec le processus de paiement et déboucher sur
-                      un paiement refuser. Si malgré tout cela, les problèmes
-                      persistent, vous pouvez nous contacter à
-                      [contact@briceshop.fr](mailto:contact@briceshop.fr) .
+                      Si votre paiement est refusé, vous pouvez commencer par vérifier les éléments suivants:<br />
+                      Les informations bancaires communiquées sont correctes,<br />
+                      Le code de sécurité CVV à bien été renseigné,<br />
+                      Le solde de votre compte est suffisant à régler l’achat,<br />
+                      L’authentification n’as pas été refusée, si c’est le cas renseignez-vous auprès de votre banque,<br />
+                      Votre connexion internet fonctionne. Un problème de connexion peut interférer avec le processus de paiement et déboucher sur un paiement refusé.<br />
+                      Si malgré tout cela, les problèmes persistent, vous pouvez nous contacter à contact@briceshop.fr
                     </p>
                   </div>
                 </div>
