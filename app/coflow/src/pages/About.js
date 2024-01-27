@@ -182,22 +182,22 @@ const Home = () => {
                 maxWidth: "425px",
               },
               1024: {
-                slidesPerView: 3,
+                slidesPerView: 2,
               },
             }}
           >
-            {productList.map((item, index) => (
+            {productList.slice(0, 2).map((item, index) => (
               <SwiperSlide key={index}>
                 <div
                   className="card w-full shadow-xl mb-12"
                   style={{ background: "rgba(255, 255, 255, 0.07)" }}
                 >
                   <figure
-                    className="p-5 h-full"
+                    className="h-full w-full"
                     style={{ background: "rgba(255, 255, 255, 0.07)" }}
                   >
                     {item.images.length > 0 && (
-                      <img src={item.images[0].src} alt="Shoes" />
+                      <img src={item.images[0].src} alt="Shoes" className="w-full" />
                     )}
                   </figure>
                   <div
@@ -225,7 +225,7 @@ const Home = () => {
                         </span>
                       </div>
                       <button
-                        type="buttom"
+                        type="button"
                           className="text-white w-full sm:w-fit py-3 px-8 rounded-md text-lg font-semibold transition-all hover:scale-105"
                         style={{
                           background:
