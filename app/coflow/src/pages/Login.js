@@ -176,7 +176,7 @@ function Login() {
           style={{ background: "#333" }}
         >
           <h1 className="text-2xl lg:text-3xl font-bold text-white text-center w-full md:px-20">
-            Crée ton compte pour poursuivre ton achat
+            Connectes toi pour poursuivre ton achat
           </h1>
 
           <button
@@ -184,10 +184,10 @@ function Login() {
             onClick={handleSignInGoogle}
           >
             <img src={googleIcon} alt="signUp by google" />
-            S’inscrire via Google
+            Se connecter via Google
           </button>
           <h2 className="text-base font-semibold text-white">
-            Ou bien inscris-toi avec ton adresse mail
+            Ou bien connectes-toi avec ton adresse mail
           </h2>
           <div className="w-full mt-8 flex flex-col gap-10">
             {/* <div className="sm:col-span-4">
@@ -286,9 +286,9 @@ function Login() {
           {/* </Link> */}
           <div className="w-full justify-center flex flex-col sm:flex-row gap-2 sm:gap-0 items-center">
             <span className="text-base text-white font-bold">
-              Déjà inscrit?{" "}
+              Pas encore inscrit ?{" "}
               <Link to="/signup">
-                <span className="text-main">Connecte-toi</span>
+                <span className="text-main">Crée ton compte</span>
               </Link>
             </span>
           </div>

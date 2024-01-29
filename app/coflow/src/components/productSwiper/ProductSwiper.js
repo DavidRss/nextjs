@@ -278,12 +278,12 @@ export default function ProductSwiper({
             <span className="text-4xl font-semibold text-white">
               {nFormatter(product?.variants[0].price.amount, 2)} €
             </span>
-            <span
+            {/* <span
               className="font-semibold text-lg"
               style={{ color: "#6D6D6D" }}
             >
               6 contributors
-            </span>
+            </span> */}
           </div>
           <button
             type="buttom"

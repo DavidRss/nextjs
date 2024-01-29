@@ -63,7 +63,7 @@ const Home = () => {
 
   useEffect(() => {
     if (products.length > 0) {
-      setProductList(products);
+      setProductList(products.slice(0, 2));
       for (const product of products) {
         if (product.title === "Le pack Fer") {
           setProduct1(product);
@@ -168,9 +168,9 @@ const Home = () => {
           <Swiper
             spaceBetween={40}
             pagination={{
-              clickable: true,
+              clickable: false,
             }}
-            loop={true}
+            loop={false}
             modules={[Pagination]}
             style={{ width: "100%", height: "100%" }}
             navigation={{
@@ -183,7 +183,7 @@ const Home = () => {
                 maxWidth: "425px",
               },
               1024: {
-                slidesPerView: 3,
+                slidesPerView: 2,
               },
             }}
           >
@@ -332,6 +332,7 @@ const Home = () => {
                     "linear-gradient(45deg, #328019 0%, #5EAC0C 100%)",
                   boxShadow: " 0px 4px 0px 0px #196700",
                 }}
+                onClick={() => {setHideVideo(false); document.getElementById("my_modal_1").showModal()}}
               >
                 En savoir plus
               </button>
@@ -571,6 +572,7 @@ const Home = () => {
                       "linear-gradient(45deg, #328019 0%, #5EAC0C 100%)",
                     boxShadow: " 0px 4px 0px 0px #196700",
                   }}
+                  onClick={() => {setHideVideo(false); document.getElementById("my_modal_2").showModal()}}
                 >
                   En savoir plus
                 </button>
