@@ -8,6 +8,7 @@ import card from '../assets/new/card.png';
 import aboutBg from '../assets/new/about11.png';
 import about2 from '../assets/new/about22.png';
 import star from '../assets/new/star-fill.svg'
+import play from '../assets/1202/Group 49.png';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -660,7 +661,7 @@ const Home = () => {
                             alt='about' 
                             style={{maxHeight: '840px', minHeight: '500px'}}
                         />
-                        <svg className='hover:scale-105 transition-all absolute' xmlns="http://www.w3.org/2000/svg" width="120" height="124" viewBox="0 0 120 124" fill="none">
+                        {/* <svg className='hover:scale-105 transition-all absolute' xmlns="http://www.w3.org/2000/svg" width="120" height="124" viewBox="0 0 120 124" fill="none">
                             <g filter="url(#filter0_d_187_6898)">
                                 <circle cx="60" cy="60" r="60" fill="url(#paint0_linear_187_6898)"/>
                             </g>
@@ -680,7 +681,8 @@ const Home = () => {
                                 <stop offset="1" stop-color="#5EAC0C"/>
                                 </linearGradient>
                             </defs>
-                        </svg>
+                        </svg> */}
+                         <img src={play} className='hover:scale-105 transition-all absolute' alt='play' />
                     </div>
                     <h2 className='text-4xl font-semibold text-center block lg:hidden'>
                         About This Project
@@ -705,7 +707,7 @@ const Home = () => {
             <section className='w-full justify-center flex'>
                 <div className='w-full justify-center flex relative flex-col-reverse xl:flex-row max-w-1920' style={{background: 'linear-gradient(180deg, rgba(51,51,51,1) 49%, rgba(255,255,255,0) 49%)'}}>
                     <div className='bg-thrBg flex h-full justify-center w-full 3xl:w-2/5'>
-                        <div className='bg-[#CCCCCC] flex h-full w-full py-10 px-4 3xl:px-0 3xl:py-52' style={{borderRadius: '0 30px 0 0'}}>
+                    <div className='flex h-full w-full py-10 px-4 3xl:px-0 3xl:py-52' style={{ borderRadius: '0 30px 0 0', background: 'linear-gradient(0deg, rgba(0, 115, 255, 1) 0%, rgba(0, 60, 133, 0.4) 100%)' }}>
                             <div className='w-full xl:flex justify-center lg:justify-start flex-wrap items-center full:pl-44'>
                                 <div className='flex justify-center 3xl:justify-normal xl:flex-col gap-6 items-center flex-wrap xl:max-w-36 2xl:max-w-none'>
                                     <img src={img1} alt='img1' style={{width: '146px'}} />
@@ -751,7 +753,7 @@ const Home = () => {
                             alt='about' 
                             style={{maxHeight: '840px', minHeight: '500px'}}
                         />
-                        <svg className='hover:scale-105 transition-all absolute' xmlns="http://www.w3.org/2000/svg" width="120" height="124" viewBox="0 0 120 124" fill="none">
+                        {/* <svg className='hover:scale-105 transition-all absolute' xmlns="http://www.w3.org/2000/svg" width="120" height="124" viewBox="0 0 120 124" fill="none">
                             <g filter="url(#filter0_d_187_6898)">
                                 <circle cx="60" cy="60" r="60" fill="url(#paint0_linear_187_6898)"/>
                             </g>
@@ -771,7 +773,8 @@ const Home = () => {
                                 <stop offset="1" stop-color="#0074FF"/>
                                 </linearGradient>
                             </defs>
-                        </svg>
+                        </svg> */}
+                        <img src={play} className='hover:scale-105 transition-all absolute' alt='play' />
                     </div>
                 </div>
             </section>

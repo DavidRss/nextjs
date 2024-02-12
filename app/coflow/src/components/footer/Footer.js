@@ -70,7 +70,7 @@ export default function Footer({children}) {
                     <p className='text-lg max-w-96'>
                         All our payments are 100% secure, whether they are made by credit card, diamonds or gold bars ;)
                     </p>
-                </div>w-full text-white flex flex-col items-center bg-thrBg border-t-8
+                </div>
                 <div className='hidden xl:flex flex-col gap-5 items-center text-center justify-center'>
                     <span className='flex justify-center items-center p-4 rounded-full border-4' style={{background: '#eeee', borderColor: 'white'}}>
                         <img src={chat} alt='levels' />
