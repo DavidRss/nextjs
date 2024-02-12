@@ -64,7 +64,7 @@ const Navigate = () => {
                     <div className='flex w-full h-14 md:px-4 xl:px-0 xl:h-24 gap-10 justify-center xl:justify-between shadow-xl rounded-full'>
                         <div className={`relative -top-24 hidden mdMax:block ${isSticky ? 'hidden-on-sticky' : ''}`}>
                             <div className="avatar">
-                                <div className="w-48 rounded-full ring-4 ring-gray-200 ">
+                                <div className="w-48 rounded-full ring-4 ring-gray-200 relative -left-7">
                                     <img src={avatarMain} alt="main avatar" />
                                 </div>
                             </div>

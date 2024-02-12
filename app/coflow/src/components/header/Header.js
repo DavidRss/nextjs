@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import coins from '../../assets/new/Group.svg';
+import banner from '../../assets/1202/channels4_banner.jpg';
 // import Circles from '../../assets/Group.svg'
 // import avatarMain from '../../assets/avatarMain.png';
 
 // import { useUser } from "../../services/UserContext";
 // import { Link } from 'react-router-dom';
-import headerCover from '../../assets/new/header-bg.png';
+// import headerCover from '../../assets/new/header-bg.png';
 
 export default function Header() {
 
@@ -334,7 +335,7 @@ export default function Header() {
             </div>
             <div className='relative z-30 sm:-bottom-5 max-h-720 w-full max-w-8xl px-4 3xl:px-0'>
                 {/* <img src={headerCover} alt='cover' /> */}
-                <iframe width="100%" height="420" src="https://www.youtube.com/embed/_E4XOfZACmY?si=rEhvNKgUYLc0Auxo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <img src={banner} alt='banner' className='w-full h-full rounded-xl' />
                 <button 
                     type='button' 
                     className='flex md:hidden absolute items-center top-1/3 left-2/4 -translate-x-2/4 justify-start py-3 text-black bg-white bg-opacity-40 pl-3 pr-5 text-2xl font-semibold rounded-xl gap-5 transition-all hover:scale-105 hover:shadow-lg hover:shadow-main/50'
@@ -368,14 +369,15 @@ export default function Header() {
                 <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-main text-main absolute right-2 top-2">✕</button>
                 </form>
-                <iframe
+                {/* <iframe
                     width='100%'
                     height='500px'
                     src={`https://www.youtube.com/embed/4kLviL8XwAI`}
                     frameBorder='0'
                     allowFullScreen
                     title='YouTube Video'
-                ></iframe>
+                ></iframe> */}
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/_E4XOfZACmY?si=rEhvNKgUYLc0Auxo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </dialog>
     </>
